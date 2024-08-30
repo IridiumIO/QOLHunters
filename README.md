@@ -1,17 +1,24 @@
-*For the Vault Hunters Minecraft Modpack*
+Bakes text overlays onto the  Modifier icons to make it easier to identify which modifiers are active inside a vault. 
 
-Adds ruined vault portals to the landscape in the overworld.
+**Installation**
 
-Each ruin has a smattering of vault stone and some chromatic iron as well, for those wishing to get started vaulting without going underground for resources.
-Underwater ruins have more chromatic iron, and portals have a chance to spawn with a completed crystal.
+Drop into your mods folder
+If updating from a previous version, make sure you delete  configs/the_vault/vault_modifiers_iridium.json
 
------------
+**Compatibility**
 
-*Something happens when you find your first ruined vault portal in the world...*
+VH 3.15.1.4
+?Wold's Vaults 0.11.3a (for some reason it doesn't fully work)
 
------------
+**Interpretation**
 
-This is not designed to replace the need to get vault stone and chromatic iron; rather it exists more as an exploratory way to obtain some early-game resources.
-Additional structures are planned (more rare portal types, and maybe rare shrines to the vault gods, or abandoned armories?)  but these have to remain subtle to avoid breaking out of scope of what VH is about.
+White text = standard positive modifiers
+Orange text = negative modifiers
+Green text = special positive modifiers
 
-It can be added to existing worlds, however only new chunks will be able to spawn the portals. 
+
+
+Planned Features
+I plan to expand this mod with additional features across the rest of the UI, not just the vault modifiers icons. The biggest thing I want to do is update the abilities page to include more details as well as overlevel information 
+
+https://discord.com/channels/889424759018901514/1278708249742282824
