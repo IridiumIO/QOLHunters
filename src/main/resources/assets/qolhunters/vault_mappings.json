@@ -1,0 +1,858 @@
+{
+  "afterlife": {
+    "mode": 2,
+    "text": "AFTER\nLIFE"
+  },
+  "antiheal": {
+    "mode": 1,
+    "text": "HEAL\n-20%"
+  },
+  "b_quant_1": {
+    "mode": 0,
+    "text": "QUANT\n+5%"
+  },
+  "beginners_grace": {
+    "mode": 2,
+    "text": "GRACE"
+  },
+  "beginners_insurance": {
+    "mode": 0,
+    "text": "TRAP\n0%"
+  },
+  "bingo": {
+    "mode": 2,
+    "text": "BINGO"
+  },
+  "bingo_quantity": {
+    "mode": 0,
+    "text": "QUANT\n+10%"
+  },
+  "bingo_rarity": {
+    "mode": 0,
+    "text": "RARITY\n+10%"
+  },
+  "bronze_nuke": {
+    "mode": 0,
+    "text": "COIN\nEXPL"
+  },
+  "brutal_mobs": {
+    "mode": 1,
+    "text": "DMG\n+50%"
+  },
+  "cake_artifact": {
+    "mode": 0,
+    "text": "ARTF\n+0.5%"
+  },
+  "cake_cascade_gilded": {
+    "mode": 0,
+    "text": "GILDED\n+1%"
+  },
+  "cake_cascade_living": {
+    "mode": 0,
+    "text": "LIVING\n+5%"
+  },
+  "cake_cascade_ornate": {
+    "mode": 0,
+    "text": "ORNATE\n+5%"
+  },
+  "cake_cascade_wooden": {
+    "mode": 0,
+    "text": "WOOD\n+5%"
+  },
+  "cake_chunky_mobs": {
+    "mode": 1,
+    "text": "MOB HP\n+1%"
+  },
+  "cake_coin_cascade": {
+    "mode": 0,
+    "text": "COINS\n+10%"
+  },
+  "cake_furious_mobs": {
+    "mode": 1,
+    "text": "DMG\n+1%"
+  },
+  "cake_haunted": {
+    "mode": 0,
+    "text": "SOUL\n+10%"
+  },
+  "cake_item_quantity": {
+    "mode": 0,
+    "text": "QUANT\n+1%"
+  },
+  "cake_item_rarity": {
+    "mode": 0,
+    "text": "RARITY\n+1%"
+  },
+  "cake_layer": {
+    "mode": 0,
+    "text": ""
+  },
+  "cake_layer_itemrarity": {
+    "mode": 0,
+    "text": "RARITY\n+1%"
+  },
+  "cake_layer_mobdmg": {
+    "mode": 1,
+    "text": "DMG\n+8%"
+  },
+  "cake_layer_mobhealth": {
+    "mode": 1,
+    "text": "MOB HP\n+0.05%"
+  },
+  "cake_layer_mobspeed": {
+    "mode": 1,
+    "text": "SPEED\n+0.15%"
+  },
+  "cake_layer_soulshards": {
+    "mode": 0,
+    "text": "SOUL\n+10%"
+  },
+  "cake_mob_increase": {
+    "mode": 1,
+    "text": "MOBS\n+10%"
+  },
+  "cake_ores": {
+    "mode": 0,
+    "text": "ORES\n+5%"
+  },
+  "casual": {
+    "mode": 2,
+    "text": "CASUAL"
+  },
+  "champion_chance": {
+    "mode": 2,
+    "text": "CHAMP\n+10%"
+  },
+  "champion_domain": {
+    "mode": 2,
+    "text": "CHAMP\n+50%"
+  },
+  "champion_paradox": {
+    "mode": 2,
+    "text": "CHAMP\n+2%"
+  },
+  "chaos": {
+    "mode": 2,
+    "text": "CHAOS"
+  },
+  "cherry": {
+    "mode": 0,
+    "text": "TIME\n+30s"
+  },
+  "chunky_mobs": {
+    "mode": 1,
+    "text": "MOB HP\n+10%"
+  },
+  "chunky_mobs2": {
+    "mode": 1,
+    "text": "MOB HP\n+20%"
+  },
+  "clumsy": {
+    "mode": 1,
+    "text": "BLOCK\n-10%"
+  },
+  "coin_cascade": {
+    "mode": 0,
+    "text": "COINS\n+25%"
+  },
+  "coin_pile": {
+    "mode": 0,
+    "text": "COINS\n+1"
+  },
+  "collapsing": {
+    "mode": 1,
+    "text": ""
+  },
+  "companion_challenge": {
+    "mode": 2,
+    "text": "COMPN\nCHAL"
+  },
+  "confused": {
+    "mode": 1,
+    "text": "CTRL\nSWAP"
+  },
+  "cooldown_reduction": {
+    "mode": 0,
+    "text": "CDR\n+80%"
+  },
+  "copiously": {
+    "mode": 0,
+    "text": "COP\n+5%"
+  },
+  "crab_walk": {
+    "mode": 1,
+    "text": "CRAB"
+  },
+  "crake_quantity": {
+    "mode": 0,
+    "text": "QTY\n+40%"
+  },
+  "crate_tier": {
+    "mode": 0,
+    "text": "CRATE\nTIER+1"
+  },
+  "crit_mobs": {
+    "mode": 1,
+    "text": "CRIT\n100%"
+  },
+  "crowded": {
+    "mode": 1,
+    "text": "MOBS\n+1"
+  },
+  "curse": {
+    "mode": 1,
+    "text": "CURSED"
+  },
+  "curse_collapsing": {
+    "mode": 1,
+    "text": "COLLPS\nCURSE"
+  },
+  "curse_ethereal": {
+    "mode": 1,
+    "text": "ETHER\nCURSE"
+  },
+  "curse_explosive": {
+    "mode": 1,
+    "text": "TNT\nCURSE"
+  },
+  "curse_freezing": {
+    "mode": 1,
+    "text": "FREEZE\nCURSE"
+  },
+  "curse_voiding": {
+    "mode": 1,
+    "text": "VOID\nCURSE"
+  },
+  "curse_wrecked": {
+    "mode": 0,
+    "text": ""
+  },
+  "difficult": {
+    "mode": 1,
+    "text": "DIFF\n+3"
+  },
+  "door_hunter": {
+    "mode": 0,
+    "text": ""
+  },
+  "drained": {
+    "mode": 1,
+    "text": "MANA\n-70%"
+  },
+  "draining": {
+    "mode": 1,
+    "text": "MANA\n-10%"
+  },
+  "dungeon_doors": {
+    "mode": 0,
+    "text": ""
+  },
+  "easy": {
+    "mode": 0,
+    "text": "DIFF\n-3"
+  },
+  "energizing": {
+    "mode": 0,
+    "text": "MANA\n+25%"
+  },
+  "enervated": {
+    "mode": 1,
+    "text": "HEAL\n-XX%"
+  },
+  "enlighted": {
+    "mode": 0,
+    "text": "EXP\n+100%"
+  },
+  "ethereal": {
+    "mode": 1,
+    "text": "ETHER"
+  },
+  "explosive": {
+    "mode": 1,
+    "text": "TNT"
+  },
+  "extended": {
+    "mode": 0,
+    "text": "TIME\n+1M"
+  },
+  "fading": {
+    "mode": 1,
+    "text": "FADE"
+  },
+  "fatiguing": {
+    "mode": 0,
+    "text": "WTF"
+  },
+  "fortuitous": {
+    "mode": 0,
+    "text": "RARITY\n+50%"
+  },
+  "frail": {
+    "mode": 1,
+    "text": "DURA\n-20%"
+  },
+  "freezing": {
+    "mode": 1,
+    "text": "SLOW\n10%"
+  },
+  "frenzy": {
+    "mode": 2,
+    "text": "FRENZY"
+  },
+  "furious_mobs": {
+    "mode": 1,
+    "text": "DMG\n+10%"
+  },
+  "gilded": {
+    "mode": 0,
+    "text": "GILDED\n+1"
+  },
+  "gilded_cascade": {
+    "mode": 0,
+    "text": "GILDED\n+25%"
+  },
+  "goblin_quantity": {
+    "mode": 0,
+    "text": "QUANT\n+100%"
+  },
+  "goblin_rarity": {
+    "mode": 0,
+    "text": "RARITY\n+200%"
+  },
+  "grievous_wounds": {
+    "mode": 1,
+    "text": "HEAL\n-20%"
+  },
+  "haunted": {
+    "mode": 0,
+    "text": "SOUL\n+50%"
+  },
+  "herald": {
+    "mode": 2,
+    "text": "HERALD\nGRACE"
+  },
+  "hoard": {
+    "mode": 0,
+    "text": "QUANT\n+50%"
+  },
+  "hunger": {
+    "mode": 1,
+    "text": "HUNGER\nx6"
+  },
+  "idona_dmg": {
+    "mode": 0,
+    "text": "IDONA\nFVR"
+  },
+  "idona_favour_1": {
+    "mode": 0,
+    "text": "DMG\n+50%"
+  },
+  "idona_favour_2": {
+    "mode": 0,
+    "text": "SOUL\n+1%"
+  },
+  "idona_favour_3": {
+    "mode": 0,
+    "text": "LEECH\n+0.5%"
+  },
+  "idona_favour_ap": {
+    "mode": 0,
+    "text": "AP\n+50%"
+  },
+  "idona_inline": {
+    "mode": 0,
+    "text": "IDONA\nFVR"
+  },
+  "idona_soulchance": {
+    "mode": 0,
+    "text": "SOUL\n+200%"
+  },
+  "idona_tear": {
+    "mode": 0,
+    "text": "IDONA\n+1%"
+  },
+  "inert": {
+    "mode": 1,
+    "text": "CDR\n-10%"
+  },
+  "infuriated_mobs": {
+    "mode": 1,
+    "text": "SPEED\n+5%"
+  },
+  "injured": {
+    "mode": 1,
+    "text": "HP\n-2"
+  },
+  "item_quantity": {
+    "mode": 0,
+    "text": "QUANT\n+10%"
+  },
+  "item_rarity": {
+    "mode": 0,
+    "text": "RARITY\n+10%"
+  },
+  "jupiter_gravity": {
+    "mode": 1,
+    "text": "NO\nJUMP"
+  },
+  "kill_charm": {
+    "mode": 0,
+    "text": "CHARM"
+  },
+  "kill_hunter": {
+    "mode": 0,
+    "text": "HUNTER"
+  },
+  "kill_nuke": {
+    "mode": 0,
+    "text": "NOVA\nLVL8"
+  },
+  "kill_totem": {
+    "mode": 0,
+    "text": "TOTEM"
+  },
+  "knockback": {
+    "mode": 0,
+    "text": "KNCBCK\n+100%"
+  },
+  "living": {
+    "mode": 0,
+    "text": "LIVING\n+1"
+  },
+  "living_cascade": {
+    "mode": 0,
+    "text": "LIVING\n+25%"
+  },
+  "locked": {
+    "mode": 1,
+    "text": "LOCKED"
+  },
+  "loot_goblin": {
+    "mode": 2,
+    "text": "2xQTY\n3xRAR"
+  },
+  "looters_dream": {
+    "mode": 0,
+    "text": "TRAP\n0%"
+  },
+  "lost_quantity": {
+    "mode": 1,
+    "text": "QUANT\n-50%"
+  },
+  "low_item_quantity": {
+    "mode": 0,
+    "text": "QUANT\n+5%"
+  },
+  "lucky": {
+    "mode": 0,
+    "text": "LUCK\n+1"
+  },
+  "mana_leak": {
+    "mode": 1,
+    "text": "MANA\nNONE"
+  },
+  "mana_regen": {
+    "mode": 0,
+    "text": "MANA\n+500%"
+  },
+  "mega_regen": {
+    "mode": 0,
+    "text": "REGEN\n+3"
+  },
+  "minefield": {
+    "mode": 1,
+    "text": "TRAP\n+40%"
+  },
+  "mob_increase": {
+    "mode": 1,
+    "text": "MOBS\n+20%"
+  },
+  "noxp": {
+    "mode": 1,
+    "text": "EXP\n-100%"
+  },
+  "objective_difficulty": {
+    "mode": 1,
+    "text": "DIFF\n+20%"
+  },
+  "ornate": {
+    "mode": 0,
+    "text": "ORNATE\n+1"
+  },
+  "ornate_cascade": {
+    "mode": 0,
+    "text": "ORNATE\n+25%"
+  },
+  "overpower": {
+    "mode": 2,
+    "text": "MOBS\n1HP"
+  },
+  "personal_space": {
+    "mode": 0,
+    "text": "MOBS\n-1"
+  },
+  "phoenix": {
+    "mode": 2,
+    "text": "PHOENX"
+  },
+  "plentiful": {
+    "mode": 0,
+    "text": "ORES\n+20%"
+  },
+  "plunder_artifact": {
+    "mode": 1,
+    "text": "ARTF\n-10%"
+  },
+  "plunderer": {
+    "mode": 2,
+    "text": "PLUNDR"
+  },
+  "poisonous": {
+    "mode": 1,
+    "text": "POISON\n10%"
+  },
+  "poor": {
+    "mode": 1,
+    "text": "QUANT\n-25%"
+  },
+  "potion_drink": {
+    "mode": 1,
+    "text": "POTION\nCURSE"
+  },
+  "prismatic": {
+    "mode": 0,
+    "text": "PRISM\n+25%"
+  },
+  "pristine": {
+    "mode": 0,
+    "text": "RARITY\n+25%"
+  },
+  "prosperous": {
+    "mode": 0,
+    "text": "TRINK\n100%"
+  },
+  "pylon_hunter": {
+    "mode": 0,
+    "text": ""
+  },
+  "raffle": {
+    "mode": 1,
+    "text": "LOCKED"
+  },
+  "random_negative": {
+    "mode": 1,
+    "text": "RANDOM\nNEG"
+  },
+  "regeneration": {
+    "mode": 0,
+    "text": "REGEN\n+1"
+  },
+  "reinforced": {
+    "mode": 0,
+    "text": "DURA\n+10%"
+  },
+  "rotten": {
+    "mode": 1,
+    "text": "NO\nFRUIT"
+  },
+  "rushed": {
+    "mode": 1,
+    "text": "TIME\n-1M"
+  },
+  "ruthless_mobs": {
+    "mode": 1,
+    "text": "DMG\n+20%"
+  },
+  "serendipitous": {
+    "mode": 0,
+    "text": "ARTF\n+20%"
+  },
+  "shortened": {
+    "mode": 1,
+    "text": "TIME\n-1M"
+  },
+  "shulker": {
+    "mode": 0,
+    "text": ""
+  },
+  "slowed": {
+    "mode": 1,
+    "text": "SLOW\n+1"
+  },
+  "slowed_t2": {
+    "mode": 1,
+    "text": "SLOW\n+2"
+  },
+  "soul_boost": {
+    "mode": 0,
+    "text": "SOUL\n+25%"
+  },
+  "soul_cascade_gilded": {
+    "mode": 0,
+    "text": "GILDED\n+1%"
+  },
+  "soul_cascade_living": {
+    "mode": 0,
+    "text": "LIVING\n+5%"
+  },
+  "soul_cascade_ornate": {
+    "mode": 0,
+    "text": "ORNATE\n+1%"
+  },
+  "soul_cascade_wooden": {
+    "mode": 0,
+    "text": "WOOD\n+5%"
+  },
+  "soul_coin_cascade": {
+    "mode": 0,
+    "text": "COINS\n+10%"
+  },
+  "soul_fest": {
+    "mode": 0,
+    "text": "SOUL\n+1000%"
+  },
+  "soul_flame": {
+    "mode": 2,
+    "text": "ASCEND"
+  },
+  "soul_item": {
+    "mode": 0,
+    "text": "QUANT\n+2%"
+  },
+  "soul_locked": {
+    "mode": 1,
+    "text": "LOCKED"
+  },
+  "soul_objective": {
+    "mode": 1,
+    "text": "DIFF\n+20%"
+  },
+  "soul_ores": {
+    "mode": 0,
+    "text": "ORES\n+5%"
+  },
+  "soul_rarity": {
+    "mode": 0,
+    "text": "SOUL\n+10%"
+  },
+  "soul_shards": {
+    "mode": 0,
+    "text": "SOUL\n+5%"
+  },
+  "soul_surge": {
+    "mode": 0,
+    "text": "SOUL\n+100%"
+  },
+  "soul_xp": {
+    "mode": 0,
+    "text": "EXP\n+2%"
+  },
+  "soulless": {
+    "mode": 1,
+    "text": "SOUL\nNONE"
+  },
+  "spawner_cascade": {
+    "mode": 1,
+    "text": "SPWNER\n+30%"
+  },
+  "speedy": {
+    "mode": 0,
+    "text": "SPEED\n+1"
+  },
+  "strength": {
+    "mode": 0,
+    "text": "STR\n+1"
+  },
+  "stronger_mobs": {
+    "mode": 1,
+    "text": "MOBS\nHP/DMG\n+20%"
+  },
+  "stronk": {
+    "mode": 0,
+    "text": "STR\n+1"
+  },
+  "swift": {
+    "mode": 0,
+    "text": "SPEED\n+1"
+  },
+  "tenos_favour_1": {
+    "mode": 0,
+    "text": "RARITY\n+1%"
+  },
+  "tenos_favour_2": {
+    "mode": 0,
+    "text": "QUANT\n+25%"
+  },
+  "tenos_favour_3": {
+    "mode": 0,
+    "text": "TRAP\n-1%"
+  },
+  "tenos_inline": {
+    "mode": 0,
+    "text": "TENOS\nFVR"
+  },
+  "tenos_rarity": {
+    "mode": 0,
+    "text": "RARITY\n+50%"
+  },
+  "tenos_tear": {
+    "mode": 0,
+    "text": "TENOS\n+1%"
+  },
+  "tired": {
+    "mode": 1,
+    "text": "TIRED\n+1"
+  },
+  "tired_t2": {
+    "mode": 1,
+    "text": "TIRED\n+3"
+  },
+  "trapped": {
+    "mode": 1,
+    "text": "TRAP\n+50%"
+  },
+  "trapped_old": {
+    "mode": 1,
+    "text": "TRAP\n+5%"
+  },
+  "treasure": {
+    "mode": 0,
+    "text": "RARITY\n+100%"
+  },
+  "treasure_doors": {
+    "mode": 0,
+    "text": ""
+  },
+  "trinket_chance": {
+    "mode": 0,
+    "text": "TRINK\n+10%"
+  },
+  "ultimate_regeneration": {
+    "mode": 2,
+    "text": "HP++\nMANA++"
+  },
+  "unlucky": {
+    "mode": 1,
+    "text": "RARITY\n-50%"
+  },
+  "velara_favour_1": {
+    "mode": 0,
+    "text": "REGEN\n+1"
+  },
+  "velara_favour_2": {
+    "mode": 0,
+    "text": "HEAL\n+50%"
+  },
+  "velara_favour_3": {
+    "mode": 0,
+    "text": "HP\n+1%"
+  },
+  "velara_inline": {
+    "mode": 0,
+    "text": "VELARA\nFVR"
+  },
+  "velara_tear": {
+    "mode": 0,
+    "text": "VELARA\n+1%"
+  },
+  "vendoor_doors": {
+    "mode": 0,
+    "text": ""
+  },
+  "void_pools": {
+    "mode": 1,
+    "text": "VOID"
+  },
+  "voiding": {
+    "mode": 1,
+    "text": "VOID\n10%"
+  },
+  "volcanic": {
+    "mode": 1,
+    "text": "HOT"
+  },
+  "vulnerable": {
+    "mode": 1,
+    "text": "RESIST\n-10%"
+  },
+  "weak_mobs_damage": {
+    "mode": 1,
+    "text": "DMG\n-75%"
+  },
+  "weakened": {
+    "mode": 1,
+    "text": "WEAK\n+1"
+  },
+  "weakened_t2": {
+    "mode": 1,
+    "text": "WEAK\n+3"
+  },
+  "weakened_t3": {
+    "mode": 1,
+    "text": "WEAK\n+6"
+  },
+  "wendarr_cdr": {
+    "mode": 0,
+    "text": "CDR\n+50%"
+  },
+  "wendarr_favour": {
+    "mode": 0,
+    "text": "WENDAR\nFVR"
+  },
+  "wendarr_favour_1": {
+    "mode": 0,
+    "text": "MANA\n+1%"
+  },
+  "wendarr_favour_2": {
+    "mode": 0,
+    "text": "MANA\n+1%"
+  },
+  "wendarr_favour_3": {
+    "mode": 0,
+    "text": "CDR\n+0.5%"
+  },
+  "wendarr_inline": {
+    "mode": 0,
+    "text": "WENDAR\nFVR"
+  },
+  "wendarr_regen": {
+    "mode": 0,
+    "text": "MANA\n+100%"
+  },
+  "wendarr_speed": {
+    "mode": 0,
+    "text": "SPEED\n+2"
+  },
+  "wendarr_tear": {
+    "mode": 0,
+    "text": "WENDAR\n+1%"
+  },
+  "wild": {
+    "mode": 1,
+    "text": "WILD\n+1"
+  },
+  "wither": {
+    "mode": 1,
+    "text": "WITHER\n10%"
+  },
+  "wooden_cascade": {
+    "mode": 0,
+    "text": "WOOD\n+25%"
+  },
+  "wounded": {
+    "mode": 1,
+    "text": "HP\n-10"
+  },
+  "wrecked": {
+    "mode": 1,
+    "text": "WRECK"
+  },
+  "xp_gain": {
+    "mode": 0,
+    "text": "EXP\n+20%"
+  },
+  "xp_reduction": {
+    "mode": 1,
+    "text": "EXP\n-25%"
+  }
+}
