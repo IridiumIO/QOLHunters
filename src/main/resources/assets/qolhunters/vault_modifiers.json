@@ -10,7 +10,7 @@
           "color": "#EBFF8D",
           "description": "Completing this vault guarantees an Artifact!",
           "descriptionFormatted": "Completing this vault guarantees an artifact!",
-          "icon": "the_vault:gui/modifiers/prosperous"
+          "icon": "the_vault:gui/modifiers/described/prosperous"
         }
       },
       "the_vault:serendipitous": {
@@ -22,7 +22,7 @@
           "color": "#EBFF8D",
           "description": "+20% Artifact Chance",
           "descriptionFormatted": "+%d%% Artifact Chance",
-          "icon": "the_vault:gui/modifiers/serendipitous"
+          "icon": "the_vault:gui/modifiers/described/serendipitous"
         }
       },
       "the_vault:cake_artifact": {
@@ -34,7 +34,7 @@
           "color": "#EBFF8D",
           "description": "Every stack increases the artifact chance by 0.5%",
           "descriptionFormatted": "Every stack increases the artifact chance by 0.5%",
-          "icon": "the_vault:gui/modifiers/cake_artifact"
+          "icon": "the_vault:gui/modifiers/described/cake_artifact"
         }
       },
       "the_vault:plunder_artifact": {
@@ -46,7 +46,7 @@
           "color": "#EBFF8D",
           "description": "Lowers the artifact chance of this vault by 10%",
           "descriptionFormatted": "Lowers the artifact chance of this vault by 10%",
-          "icon": "the_vault:gui/modifiers/plunder_artifact"
+          "icon": "the_vault:gui/modifiers/described/plunder_artifact"
         }
       }
     },
@@ -60,7 +60,7 @@
           "color": "#FC00E3",
           "description": "+25% Catalyst Fragments",
           "descriptionFormatted": "+%d%% Catalyst Fragments",
-          "icon": "the_vault:gui/modifiers/prismatic"
+          "icon": "the_vault:gui/modifiers/described/prismatic"
         }
       }
     },
@@ -73,7 +73,7 @@
           "name": "Looter's Dream",
           "color": "#A3E2F5",
           "description": "Chests can not be trapped",
-          "icon": "the_vault:gui/modifiers/looters_dream"
+          "icon": "the_vault:gui/modifiers/described/looters_dream"
         }
       },
       "the_vault:beginners_insurance": {
@@ -84,7 +84,7 @@
           "name": "Beginner's Insurance",
           "color": "#A3E2F5",
           "description": "Chests can not be trapped",
-          "icon": "the_vault:gui/modifiers/beginners_insurance"
+          "icon": "the_vault:gui/modifiers/described/beginners_insurance"
         }
       },
       "the_vault:trapped_old": {
@@ -96,7 +96,7 @@
           "color": "#D35B00",
           "description": "+5% Chest Trap Chance",
           "descriptionFormatted": "+%d%% Chest Trap Chance",
-          "icon": "the_vault:gui/modifiers/trapped_old"
+          "icon": "the_vault:gui/modifiers/described/trapped_old"
         }
       },
       "the_vault:minefield": {
@@ -108,7 +108,7 @@
           "color": "#D35B00",
           "description": "+40% Chest Trap Chance",
           "descriptionFormatted": "+%d%% Chest Trap Chance",
-          "icon": "the_vault:gui/modifiers/minefield"
+          "icon": "the_vault:gui/modifiers/described/minefield"
         }
       },
       "the_vault:tenos_favour_3": {
@@ -123,7 +123,7 @@
           "color": "#55FFFF",
           "description": "-1% Chest Trap Chance",
           "descriptionFormatted": "-%d%% Chest Trap Chance",
-          "icon": "the_vault:gui/modifiers/tenos_favour_3"
+          "icon": "the_vault:gui/modifiers/described/tenos_favour_3"
         }
       }
     },
@@ -137,7 +137,7 @@
           "color": "#6410A1",
           "description": "+10% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/cake_haunted"
+          "icon": "the_vault:gui/modifiers/described/cake_haunted"
         }
       },
       "the_vault:cake_layer_soulshards": {
@@ -149,7 +149,7 @@
           "color": "#6410A1",
           "description": "+10% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/cake_layer_soulshards"
+          "icon": "the_vault:gui/modifiers/described/cake_layer_soulshards"
         }
       },
       "the_vault:soul_shards": {
@@ -161,7 +161,7 @@
           "color": "#6410A1",
           "description": "+5% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/soul_shards"
+          "icon": "the_vault:gui/modifiers/described/soul_shards"
         }
       },
       "the_vault:soul_fest": {
@@ -173,7 +173,7 @@
           "color": "#6410A1",
           "description": "+1000% Soul Shards",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/soul_fest"
+          "icon": "the_vault:gui/modifiers/described/soul_fest"
         }
       },
       "the_vault:soul_boost": {
@@ -185,7 +185,7 @@
           "color": "#6410A1",
           "description": "+25% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/soul_boost"
+          "icon": "the_vault:gui/modifiers/described/soul_boost"
         }
       },
       "the_vault:haunted": {
@@ -197,7 +197,7 @@
           "color": "#6410A1",
           "description": "+50% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/haunted"
+          "icon": "the_vault:gui/modifiers/described/haunted"
         }
       },
       "the_vault:soul_surge": {
@@ -209,7 +209,7 @@
           "color": "#6410A1",
           "description": "+100% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/soul_surge"
+          "icon": "the_vault:gui/modifiers/described/soul_surge"
         }
       },
       "the_vault:idona_soulchance": {
@@ -221,7 +221,7 @@
           "color": "#FF5555",
           "description": "+200% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/idona_soulchance"
+          "icon": "the_vault:gui/modifiers/described/idona_soulchance"
         }
       },
       "the_vault:idona_favour_2": {
@@ -236,7 +236,7 @@
           "color": "#FF5555",
           "description": "+1% Soul Shard Drop Rate",
           "descriptionFormatted": "+%d%% Soul Shards",
-          "icon": "the_vault:gui/modifiers/idona_favour_2"
+          "icon": "the_vault:gui/modifiers/described/idona_favour_2"
         }
       }
     },
@@ -251,7 +251,7 @@
           "name": "Coin Stacks",
           "color": "#ffae00",
           "description": "+1 Set of Coin Stacks",
-          "icon": "the_vault:gui/modifiers/coin_pile"
+          "icon": "the_vault:gui/modifiers/described/coin_pile"
         }
       },
       "the_vault:gilded": {
@@ -264,7 +264,7 @@
           "name": "Bonus Gilded",
           "color": "#FFEC00",
           "description": "+1 Set of Gilded Chests",
-          "icon": "the_vault:gui/modifiers/gilded"
+          "icon": "the_vault:gui/modifiers/described/gilded"
         }
       },
       "the_vault:living": {
@@ -277,7 +277,7 @@
           "name": "Bonus Living",
           "color": "#38d800",
           "description": "+1 Set of Living Chests",
-          "icon": "the_vault:gui/modifiers/living"
+          "icon": "the_vault:gui/modifiers/described/living"
         }
       },
       "the_vault:ornate": {
@@ -290,7 +290,7 @@
           "name": "Bonus Ornate",
           "color": "#c90d73",
           "description": "+1 Set of Ornate Chests",
-          "icon": "the_vault:gui/modifiers/ornate"
+          "icon": "the_vault:gui/modifiers/described/ornate"
         }
       },
       "the_vault:wild": {
@@ -304,7 +304,7 @@
           "color": "#E83F24",
           "description": "Dwellers spawns anywhere inside the vault",
           "descriptionFormatted": "+1 Set of dweller spawned mobs",
-          "icon": "the_vault:gui/modifiers/wild"
+          "icon": "the_vault:gui/modifiers/described/wild"
         }
       },
       "the_vault:collapsing": {
@@ -318,7 +318,7 @@
           "color": "#E83F24",
           "description": "This vault seem to be collapsing",
           "descriptionFormatted": "This vault seem to be collapsing",
-          "icon": "the_vault:gui/modifiers/collapsing"
+          "icon": "the_vault:gui/modifiers/described/collapsing"
         }
       },
       "the_vault:volcanic": {
@@ -332,7 +332,7 @@
           "color": "#E83F24",
           "description": "This vault seem to be hot",
           "descriptionFormatted": "HOT",
-          "icon": "the_vault:gui/modifiers/volcanic"
+          "icon": "the_vault:gui/modifiers/described/volcanic"
         }
       },
       "the_vault:void_pools": {
@@ -346,7 +346,7 @@
           "color": "#E83F24",
           "description": "This vault has pockets of voiding",
           "descriptionFormatted": "Voiding",
-          "icon": "the_vault:gui/modifiers/void_pools"
+          "icon": "the_vault:gui/modifiers/described/void_pools"
         }
       },
       "the_vault:explosive": {
@@ -360,7 +360,7 @@
           "color": "#ff0000",
           "description": "This vault is explosive",
           "descriptionFormatted": "This vault is explosive",
-          "icon": "the_vault:gui/modifiers/explosive"
+          "icon": "the_vault:gui/modifiers/described/explosive"
         }
       },
       "the_vault:shulker": {
@@ -374,7 +374,7 @@
           "color": "#CBC3E3",
           "description": "This vault is light weight",
           "descriptionFormatted": "This vault is light weight",
-          "icon": "the_vault:gui/modifiers/shulker"
+          "icon": "the_vault:gui/modifiers/described/shulker"
         }
       }
     },
@@ -388,7 +388,7 @@
           "color": "#38C9C0",
           "description": "+40% Crake Quantity",
           "descriptionFormatted": "+%d%% Crake Quantity",
-          "icon": "the_vault:gui/modifiers/crake_quantity"
+          "icon": "the_vault:gui/modifiers/described/crake_quantity"
         }
       },
       "the_vault:crate_tier": {
@@ -400,7 +400,7 @@
           "color": "#38C9C0",
           "description": "Increases the reward crate tier once per modifier",
           "descriptionFormatted": "Increases the reward crate tier once per modifier",
-          "icon": "the_vault:gui/modifiers/crate_tier"
+          "icon": "the_vault:gui/modifiers/described/crate_tier"
         }
       }
     },
@@ -415,7 +415,7 @@
           "name": "Nova Explosion",
           "color": "#FFEA00",
           "description": "When killing a mob it will cast a level 8 Nova on their death",
-          "icon": "the_vault:gui/modifiers/kill_nuke"
+          "icon": "the_vault:gui/modifiers/described/kill_nuke"
         }
       },
       "the_vault:kill_charm": {
@@ -428,7 +428,7 @@
           "name": "Charming",
           "color": "#FFEA00",
           "description": "When killing a mob it will cast Charm around it",
-          "icon": "the_vault:gui/modifiers/kill_charm"
+          "icon": "the_vault:gui/modifiers/described/kill_charm"
         }
       },
       "the_vault:kill_hunter": {
@@ -441,7 +441,7 @@
           "name": "Hunterino",
           "color": "#FFEA00",
           "description": "Mobs have a chance to cast Hunter on death",
-          "icon": "the_vault:gui/modifiers/kill_hunter"
+          "icon": "the_vault:gui/modifiers/described/kill_hunter"
         }
       },
       "the_vault:kill_totem": {
@@ -454,7 +454,7 @@
           "name": "Totemic",
           "color": "#FFEA00",
           "description": "Mobs have a chance to spawn a Totem of Hatred on death",
-          "icon": "the_vault:gui/modifiers/kill_totem"
+          "icon": "the_vault:gui/modifiers/described/kill_totem"
         }
       }
     },
@@ -468,7 +468,7 @@
           "name": "Coin Explosion",
           "color": "#FFEA00",
           "description": "Killing a mob will have it drop bronze or silver!",
-          "icon": "the_vault:gui/modifiers/bronze_nuke"
+          "icon": "the_vault:gui/modifiers/described/bronze_nuke"
         }
       }
     },
@@ -482,7 +482,7 @@
           "color": "#ffcc73",
           "description": "+10% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/item_quantity"
+          "icon": "the_vault:gui/modifiers/described/item_quantity"
         }
       },
       "the_vault:goblin_quantity": {
@@ -494,7 +494,7 @@
           "color": "#ffcc73",
           "description": "+100% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/goblin_quantity"
+          "icon": "the_vault:gui/modifiers/described/goblin_quantity"
         }
       },
       "the_vault:bingo_quantity": {
@@ -506,7 +506,7 @@
           "color": "#ffcc73",
           "description": "+10% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/bingo_quantity"
+          "icon": "the_vault:gui/modifiers/described/bingo_quantity"
         }
       },
       "the_vault:b_quant_1": {
@@ -518,7 +518,7 @@
           "color": "#ffbf50",
           "description": "+5% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/b_quant_1"
+          "icon": "the_vault:gui/modifiers/described/b_quant_1"
         }
       },
       "the_vault:low_item_quantity": {
@@ -530,7 +530,7 @@
           "color": "#ffbf50",
           "description": "+5% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/low_item_quantity"
+          "icon": "the_vault:gui/modifiers/described/low_item_quantity"
         }
       },
       "the_vault:trinket_chance": {
@@ -543,7 +543,7 @@
           "color": "#38C9C0",
           "description": "+10% Trinket Chance",
           "descriptionFormatted": "+%d%% Trinket Chance",
-          "icon": "the_vault:gui/modifiers/trinket_chance"
+          "icon": "the_vault:gui/modifiers/described/trinket_chance"
         }
       },
       "the_vault:soul_item": {
@@ -555,7 +555,7 @@
           "color": "#38C9C0",
           "description": "+2% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/soul_item"
+          "icon": "the_vault:gui/modifiers/described/soul_item"
         }
       },
       "the_vault:lost_quantity": {
@@ -567,7 +567,7 @@
           "color": "#a54726",
           "description": "Chests in this vault are only half filled",
           "descriptionFormatted": "Chests in this vault are only half filled",
-          "icon": "the_vault:gui/modifiers/lost_quantity"
+          "icon": "the_vault:gui/modifiers/described/lost_quantity"
         }
       },
       "the_vault:hoard": {
@@ -579,7 +579,7 @@
           "color": "#ffaf23",
           "description": "+50% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/hoard"
+          "icon": "the_vault:gui/modifiers/described/hoard"
         }
       },
       "the_vault:cake_item_quantity": {
@@ -591,7 +591,7 @@
           "color": "#38C9C0",
           "description": "+1% Item Quantity",
           "descriptionFormatted": "+%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/cake_item_quantity"
+          "icon": "the_vault:gui/modifiers/described/cake_item_quantity"
         }
       },
       "the_vault:poor": {
@@ -603,7 +603,7 @@
           "color": "#38C9C0",
           "description": "-25% Item Quantity",
           "descriptionFormatted": "-%d%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/poor"
+          "icon": "the_vault:gui/modifiers/described/poor"
         }
       },
       "the_vault:tenos_favour_2": {
@@ -615,7 +615,7 @@
           "color": "#55FFFF",
           "description": "Chests contain more loot",
           "descriptionFormatted": "+25%% Item Quantity",
-          "icon": "the_vault:gui/modifiers/tenos_favour_2"
+          "icon": "the_vault:gui/modifiers/described/tenos_favour_2"
         }
       }
     },
@@ -629,7 +629,7 @@
           "color": "#b3ff20",
           "description": "+1% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/cake_item_rarity"
+          "icon": "the_vault:gui/modifiers/described/cake_item_rarity"
         }
       },
       "the_vault:goblin_rarity": {
@@ -641,7 +641,7 @@
           "color": "#b3ff20",
           "description": "+200% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/goblin_rarity"
+          "icon": "the_vault:gui/modifiers/described/goblin_rarity"
         }
       },
       "the_vault:bingo_rarity": {
@@ -653,7 +653,7 @@
           "color": "#b3ff20",
           "description": "+10% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/bingo_rarity"
+          "icon": "the_vault:gui/modifiers/described/bingo_rarity"
         }
       },
       "the_vault:cake_layer_itemrarity": {
@@ -665,7 +665,7 @@
           "color": "#b3ff20",
           "description": "+1% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/cake_layer_itemrarity"
+          "icon": "the_vault:gui/modifiers/described/cake_layer_itemrarity"
         }
       },
       "the_vault:soul_rarity": {
@@ -677,7 +677,7 @@
           "color": "#b3ff20",
           "description": "+2% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/soul_rarity"
+          "icon": "the_vault:gui/modifiers/described/soul_rarity"
         }
       },
       "the_vault:item_rarity": {
@@ -689,7 +689,7 @@
           "color": "#f3ff70",
           "description": "+10% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/item_rarity"
+          "icon": "the_vault:gui/modifiers/described/item_rarity"
         }
       },
       "the_vault:pristine": {
@@ -701,7 +701,7 @@
           "color": "#f0ff4a",
           "description": "+25% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/pristine"
+          "icon": "the_vault:gui/modifiers/described/pristine"
         }
       },
       "the_vault:tenos_rarity": {
@@ -713,7 +713,7 @@
           "color": "#55FFFF",
           "description": "+50% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/tenos_rarity"
+          "icon": "the_vault:gui/modifiers/described/tenos_rarity"
         }
       },
       "the_vault:fortuitous": {
@@ -725,7 +725,7 @@
           "color": "#edff26",
           "description": "+50% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/fortuitous"
+          "icon": "the_vault:gui/modifiers/described/fortuitous"
         }
       },
       "the_vault:treasure": {
@@ -737,7 +737,7 @@
           "color": "#eaff00",
           "description": "+100% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/treasure"
+          "icon": "the_vault:gui/modifiers/described/treasure"
         }
       },
       "the_vault:unlucky": {
@@ -749,7 +749,7 @@
           "color": "#b3ff20",
           "description": "-50% Item Rarity",
           "descriptionFormatted": "-%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/unlucky"
+          "icon": "the_vault:gui/modifiers/described/unlucky"
         }
       },
       "the_vault:tenos_favour_1": {
@@ -764,7 +764,7 @@
           "color": "#55FFFF",
           "description": "+1% Item Rarity",
           "descriptionFormatted": "+%d%% Item Rarity",
-          "icon": "the_vault:gui/modifiers/tenos_favour_1"
+          "icon": "the_vault:gui/modifiers/described/tenos_favour_1"
         }
       }
     },
@@ -780,7 +780,7 @@
           "color": "#dc693c",
           "description": "Mobs in this vault will always hit critical strikes",
           "descriptionFormatted": "Mobs in this vault will always hit critical strikes",
-          "icon": "the_vault:gui/modifiers/crit_mobs"
+          "icon": "the_vault:gui/modifiers/described/crit_mobs"
         }
       },
       "the_vault:chunky_mobs": {
@@ -794,7 +794,7 @@
           "color": "#dc693c",
           "description": "+10% Mob Health",
           "descriptionFormatted": "+%d%% Mob Health",
-          "icon": "the_vault:gui/modifiers/chunky_mobs"
+          "icon": "the_vault:gui/modifiers/described/chunky_mobs"
         }
       },
       "the_vault:chunky_mobs2": {
@@ -808,7 +808,7 @@
           "color": "#dc693c",
           "description": "+20% Mob Health",
           "descriptionFormatted": "+%d%% Mob Health",
-          "icon": "the_vault:gui/modifiers/chunky_mobs2"
+          "icon": "the_vault:gui/modifiers/described/chunky_mobs2"
         }
       },
       "the_vault:cake_chunky_mobs": {
@@ -822,7 +822,7 @@
           "color": "#dc693c",
           "description": "+1% Mob Health",
           "descriptionFormatted": "+%d%% Mob Health",
-          "icon": "the_vault:gui/modifiers/cake_chunky_mobs"
+          "icon": "the_vault:gui/modifiers/described/cake_chunky_mobs"
         }
       },
       "the_vault:cake_layer_mobhealth": {
@@ -836,7 +836,7 @@
           "color": "#dc693c",
           "description": "+0,05% Mob Health",
           "descriptionFormatted": "+%d%% Mob Health",
-          "icon": "the_vault:gui/modifiers/cake_layer_mobhealth"
+          "icon": "the_vault:gui/modifiers/described/cake_layer_mobhealth"
         }
       },
       "the_vault:furious_mobs": {
@@ -850,7 +850,7 @@
           "color": "#da6d5a",
           "description": "+10% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/furious_mobs"
+          "icon": "the_vault:gui/modifiers/described/furious_mobs"
         }
       },
       "the_vault:weak_mobs_damage": {
@@ -864,7 +864,7 @@
           "color": "#da6d5a",
           "description": "-75% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/weak_mobs_damage"
+          "icon": "the_vault:gui/modifiers/described/weak_mobs_damage"
         }
       },
       "the_vault:ruthless_mobs": {
@@ -878,7 +878,7 @@
           "color": "#da6d5a",
           "description": "+20% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/ruthless_mobs"
+          "icon": "the_vault:gui/modifiers/described/ruthless_mobs"
         }
       },
       "the_vault:brutal_mobs": {
@@ -892,7 +892,7 @@
           "color": "#da6d5a",
           "description": "+50% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/brutal_mobs"
+          "icon": "the_vault:gui/modifiers/described/brutal_mobs"
         }
       },
       "the_vault:cake_layer_mobdmg": {
@@ -906,7 +906,7 @@
           "color": "#da6d5a",
           "description": "+8% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/cake_layer_mobdmg"
+          "icon": "the_vault:gui/modifiers/described/cake_layer_mobdmg"
         }
       },
       "the_vault:cake_furious_mobs": {
@@ -920,7 +920,7 @@
           "color": "#da6d5a",
           "description": "+1% Mob Damage",
           "descriptionFormatted": "+%d%% Mob Damage",
-          "icon": "the_vault:gui/modifiers/cake_furious_mobs"
+          "icon": "the_vault:gui/modifiers/described/cake_furious_mobs"
         }
       },
       "the_vault:infuriated_mobs": {
@@ -934,7 +934,7 @@
           "color": "#f66868",
           "description": "+5% Mob Speed",
           "descriptionFormatted": "+%d%% Mob Speed",
-          "icon": "the_vault:gui/modifiers/infuriated_mobs"
+          "icon": "the_vault:gui/modifiers/described/infuriated_mobs"
         }
       },
       "the_vault:cake_layer_mobspeed": {
@@ -948,7 +948,7 @@
           "color": "#f66868",
           "description": "+0,15% Mob Speed",
           "descriptionFormatted": "+%d%% Mob Speed",
-          "icon": "the_vault:gui/modifiers/cake_layer_mobspeed"
+          "icon": "the_vault:gui/modifiers/described/cake_layer_mobspeed"
         }
       }
     },
@@ -965,7 +965,7 @@
           "color": "#9B3E56",
           "description": "+10% increased chance mobs Fatigue on hit",
           "descriptionFormatted": "+%d%% increased chance mobs Fatigue on hit",
-          "icon": "the_vault:gui/modifiers/fatiguing"
+          "icon": "the_vault:gui/modifiers/described/fatiguing"
         }
       },
       "the_vault:freezing": {
@@ -980,7 +980,7 @@
           "color": "#2FFBF4",
           "description": "+10% increased chance mobs Slow on hit",
           "descriptionFormatted": "+%d%% increased chance mobs Slow on hit",
-          "icon": "the_vault:gui/modifiers/freezing"
+          "icon": "the_vault:gui/modifiers/described/freezing"
         }
       },
       "the_vault:poisonous": {
@@ -995,7 +995,7 @@
           "color": "#84BF17",
           "description": "+10% increased chance mobs Poison on hit",
           "descriptionFormatted": "+%d%% increased chance mobs Poison on hit",
-          "icon": "the_vault:gui/modifiers/poisonous"
+          "icon": "the_vault:gui/modifiers/described/poisonous"
         }
       },
       "the_vault:wither": {
@@ -1010,7 +1010,7 @@
           "color": "#5A5851",
           "description": "+10% increased chance mobs Wither on hit",
           "descriptionFormatted": "+%d%% increased chance mobs Wither on hit",
-          "icon": "the_vault:gui/modifiers/wither"
+          "icon": "the_vault:gui/modifiers/described/wither"
         }
       },
       "the_vault:voiding": {
@@ -1025,7 +1025,7 @@
           "color": "#5A5851",
           "description": "+10% increased chance mobs will void time on hit",
           "descriptionFormatted": "+%d%% increased chance mobs will void time on hit",
-          "icon": "the_vault:gui/modifiers/voiding"
+          "icon": "the_vault:gui/modifiers/described/voiding"
         }
       }
     },
@@ -1041,7 +1041,7 @@
           "name": "Frenzy",
           "color": "#FC7C5C",
           "description": "+300% Mob Damage, +10% Mob Speed, Mob Health reduced to 1",
-          "icon": "the_vault:gui/modifiers/frenzy"
+          "icon": "the_vault:gui/modifiers/described/frenzy"
         }
       },
       "the_vault:overpower": {
@@ -1055,7 +1055,7 @@
           "name": "Overpower",
           "color": "#FC7C5C",
           "description": "Mobs spawn with 1 heart!",
-          "icon": "the_vault:gui/modifiers/overpower"
+          "icon": "the_vault:gui/modifiers/described/overpower"
         }
       }
     },
@@ -1069,7 +1069,7 @@
           "color": "#FC7C5C",
           "description": "+20% Mob Spawns",
           "descriptionFormatted": "+%d%% increased amount of mob spawns",
-          "icon": "the_vault:gui/modifiers/mob_increase"
+          "icon": "the_vault:gui/modifiers/described/mob_increase"
         }
       },
       "the_vault:cake_mob_increase": {
@@ -1081,7 +1081,7 @@
           "color": "#FC7C5C",
           "description": "+10% Mob Spawns",
           "descriptionFormatted": "+%d%% increased amount of mob spawns",
-          "icon": "the_vault:gui/modifiers/cake_mob_increase"
+          "icon": "the_vault:gui/modifiers/described/cake_mob_increase"
         }
       }
     },
@@ -1095,7 +1095,7 @@
           "color": "#E83F24",
           "description": "+1 Mob Spawns",
           "descriptionFormatted": "+%d Mob Spawns",
-          "icon": "the_vault:gui/modifiers/crowded"
+          "icon": "the_vault:gui/modifiers/described/crowded"
         }
       },
       "the_vault:personal_space": {
@@ -1107,7 +1107,7 @@
           "color": "#F9B1FF",
           "description": "-1 Mob Spawns",
           "descriptionFormatted": "-%d Mob Spawns",
-          "icon": "the_vault:gui/modifiers/personal_space"
+          "icon": "the_vault:gui/modifiers/described/personal_space"
         }
       }
     },
@@ -1123,7 +1123,7 @@
           "color": "#849dc8",
           "description": "-10% Mana Regeneration",
           "descriptionFormatted": "-%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/draining"
+          "icon": "the_vault:gui/modifiers/described/draining"
         }
       },
       "the_vault:energizing": {
@@ -1137,7 +1137,7 @@
           "color": "#849dc8",
           "description": "+25% Mana Regeneration",
           "descriptionFormatted": "+%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/energizing"
+          "icon": "the_vault:gui/modifiers/described/energizing"
         }
       },
       "the_vault:mana_regen": {
@@ -1151,7 +1151,7 @@
           "color": "#849dc8",
           "description": "+500% Mana Regeneration",
           "descriptionFormatted": "+%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/mana_regen"
+          "icon": "the_vault:gui/modifiers/described/mana_regen"
         }
       },
       "the_vault:mana_leak": {
@@ -1165,7 +1165,7 @@
           "color": "#849dc8",
           "description": "Players in this vault no longer regenerate mana",
           "descriptionFormatted": "Players in this vault no longer regenerate mana",
-          "icon": "the_vault:gui/modifiers/mana_leak"
+          "icon": "the_vault:gui/modifiers/described/mana_leak"
         }
       },
       "the_vault:injured": {
@@ -1179,7 +1179,7 @@
           "color": "#631F1F",
           "description": "-1 Heart",
           "descriptionFormatted": "-%d Hit Points",
-          "icon": "the_vault:gui/modifiers/injured"
+          "icon": "the_vault:gui/modifiers/described/injured"
         }
       },
       "the_vault:wounded": {
@@ -1193,7 +1193,7 @@
           "color": "#631F1F",
           "description": "Removes 5 hearts",
           "descriptionFormatted": "-%d Health",
-          "icon": "the_vault:gui/modifiers/wounded"
+          "icon": "the_vault:gui/modifiers/described/wounded"
         }
       },
       "the_vault:drained": {
@@ -1207,7 +1207,7 @@
           "color": "#849dc8",
           "description": "-70% Mana Regeneration",
           "descriptionFormatted": "-%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/drained"
+          "icon": "the_vault:gui/modifiers/described/drained"
         }
       },
       "the_vault:idona_favour_1": {
@@ -1221,7 +1221,7 @@
           "color": "#FF5555",
           "description": "Players deal more physical damage in this vault",
           "descriptionFormatted": "+50% Attack Damage",
-          "icon": "the_vault:gui/modifiers/idona_favour_1"
+          "icon": "the_vault:gui/modifiers/described/idona_favour_1"
         }
       },
       "the_vault:velara_favour_3": {
@@ -1238,7 +1238,7 @@
           "color": "#FF5555",
           "description": "+1% Max Health",
           "descriptionFormatted": "+%d%% Max Health",
-          "icon": "the_vault:gui/modifiers/velara_favour_3"
+          "icon": "the_vault:gui/modifiers/described/velara_favour_3"
         }
       },
       "the_vault:wendarr_favour_1": {
@@ -1255,7 +1255,7 @@
           "color": "#FFAA00",
           "description": "+1% Mana Regeneration",
           "descriptionFormatted": "+%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/wendarr_favour_1"
+          "icon": "the_vault:gui/modifiers/described/wendarr_favour_1"
         }
       },
       "the_vault:wendarr_regen": {
@@ -1269,7 +1269,7 @@
           "color": "#FFAA00",
           "description": "+100% Mana Regeneration",
           "descriptionFormatted": "+%d%% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/wendarr_regen"
+          "icon": "the_vault:gui/modifiers/described/wendarr_regen"
         }
       },
       "the_vault:wendarr_favour_2": {
@@ -1286,7 +1286,7 @@
           "color": "#FFAA00",
           "description": "+1% Max Mana",
           "descriptionFormatted": "+%d%% Max Mana",
-          "icon": "the_vault:gui/modifiers/wendarr_favour_2"
+          "icon": "the_vault:gui/modifiers/described/wendarr_favour_2"
         }
       }
     },
@@ -1300,7 +1300,7 @@
           "color": "#7B7E7F",
           "description": "+20% Durability Damage",
           "descriptionFormatted": "+%d%% Durability Damage",
-          "icon": "the_vault:gui/modifiers/frail"
+          "icon": "the_vault:gui/modifiers/described/frail"
         }
       },
       "the_vault:reinforced": {
@@ -1312,7 +1312,7 @@
           "color": "#9550FF",
           "description": "-10% Durability Damage",
           "descriptionFormatted": "-%d%% Durability Damage",
-          "icon": "the_vault:gui/modifiers/reinforced"
+          "icon": "the_vault:gui/modifiers/described/reinforced"
         }
       }
     },
@@ -1329,7 +1329,7 @@
           "color": "#E8DACD",
           "description": "Hunger",
           "descriptionFormatted": "+%d Hunger",
-          "icon": "the_vault:gui/modifiers/hunger"
+          "icon": "the_vault:gui/modifiers/described/hunger"
         }
       },
       "the_vault:lucky": {
@@ -1344,7 +1344,7 @@
           "color": "#b3ff20",
           "description": "+1 Luck",
           "descriptionFormatted": "+%d Luck",
-          "icon": "the_vault:gui/modifiers/lucky"
+          "icon": "the_vault:gui/modifiers/described/lucky"
         }
       },
       "the_vault:slowed": {
@@ -1359,7 +1359,7 @@
           "color": "#4C6786",
           "description": "+1 Slowness",
           "descriptionFormatted": "+%d Slowness",
-          "icon": "the_vault:gui/modifiers/slowed"
+          "icon": "the_vault:gui/modifiers/described/slowed"
         }
       },
       "the_vault:slowed_t2": {
@@ -1374,7 +1374,7 @@
           "color": "#4C6786",
           "description": "+2 Slowness",
           "descriptionFormatted": "+%d Slowness",
-          "icon": "the_vault:gui/modifiers/slowed_t2"
+          "icon": "the_vault:gui/modifiers/described/slowed_t2"
         }
       },
       "the_vault:speedy": {
@@ -1389,7 +1389,7 @@
           "color": "#00CDFF",
           "description": "+1 Speed",
           "descriptionFormatted": "+%d Speed",
-          "icon": "the_vault:gui/modifiers/speedy"
+          "icon": "the_vault:gui/modifiers/described/speedy"
         }
       },
       "the_vault:swift": {
@@ -1404,7 +1404,7 @@
           "color": "#FFE068",
           "description": "+1 Speed",
           "descriptionFormatted": "+%d Speed",
-          "icon": "the_vault:gui/modifiers/swift"
+          "icon": "the_vault:gui/modifiers/described/swift"
         }
       },
       "the_vault:wendarr_speed": {
@@ -1419,7 +1419,7 @@
           "color": "#d89e01",
           "description": "Players move faster in this vault! (+2 Speed)",
           "descriptionFormatted": "Players move faster in this vault! (+2 Speed)",
-          "icon": "the_vault:gui/modifiers/wendarr_speed"
+          "icon": "the_vault:gui/modifiers/described/wendarr_speed"
         }
       },
       "the_vault:stronk": {
@@ -1434,7 +1434,7 @@
           "color": "#d73b46",
           "description": "+1 Strength",
           "descriptionFormatted": "+%d Strength",
-          "icon": "the_vault:gui/modifiers/stronk"
+          "icon": "the_vault:gui/modifiers/described/stronk"
         }
       },
       "the_vault:strength": {
@@ -1449,7 +1449,7 @@
           "color": "#d73b46",
           "description": "+1 Strength",
           "descriptionFormatted": "+%d Strength",
-          "icon": "the_vault:gui/modifiers/strength"
+          "icon": "the_vault:gui/modifiers/described/strength"
         }
       },
       "the_vault:tired": {
@@ -1464,7 +1464,7 @@
           "color": "#E8E9E1",
           "description": "+1 Mining Fatigue",
           "descriptionFormatted": "+%d Mining Fatigue",
-          "icon": "the_vault:gui/modifiers/tired"
+          "icon": "the_vault:gui/modifiers/described/tired"
         }
       },
       "the_vault:tired_t2": {
@@ -1479,7 +1479,7 @@
           "color": "#E8E9E1",
           "description": "+3 Mining Fatigue",
           "descriptionFormatted": "+%d Mining Fatigue",
-          "icon": "the_vault:gui/modifiers/tired_t2"
+          "icon": "the_vault:gui/modifiers/described/tired_t2"
         }
       },
       "the_vault:weakened": {
@@ -1494,7 +1494,7 @@
           "color": "#9F5300",
           "description": "+1 Weakness",
           "descriptionFormatted": "+%d Weakness",
-          "icon": "the_vault:gui/modifiers/weakened"
+          "icon": "the_vault:gui/modifiers/described/weakened"
         }
       },
       "the_vault:weakened_t2": {
@@ -1509,7 +1509,7 @@
           "color": "#9F5300",
           "description": "+3 Weakness",
           "descriptionFormatted": "+%d Weakness",
-          "icon": "the_vault:gui/modifiers/weakened_t2"
+          "icon": "the_vault:gui/modifiers/described/weakened_t2"
         }
       },
       "the_vault:weakened_t3": {
@@ -1524,7 +1524,7 @@
           "color": "#9F5300",
           "description": "+6 Weakness",
           "descriptionFormatted": "+%d Weakness",
-          "icon": "the_vault:gui/modifiers/weakened_t3"
+          "icon": "the_vault:gui/modifiers/described/weakened_t3"
         }
       },
       "the_vault:velara_favour_1": {
@@ -1542,7 +1542,7 @@
           "color": "#55FF55",
           "description": "+1 Regeneration",
           "descriptionFormatted": "+%d Regeneration",
-          "icon": "the_vault:gui/modifiers/velara_favour_1"
+          "icon": "the_vault:gui/modifiers/described/velara_favour_1"
         }
       },
       "the_vault:regeneration": {
@@ -1557,7 +1557,7 @@
           "color": "#55FF55",
           "description": "+1 Regeneration",
           "descriptionFormatted": "+%d Regeneration",
-          "icon": "the_vault:gui/modifiers/regeneration"
+          "icon": "the_vault:gui/modifiers/described/regeneration"
         }
       },
       "the_vault:mega_regen": {
@@ -1572,7 +1572,7 @@
           "color": "#55FF55",
           "description": "+3 Regeneration",
           "descriptionFormatted": "+%d Regeneration",
-          "icon": "the_vault:gui/modifiers/mega_regen"
+          "icon": "the_vault:gui/modifiers/described/mega_regen"
         }
       }
     },
@@ -1588,7 +1588,7 @@
           "name": "Afterlife",
           "color": "#0FA6E3",
           "description": "You will gain 50% less experience in this vault, but if you die you will keep your inventory and receive a durability penalty.",
-          "icon": "the_vault:gui/modifiers/afterlife"
+          "icon": "the_vault:gui/modifiers/described/afterlife"
         }
       },
       "the_vault:phoenix": {
@@ -1602,7 +1602,7 @@
           "name": "Phoenix",
           "color": "#FF8900",
           "description": "If killed in a vault you will be revived instantly and the Phoenix modifier will fizzle",
-          "icon": "the_vault:gui/modifiers/phoenix"
+          "icon": "the_vault:gui/modifiers/described/phoenix"
         }
       },
       "the_vault:beginners_grace": {
@@ -1616,7 +1616,7 @@
           "name": "Beginner's Grace",
           "color": "#FF8900",
           "description": "If killed in the vault you will keep your inventory but receive a durability penalty.",
-          "icon": "the_vault:gui/modifiers/beginners_grace"
+          "icon": "the_vault:gui/modifiers/described/beginners_grace"
         }
       },
       "the_vault:casual": {
@@ -1630,7 +1630,7 @@
           "name": "Casual Mode",
           "color": "#FF8900",
           "description": "If killed in the vault you will keep your inventory but receive a durability penalty.",
-          "icon": "the_vault:gui/modifiers/casual"
+          "icon": "the_vault:gui/modifiers/described/casual"
         }
       }
     },
@@ -1641,7 +1641,7 @@
           "name": "Locked",
           "color": "#FF0000",
           "description": "Vault can't be bailed",
-          "icon": "the_vault:gui/modifiers/locked"
+          "icon": "the_vault:gui/modifiers/described/locked"
         }
       },
       "the_vault:soul_locked": {
@@ -1650,7 +1650,7 @@
           "name": "Locked",
           "color": "#FF0000",
           "description": "This vault can not be exited without completing it.",
-          "icon": "the_vault:gui/modifiers/soul_locked"
+          "icon": "the_vault:gui/modifiers/described/soul_locked"
         }
       },
       "the_vault:raffle": {
@@ -1659,7 +1659,7 @@
           "name": "Raffle",
           "color": "#C5001B",
           "description": "Locks the vault",
-          "icon": "the_vault:gui/modifiers/raffle"
+          "icon": "the_vault:gui/modifiers/described/raffle"
         }
       }
     },
@@ -1670,7 +1670,7 @@
           "name": "Rotten",
           "color": "#A0AF5B",
           "description": "Vault Powerups have no effect",
-          "icon": "the_vault:gui/modifiers/rotten"
+          "icon": "the_vault:gui/modifiers/described/rotten"
         }
       }
     },
@@ -1685,7 +1685,7 @@
           "color": "#54fc54",
           "description": "+1% Velara Affinity",
           "descriptionFormatted": "%d%% Velara Affinity",
-          "icon": "the_vault:gui/modifiers/velara_tear"
+          "icon": "the_vault:gui/modifiers/described/velara_tear"
         }
       },
       "the_vault:idona_tear": {
@@ -1698,7 +1698,7 @@
           "color": "#d80000",
           "description": "+1% Idona Affinity",
           "descriptionFormatted": "%d%% Idona Affinity",
-          "icon": "the_vault:gui/modifiers/idona_tear"
+          "icon": "the_vault:gui/modifiers/described/idona_tear"
         }
       },
       "the_vault:tenos_tear": {
@@ -1711,7 +1711,7 @@
           "color": "#009dde",
           "description": "+1% Tenos Affinity",
           "descriptionFormatted": "%d%% Tenos Affinity",
-          "icon": "the_vault:gui/modifiers/tenos_tear"
+          "icon": "the_vault:gui/modifiers/described/tenos_tear"
         }
       },
       "the_vault:wendarr_tear": {
@@ -1724,7 +1724,7 @@
           "color": "#dea700",
           "description": "+1% Wendarr Affinity",
           "descriptionFormatted": "%d%% Wendarr Affinity",
-          "icon": "the_vault:gui/modifiers/wendarr_tear"
+          "icon": "the_vault:gui/modifiers/described/wendarr_tear"
         }
       },
       "the_vault:clumsy": {
@@ -1737,7 +1737,7 @@
           "color": "#CB866D",
           "description": "-10% Parry",
           "descriptionFormatted": "%d%% Parry",
-          "icon": "the_vault:gui/modifiers/clumsy"
+          "icon": "the_vault:gui/modifiers/described/clumsy"
         }
       },
       "the_vault:knockback": {
@@ -1750,7 +1750,7 @@
           "color": "#CB866D",
           "description": "+100% Knockback Resistance",
           "descriptionFormatted": "%d%% Knockback Resistance",
-          "icon": "the_vault:gui/modifiers/knockback"
+          "icon": "the_vault:gui/modifiers/described/knockback"
         }
       },
       "the_vault:trapped": {
@@ -1763,7 +1763,7 @@
           "color": "#CB866D",
           "description": "-50% Trap Disarm & Increases traps while below 0%",
           "descriptionFormatted": "%d%% Trap Disarm",
-          "icon": "the_vault:gui/modifiers/trapped"
+          "icon": "the_vault:gui/modifiers/described/trapped"
         }
       },
       "the_vault:inert": {
@@ -1776,7 +1776,7 @@
           "color": "#6DACB5",
           "description": "-10% Cooldown Reduction",
           "descriptionFormatted": "%d%% Cooldown Reduction",
-          "icon": "the_vault:gui/modifiers/inert"
+          "icon": "the_vault:gui/modifiers/described/inert"
         }
       },
       "the_vault:cooldown_reduction": {
@@ -1789,7 +1789,7 @@
           "color": "#6DACB5",
           "description": "+80% Cooldown Reduction",
           "descriptionFormatted": "%d%% Cooldown Reduction",
-          "icon": "the_vault:gui/modifiers/cooldown_reduction"
+          "icon": "the_vault:gui/modifiers/described/cooldown_reduction"
         }
       },
       "the_vault:wendarr_cdr": {
@@ -1802,7 +1802,7 @@
           "color": "#6DACB5",
           "description": "+50% Cooldown Reduction",
           "descriptionFormatted": "%d%% Cooldown Reduction",
-          "icon": "the_vault:gui/modifiers/wendarr_cdr"
+          "icon": "the_vault:gui/modifiers/described/wendarr_cdr"
         }
       },
       "the_vault:vulnerable": {
@@ -1815,7 +1815,7 @@
           "color": "#CA9A5B",
           "description": "-10% Resistance",
           "descriptionFormatted": "%d%% Resistance",
-          "icon": "the_vault:gui/modifiers/vulnerable"
+          "icon": "the_vault:gui/modifiers/described/vulnerable"
         }
       },
       "the_vault:copiously": {
@@ -1828,7 +1828,7 @@
           "color": "#F74780",
           "description": "+5% Copiously",
           "descriptionFormatted": "%d%% Copiously",
-          "icon": "the_vault:gui/modifiers/copiously"
+          "icon": "the_vault:gui/modifiers/described/copiously"
         }
       },
       "the_vault:idona_favour_3": {
@@ -1844,7 +1844,7 @@
           "color": "#FF5555",
           "description": "+0.5% Leech",
           "descriptionFormatted": "+%d%% Leech",
-          "icon": "the_vault:gui/modifiers/idona_favour_3"
+          "icon": "the_vault:gui/modifiers/described/idona_favour_3"
         }
       },
       "the_vault:antiheal": {
@@ -1857,7 +1857,7 @@
           "color": "#849dc8",
           "description": "-20% Healing Efficiency",
           "descriptionFormatted": "-%d%% Healing Efficiency",
-          "icon": "the_vault:gui/modifiers/antiheal"
+          "icon": "the_vault:gui/modifiers/described/antiheal"
         }
       },
       "the_vault:grievous_wounds": {
@@ -1870,7 +1870,7 @@
           "color": "#ce5200",
           "description": "-20% Healing Efficiency",
           "descriptionFormatted": "%d%% Healing Efficiency",
-          "icon": "the_vault:gui/modifiers/grievous_wounds"
+          "icon": "the_vault:gui/modifiers/described/grievous_wounds"
         }
       },
       "the_vault:enervated": {
@@ -1883,7 +1883,7 @@
           "color": "#849dc8",
           "description": "Healing in this vault is very inefficient",
           "descriptionFormatted": "Healing in this vault is very inefficient",
-          "icon": "the_vault:gui/modifiers/enervated"
+          "icon": "the_vault:gui/modifiers/described/enervated"
         }
       },
       "the_vault:velara_favour_2": {
@@ -1896,7 +1896,7 @@
           "color": "#55FF55",
           "description": "Healing is more efficient! (+50% Healing Effectiveness)",
           "descriptionFormatted": "Healing is more efficient! (+%d%% Healing Effectiveness)",
-          "icon": "the_vault:gui/modifiers/velara_favour_2"
+          "icon": "the_vault:gui/modifiers/described/velara_favour_2"
         }
       },
       "the_vault:wendarr_favour_3": {
@@ -1912,7 +1912,7 @@
           "color": "#FF5555",
           "description": "+0.5% Cooldown Reduction",
           "descriptionFormatted": "+%d%% Cooldown Reduction",
-          "icon": "the_vault:gui/modifiers/wendarr_favour_3"
+          "icon": "the_vault:gui/modifiers/described/wendarr_favour_3"
         }
       },
       "the_vault:idona_favour_ap": {
@@ -1926,7 +1926,7 @@
           "color": "#FF5555",
           "description": "Players deal more ability damage in this vault",
           "descriptionFormatted": "+50% Ability Power",
-          "icon": "the_vault:gui/modifiers/idona_favour_ap"
+          "icon": "the_vault:gui/modifiers/described/idona_favour_ap"
         }
       }
     },
@@ -1940,7 +1940,7 @@
           "color": "#E20000",
           "description": "+3 Vault Level",
           "descriptionFormatted": "+%d Vault Level",
-          "icon": "the_vault:gui/modifiers/difficult"
+          "icon": "the_vault:gui/modifiers/described/difficult"
         }
       },
       "the_vault:easy": {
@@ -1952,7 +1952,7 @@
           "color": "#70FF2A",
           "description": "-3 Vault Level",
           "descriptionFormatted": "-%d Vault Level",
-          "icon": "the_vault:gui/modifiers/easy"
+          "icon": "the_vault:gui/modifiers/described/easy"
         }
       }
     },
@@ -1967,7 +1967,7 @@
           "color": "#FF85FF",
           "description": "+20% Vault Ores",
           "descriptionFormatted": "+%d%% Vault Ores",
-          "icon": "the_vault:gui/modifiers/plentiful"
+          "icon": "the_vault:gui/modifiers/described/plentiful"
         }
       },
       "the_vault:soul_ores": {
@@ -1980,7 +1980,7 @@
           "color": "#FF85FF",
           "description": "+5% Vault Ores",
           "descriptionFormatted": "+%d%% Vault Ores",
-          "icon": "the_vault:gui/modifiers/soul_ores"
+          "icon": "the_vault:gui/modifiers/described/soul_ores"
         }
       },
       "the_vault:cake_ores": {
@@ -1993,7 +1993,7 @@
           "color": "#FF85FF",
           "description": "+5% Vault Ores",
           "descriptionFormatted": "+%d%% Vault Ores",
-          "icon": "the_vault:gui/modifiers/cake_ores"
+          "icon": "the_vault:gui/modifiers/described/cake_ores"
         }
       }
     },
@@ -2007,7 +2007,7 @@
           "color": "#2F86AE",
           "description": "+1 minute Vault Time",
           "descriptionFormatted": "+%d minutes Vault Time",
-          "icon": "the_vault:gui/modifiers/extended"
+          "icon": "the_vault:gui/modifiers/described/extended"
         }
       },
       "the_vault:shortened": {
@@ -2019,7 +2019,7 @@
           "color": "#2F86AE",
           "description": "-1 minute Vault Time",
           "descriptionFormatted": "-%d minutes Vault Time",
-          "icon": "the_vault:gui/modifiers/shortened"
+          "icon": "the_vault:gui/modifiers/described/shortened"
         }
       },
       "the_vault:cherry": {
@@ -2031,7 +2031,7 @@
           "color": "#2F86AE",
           "description": "+30 seconds Vault Time",
           "descriptionFormatted": "+%d seconds Vault Time",
-          "icon": "the_vault:gui/modifiers/cherry"
+          "icon": "the_vault:gui/modifiers/described/cherry"
         }
       },
       "the_vault:rushed": {
@@ -2043,7 +2043,7 @@
           "color": "#FFCD6F",
           "description": "-1 minute Vault Time",
           "descriptionFormatted": "-%d minutes Vault Time",
-          "icon": "the_vault:gui/modifiers/rushed"
+          "icon": "the_vault:gui/modifiers/described/rushed"
         }
       }
     },
@@ -2060,7 +2060,7 @@
           "color": "#7738C9",
           "description": "Left and Right swapped",
           "descriptionFormatted": "Left and Right swapped",
-          "icon": "the_vault:gui/modifiers/confused"
+          "icon": "the_vault:gui/modifiers/described/confused"
         }
       },
       "the_vault:crab_walk": {
@@ -2075,7 +2075,7 @@
           "color": "#7738C9",
           "description": "The only way is sideways",
           "descriptionFormatted": "The only way is sideways",
-          "icon": "the_vault:gui/modifiers/crab_walk"
+          "icon": "the_vault:gui/modifiers/described/crab_walk"
         }
       },
       "the_vault:jupiter_gravity": {
@@ -2090,7 +2090,7 @@
           "color": "#7738C9",
           "description": "No Jump",
           "descriptionFormatted": "No Jump",
-          "icon": "the_vault:gui/modifiers/jupiter_gravity"
+          "icon": "the_vault:gui/modifiers/described/jupiter_gravity"
         }
       }
     },
@@ -2104,7 +2104,7 @@
           "color": "#DB7C00",
           "description": "-25% Vault XP Gained",
           "descriptionFormatted": "+%d%% Vault XP Gained",
-          "icon": "the_vault:gui/modifiers/xp_reduction"
+          "icon": "the_vault:gui/modifiers/described/xp_reduction"
         }
       },
       "the_vault:soul_xp": {
@@ -2116,7 +2116,7 @@
           "color": "#DB7C00",
           "description": "+2% Vault XP Gained",
           "descriptionFormatted": "+%d%% Vault XP Gained",
-          "icon": "the_vault:gui/modifiers/soul_xp"
+          "icon": "the_vault:gui/modifiers/described/soul_xp"
         }
       },
       "the_vault:noxp": {
@@ -2128,7 +2128,7 @@
           "color": "#DB7C00",
           "description": "-100% Vault XP Gained",
           "descriptionFormatted": "+%d%% Vault XP Gained",
-          "icon": "the_vault:gui/modifiers/noxp"
+          "icon": "the_vault:gui/modifiers/described/noxp"
         }
       },
       "the_vault:xp_gain": {
@@ -2140,7 +2140,7 @@
           "color": "#DB7C00",
           "description": "+20% Vault Experience",
           "descriptionFormatted": "+%d%% Vault Experience",
-          "icon": "the_vault:gui/modifiers/xp_gain"
+          "icon": "the_vault:gui/modifiers/described/xp_gain"
         }
       },
       "the_vault:enlighted": {
@@ -2152,7 +2152,7 @@
           "color": "#DB7C00",
           "description": "+100% Vault Experience",
           "descriptionFormatted": "+%d%% Vault Experience",
-          "icon": "the_vault:gui/modifiers/enlighted"
+          "icon": "the_vault:gui/modifiers/described/enlighted"
         }
       }
     },
@@ -2166,7 +2166,7 @@
           "name": "Chaos",
           "color": "#DB7C00",
           "description": "A Chaotic Experience",
-          "icon": "the_vault:gui/modifiers/chaos"
+          "icon": "the_vault:gui/modifiers/described/chaos"
         }
       },
       "the_vault:wendarr_inline": {
@@ -2178,7 +2178,7 @@
           "name": "Wendarr's Favour",
           "color": "#d89e01",
           "description": "Wendarr Favoured",
-          "icon": "the_vault:gui/modifiers/wendarr_inline"
+          "icon": "the_vault:gui/modifiers/described/wendarr_inline"
         }
       },
       "the_vault:idona_inline": {
@@ -2190,7 +2190,7 @@
           "name": "Idona's Favour",
           "color": "#d80000",
           "description": "Idona Favoured",
-          "icon": "the_vault:gui/modifiers/idona_inline"
+          "icon": "the_vault:gui/modifiers/described/idona_inline"
         }
       },
       "the_vault:tenos_inline": {
@@ -2202,7 +2202,7 @@
           "name": "Tenos's Favour",
           "color": "#009dde",
           "description": "Tenos Favoured",
-          "icon": "the_vault:gui/modifiers/tenos_inline"
+          "icon": "the_vault:gui/modifiers/described/tenos_inline"
         }
       },
       "the_vault:velara_inline": {
@@ -2214,7 +2214,7 @@
           "name": "Velara's Favour",
           "color": "#04e113",
           "description": "Velara Favoured",
-          "icon": "the_vault:gui/modifiers/velara_inline"
+          "icon": "the_vault:gui/modifiers/described/velara_inline"
         }
       },
       "the_vault:random_negative": {
@@ -2226,7 +2226,7 @@
           "name": "Random Negative",
           "color": "#fe3333",
           "description": "Unknown Negative Modifier",
-          "icon": "the_vault:gui/modifiers/random_negative"
+          "icon": "the_vault:gui/modifiers/described/random_negative"
         }
       }
     },
@@ -2241,7 +2241,7 @@
           "color": "#FFEC00",
           "description": "+25% Gilded Chests",
           "descriptionFormatted": "+%d%% Gilded Chests",
-          "icon": "the_vault:gui/modifiers/gilded_cascade"
+          "icon": "the_vault:gui/modifiers/described/gilded_cascade"
         }
       },
       "the_vault:soul_cascade_gilded": {
@@ -2254,7 +2254,7 @@
           "color": "#FFEC00",
           "description": "+1% Gilded Chests",
           "descriptionFormatted": "+%d%% Gilded Chests",
-          "icon": "the_vault:gui/modifiers/soul_cascade_gilded"
+          "icon": "the_vault:gui/modifiers/described/soul_cascade_gilded"
         }
       },
       "the_vault:cake_cascade_gilded": {
@@ -2267,7 +2267,7 @@
           "color": "#FFEC00",
           "description": "+5% Gilded Chests",
           "descriptionFormatted": "+%d%% Gilded Chests",
-          "icon": "the_vault:gui/modifiers/cake_cascade_gilded"
+          "icon": "the_vault:gui/modifiers/described/cake_cascade_gilded"
         }
       },
       "the_vault:soul_cascade_ornate": {
@@ -2280,7 +2280,7 @@
           "color": "#FFEC00",
           "description": "+1% Ornate Chests",
           "descriptionFormatted": "+%d%% Ornate Chests",
-          "icon": "the_vault:gui/modifiers/soul_cascade_ornate"
+          "icon": "the_vault:gui/modifiers/described/soul_cascade_ornate"
         }
       },
       "the_vault:cake_cascade_ornate": {
@@ -2293,7 +2293,7 @@
           "color": "#FFEC00",
           "description": "+5% Ornate Chests",
           "descriptionFormatted": "+%d%% Ornate Chests",
-          "icon": "the_vault:gui/modifiers/cake_cascade_ornate"
+          "icon": "the_vault:gui/modifiers/described/cake_cascade_ornate"
         }
       },
       "the_vault:soul_cascade_living": {
@@ -2306,7 +2306,7 @@
           "color": "#38d800",
           "description": "+5% Living Chests",
           "descriptionFormatted": "+%d%% Living Chests",
-          "icon": "the_vault:gui/modifiers/soul_cascade_living"
+          "icon": "the_vault:gui/modifiers/described/soul_cascade_living"
         }
       },
       "the_vault:cake_cascade_living": {
@@ -2319,7 +2319,7 @@
           "color": "#38d800",
           "description": "+5% Living Chests",
           "descriptionFormatted": "+%d%% Living Chests",
-          "icon": "the_vault:gui/modifiers/cake_cascade_living"
+          "icon": "the_vault:gui/modifiers/described/cake_cascade_living"
         }
       },
       "the_vault:soul_cascade_wooden": {
@@ -2332,7 +2332,7 @@
           "color": "#c7b281",
           "description": "+5% Wooden Chests",
           "descriptionFormatted": "+%d%% Wooden Chests",
-          "icon": "the_vault:gui/modifiers/soul_cascade_wooden"
+          "icon": "the_vault:gui/modifiers/described/soul_cascade_wooden"
         }
       },
       "the_vault:cake_cascade_wooden": {
@@ -2345,7 +2345,7 @@
           "color": "#c7b281",
           "description": "+5% Wooden Chests",
           "descriptionFormatted": "+%d%% Wooden Chests",
-          "icon": "the_vault:gui/modifiers/cake_cascade_wooden"
+          "icon": "the_vault:gui/modifiers/described/cake_cascade_wooden"
         }
       },
       "the_vault:living_cascade": {
@@ -2358,7 +2358,7 @@
           "color": "#38d800",
           "description": "+25% Living Chests",
           "descriptionFormatted": "+%d%% Living Chests",
-          "icon": "the_vault:gui/modifiers/living_cascade"
+          "icon": "the_vault:gui/modifiers/described/living_cascade"
         }
       },
       "the_vault:ornate_cascade": {
@@ -2371,7 +2371,7 @@
           "color": "#c90d73",
           "description": "+25% Ornate Chests",
           "descriptionFormatted": "+%d%% Ornate Chests",
-          "icon": "the_vault:gui/modifiers/ornate_cascade"
+          "icon": "the_vault:gui/modifiers/described/ornate_cascade"
         }
       },
       "the_vault:wooden_cascade": {
@@ -2384,7 +2384,7 @@
           "color": "#c7b281",
           "description": "+25% Wooden Chests",
           "descriptionFormatted": "+%d%% Wooden Chests",
-          "icon": "the_vault:gui/modifiers/wooden_cascade"
+          "icon": "the_vault:gui/modifiers/described/wooden_cascade"
         }
       },
       "the_vault:coin_cascade": {
@@ -2397,7 +2397,7 @@
           "color": "#ffae00",
           "description": "+25% Coin Piles",
           "descriptionFormatted": "+%d%% Coin Piles",
-          "icon": "the_vault:gui/modifiers/coin_cascade"
+          "icon": "the_vault:gui/modifiers/described/coin_cascade"
         }
       },
       "the_vault:cake_coin_cascade": {
@@ -2410,7 +2410,7 @@
           "color": "#ffae00",
           "description": "+10% Coin Piles",
           "descriptionFormatted": "+%d%% Coin Piles",
-          "icon": "the_vault:gui/modifiers/cake_coin_cascade"
+          "icon": "the_vault:gui/modifiers/described/cake_coin_cascade"
         }
       },
       "the_vault:soul_coin_cascade": {
@@ -2423,7 +2423,7 @@
           "color": "#ffae00",
           "description": "+10% Coin Piles",
           "descriptionFormatted": "+%d%% Coin Piles",
-          "icon": "the_vault:gui/modifiers/soul_coin_cascade"
+          "icon": "the_vault:gui/modifiers/described/soul_coin_cascade"
         }
       },
       "the_vault:spawner_cascade": {
@@ -2436,7 +2436,7 @@
           "color": "#c90d73",
           "description": "+30% Spawners",
           "descriptionFormatted": "+%d%% Spawners",
-          "icon": "the_vault:gui/modifiers/spawner_cascade"
+          "icon": "the_vault:gui/modifiers/described/spawner_cascade"
         }
       }
     },
@@ -2449,7 +2449,7 @@
           "name": "Champion's Abode",
           "color": "#c346aa",
           "description": "+10% Chance for Champions to Spawn",
-          "icon": "the_vault:gui/modifiers/champion_chance"
+          "icon": "the_vault:gui/modifiers/described/champion_chance"
         }
       },
       "the_vault:champion_domain": {
@@ -2460,7 +2460,7 @@
           "name": "Champion's Domain",
           "color": "#bbf333",
           "description": "+50% Chance for Champions to Spawn",
-          "icon": "the_vault:gui/modifiers/champion_domain"
+          "icon": "the_vault:gui/modifiers/described/champion_domain"
         }
       },
       "the_vault:champion_paradox": {
@@ -2471,7 +2471,7 @@
           "name": "More Champions",
           "color": "#5ece0c",
           "description": "+2% Chance for Champions to Spawn",
-          "icon": "the_vault:gui/modifiers/champion_paradox"
+          "icon": "the_vault:gui/modifiers/described/champion_paradox"
         }
       }
     },
@@ -2488,7 +2488,7 @@
           "name": "Bingo!",
           "color": "#bbf333",
           "description": "Every BINGO Increases Item Quantity & Rarity by 10%, and boosts soul chance by 25%",
-          "icon": "the_vault:gui/modifiers/bingo"
+          "icon": "the_vault:gui/modifiers/described/bingo"
         }
       },
       "the_vault:loot_goblin": {
@@ -2502,7 +2502,7 @@
           "name": "Loot Goblin",
           "color": "#bbf333",
           "description": "Doubles all loot and triples its rarity!",
-          "icon": "the_vault:gui/modifiers/loot_goblin"
+          "icon": "the_vault:gui/modifiers/described/loot_goblin"
         }
       },
       "the_vault:door_hunter": {
@@ -2517,7 +2517,7 @@
           "name": "Door Hunter",
           "color": "#bbf333",
           "description": "Reveals all doors inside the vault!",
-          "icon": "the_vault:gui/modifiers/door_hunter"
+          "icon": "the_vault:gui/modifiers/described/door_hunter"
         }
       },
       "the_vault:herald": {
@@ -2532,7 +2532,7 @@
           "name": "Herald's Grace",
           "color": "#ad2b2b",
           "description": "Dying in this vault does not cause you any item loss, and this vault is of course locked.",
-          "icon": "the_vault:gui/modifiers/herald"
+          "icon": "the_vault:gui/modifiers/described/herald"
         }
       },
       "the_vault:potion_drink": {
@@ -2546,7 +2546,7 @@
           "name": "Potion Curse",
           "color": "#d52424",
           "description": "You drank a vanilla potion, this has upset the gods, chests have lost contents, and a minute has been removed from the vault",
-          "icon": "the_vault:gui/modifiers/potion_drink"
+          "icon": "the_vault:gui/modifiers/described/potion_drink"
         }
       },
       "the_vault:companion_challenge": {
@@ -2562,7 +2562,7 @@
           "name": "Companion's Challenge",
           "color": "#ba0000",
           "description": "Increases mob damage, mob health and mob spawns by 10% per stack, increases mob speed by 1.5% per stack",
-          "icon": "the_vault:gui/modifiers/companion_challenge"
+          "icon": "the_vault:gui/modifiers/described/companion_challenge"
         }
       },
       "the_vault:curse_collapsing": {
@@ -2577,7 +2577,7 @@
           "name": "Collapsing",
           "color": "#ad2b2b",
           "description": "This vault is cursed, it's collapsing, has less time, and wild mobs will appear",
-          "icon": "the_vault:gui/modifiers/curse_collapsing"
+          "icon": "the_vault:gui/modifiers/described/curse_collapsing"
         }
       },
       "the_vault:curse": {
@@ -2596,7 +2596,7 @@
           "name": "Cursed!",
           "color": "#ad2b2b",
           "description": "This vault is cursed, it's collapsing, void pools have appeared, some mobs are immortal & their attacks seem to have hexing effects on you!",
-          "icon": "the_vault:gui/modifiers/curse"
+          "icon": "the_vault:gui/modifiers/described/curse"
         }
       },
       "the_vault:curse_voiding": {
@@ -2611,7 +2611,7 @@
           "name": "Void Pools",
           "color": "#ad2b2b",
           "description": "This vault is cursed, void pools have spawned, wild mobs appears and the vault seems to not populate correctly.",
-          "icon": "the_vault:gui/modifiers/curse_voiding"
+          "icon": "the_vault:gui/modifiers/described/curse_voiding"
         }
       },
       "the_vault:curse_explosive": {
@@ -2626,7 +2626,7 @@
           "name": "Explosive",
           "color": "#ad2b2b",
           "description": "This vault is cursed, there are random explosions, wild mobs appears and the vault seems to not populate correctly.",
-          "icon": "the_vault:gui/modifiers/curse_explosive"
+          "icon": "the_vault:gui/modifiers/described/curse_explosive"
         }
       },
       "the_vault:curse_freezing": {
@@ -2641,7 +2641,7 @@
           "name": "Freezing Mobs",
           "color": "#ad2b2b",
           "description": "This vault is cursed, mobs freeze you when attacking, wild mobs appears and the vault seems to not populate correctly.",
-          "icon": "the_vault:gui/modifiers/curse_freezing"
+          "icon": "the_vault:gui/modifiers/described/curse_freezing"
         }
       },
       "the_vault:curse_wrecked": {
@@ -2656,7 +2656,7 @@
           "name": "Wrecked Vault",
           "color": "#ad2b2b",
           "description": "This vault is cursed, mobs freeze you when attacking, it has less time, and wild mobs will appear",
-          "icon": "the_vault:gui/modifiers/curse_wrecked"
+          "icon": "the_vault:gui/modifiers/described/curse_wrecked"
         }
       },
       "the_vault:stronger_mobs": {
@@ -2670,7 +2670,7 @@
           "name": "Stronger Mobs",
           "color": "#da6d5a",
           "description": "+20% Mob Damage and Health",
-          "icon": "the_vault:gui/modifiers/stronger_mobs"
+          "icon": "the_vault:gui/modifiers/described/stronger_mobs"
         }
       },
       "the_vault:cake_layer": {
@@ -2695,7 +2695,7 @@
           "name": "Cake Layer",
           "color": "#f6659b",
           "description": "Increases mob damage, mob speed, soul shards, all chest spawns, coins, the amount of items in the crake and the chance of getting an artifact",
-          "icon": "the_vault:gui/modifiers/cake_layer"
+          "icon": "the_vault:gui/modifiers/described/cake_layer"
         }
       },
       "the_vault:ultimate_regeneration": {
@@ -2709,7 +2709,7 @@
           "name": "Ultimate Regeneration",
           "color": "#f6659b",
           "description": "Gives +3 Regeneration and +500% Mana Regeneration",
-          "icon": "the_vault:gui/modifiers/ultimate_regeneration"
+          "icon": "the_vault:gui/modifiers/described/ultimate_regeneration"
         }
       },
       "the_vault:soul_flame": {
@@ -2722,7 +2722,7 @@
           "name": "Flame",
           "color": "#19ebef",
           "description": "Your streak of this ascension, each stack increases the difficulty of the objective.",
-          "icon": "the_vault:gui/modifiers/soul_flame"
+          "icon": "the_vault:gui/modifiers/described/soul_flame"
         }
       },
       "the_vault:plunderer": {
@@ -2738,7 +2738,7 @@
           "name": "Plunderer",
           "color": "#d89e01",
           "description": "This vault yields no experience, and has a lower chance of finding an artifact, but has 10% more loot and slightly more ores",
-          "icon": "the_vault:gui/modifiers/plunderer"
+          "icon": "the_vault:gui/modifiers/described/plunderer"
         }
       },
       "the_vault:wendarr_favour": {
@@ -2752,7 +2752,7 @@
           "name": "Wendarr's Favour",
           "color": "#d89e01",
           "description": "+100% Mana Regeneration & +50% Cooldown Reduction",
-          "icon": "the_vault:gui/modifiers/wendarr_favour"
+          "icon": "the_vault:gui/modifiers/described/wendarr_favour"
         }
       },
       "the_vault:idona_dmg": {
@@ -2766,7 +2766,7 @@
           "name": "Idona's Favour",
           "color": "#FF5555",
           "description": "+50% Damage & +50% Ability Power",
-          "icon": "the_vault:gui/modifiers/idona_dmg"
+          "icon": "the_vault:gui/modifiers/described/idona_dmg"
         }
       }
     },
@@ -2782,7 +2782,7 @@
           "name": "Ethereal",
           "color": "#a996ca",
           "description": "Mobs in this vault can spawn in as ethereal, being immune to any damage.",
-          "icon": "the_vault:gui/modifiers/ethereal"
+          "icon": "the_vault:gui/modifiers/described/ethereal"
         }
       },
       "the_vault:curse_ethereal": {
@@ -2796,7 +2796,7 @@
           "name": "Curse Ethereal",
           "color": "#a996ca",
           "description": "Mobs in this vault can spawn in as ethereal, being immune to any damage.",
-          "icon": "the_vault:gui/modifiers/curse_ethereal"
+          "icon": "the_vault:gui/modifiers/described/curse_ethereal"
         }
       }
     },
@@ -2810,7 +2810,7 @@
           "name": "Soulless",
           "color": "#a996ca",
           "description": "Mobs in this vault do not drop soul shards",
-          "icon": "the_vault:gui/modifiers/soulless"
+          "icon": "the_vault:gui/modifiers/described/soulless"
         }
       }
     },
@@ -2821,7 +2821,7 @@
           "name": "Fading",
           "color": "#8f3b3b",
           "description": "Taking damage in this vault removes hearts instead of emptying them.",
-          "icon": "the_vault:gui/modifiers/fading"
+          "icon": "the_vault:gui/modifiers/described/fading"
         }
       }
     },
@@ -2834,7 +2834,7 @@
           "name": "Difficult",
           "color": "#8f3b3b",
           "description": "Increases objective difficulty by 20%",
-          "icon": "the_vault:gui/modifiers/objective_difficulty"
+          "icon": "the_vault:gui/modifiers/described/objective_difficulty"
         }
       },
       "the_vault:soul_objective": {
@@ -2845,7 +2845,7 @@
           "name": "Difficult",
           "color": "#8f3b3b",
           "description": "Increases objective difficulty by 2%",
-          "icon": "the_vault:gui/modifiers/soul_objective"
+          "icon": "the_vault:gui/modifiers/described/soul_objective"
         }
       }
     },
@@ -2864,7 +2864,7 @@
           "name": "Treasure Hunter",
           "color": "#FFEA00",
           "description": "Highlights Treasure Doors in this vault",
-          "icon": "the_vault:gui/modifiers/treasure_doors"
+          "icon": "the_vault:gui/modifiers/described/treasure_doors"
         }
       },
       "the_vault:pylon_hunter": {
@@ -2881,7 +2881,7 @@
           "name": "Pylon Hunter",
           "color": "#FFEA00",
           "description": "Highlights Pylons in this vault",
-          "icon": "the_vault:gui/modifiers/pylon_hunter"
+          "icon": "the_vault:gui/modifiers/described/pylon_hunter"
         }
       },
       "the_vault:dungeon_doors": {
@@ -2898,7 +2898,7 @@
           "name": "Dungeon Hunter",
           "color": "#685086",
           "description": "Highlights Dungeon Doors in this vault",
-          "icon": "the_vault:gui/modifiers/dungeon_doors"
+          "icon": "the_vault:gui/modifiers/described/dungeon_doors"
         }
       },
       "the_vault:vendoor_doors": {
@@ -2915,7 +2915,7 @@
           "name": "Vendoor Hunter",
           "color": "#685086",
           "description": "Highlights Dungeon Doors in this vault",
-          "icon": "the_vault:gui/modifiers/vendoor_doors"
+          "icon": "the_vault:gui/modifiers/described/vendoor_doors"
         }
       }
     },
@@ -2973,7 +2973,7 @@
           "color": "#EBFF8D",
           "description": "+20% Poopsie Daisies, Whoopsie Walls and Fumbly Floors",
           "descriptionFormatted": "+%d%% Poopsie Daisies, Whoopsie Walls and Fumbly Floors",
-          "icon": "the_vault:gui/modifiers/wrecked"
+          "icon": "the_vault:gui/modifiers/described/wrecked"
         }
       }
     }
