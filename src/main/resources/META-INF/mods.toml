@@ -36,7 +36,17 @@ authors="Iridium" #optional
 description='''
 Adds descriptor text to game modifer HUD tooltips'''
 
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+#showAsResourcePack=true
+#
+## A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.qolhunters]]
+    modId="the_vault"
+    mandatory=true
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+
 [[dependencies.qolhunters]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
