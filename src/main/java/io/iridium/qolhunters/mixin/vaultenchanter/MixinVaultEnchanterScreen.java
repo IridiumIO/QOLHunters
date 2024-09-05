@@ -1,6 +1,6 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.vaultenchanter;
 
-import io.iridium.qolhunters.IModifiedInventory;
+import io.iridium.qolhunters.interfaces.IModifiedInventory;
 import iskallia.vault.client.gui.framework.ScreenTextures;
 import iskallia.vault.client.gui.framework.element.*;
 import iskallia.vault.client.gui.framework.render.TooltipDirection;
@@ -19,7 +19,6 @@ import iskallia.vault.util.function.ObservableSupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.*;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
@@ -30,11 +29,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static iskallia.vault.client.gui.screen.block.VaultEnchanterScreen.VAULT_ENCHANTER_BOOK_TEXTURE;
 
@@ -106,50 +102,48 @@ public abstract class MixinVaultEnchanterScreen extends AbstractElementContainer
         );
         craftButton.tooltip(
                 (tooltipRenderer, poseStack, mouseX, mouseY, tooltipFlag) -> {
-                    if (this.selectedEnchantmentEntry == null) {
-                        return false;
+                    if (this.selectedEnchantmentEntry == null) return false;
+
+                    ItemStack gear = this.getMenu().getInput();
+                    if (gear.isEmpty()) return false;
+
+                    List<ItemStack> itemCost = this.selectedEnchantmentEntry.getCost().getItems();
+                    List<ItemStack> missing = InventoryUtil.getMissingInputs(itemCost, this.playerInventory, modifiedInventory);
+                    int levelCost = this.selectedEnchantmentEntry.getCost().getLevels();
+                    boolean playerHasLevels = this.playerInventory.player.experienceLevel >= levelCost;
+                    List<Component> tooltip = new LinkedList<>();
+                    if (missing.isEmpty() && playerHasLevels) {
+                        tooltip.add(new TextComponent("Enchant ").append(gear.getHoverName().copy()));
+                        tooltip.add(
+                                new TextComponent("with ")
+                                        .append(
+                                                new TranslatableComponent(this.selectedEnchantmentEntry.getEnchantment().getDescriptionId())
+                                                        .append(" " + RomanNumber.toRoman(this.selectedEnchantmentEntry.getLevel()))
+                                                        .withStyle(ChatFormatting.LIGHT_PURPLE)
+                                        )
+                                        .append(" !")
+                        );
                     } else {
-                        ItemStack gear = this.getMenu().getInput();
-                        if (gear.isEmpty()) {
-                            return false;
-                        } else {
-                            List<ItemStack> itemCost = this.selectedEnchantmentEntry.getCost().getItems();
-                            List<ItemStack> missing = InventoryUtil.getMissingInputs(itemCost, this.playerInventory, modifiedInventory);
-                            int levelCost = this.selectedEnchantmentEntry.getCost().getLevels();
-                            boolean playerHasLevels = this.playerInventory.player.experienceLevel >= levelCost;
-                            List<Component> tooltip = new LinkedList<>();
-                            if (missing.isEmpty() && playerHasLevels) {
-                                tooltip.add(new TextComponent("Enchant ").append(gear.getHoverName().copy()));
-                                tooltip.add(
-                                        new TextComponent("with ")
-                                                .append(
-                                                        new TranslatableComponent(this.selectedEnchantmentEntry.getEnchantment().getDescriptionId())
-                                                                .append(" " + RomanNumber.toRoman(this.selectedEnchantmentEntry.getLevel()))
-                                                                .withStyle(ChatFormatting.LIGHT_PURPLE)
-                                                )
-                                                .append(" !")
-                                );
-                            } else {
-                                tooltip.add(new TextComponent("Missing ingredients.").withStyle(ChatFormatting.RED));
-                                tooltip.add(new TextComponent(""));
+                        tooltip.add(new TextComponent("Missing ingredients.").withStyle(ChatFormatting.RED));
+                        tooltip.add(new TextComponent(""));
 
-                                for (ItemStack costStack : this.selectedEnchantmentEntry.getCost().getItems()) {
-                                    tooltip.add(
-                                            new TextComponent(costStack.getCount() + "x ")
-                                                    .append(costStack.getHoverName().copy())
-                                                    .withStyle(missing.contains(costStack) ? ChatFormatting.RED : ChatFormatting.GREEN)
-                                    );
-                                }
+                        for (ItemStack costStack : this.selectedEnchantmentEntry.getCost().getItems()) {
+                            tooltip.add(
+                                    new TextComponent(costStack.getCount() + "x ")
+                                            .append(costStack.getHoverName().copy())
+                                            .withStyle(missing.contains(costStack) ? ChatFormatting.RED : ChatFormatting.GREEN)
+                            );
+                        }
 
-                                if (levelCost != 0) {
-                                    tooltip.add(new TextComponent(levelCost + " EXP Levels").withStyle(playerHasLevels ? ChatFormatting.GREEN : ChatFormatting.RED));
-                                }
-                            }
-
-                            tooltipRenderer.renderTooltip(poseStack, tooltip, mouseX, mouseY, ItemStack.EMPTY, TooltipDirection.RIGHT);
-                            return true;
+                        if (levelCost != 0) {
+                            tooltip.add(new TextComponent(levelCost + " EXP Levels").withStyle(playerHasLevels ? ChatFormatting.GREEN : ChatFormatting.RED));
                         }
                     }
+
+                    tooltipRenderer.renderTooltip(poseStack, tooltip, mouseX, mouseY, ItemStack.EMPTY, TooltipDirection.RIGHT);
+                    return true;
+
+
                 }
         );
         craftButton.setDisabled(() -> {
@@ -186,47 +180,4 @@ public abstract class MixinVaultEnchanterScreen extends AbstractElementContainer
     @Shadow(remap = false)
     abstract void tryCraft();
 
-    private static List<ItemStack> qolHunters$getMissingInputs(List<ItemStack> recipeInputs, Inventory playerInventory, SimpleContainer containerInventory) {
-        List<ItemStack> missing = new ArrayList<>();
-
-        for (ItemStack input : recipeInputs) {
-            int neededCount = input.getCount();
-
-            for (ItemStack overSized : qolhunters$getAllItems(containerInventory)) {
-                if (qolhunters$isEqualCrafting(input, overSized)) {
-                    neededCount -= overSized.getCount();
-                }
-            }
-
-            for (ItemStack plStack : playerInventory.items) {
-                if (qolhunters$isEqualCrafting(input, plStack)) {
-                    neededCount -= plStack.getCount();
-                }
-            }
-
-            if (neededCount > 0) {
-                missing.add(input);
-            }
-        }
-
-        return missing;
-    }
-    private static boolean qolhunters$isEqualCrafting(ItemStack thisStack, ItemStack thatStack) {
-        return thisStack.getItem() == thatStack.getItem()
-                && thisStack.getDamageValue() == thatStack.getDamageValue()
-                && (thisStack.getTag() == null || thisStack.areShareTagsEqual(thatStack));
-    }
-
-    private static List<ItemStack> qolhunters$getAllItems(SimpleContainer container) {
-        try {
-            Field itemsField = SimpleContainer.class.getDeclaredField("items");
-            itemsField.setAccessible(true);
-            List<ItemStack> items = (List<ItemStack>) itemsField.get(container);
-            return items.stream()
-                    .filter(itemStack -> !itemStack.isEmpty())
-                    .collect(Collectors.toList());
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException("Failed to access items field in SimpleContainer", e);
-        }
-    }
 }

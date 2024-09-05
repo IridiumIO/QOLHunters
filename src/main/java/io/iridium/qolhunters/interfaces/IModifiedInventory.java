@@ -1,4 +1,4 @@
-package io.iridium.qolhunters;
+package io.iridium.qolhunters.interfaces;
 
 import iskallia.vault.block.entity.VaultEnchanterTileEntity;
 import iskallia.vault.container.oversized.OverSizedInventory;

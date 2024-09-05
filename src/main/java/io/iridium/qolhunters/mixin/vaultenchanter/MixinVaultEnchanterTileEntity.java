@@ -1,7 +1,6 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.vaultenchanter;
 
-import io.iridium.qolhunters.IModifiedInventory;
-import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.interfaces.IModifiedInventory;
 import iskallia.vault.block.entity.VaultEnchanterTileEntity;
 import iskallia.vault.block.entity.base.BookAnimatingTileEntity;
 import iskallia.vault.container.oversized.OverSizedInventory;

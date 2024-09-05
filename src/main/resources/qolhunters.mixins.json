@@ -5,11 +5,11 @@
   "refmap": "qolhunters.refmap.json",
   "mixins": [
     "MixinVaultModifiersConfig",
-    "MixinVaultEnchanterContainer",
-    "MixinVaultEnchanterTileEntity",
-    "MixinVaultEnchanterBlock",
-    "MixinVaultEnchanterScreen",
-    "MixinEnchantmentCost"
+    "vaultenchanter.MixinVaultEnchanterContainer",
+    "vaultenchanter.MixinVaultEnchanterTileEntity",
+    "vaultenchanter.MixinVaultEnchanterBlock",
+    "vaultenchanter.MixinVaultEnchanterScreen",
+    "vaultenchanter.MixinEnchantmentCost"
   ],
   "minVersion": "0.8"
 }

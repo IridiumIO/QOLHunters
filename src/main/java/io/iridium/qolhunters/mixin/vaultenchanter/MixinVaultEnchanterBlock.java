@@ -1,6 +1,6 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.vaultenchanter;
 
-import io.iridium.qolhunters.IModifiedInventory;
+import io.iridium.qolhunters.interfaces.IModifiedInventory;
 import io.iridium.qolhunters.QOLHunters;
 import iskallia.vault.block.base.FacedBlock;
 import iskallia.vault.block.entity.VaultEnchanterTileEntity;

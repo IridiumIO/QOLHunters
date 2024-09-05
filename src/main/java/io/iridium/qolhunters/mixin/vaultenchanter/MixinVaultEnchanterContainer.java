@@ -1,7 +1,7 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.vaultenchanter;
 
 import com.google.common.collect.Sets;
-import io.iridium.qolhunters.IModifiedInventory;
+import io.iridium.qolhunters.interfaces.IModifiedInventory;
 import io.iridium.qolhunters.QOLHunters;
 import iskallia.vault.block.entity.VaultEnchanterTileEntity;
 import iskallia.vault.container.oversized.OverSizedContainerSynchronizer;
