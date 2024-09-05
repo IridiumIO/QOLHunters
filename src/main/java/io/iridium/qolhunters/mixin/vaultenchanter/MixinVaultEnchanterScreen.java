@@ -97,7 +97,7 @@ public abstract class MixinVaultEnchanterScreen extends AbstractElementContainer
         );
         ButtonElement<?> craftButton;
         this.addElement(
-                craftButton = (ButtonElement<?>) new ButtonElement(Spatials.positionXY(145, 68), ScreenTextures.BUTTON_CRAFT_TEXTURES, this::tryCraft)
+                craftButton = (ButtonElement<?>) new ButtonElement(Spatials.positionXY(145, 98), ScreenTextures.BUTTON_CRAFT_TEXTURES, this::tryCraft)
                         .layout((screen, gui, parent, world) -> world.translateXY(gui))
         );
         craftButton.tooltip(

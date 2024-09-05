@@ -58,7 +58,7 @@ public abstract class MixinVaultEnchanterContainer extends AbstractElementContai
         }
 
         SimpleContainer ct = this.tileEntity.getInventory();
-        this.addSlot(new Slot(ct, 0, 146, 92) {
+        this.addSlot(new Slot(ct, 0, 146, 78) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 if (stack.isEmpty()) {
@@ -84,7 +84,7 @@ public abstract class MixinVaultEnchanterContainer extends AbstractElementContai
         }
 
         this.addSlot(
-                new OverSizedTabSlot(overSizedInventory, 0, 90, 3)
+                new OverSizedTabSlot(overSizedInventory, 0, 146, 57)
                         .setFilter(stack -> stack.getItem() == Items.EMERALD).setBackground(InventoryMenu.BLOCK_ATLAS, ModSlotIcons.JEWEL_NO_ITEM)
         );
 
