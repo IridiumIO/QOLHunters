@@ -44,7 +44,7 @@ public abstract class MixinVaultEnchanterContainer extends AbstractElementContai
      * @author
      * @reason
      */
-    @Overwrite
+    @Overwrite(remap = false)
     private void initSlots(Inventory playerInventory) {
 
         for (int row = 0; row < 3; row++) {
@@ -84,7 +84,7 @@ public abstract class MixinVaultEnchanterContainer extends AbstractElementContai
         }
 
         this.addSlot(
-                new OverSizedTabSlot(overSizedInventory, 0, 146, 110)
+                new OverSizedTabSlot(overSizedInventory, 0, 90, 3)
                         .setFilter(stack -> stack.getItem() == Items.EMERALD).setBackground(InventoryMenu.BLOCK_ATLAS, ModSlotIcons.JEWEL_NO_ITEM)
         );
 
@@ -97,6 +97,7 @@ public abstract class MixinVaultEnchanterContainer extends AbstractElementContai
      * @reason
      */
     @Overwrite
+    @Override
     public ItemStack quickMoveStack(Player player, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
