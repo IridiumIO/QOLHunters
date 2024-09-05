@@ -3,13 +3,16 @@
   "package": "io.iridium.qolhunters.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "qolhunters.refmap.json",
+  "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
-    "MixinVaultModifiersConfig",
     "vaultenchanter.MixinVaultEnchanterContainer",
     "vaultenchanter.MixinVaultEnchanterTileEntity",
     "vaultenchanter.MixinVaultEnchanterBlock",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultenchanter.MixinEnchantmentCost"
+  ],
+  "client": [
+    "MixinVaultModifiersConfig"
   ],
   "minVersion": "0.8"
 }
