@@ -1,15 +1,9 @@
-package io.iridium.qolhunters.mixin.keybinds.bountytable;
+package io.iridium.qolhunters.mixin.keybinds;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.util.KeyBindings;
-import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
-import iskallia.vault.client.gui.framework.render.spi.ITooltipRendererFactory;
-import iskallia.vault.client.gui.framework.screen.AbstractElementContainerScreen;
 import iskallia.vault.client.gui.screen.bounty.BountyScreen;
 import iskallia.vault.client.gui.screen.bounty.element.BountyTableContainerElement;
-import iskallia.vault.container.BountyContainer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,11 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Mixin(BountyScreen.class)
-public abstract class MixinBountyScreen extends AbstractElementContainerScreen<BountyContainer> {
-
-    protected MixinBountyScreen(BountyContainer container, Inventory inventory, Component title, IElementRenderer elementRenderer, ITooltipRendererFactory<AbstractElementContainerScreen<BountyContainer>> tooltipRendererFactory) {
-        super(container, inventory, title, elementRenderer, tooltipRendererFactory);
-    }
+public abstract class MixinBountyScreen {
 
     @Shadow(remap = false) @Final
     private BountyTableContainerElement bountyTableContainerElement;

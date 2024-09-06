@@ -17,7 +17,10 @@
     "configs.MixinSkillDescriptionsConfig",
     "configs.MixinModConfigs",
     "vaultenchanter.MixinVaultEnchanterScreen",
-    "keybinds.bountytable.MixinBountyScreen"
+    "keybinds.MixinBountyScreen",
+    "keybinds.MixinForgeRecipeContainerScreen",
+    "keybinds.MixinVaultEnchanterScreen",
+    "keybinds.MixinModifierWorkbenchScreen"
   ],
   "minVersion": "0.8"
 }
