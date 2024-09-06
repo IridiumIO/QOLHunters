@@ -1,0 +1,99 @@
+{
+
+  "PROMINENT_STATS_DESCRIPTIONS": {
+
+    "damage_per_second": "Your \u00A7baverage damage per second\u00A77 against any entity, including any damage affected by \u00A7aattributes\u00A77 or \u00A7aTalents\u00A77",
+    "health": "Your \u00A7bmaximum hit points\u00A77",
+    "defense": "Your \u00A7btotal protection\u00A77, including \u00A7aArmor\u00A77, \u00A7aResistance\u00A77 and \u00A7aBlock Chance\u00A77",
+    "mana": "Your \u00A7bmaximum Mana\u00A77",
+    "greed": "\u00A7bComing soon!\u00A77"
+
+  },
+
+
+  "MOD_GEAR_ATTRIBUTE_DESCRIPTIONS": {
+
+    "the_vault:ability_power": "Your \u00A7bdamage\u00A77 dealt against \u00A7aany entity\u00A77 through \u00A7aabilities\u00A77 affected by this statistic",
+    "the_vault:armor": "Your \u00A7btotal armor protection\u00A77",
+    "the_vault:damage_spiders": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aSpiders\u00A77",
+    "the_vault:attack_damage": "Your \u00A7bdamage\u00A77 dealt against \u00A7aany entity\u00A77",
+    "the_vault:attack_range": "Your \u00A7btotal range\u00A77 against \u00A7aany entity\u00A77",
+    "the_vault:attack_speed": "Your \u00A7btotal attack speed\u00A77 against \u00A7aany entity\u00A77",
+
+    "the_vault:block": "Your \u00A7bchance\u00A77 to \u00A7bblock\u00A77 \u00A7aany incoming damage\u00A77  |  \u00A7cMaximum obtainable: 60%\u00A77",
+
+    "the_vault:on_hit_chain": "Your \u00A7bnumber\u00A77 of \u00A7bchained entities\u00A77 \u00A7aper hit\u00A77",
+    "the_vault:cooldown_reduction": "Your \u00A7bcooldown reduction\u00A77 for \u00A7aany Ability\u00A77  |  \u00A7cMaximum obtainable: 80%\u00A77",
+    "the_vault:copiously": "Your \u00A7bchance\u00A77 to \u00A7bdouble loot\u00A77 from \u00A7bOres\u00A77 mined for the \u00A7bfirst time\u00A77",
+    "the_vault:critical_hit_mitigation": "Your \u00A7bchance\u00A77 to \u00A7breduce\u00A77 the \u00A7bdamage\u00A77 of a \u00A7aCritical Hit\u00A77",
+    "the_vault:critical_hit_chance": "Your \u00A7bchance\u00A77 to \u00A7bperform\u00A77 a \u00A7bCritical Hit\u00A77",
+    
+    "the_vault:damage_increase": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aany entity\u00A77",
+
+    "the_vault:healing_effectiveness": "Your \u00A7beffectiveness\u00A77 of \u00A7bhealing\u00A77 through \u00A7aany method\u00A77",
+    "the_vault:health": "Your \u00A7bmaximum hit points\u00A77",
+
+    "the_vault:damage_illagers": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aIllagers\u00A77",
+    "the_vault:durability_wear_reduction": "Your \u00A7bchance\u00A77 to \u00A7bnot reduce durability\u00A77 upon using \u00A7aany item\u00A77",
+    "the_vault:item_quantity": "Your \u00A7bincreased loot quantity\u00A77 in \u00A7aany chest\u00A77  |  \u00A7cTreasure Chests are not affected by this\u00A77",
+    "the_vault:item_rarity": "Your \u00A7bincreased loot rarity\u00A77 in \u00A7aany chest\u00A77  |  \u00A7cTreasure Chests are not affected by this\u00A77",
+
+    "the_vault:knockback_resistance": "Your \u00A7bresistance\u00A77 to being \u00A7bknocked back\u00A77",
+
+    "the_vault:lucky_hit_chance": "Your \u00A7bchance\u00A77 to \u00A7bperform\u00A77 a \u00A7bLucky Hit\u00A77, dealing \u00A7b10% increased damage\u00A77 or applying \u00A7badditional Lucky Hit Talent effects\u00A77 if unlocked",
+
+    "the_vault:mana_additive": "Your \u00A7bmaximum Mana\u00A77",
+    "the_vault:mana_regen": "Your \u00A7bMana/s regenerated\u00A77, with \u00A7a100%\u00A77 being \u00A7a1 Mana/s\u00A77",
+    "the_vault:mining_speed": "Your \u00A7bbase speed\u00A77 at \u00A7bmining blocks\u00A77",
+    
+    "the_vault:damage_nether": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aPiglins\u00A77",
+
+    "the_vault:reach": "Your \u00A7btotal range\u00A77 towards \u00A7aany block\u00A77  |  \u00A7cMaximum obtainable (in Vaults): 7.0\u00A77",
+    "the_vault:resistance": "Your \u00A7badditional damage reduction\u00A77  |  \u00A7cMaximum obtainable: 50%\u00A77",
+
+    "the_vault:shocking_hit_chance": "Your \u00A7bchance\u00A77 to \u00A7bperform\u00A77 a \u00A7bShocking Hit\u00A77, shocking back \u00A7bentities surrounding\u00A77 the \u00A7btarget entity\u00A77",
+    "the_vault:soul_chance": "Your \u00A7badditional chance\u00A77 to gain \u00A7badditional Soul Shards\u00A77 when \u00A7aunaliving any entity\u00A77",
+    "the_vault:on_hit_stun": "Your \u00A7bchance\u00A77 to \u00A7bstun\u00A77 an \u00A7bentity\u00A77",
+    "the_vault:sweeping_hit_chance": "Your \u00A7bchance\u00A77 to \u00A7bperform\u00A77 a \u00A7bSweeping Hit\u00A77, sweeping \u00A7bentities surrounding\u00A77 the \u00A7btarget entity\u00A77",
+
+    "the_vault:thorns_chance": "Your \u00A7bchance\u00A77 to \u00A7bperform\u00A77 a \u00A7bThorns Hit\u00A77 upon \u00A7abeing hit\u00A77, dealing \u00A7badditional Thorns damage\u00A77",
+    "the_vault:thorns_damage_flat": "Your \u00A7badditional damage\u00A77 dealt upon \u00A7aperforming\u00A77 a \u00A7aThorns Hit\u00A77",
+    "the_vault:trap_disarming": "Your \u00A7bchance\u00A77 to \u00A7bdisarm\u00A77 \u00A7aany trapped chest\u00A77",
+
+    "the_vault:damage_undead": "Your \u00A7badditional damage\u00A77 dealt against the \u00A7aUndead\u00A77",
+    "the_vault:damage_champion": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aChampions\u00A77",
+    "the_vault:damage_assassin": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aAssassins\u00A77",
+    "the_vault:damage_horde": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aHorde\u00A77 mobs",
+    "the_vault:damage_dungeon": "Your \u00A7badditional damage\u00A77 dealt against \u00A7aDungeon\u00A77 mobs",
+
+    "the_vault:velara_affinity": "Your \u00A7badditional chance\u00A77 to gain a \u00A7bfavor\u00A77 upon \u00A7acompleting\u00A77 a \u00A7aVault God Altar\u00A77 of \u00A7aVelara\u00A77",
+    "the_vault:tenos_affinity": "Your \u00A7badditional chance\u00A77 to gain a \u00A7bfavor\u00A77 upon \u00A7acompleting\u00A77 a \u00A7aVault God Altar\u00A77 of \u00A7aTenos\u00A77",
+    "the_vault:wendarr_affinity": "Your \u00A7badditional chance\u00A77 to gain a \u00A7bfavor\u00A77 upon \u00A7acompleting\u00A77 a \u00A7aVault God Altar\u00A77 of \u00A7aWendarr\u00A77",
+    "the_vault:idona_affinity": "Your \u00A7badditional chance\u00A77 to gain a \u00A7bfavor\u00A77 upon \u00A7acompleting\u00A77 a \u00A7aVault God Altar\u00A77 of \u00A7aIdona\u00A77"
+  
+  },
+
+
+  "VAULT_STATS_DESCRIPTIONS": {
+
+    "vaults_total": "Your total number of \u00A7bVaults ran\u00A77",
+    "vaults_completed": "Your total number of \u00A7bVault Objectives completed\u00A77",
+    "vaults_bailed": "Your total number of \u00A7bVaults survived\u00A77",
+    "vaults_failed": "Your total number of \u00A7bVaults unalived in\u00A77",
+
+    "experience": "Your total amount of \u00A7bVault Experience\u00A77",
+    
+    "damage_dealt": "Your total amount of \u00A7bdamage dealt\u00A77 in \u00A7bVaults\u00A77",
+    "damage_taken": "Your total amount of \u00A7bdamage taken\u00A77 in \u00A7bVaults\u00A77",
+    "mobs_unalived": "Your total number of \u00A7bentities unalived\u00A77 in \u00A7bVaults\u00A77",
+
+    "blocks_mined": "Your total number of \u00A7bblocks mined\u00A77 in \u00A7bVaults\u00A77",
+    "trapped_chests": "Your total number of \u00A7btrapped chests triggered\u00A77 in \u00A7bVaults\u00A77",
+    "chests_looted": "Your total number of \u00A7bchests looted\u00A77 in \u00A7bVaults\u00A77",
+    "treasure_rooms_opened": "Your total number of \u00A7bTreasure Rooms opened\u00A77 in \u00A7bVaults\u00A77",
+
+    "crystals_crafted": "Your total number of \u00A7bVault Crystals crafted\u00A77"
+
+  }
+
+}
