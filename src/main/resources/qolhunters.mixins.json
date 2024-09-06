@@ -11,7 +11,7 @@
     "vaultenchanter.MixinEnchantmentCost"
   ],
   "client": [
-    "MixinVaultModifiersConfig",
+    "configs.MixinVaultModifiersConfig",
     "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"

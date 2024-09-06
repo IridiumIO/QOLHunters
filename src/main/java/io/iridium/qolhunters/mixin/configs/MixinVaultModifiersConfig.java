@@ -1,4 +1,4 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.configs;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
