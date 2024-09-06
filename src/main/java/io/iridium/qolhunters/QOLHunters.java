@@ -3,6 +3,7 @@ package io.iridium.qolhunters;
 import com.mojang.logging.LogUtils;
 
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.util.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -38,6 +39,7 @@ public class QOLHunters {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        KeyBindings.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
