@@ -2,12 +2,12 @@ package io.iridium.qolhunters;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.resources.ResourceLocation;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,33 +24,21 @@ public class QOLHunters {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+
         modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(EventPriority.HIGHEST, this::commonSetup);
+        modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, QOLHuntersClientConfigs.CLIENT_SPEC, "qolhunters-client.toml");
 
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        ConfigBuilder.buildConfig();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
-
-        ResourceLocation resourceLocation;
-
-        boolean isWoldsVaultModInstalled = ModList.get().isLoaded("woldsvaults");
-
-        if(isWoldsVaultModInstalled){
-            LOGGER.info("QOLHUNTERS: Wold's Vault Mod is installed");
-            resourceLocation = new ResourceLocation("qolhunters", "wolds_modifiers.json");
-            LOGGER.info(resourceLocation.toString());
-        }else{
-            resourceLocation = new ResourceLocation("qolhunters", "vault_modifiers.json");
-        }
-
-
-
-        ConfigBuilder.buildConfig(resourceLocation);
     }
 
 

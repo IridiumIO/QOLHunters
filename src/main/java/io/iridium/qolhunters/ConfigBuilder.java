@@ -2,34 +2,46 @@ package io.iridium.qolhunters;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
+import static io.iridium.qolhunters.QOLHunters.LOGGER;
+@OnlyIn(Dist.CLIENT)
 public class ConfigBuilder {
 
-    public static void buildConfig(ResourceLocation customResource) {
-        File location = new File(Minecraft.getInstance().gameDirectory + "/config/the_vault/vault_modifiers_iridium.json");
+    public  static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/vault_modifiers_iridium.json").toString());
 
-        if (location.exists()) return;
+    public static void buildConfig() {
 
-        location.getParentFile().mkdirs();
-        try {
-            location.createNewFile();
+        ResourceLocation customResource = new ResourceLocation("qolhunters", isWoldsVaultModInstalled() ? "wolds_modifiers.json" : "vault_modifiers.json");
 
-            InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(customResource).getInputStream();
 
-            Files.copy(inputStream, location.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        if (VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.exists()) {
+            VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.delete();
+        }
 
+        VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.getParentFile().mkdirs();
+
+        try (InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(customResource).getInputStream()) {
+            Files.copy(inputStream, VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (Exception e) {
-            QOLHunters.LOGGER.error("Failed to create new file", e);
+            LOGGER.error("Failed to create new file", e);
         }
 
 
     }
+
+
+    public static boolean isWoldsVaultModInstalled() {
+        return ModList.get().isLoaded("woldsvaults");
+    }
+
+
 }
