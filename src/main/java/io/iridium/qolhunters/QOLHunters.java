@@ -34,10 +34,11 @@ public class QOLHunters {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        ConfigBuilder.buildConfig();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        ConfigBuilder.buildConfig();
+
     }
 
 

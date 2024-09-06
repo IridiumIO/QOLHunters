@@ -2,6 +2,8 @@ package io.iridium.qolhunters;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
 
 import java.io.File;
@@ -10,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 import static io.iridium.qolhunters.QOLHunters.LOGGER;
-
+@OnlyIn(Dist.CLIENT)
 public class ConfigBuilder {
 
     public  static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(Minecraft.getInstance().gameDirectory + "/config/the_vault/vault_modifiers_iridium.json");

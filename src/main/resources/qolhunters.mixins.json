@@ -8,11 +8,11 @@
     "vaultenchanter.MixinVaultEnchanterContainer",
     "vaultenchanter.MixinVaultEnchanterTileEntity",
     "vaultenchanter.MixinVaultEnchanterBlock",
-    "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultenchanter.MixinEnchantmentCost"
   ],
   "client": [
-    "MixinVaultModifiersConfig"
+    "MixinVaultModifiersConfig",
+    "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"
 }
