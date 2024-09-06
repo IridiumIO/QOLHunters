@@ -16,7 +16,8 @@
     "configs.MixinMenuPlayerStatDescriptionConfig",
     "configs.MixinSkillDescriptionsConfig",
     "configs.MixinModConfigs",
-    "vaultenchanter.MixinVaultEnchanterScreen"
+    "vaultenchanter.MixinVaultEnchanterScreen",
+    "keybinds.bountytable.MixinBountyScreen"
   ],
   "minVersion": "0.8"
 }
