@@ -16,31 +16,63 @@ import static io.iridium.qolhunters.QOLHunters.LOGGER;
 @OnlyIn(Dist.CLIENT)
 public class ConfigBuilder {
 
-    public  static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/vault_modifiers_iridium.json").toString());
+    public  static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/vault_modifiers.json").toString());
+    public static final File ABILITIES_DESCRIPTIONS_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/abilities_descriptions.json").toString());
+    public static final File MENU_PLAYER_STAT_DESCRIPTION_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/menu_player_stat_description.json").toString());
+    public static final File SKILL_DESCRIPTIONS_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/skill_descriptions.json").toString());
 
-    public static void buildConfig() {
-
-        ResourceLocation customResource = new ResourceLocation("qolhunters", isWoldsVaultModInstalled() ? "wolds_modifiers.json" : "vault_modifiers.json");
 
 
-        if (VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.exists()) {
-            VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.delete();
-        }
 
-        VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.getParentFile().mkdirs();
+    public static void buildConfigs() {
 
-        try (InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(customResource).getInputStream()) {
-            Files.copy(inputStream, VAULT_MODIFIERS_CONFIG_FILE_CUSTOM.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (Exception e) {
-            LOGGER.error("Failed to create new file", e);
-        }
-
+        LOGGER.info("QOLHunters: Building custom configs!");
+        buildModifiersConfigFile();
+        buildBetterDescriptionsConfigFiles();
 
     }
 
 
+    public static void buildBetterDescriptionsConfigFiles(){
+        if (isWoldsVaultModInstalled()) return;
+        copyResourceToFile("betterconfigs/abilities_descriptions.json", ABILITIES_DESCRIPTIONS_CUSTOM);
+        copyResourceToFile("betterconfigs/menu_player_stat_description.json", MENU_PLAYER_STAT_DESCRIPTION_CUSTOM);
+        copyResourceToFile("betterconfigs/skill_descriptions.json", SKILL_DESCRIPTIONS_CUSTOM);
+    }
+
+
+
+    public static void buildModifiersConfigFile() {
+        String resourceName = isWoldsVaultModInstalled() ? "wolds_modifiers.json" : "vault_modifiers.json";
+        copyResourceToFile(resourceName, VAULT_MODIFIERS_CONFIG_FILE_CUSTOM);
+    }
+
+
     public static boolean isWoldsVaultModInstalled() {
-        return ModList.get().isLoaded("woldsvaults");
+        boolean isWoldsVaultModInstalled = ModList.get().isLoaded("woldsvaults");
+        LOGGER.info("QOLHunters: WoldsVaults mod is installed: " + isWoldsVaultModInstalled);
+        return isWoldsVaultModInstalled;
+    }
+
+
+
+    private static void copyResourceToFile(String resourceName, File targetFile) {
+
+        LOGGER.info("QOLHunters: Copying resource {} to file {}", resourceName, targetFile);
+
+        ResourceLocation resource = new ResourceLocation("qolhunters", resourceName);
+
+        if (targetFile.exists()) {
+            targetFile.delete();
+        }
+
+        targetFile.getParentFile().mkdirs();
+
+        try (InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(resource).getInputStream()) {
+            Files.copy(inputStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e) {
+            LOGGER.error("QOLHunters: failed to create new file", e);
+        }
     }
 
 

@@ -28,7 +28,7 @@ mixin {
 
 
 
-version = '0.2.1-1.18.2'
+version = '0.3.0-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -242,7 +242,7 @@ tasks.withType(JavaCompile).configureEach {
 task copyMostRecentFile {
     doLast {
         def sourceDir = file('build/libs')
-        def destDir = file(System.getenv('APPDATA') + '\\ATLauncher\\instances\\VaultHunters3rdEdition\\mods')
+        def destDir = file(System.getenv('APPDATA') + '\\ATLauncher\\instances\\VaultHunters3rdEditionVanilla\\mods')
 
         // Find the most recent file
         def mostRecentFile = sourceDir.listFiles().max { it.lastModified() }

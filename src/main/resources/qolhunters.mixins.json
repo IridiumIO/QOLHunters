@@ -12,6 +12,10 @@
   ],
   "client": [
     "configs.MixinVaultModifiersConfig",
+    "configs.MixinAbilitiesDescriptionsConfig",
+    "configs.MixinMenuPlayerStatDescriptionConfig",
+    "configs.MixinSkillDescriptionsConfig",
+    "configs.MixinModConfigs",
     "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"
