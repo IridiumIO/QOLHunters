@@ -2,6 +2,7 @@ package io.iridium.qolhunters;
 
 import com.electronwill.nightconfig.core.file.FileConfig;
 import com.google.common.collect.ImmutableMap;
+import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -20,16 +21,16 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static boolean betterDescriptions = true;
     private static boolean vaultModifierOverlays = true;
     private static boolean vaultEnchanterEmeraldSlot = true;
-
+    private static boolean isWoldsVaultModInstalled = false;
 
 
     private static final Supplier<Boolean> TRUE = () -> true;
     private static final Supplier<Boolean> FALSE = () -> false;
 
     private static final Map<String, Supplier<Boolean>> BETTER_DESCRIPTIONS_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions,
-            "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> QOLHuntersMixinPlugin.betterDescriptions,
-            "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions
+            "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
+            "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
+            "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled
     );
 
     private static final Map<String, Supplier<Boolean>> VAULT_MODIFIER_OVERLAYS_CONDITIONS = ImmutableMap.of(
@@ -59,6 +60,10 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
 
     private static void loadConfig(){
+
+        isWoldsVaultModInstalled = FMLLoader.getLoadingModList().getModFileById("woldsvaults") != null;
+        QOLHunters.LOGGER.info("QOLHunters: WoldsVaults mod is installed: " + isWoldsVaultModInstalled);
+
         try {
             Path configPath = FMLPaths.CONFIGDIR.get().resolve(CONFIG_FILE_NAME);
             File configFile = configPath.toFile();
