@@ -15,6 +15,7 @@
     "configs.MixinAbilitiesDescriptionsConfig",
     "configs.MixinMenuPlayerStatDescriptionConfig",
     "configs.MixinSkillDescriptionsConfig",
+    "configs.MixinBingoConfig",
     "configs.MixinModConfigs",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "keybinds.MixinBountyScreen",

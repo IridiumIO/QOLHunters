@@ -20,7 +20,7 @@ public class ConfigBuilder {
     public static final File ABILITIES_DESCRIPTIONS_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/abilities_descriptions.json").toString());
     public static final File MENU_PLAYER_STAT_DESCRIPTION_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/menu_player_stat_description.json").toString());
     public static final File SKILL_DESCRIPTIONS_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/skill_descriptions.json").toString());
-
+    public static final File BINGO_CONFIG_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/bingo.json").toString());
 
 
 
@@ -38,6 +38,7 @@ public class ConfigBuilder {
         copyResourceToFile("betterconfigs/abilities_descriptions.json", ABILITIES_DESCRIPTIONS_CUSTOM);
         copyResourceToFile("betterconfigs/menu_player_stat_description.json", MENU_PLAYER_STAT_DESCRIPTION_CUSTOM);
         copyResourceToFile("betterconfigs/skill_descriptions.json", SKILL_DESCRIPTIONS_CUSTOM);
+        copyResourceToFile("betterconfigs/bingo.json", BINGO_CONFIG_CUSTOM);
     }
 
 
