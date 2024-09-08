@@ -13,6 +13,7 @@ import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityWidget;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModTextureAtlases;
 import iskallia.vault.skill.ability.component.AbilityDescriptionFactory;
+import iskallia.vault.skill.ability.component.AbilityLabelBindingRegistry;
 import iskallia.vault.skill.ability.component.AbilityLabelContext;
 import iskallia.vault.skill.ability.component.AbilityLabelFactory;
 import iskallia.vault.skill.base.LearnableSkill;
@@ -20,16 +21,20 @@ import iskallia.vault.skill.base.Skill;
 import iskallia.vault.skill.base.SpecializedSkill;
 import iskallia.vault.skill.base.TieredSkill;
 import iskallia.vault.skill.tree.AbilityTree;
+import iskallia.vault.util.calc.CooldownHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.*;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Mixin(AbilityDialog.class)
@@ -93,6 +98,13 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isParentTierBelowMaxLearnable = ((TieredSkill) parentAbility.getSpecialization()).getUnmodifiedTier() < ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isTargetTierBelowMaxLearnable = ((TieredSkill) target.getSpecialization()).getUnmodifiedTier() <= ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isVaultLevelSufficient = VaultBarOverlay.vaultLevel >= current.getUnlockLevel();
+
+
+        try {
+            HijackAbilityLabelFactory();
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
 
         // Determine the button text and action based on whether the target is a specialization
@@ -179,7 +191,6 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
             TieredSkill tieredSkill = (TieredSkill) target.getSpecialization();
 
-
             Field tiers = tieredSkill.getClass().getDeclaredField("tiers");
             tiers.setAccessible(true);
             List<LearnableSkill> childTiers = (List<LearnableSkill>) tiers.get(tieredSkill);
@@ -217,11 +228,64 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
     }
 
 
+
+    //TODO: None of this should be in this mixin at all. Move it to a separate class.
+    void HijackAbilityLabelFactory() throws NoSuchFieldException, IllegalAccessException {
+       Field FACTORY_MAP_FIELD = AbilityLabelFactory.class.getDeclaredField("FACTORY_MAP");
+        FACTORY_MAP_FIELD.setAccessible(true);
+
+        // Retrieve the value of the field
+        Map<String, AbilityLabelFactory.IAbilityComponentFactory> factoryMap =
+                (Map<String, AbilityLabelFactory.IAbilityComponentFactory>) FACTORY_MAP_FIELD.get(null);
+
+
+        Player player = Minecraft.getInstance().player;
+
+        QOLHunters.LOGGER.info("CooldownMultiplier: " + (player != null ? CooldownHelper.getCooldownMultiplier(player) : 0.0F));
+
+        factoryMap.put("cooldown",
+                context -> labelWithCooldownValue(
+                        "\n Cooldown: ",
+                        binding(context.config(), "cooldown"),
+                        "cooldown",
+                        player != null ? CooldownHelper.getCooldownMultiplier(player) : 0.0F
+                ));
+
+    }
+
+    private static <C extends Skill> String binding(C config, String key) {
+        return AbilityLabelBindingRegistry.getBindingValue(config, key);
+    }
+
+    private static MutableComponent labelWithCooldownValue(String label, String value, String colorKey, float abilityValue) {
+        float result = Float.parseFloat(value.replace("s", ""));
+        return new TextComponent(label)
+                .withStyle(Style.EMPTY.withColor(ModConfigs.COLORS.getColor("text")))
+                .append(text(value, colorKey).append(text(" (" + String.format("%.1f", result * (1.0 - abilityValue)) + "s)", colorKey)));
+    }
+
+    private static MutableComponent text(String text, String colorKey) {
+        return text(text, ModConfigs.COLORS.getColor(colorKey));
+    }
+
+    private static MutableComponent text(String text, TextColor color) {
+        return new TextComponent(text).withStyle(Style.EMPTY.withColor(color));
+    }
+
+
+
+
+
+
+
      @Unique
      void qOLHunters$appendLabels(MutableComponent component, List<String> keys, TextComponent header, AbilityLabelContext<?> context) {
          if (keys.isEmpty()) return;
          component.append(header);
-         for (String key : keys) {component.append(AbilityLabelFactory.create(key, context));}
+         for (String key : keys) {
+
+             component.append(AbilityLabelFactory.create(key, context));
+         }
      }
 
 
