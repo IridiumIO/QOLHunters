@@ -1,6 +1,7 @@
 package io.iridium.qolhunters.mixin.Abilities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.iridium.qolhunters.QOLHunters;
 import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.component.ScrollableContainer;
 import iskallia.vault.client.gui.overlay.VaultBarOverlay;
@@ -12,18 +13,23 @@ import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityWidget;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModTextureAtlases;
 import iskallia.vault.skill.ability.component.AbilityDescriptionFactory;
+import iskallia.vault.skill.ability.component.AbilityLabelContext;
+import iskallia.vault.skill.ability.component.AbilityLabelFactory;
+import iskallia.vault.skill.base.LearnableSkill;
 import iskallia.vault.skill.base.Skill;
 import iskallia.vault.skill.base.SpecializedSkill;
 import iskallia.vault.skill.base.TieredSkill;
 import iskallia.vault.skill.tree.AbilityTree;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.entity.player.Player;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.*;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Objects;
 
 @Mixin(AbilityDialog.class)
@@ -127,7 +133,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
         // Finally, Build the regret button, description component, and learn button
         qOLHunters$buildRegretButton(parentAbility, regretCost);
-        qOLHunters$buildDescriptionComponent(current, target);
+        try {qOLHunters$buildDescriptionComponent(current, target);} catch (Exception e) {QOLHunters.LOGGER.error(e.getMessage());}
         qOLHunters$buildLearnButton(buttonText, pressAction, activeState);
 
     }
@@ -154,13 +160,13 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
 
     /**
-     * Builds the description component for the ability dialog.
+     * Builds the description component for the ability dialog. Includes all ability levels and overlevels.
      *
      * @param current The current specialization skill.
      * @param target The target specialization skill.
      */
     @Unique
-    private void qOLHunters$buildDescriptionComponent(SpecializedSkill current, SpecializedSkill target) {
+    private void qOLHunters$buildDescriptionComponent(SpecializedSkill current, SpecializedSkill target) throws NoSuchFieldException, IllegalAccessException {
         // Update the description component if the selected ability or its level has changed
         int descriptionTier = ((TieredSkill) current.getSpecialization()).getActualTier();
         if (!Objects.equals(this.selectedAbility, this.prevSelectedAbility) || this.prevAbilityLevel != descriptionTier) {
@@ -169,10 +175,55 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             this.descriptionContentComponent = AbilityDescriptionFactory.create(
                     (TieredSkill) target.getSpecialization(), descriptionTier, descriptionMaxTier, VaultBarOverlay.vaultLevel
             );
+            this.descriptionContentComponent.append("\n\n");
+
+            TieredSkill tieredSkill = (TieredSkill) target.getSpecialization();
+
+
+            Field tiers = tieredSkill.getClass().getDeclaredField("tiers");
+            tiers.setAccessible(true);
+            List<LearnableSkill> childTiers = (List<LearnableSkill>) tiers.get(tieredSkill);
+
+
+            int containerWidth =  this.getDescriptionsBounds().width;
+            int charWidth = Minecraft.getInstance().font.width("⋮");
+            int headerWidth = Minecraft.getInstance().font.width(" All Levels ");
+
+            int numChars = (containerWidth - headerWidth) / (2 * charWidth) - 12;
+
+            String separator = new String(new char[numChars]).replace('\0', '⋮');
+            this.descriptionContentComponent.append(new TextComponent("\n" + separator).withStyle(ChatFormatting.DARK_GRAY));
+            this.descriptionContentComponent.append(new TextComponent(" All Levels ").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.BOLD));
+            this.descriptionContentComponent.append(new TextComponent( separator).withStyle(ChatFormatting.DARK_GRAY));
+
+            for (int i = 1; i <= descriptionMaxTier; i++) {
+                QOLHunters.LOGGER.info("Tier: " + i);
+                List<String> keys = ModConfigs.ABILITIES_DESCRIPTIONS.getCurrent(tieredSkill.getId());
+                TextComponent header = (TextComponent) new TextComponent("\n\nLevel " + i).withStyle(ChatFormatting.BOLD);
+                qOLHunters$appendLabels(descriptionContentComponent, keys, header, new AbilityLabelContext<>(tieredSkill.getChild(i), VaultBarOverlay.vaultLevel));
+            }
+
+            for (int i = descriptionMaxTier+1; i <= childTiers.size(); i++) {
+                QOLHunters.LOGGER.info("OverTier: " + i);
+                List<String> keys = ModConfigs.ABILITIES_DESCRIPTIONS.getCurrent(tieredSkill.getId());
+                TextComponent header = (TextComponent) new TextComponent("\n\n§kO§r ").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.DARK_RED).append(new TextComponent("Level " + i).withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.BLACK));
+                qOLHunters$appendLabels(descriptionContentComponent, keys, header, new AbilityLabelContext<>(tieredSkill.getChild(i), VaultBarOverlay.vaultLevel));
+            }
+
+
             this.prevSelectedAbility = this.selectedAbility;
             this.prevAbilityLevel = descriptionTier;
         }
     }
+
+
+     @Unique
+     void qOLHunters$appendLabels(MutableComponent component, List<String> keys, TextComponent header, AbilityLabelContext<?> context) {
+         if (keys.isEmpty()) return;
+         component.append(header);
+         for (String key : keys) {component.append(AbilityLabelFactory.create(key, context));}
+     }
+
 
     /**
      * Builds the regret button for the ability dialog, and whether it is active.
