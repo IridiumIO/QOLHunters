@@ -5,23 +5,24 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
-    "vaultenchanter.MixinVaultEnchanterContainer",
-    "vaultenchanter.MixinVaultEnchanterTileEntity",
+    "vaultenchanter.MixinEnchantmentCost",
     "vaultenchanter.MixinVaultEnchanterBlock",
-    "vaultenchanter.MixinEnchantmentCost"
+    "vaultenchanter.MixinVaultEnchanterContainer",
+    "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-    "configs.MixinVaultModifiersConfig",
+    "Abilities.MixinAbilityDialog",
     "configs.MixinAbilitiesDescriptionsConfig",
-    "configs.MixinMenuPlayerStatDescriptionConfig",
-    "configs.MixinSkillDescriptionsConfig",
     "configs.MixinBingoConfig",
+    "configs.MixinMenuPlayerStatDescriptionConfig",
     "configs.MixinModConfigs",
-    "vaultenchanter.MixinVaultEnchanterScreen",
+    "configs.MixinSkillDescriptionsConfig",
+    "configs.MixinVaultModifiersConfig",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
+    "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
-    "keybinds.MixinModifierWorkbenchScreen"
+    "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"
 }

@@ -22,6 +22,8 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static boolean vaultModifierOverlays = true;
     private static boolean vaultInterfaceKeybinds = true;
     private static boolean vaultEnchanterEmeraldSlot = true;
+    private static boolean betterAbilitiesTab = true;
+
     private static boolean isWoldsVaultModInstalled = false;
 
 
@@ -56,6 +58,9 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     );
 
 
+    private static final Map<String, Supplier<Boolean>> BETTER_ABILITIES_TAB_CONDITIONS = ImmutableMap.of(
+            "io.iridium.qolhunters.mixin.Abilities.MixinAbilityDialog", () -> QOLHuntersMixinPlugin.betterAbilitiesTab
+    );
 
 
 
@@ -65,6 +70,7 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static final String VAULT_MODIFIER_OVERLAYS_CONFIG_VALUE = "Client-Only Extensions.Vault Modifier Text Overlays";
     private static final String VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE = "Client-Only Extensions.Vault Interface Keybinds";
     private static final String VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE = "Client-Server Extensions.Vault Enchanter Emeralds Slot";
+    private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = "Client-Only Extensions.Better Abilities Tab";
 
 
     private static void loadConfig(){
@@ -83,12 +89,14 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
                 vaultModifierOverlays = config.getOrElse(VAULT_MODIFIER_OVERLAYS_CONFIG_VALUE, true);
                 vaultInterfaceKeybinds = config.getOrElse(VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE, true);
                 vaultEnchanterEmeraldSlot = config.getOrElse(VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE, true);
+                betterAbilitiesTab = config.getOrElse(BETTER_ABILITIES_TAB_CONFIG_VALUE, true);
 
                 QOLHunters.LOGGER.info("QOLHunters: Vanilla Safe Mode: " + vanillaSafeMode);
                 QOLHunters.LOGGER.info("QOLHunters: Better Descriptions: " + betterDescriptions);
                 QOLHunters.LOGGER.info("QOLHunters: Vault Modifier Overlays: " + vaultModifierOverlays);
                 QOLHunters.LOGGER.info("QOLHunters: Vault Interface Keybinds: " + vaultInterfaceKeybinds);
                 QOLHunters.LOGGER.info("QOLHunters: Vault Enchanter Emeralds Slot: " + vaultEnchanterEmeraldSlot);
+                QOLHunters.LOGGER.info("QOLHunters: Better Abilities Tab: " + betterAbilitiesTab);
 
                 config.close();
             }
@@ -114,6 +122,8 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
             shouldApply = VAULT_MODIFIER_OVERLAYS_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
         } else if(VAULT_KEYBINDS_CONDITIONS.containsKey(mixinClassName)){
             shouldApply = VAULT_KEYBINDS_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
+        } else if(BETTER_ABILITIES_TAB_CONDITIONS.containsKey(mixinClassName)){
+            shouldApply = BETTER_ABILITIES_TAB_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
         } else {
             shouldApply = TRUE.get();
         }
