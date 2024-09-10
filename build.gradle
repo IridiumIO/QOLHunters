@@ -28,7 +28,7 @@ mixin {
 
 
 
-version = '0.5.1-1.18.2'
+version = '0.5.2-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -166,8 +166,8 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.9'
     implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:${vault_hunters_version}")
-    runtimeOnly fg.deobf("curse.maven:lightspeedmod-821790:4594803")
-    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
+//    runtimeOnly fg.deobf("curse.maven:lightspeedmod-821790:4594803")
+//    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 
