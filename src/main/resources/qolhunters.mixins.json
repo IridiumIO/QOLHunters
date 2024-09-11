@@ -11,8 +11,9 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-    "accessors.AccessorAbstractContainerScreen",
+    "cake.MixinCakeObjective",
     "Abilities.MixinAbilityDialog",
+    "accessors.AccessorAbstractContainerScreen",
     "configs.MixinAbilitiesDescriptionsConfig",
     "configs.MixinBingoConfig",
     "configs.MixinMenuPlayerStatDescriptionConfig",
