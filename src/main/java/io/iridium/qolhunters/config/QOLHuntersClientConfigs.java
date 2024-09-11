@@ -13,6 +13,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_ENCHANTER_EMERALDS_SLOT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
+    public static final ForgeConfigSpec.ConfigValue<Integer> CAKE_VAULT_OVERLAY_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<Integer> CAKE_VAULT_OVERLAY_STYLE;
 
     static {
 
@@ -33,6 +35,8 @@ public class QOLHuntersClientConfigs {
         VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define("Vault Modifier Text Overlays", true);
         VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define("Vault Interface Keybinds", true);
         BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define("Better Abilities Tab", true);
+        CAKE_VAULT_OVERLAY_COLOR = CLIENT_BUILDER.comment("Changes the color of the Vault Cake overlay").defineInRange("Cake Vault Overlay Color", 0, 0, 3);
+        CAKE_VAULT_OVERLAY_STYLE = CLIENT_BUILDER.comment("Changes the style of the Vault Cake overlay\n0=Vignette, 1=Cake HUD Icons").defineInRange("Cake Vault Overlay Style", 0, 0, 1);
 
         CLIENT_BUILDER.pop();
 

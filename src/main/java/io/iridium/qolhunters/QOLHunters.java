@@ -4,6 +4,10 @@ import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,7 +19,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
 
@@ -51,20 +54,31 @@ public class QOLHunters {
 
         @SubscribeEvent
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
-            LOGGER.info("Key input event:  " + event.getKey());
 
-            if(event.getModifiers() == GLFW.GLFW_MOD_CONTROL && event.getKey() == GLFW.GLFW_KEY_EQUAL && event.getAction() == GLFW.GLFW_RELEASE) {
-                    SuperCakeObjective.qol$colorIndex = (SuperCakeObjective.qol$colorIndex + 1) % 3;
+            if(KeyBindings.TOGGLE_CAKE_OVERLAY_COLOR.consumeClick()) {
+                    SuperCakeObjective.qol$colorIndex = (SuperCakeObjective.qol$colorIndex + 1) % SuperCakeObjective.COLORMAP.size();
+                    Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
+                    displayMessageOnScreen(new TextComponent("Changed Cake Overlay Color").withStyle(style));
+                    QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(SuperCakeObjective.qol$colorIndex);
+            }
 
-//                    //send player message in chat
-//                    Player player = Minecraft.getInstance().player;
-//                    if(player != null) {
-//                        Style style = Style.EMPTY.withColor(SuperCakeObjective.qOLHunters$colorMap.get(SuperCakeObjective.qol$colorIndex));
-//                        player.displayClientMessage(new TextComponent("Changed Cake Overlay Color").withStyle(style), false);
-//                      }
-
+            if(KeyBindings.TOGGLE_CAKE_OVERLAY_STYLE.consumeClick()) {
+                SuperCakeObjective.qol$overlayStyle = (SuperCakeObjective.qol$overlayStyle + 1) % 2;
+                Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
+                String styleText = SuperCakeObjective.qol$overlayStyle == 0 ? "Vignette" : "Radar";
+                displayMessageOnScreen(new TextComponent("Changed Cake Overlay Style: " + styleText).withStyle(style));
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
             }
         }
+
+    }
+
+
+    private static void displayMessageOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> {
+            mc.gui.setOverlayMessage(message, false);
+        });
     }
 
 }

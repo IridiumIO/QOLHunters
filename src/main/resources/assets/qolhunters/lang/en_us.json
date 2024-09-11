@@ -1,4 +1,6 @@
 {
   "key.categories.qolhunters": "QOL Hunters",
-  "key.qolhunters.forge": "Press to craft/forge/reroll item depending on the interface."
+  "key.qolhunters.forge": "Press to craft/forge/reroll item depending on the interface.",
+  "key.qolhunters.cake_overlay_color": "Cake Overlay: Cycle Color",
+  "key.qolhunters.cake_overlay_style": "Cake Overlay: Toggle Style"
 }
