@@ -34,7 +34,8 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static final Map<String, Supplier<Boolean>> BETTER_DESCRIPTIONS_CONDITIONS = ImmutableMap.of(
             "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
             "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
-            "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled
+            "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
+            "io.iridium.qolhunters.mixin.configs.MixinBingoConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled
     );
 
     private static final Map<String, Supplier<Boolean>> VAULT_MODIFIER_OVERLAYS_CONDITIONS = ImmutableMap.of(
