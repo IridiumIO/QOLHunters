@@ -4,22 +4,14 @@ import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
-import io.iridium.qolhunters.util.SharedFunctions;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.ScreenOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -28,8 +20,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem;
-import net.p3pp3rf1y.sophisticatedbackpacks.client.gui.BackpackScreen;
 import org.slf4j.Logger;
 
 
@@ -82,40 +72,10 @@ public class QOLHunters {
             }
         }
 
-//        @SubscribeEvent
-//        public static void onItemPickup(EntityItemPickupEvent event) {
-//            ItemStack stack = event.getItem().getItem();
-//            QOLHunters.LOGGER.info("Item Pickup Event: " + event.getItem().getItem().getItem().getRegistryName());
-//            QOLHunters.LOGGER.info("Item Pickup Event: " + stack.getCount());
-//            if (SharedFunctions.isScavengerItem(stack)) {
-//                int currentCount = SharedFunctions.ScavengerItems.getOrDefault(stack.getItem(), 0);
-//                SharedFunctions.ScavengerItems.put(stack.getItem(), currentCount + stack.getCount());
-//            }
-//        }
-//
-//        @SubscribeEvent
-//        public static void onItemDrop(ItemTossEvent event) {
-//            ItemStack stack = event.getEntityItem().getItem();
-//            if (SharedFunctions.isScavengerItem(stack)) {
-//                int currentCount = SharedFunctions.ScavengerItems.getOrDefault(stack.getItem(), 0);
-//                int newCount = Math.max(0, currentCount - stack.getCount());
-//                SharedFunctions.ScavengerItems.put(stack.getItem(), newCount);
-//            }
-//        }
-//
-//
-//        @SubscribeEvent
-//        public static void onScreenOpen(ScreenOpenEvent event) {
-//            if (event.getScreen() instanceof BackpackScreen) {
-//                SharedFunctions.OverWriteScavengerItems(Minecraft.getInstance().player);
-//                displayMessageOnScreen(new TextComponent("Backpack Item Opened"));
-//            }
-//        }
-
 
     }
 
-
+    @OnlyIn(Dist.CLIENT)
     private static void displayMessageOnScreen(Component message) {
         Minecraft mc = Minecraft.getInstance();
         mc.execute(() -> {
