@@ -50,5 +50,15 @@ public class SharedFunctions {
     }
 
 
+    public static String formatNumber(int number) {
+        if (number >= 1_000_000) {
+            return String.format("%.2fM", number / 1_000_000.0);
+        } else if (number >= 1_000) {
+            return String.format("%.2fK", number / 1_000.0);
+        } else {
+            return String.valueOf(number);
+        }
+    }
+
 
 }

@@ -13,6 +13,7 @@
   "client": [
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",
+    "blackmarket.MixinShardTradeScreen",
     "cake.MixinCakeObjective",
     "configs.MixinAbilitiesDescriptionsConfig",
     "configs.MixinBingoConfig",
@@ -24,8 +25,8 @@
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
-    "vaultenchanter.MixinVaultEnchanterScreen",
-    "scavenger.MixinScavengerObjective"
+    "scavenger.MixinScavengerObjective",
+    "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"
 }
