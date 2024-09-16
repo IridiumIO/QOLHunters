@@ -40,7 +40,8 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     );
 
     private static final Map<String, Supplier<Boolean>> VAULT_MODIFIER_OVERLAYS_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.configs.MixinVaultModifiersConfig", () -> QOLHuntersMixinPlugin.vaultModifierOverlays
+            "io.iridium.qolhunters.mixin.configs.MixinVaultModifiersConfig", () -> QOLHuntersMixinPlugin.vaultModifierOverlays,
+            "io.iridium.qolhunters.mixin.vaultmodifiers.MixinVaultModifiersElement", () -> QOLHuntersMixinPlugin.vaultModifierOverlays
     );
 
     private static final Map<String, Supplier<Boolean>> VAULT_ENCHANTER_EMERALD_SLOT_CONDITIONS = ImmutableMap.of(

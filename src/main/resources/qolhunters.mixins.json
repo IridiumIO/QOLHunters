@@ -26,7 +26,8 @@
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
     "scavenger.MixinScavengerObjective",
-    "vaultenchanter.MixinVaultEnchanterScreen"
+    "vaultenchanter.MixinVaultEnchanterScreen",
+    "vaultmodifiers.MixinVaultModifiersElement"
   ],
   "minVersion": "0.8"
 }
