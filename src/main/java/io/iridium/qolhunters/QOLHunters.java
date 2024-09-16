@@ -4,16 +4,26 @@ import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
+import iskallia.vault.core.data.key.ThemeKey;
+import iskallia.vault.core.vault.Vault;
+import iskallia.vault.core.vault.VaultRegistry;
+import iskallia.vault.core.vault.WorldManager;
+import iskallia.vault.core.vault.objective.Objectives;
+import iskallia.vault.event.event.VaultJoinEvent;
 import iskallia.vault.init.ModNetwork;
 import iskallia.vault.network.message.ServerboundMagnetToggleMessage;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -58,14 +68,14 @@ public class QOLHunters {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
 
-            if(KeyBindings.TOGGLE_CAKE_OVERLAY_COLOR.consumeClick()) {
-                    SuperCakeObjective.qol$colorIndex = (SuperCakeObjective.qol$colorIndex + 1) % SuperCakeObjective.COLORMAP.size();
-                    Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
-                    displayMessageOnScreen(new TextComponent("Changed Cake Overlay Color").withStyle(style));
-                    QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(SuperCakeObjective.qol$colorIndex);
+            if (KeyBindings.TOGGLE_CAKE_OVERLAY_COLOR.consumeClick()) {
+                SuperCakeObjective.qol$colorIndex = (SuperCakeObjective.qol$colorIndex + 1) % SuperCakeObjective.COLORMAP.size();
+                Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
+                displayMessageOnScreen(new TextComponent("Changed Cake Overlay Color").withStyle(style));
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(SuperCakeObjective.qol$colorIndex);
             }
 
-            if(KeyBindings.TOGGLE_CAKE_OVERLAY_STYLE.consumeClick()) {
+            if (KeyBindings.TOGGLE_CAKE_OVERLAY_STYLE.consumeClick()) {
                 SuperCakeObjective.qol$overlayStyle = (SuperCakeObjective.qol$overlayStyle + 1) % 2;
                 Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
                 String styleText = SuperCakeObjective.qol$overlayStyle == 0 ? "Vignette" : "Radar";
@@ -73,13 +83,67 @@ public class QOLHunters {
                 QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
             }
 
-            if(KeyBindings.TOGGLE_MAGNET_GUI.consumeClick()) {
+            if (KeyBindings.TOGGLE_MAGNET_GUI.consumeClick()) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
             }
 
         }
 
+        private static Component vaultTitle;
+        private static Component vaultSubtitle;
 
+        @SubscribeEvent
+        public static void onVaultJoin(VaultJoinEvent event) {
+            QOLHunters.LOGGER.info("Vault Join Event");
+            ResourceLocation theme = event.getVault().get(Vault.WORLD).get(WorldManager.THEME);
+            ThemeKey themeKey = VaultRegistry.THEME.getKey(theme);
+            vaultSubtitle = new TextComponent(themeKey.getName()).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(themeKey.getColor()))).withStyle(ChatFormatting.ITALIC);
+            String obj = getVaultObjective(event.getVault().get(Vault.OBJECTIVES).get(Objectives.KEY));
+            vaultTitle = new TextComponent(obj + " Vault").withStyle((Style.EMPTY.withColor(TextColor.fromRgb(14536734))));
+
+
+            // Register ClientTickEvent listener
+            MinecraftForge.EVENT_BUS.addListener(new java.util.function.Consumer<TickEvent.ClientTickEvent>() {
+                @Override
+                public void accept(TickEvent.ClientTickEvent tickEvent) {
+                    if (vaultTitle != null && Minecraft.getInstance().player != null && Minecraft.getInstance().screen == null) {
+                        QOLHunters.LOGGER.info("Displaying Vault Title");
+                        displayTitleOnScreen(vaultTitle);
+                        displaySubtitleOnScreen(vaultSubtitle);
+                        vaultTitle = null;
+                        vaultSubtitle = null;
+                        // Unregister the listener after displaying the message
+                        MinecraftForge.EVENT_BUS.unregister(this);
+                    }
+                }
+            });
+        }
+
+
+        public static String getVaultObjective(String key) {
+            String var2 = key == null ? "" : key.toLowerCase();
+
+            return switch (var2) {
+                case "boss" -> "Hunt the Guardians";
+                case "monolith" -> "Brazier";
+                case "empty", "" -> "";
+                default -> key.substring(0, 1).toUpperCase() + key.substring(1);
+            };
+        }
+
+
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static void displayTitleOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> mc.gui.setTitle(message));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static void displaySubtitleOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> mc.gui.setSubtitle(message));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -89,6 +153,7 @@ public class QOLHunters {
             mc.gui.setOverlayMessage(message, false);
         });
     }
+
 
 }
 
