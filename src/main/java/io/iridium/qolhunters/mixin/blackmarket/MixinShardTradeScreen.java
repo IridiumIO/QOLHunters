@@ -40,7 +40,7 @@ public abstract class MixinShardTradeScreen extends AbstractElementContainerScre
 
         poseStack.pushPose();
         poseStack.translate(this.leftPos + 24.0F, this.topPos + 23.0F, 0.0);
-        poseStack.scale(0.9f, 0.9f, 0.5f);
+//        poseStack.scale(0.9f, 0.9f, 0.5f);
         MutableComponent c2 = new TextComponent(shardAmount).withStyle(Style.EMPTY.withColor(0x6F09C2));
         UIHelper.renderWrappedText(poseStack, c2, 80, 0);
         poseStack.popPose();
