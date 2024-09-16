@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
+import iskallia.vault.init.ModNetwork;
+import iskallia.vault.network.message.ServerboundMagnetToggleMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -70,6 +72,11 @@ public class QOLHunters {
                 displayMessageOnScreen(new TextComponent("Changed Cake Overlay Style: " + styleText).withStyle(style));
                 QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
             }
+
+            if(KeyBindings.TOGGLE_MAGNET_GUI.consumeClick()) {
+                ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
+            }
+
         }
 
 
