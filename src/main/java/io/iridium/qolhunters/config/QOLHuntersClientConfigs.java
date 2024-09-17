@@ -17,6 +17,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> CAKE_VAULT_OVERLAY_STYLE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_INV_COUNT;
 
     static {
 
@@ -41,6 +42,7 @@ public class QOLHuntersClientConfigs {
         CAKE_VAULT_OVERLAY_STYLE = CLIENT_BUILDER.comment("Changes the style of the Vault Cake overlay\n0=Vignette, 1=Cake HUD Icons").defineInRange("Cake Vault Overlay Style", 0, 0, 1);
         BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define("Black Market Shard Pouch Count", true);
         BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for the Black Market Shard Pouch count (e.g. 1.4M instead of 1408933)").define("Black Market Shard Pouch Count Shorthand", false);
+        SCAVENGER_INV_COUNT = CLIENT_BUILDER.comment("Shows the number of scavenger items you have in your inventory").define("Scavenger Inventory Count", false);
 
         CLIENT_BUILDER.pop();
 
