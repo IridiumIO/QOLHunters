@@ -32,6 +32,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
 
@@ -83,7 +84,7 @@ public class QOLHunters {
                 QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
             }
 
-            if (KeyBindings.TOGGLE_MAGNET_GUI.consumeClick()) {
+            if (event.getKey() == KeyBindings.TOGGLE_MAGNET_GUI.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && Minecraft.getInstance().screen != null ) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
             }
 
@@ -94,7 +95,7 @@ public class QOLHunters {
 
         @SubscribeEvent
         public static void onVaultJoin(VaultJoinEvent event) {
-            QOLHunters.LOGGER.info("Vault Join Event");
+
             ResourceLocation theme = event.getVault().get(Vault.WORLD).get(WorldManager.THEME);
             ThemeKey themeKey = VaultRegistry.THEME.getKey(theme);
             vaultSubtitle = new TextComponent(themeKey.getName()).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(themeKey.getColor()))).withStyle(ChatFormatting.ITALIC);
@@ -107,7 +108,6 @@ public class QOLHunters {
                 @Override
                 public void accept(TickEvent.ClientTickEvent tickEvent) {
                     if (vaultTitle != null && Minecraft.getInstance().player != null && Minecraft.getInstance().screen == null) {
-                        QOLHunters.LOGGER.info("Displaying Vault Title");
                         displayTitleOnScreen(vaultTitle);
                         displaySubtitleOnScreen(vaultSubtitle);
                         vaultTitle = null;

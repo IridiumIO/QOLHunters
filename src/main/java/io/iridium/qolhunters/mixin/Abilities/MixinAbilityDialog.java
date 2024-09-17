@@ -208,14 +208,12 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             this.descriptionContentComponent.append(new TextComponent( separator).withStyle(ChatFormatting.DARK_GRAY));
 
             for (int i = 1; i <= descriptionMaxTier; i++) {
-                QOLHunters.LOGGER.info("Tier: " + i);
                 List<String> keys = ModConfigs.ABILITIES_DESCRIPTIONS.getCurrent(tieredSkill.getId());
                 TextComponent header = (TextComponent) new TextComponent("\n\nLevel " + i).withStyle(ChatFormatting.BOLD);
                 qOLHunters$appendLabels(descriptionContentComponent, keys, header, new AbilityLabelContext<>(tieredSkill.getChild(i), VaultBarOverlay.vaultLevel));
             }
 
             for (int i = descriptionMaxTier+1; i <= childTiers.size(); i++) {
-                QOLHunters.LOGGER.info("OverTier: " + i);
                 List<String> keys = ModConfigs.ABILITIES_DESCRIPTIONS.getCurrent(tieredSkill.getId());
                 TextComponent header = (TextComponent) new TextComponent("\n\n§kO§r ").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.DARK_RED).append(new TextComponent("Level " + i).withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.BLACK));
                 qOLHunters$appendLabels(descriptionContentComponent, keys, header, new AbilityLabelContext<>(tieredSkill.getChild(i), VaultBarOverlay.vaultLevel));
@@ -240,8 +238,6 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
 
         Player player = Minecraft.getInstance().player;
-
-        QOLHunters.LOGGER.info("CooldownMultiplier: " + (player != null ? CooldownHelper.getCooldownMultiplier(player) : 0.0F));
 
         factoryMap.put("cooldown",
                 context -> labelWithCooldownValue(
