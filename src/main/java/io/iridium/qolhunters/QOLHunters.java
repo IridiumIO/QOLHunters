@@ -2,6 +2,7 @@ package io.iridium.qolhunters;
 
 import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.customimplementations.Scavenger;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
 import iskallia.vault.core.data.key.ThemeKey;
@@ -10,6 +11,7 @@ import iskallia.vault.core.vault.VaultRegistry;
 import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.core.vault.objective.Objectives;
 import iskallia.vault.event.event.VaultJoinEvent;
+import iskallia.vault.event.event.VaultLeaveEvent;
 import iskallia.vault.init.ModNetwork;
 import iskallia.vault.network.message.ServerboundMagnetToggleMessage;
 import net.minecraft.ChatFormatting;
@@ -118,6 +120,12 @@ public class QOLHunters {
                 }
             });
         }
+
+        @SubscribeEvent
+        public static void onVaultLeave(VaultLeaveEvent event){
+            Scavenger.ScavengerItems.clear();
+        }
+
 
 
         public static String getVaultObjective(String key) {

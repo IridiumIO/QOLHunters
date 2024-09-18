@@ -1,9 +1,17 @@
 package io.iridium.qolhunters.util;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.math.Matrix4f;
+import io.iridium.qolhunters.customimplementations.Scavenger;
 import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.gui.GuiUtils;
 import net.p3pp3rf1y.sophisticatedbackpacks.api.CapabilityBackpackWrapper;
 import net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem;
 import net.p3pp3rf1y.sophisticatedbackpacks.network.RequestBackpackInventoryContentsMessage;
@@ -67,5 +75,35 @@ public class SharedFunctions {
         }
     }
 
+
+
+    public static void renderSlotHighlight(PoseStack poseStack, ItemStack itemStack, int x, int y){
+
+        if (!Scavenger.ScavengerItems.containsKey(itemStack.getItem())) return;
+
+
+        RenderSystem.disableDepthTest();
+        poseStack.pushPose();
+        poseStack.translate(0, 0, 100);
+        Matrix4f matrix = poseStack.last().pose();
+
+        int color = 0xDD000000 | Scavenger.ScavengerItems.get(itemStack.getItem());
+
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder bufferBuilder = tesselator.getBuilder();
+        MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
+
+        if(true){
+            GuiUtils.drawGradientRect(matrix, -1, x,y + 4,x + 16,y + 16, 0x00000000, color);
+        }
+        else {
+            GuiUtils.drawGradientRect(matrix, -1, x, y + 15,x + 16,y + 16, color, color);
+        }
+
+        bufferSource.endBatch();
+        poseStack.popPose();
+
+
+    }
 
 }

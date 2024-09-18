@@ -25,7 +25,9 @@
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
+    "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
+    "scavenger.MixinStorageScreenBase",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultmodifiers.MixinVaultModifiersElement"
   ],
