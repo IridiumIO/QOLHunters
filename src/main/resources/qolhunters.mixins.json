@@ -11,6 +11,8 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
+    "vaultmodifiers.MixinModifiersRenderer",
+    "MixinMonolithRenderer",
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",
     "blackmarket.MixinShardTradeScreen",
@@ -20,7 +22,6 @@
     "configs.MixinMenuPlayerStatDescriptionConfig",
     "configs.MixinModConfigs",
     "configs.MixinSkillDescriptionsConfig",
-    "configs.MixinVaultModifiersConfig",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
@@ -28,8 +29,7 @@
     "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
     "scavenger.MixinStorageScreenBase",
-    "vaultenchanter.MixinVaultEnchanterScreen",
-    "vaultmodifiers.MixinVaultModifiersElement"
+    "vaultenchanter.MixinVaultEnchanterScreen"
   ],
   "minVersion": "0.8"
 }
