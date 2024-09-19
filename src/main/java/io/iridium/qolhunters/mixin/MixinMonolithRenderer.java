@@ -70,21 +70,8 @@ public class MixinMonolithRenderer {
         List<Component> description = new ArrayList();
         List<VaultModifierStack> stack = new ArrayList();
         if (tileEntity.isOverStacking() && state == MonolithBlock.State.EXTINGUISHED) {
+            lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
 
-            if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 0) {
-                lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
-            }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 1) {
-                if (distance < 12) {
-                    lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
-                }
-
-            }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 2) {
-                if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
-                    lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
-                }
-            }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 3) {
-                    lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
-            }
         }
 
         tileEntity.getModifiers().forEach((id, count) -> {
