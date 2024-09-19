@@ -11,7 +11,6 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-    "vaultmodifiers.MixinModifiersRenderer",
     "MixinMonolithRenderer",
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",
@@ -26,10 +25,13 @@
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
+    "skillaltar.MixinSkillAltarContainerDefault",
+    "skillaltar.MixinSkillAltarScreen",
     "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
     "scavenger.MixinStorageScreenBase",
-    "vaultenchanter.MixinVaultEnchanterScreen"
+    "vaultenchanter.MixinVaultEnchanterScreen",
+    "vaultmodifiers.MixinModifiersRenderer"
   ],
   "minVersion": "0.8"
 }

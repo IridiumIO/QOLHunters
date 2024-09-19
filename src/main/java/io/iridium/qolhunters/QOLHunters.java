@@ -2,6 +2,7 @@ package io.iridium.qolhunters;
 
 import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.customimplementations.Scavenger;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import io.iridium.qolhunters.util.KeyBindings;
@@ -44,6 +45,8 @@ public class QOLHunters {
     public static final String MOD_ID = "qolhunters";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static SkillAltarConfig SKILL_ALTAR_CONFIG;
+
     public QOLHunters() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -58,6 +61,7 @@ public class QOLHunters {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
         KeyBindings.init();
     }
 
