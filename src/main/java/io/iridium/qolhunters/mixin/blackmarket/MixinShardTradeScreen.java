@@ -35,6 +35,8 @@ public abstract class MixinShardTradeScreen extends AbstractElementContainerScre
     @Inject(method="render", at=@At("RETURN"))
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
 
+        if(!QOLHuntersClientConfigs.BLACK_MARKET_SHARD_POUCH_COUNT.get()) return;
+
         Integer shardCount = ItemShardPouch.getShardCount(Minecraft.getInstance().player);
         String shardAmount = QOLHuntersClientConfigs.BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND.get() ? formatNumber(shardCount) : String.valueOf(shardCount);
 
