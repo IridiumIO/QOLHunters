@@ -23,8 +23,6 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static boolean vaultEnchanterEmeraldSlot = true;
     private static boolean betterAbilitiesTab = true;
     private static boolean blackMarketShardPouch = true;
-    private static boolean scavengerInventoryCount = true;
-    private static boolean scavengerInventoryHighlight = true;
 
     private static boolean isWoldsVaultModInstalled = false;
 
@@ -66,14 +64,7 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
             "io.iridium.qolhunters.mixin.blackmarket.MixinShardTradeScreen", () -> QOLHuntersMixinPlugin.blackMarketShardPouch
     );
 
-    private static final Map<String, Supplier<Boolean>> SCAVENGER_INVENTORY_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.scavenger.MixinScavengerObjective", () -> QOLHuntersMixinPlugin.scavengerInventoryCount
-    );
 
-    private static final Map<String, Supplier<Boolean>> SCAVENGER_HIGHLIGHTER_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.scavenger.MixinAbstractContainer", () -> QOLHuntersMixinPlugin.scavengerInventoryHighlight,
-            "io.iridium.qolhunters.mixin.scavenger.MixinStorageScreenBase", () -> QOLHuntersMixinPlugin.scavengerInventoryHighlight
-    );
 
 
     private static final String CONFIG_FILE_NAME = "qolhunters-client.toml";
@@ -83,8 +74,7 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static final String VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE = "Client-Server Extensions.Vault Enchanter Emeralds Slot";
     private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = "Client-Only Extensions.Better Abilities Tab";
     private static final String BLACK_MARKET_SHARD_POUCH_CONFIG_VALUE = "Client-Only Extensions.Black Market Shard Pouch Count";
-    private static final String SCAVENGER_INV_COUNT_CONFIG_VALUE = "Client-Only Extensions.Scavenger Inventory Count";
-    private static final String SCAVENGER_HIGHLIGHTER_CONFIG_VALUE = "Client-Only Extensions.Scavenger Highlighter";
+
 
     private static void loadConfig(){
 
@@ -103,8 +93,6 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
                 vaultEnchanterEmeraldSlot = config.getOrElse(VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE, true);
                 betterAbilitiesTab = config.getOrElse(BETTER_ABILITIES_TAB_CONFIG_VALUE, true);
                 blackMarketShardPouch = config.getOrElse(BLACK_MARKET_SHARD_POUCH_CONFIG_VALUE, true);
-                scavengerInventoryCount = config.getOrElse(SCAVENGER_INV_COUNT_CONFIG_VALUE, true);
-                scavengerInventoryHighlight = config.getOrElse(SCAVENGER_HIGHLIGHTER_CONFIG_VALUE, true);
 
                 config.close();
             }
@@ -132,10 +120,6 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
             shouldApply = BETTER_ABILITIES_TAB_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
         } else if(BLACK_MARKET_CONDITIONS.containsKey(mixinClassName)){
             shouldApply = BLACK_MARKET_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else if(SCAVENGER_INVENTORY_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = SCAVENGER_INVENTORY_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else if(SCAVENGER_HIGHLIGHTER_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = SCAVENGER_HIGHLIGHTER_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
         } else {
             shouldApply = TRUE.get();
         }

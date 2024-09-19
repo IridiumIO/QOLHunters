@@ -1,6 +1,7 @@
 package io.iridium.qolhunters.mixin.scavenger;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.customimplementations.Scavenger;
 import io.iridium.qolhunters.util.SharedFunctions;
 import iskallia.vault.client.gui.helper.UIHelper;
@@ -35,29 +36,31 @@ public class MixinScavengerObjective {
             Scavenger.ScavengerItems.put(requiredStack.getItem(), entry.getColor());
         }
 
-        Integer inventoryItems = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, requiredStack.getItem(), 500);
+        if(QOLHuntersClientConfigs.SCAVENGER_INV_COUNT.get()) {
+            Integer inventoryItems = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, requiredStack.getItem(), 500);
 
-        if (inventoryItems > 0){
-            matrixStack.translate(0.0, 10.0, 0.0);
+            if (inventoryItems > 0) {
+                matrixStack.translate(0.0, 10.0, 0.0);
+                matrixStack.pushPose();
+                matrixStack.scale(0.8F, 0.8F, 1.0F);
+                MutableComponent c2 = new TextComponent("(" + inventoryItems + ")").withStyle(ChatFormatting.GRAY);
+                UIHelper.renderCenteredWrappedText(matrixStack, c2, 35, 0);
+                matrixStack.popPose();
+            }
+
+
+            matrixStack.translate(0.0, 8.0, 0.0);
             matrixStack.pushPose();
-            matrixStack.scale(0.8F, 0.8F, 1.0F);
-            MutableComponent c2 = new TextComponent(  "(" + inventoryItems + ")").withStyle(ChatFormatting.GRAY);
-            UIHelper.renderCenteredWrappedText(matrixStack, c2, 35, 0);
+            matrixStack.scale(0.5F, 0.5F, 1.0F);
+
+            Component name = requiredStack.getHoverName();
+            MutableComponent display = name.copy().withStyle(Style.EMPTY.withColor(entry.getColor()));
+            int lines = UIHelper.renderCenteredWrappedText(matrixStack, display, 60, 0);
+
             matrixStack.popPose();
+            matrixStack.popPose();
+            cir.setReturnValue(25 + lines * 5);
         }
-
-
-        matrixStack.translate(0.0, 8.0, 0.0);
-        matrixStack.pushPose();
-        matrixStack.scale(0.5F, 0.5F, 1.0F);
-
-        Component name = requiredStack.getHoverName();
-        MutableComponent display = name.copy().withStyle(Style.EMPTY.withColor(entry.getColor()));
-        int lines = UIHelper.renderCenteredWrappedText(matrixStack, display, 60, 0);
-
-        matrixStack.popPose();
-        matrixStack.popPose();
-        cir.setReturnValue( 25 + lines * 5);
     }
 
 }
