@@ -37,7 +37,12 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
         for (KeyMapping keyBinding : keyBindings) {
             if (!keyBinding.getCategory().equals(ModKeybinds.KEY_CATEGORY)) continue;
 
-            keyBindsBackup.put(keyBinding.getName(), keyBinding.getKey().getValue());
+            int keyVal = keyBinding.getKey().getValue();
+            if(keyBinding.getKey().getType() == InputConstants.Type.MOUSE) {
+                keyVal = -keyBinding.getKey().getValue() - 10;
+            }
+
+            keyBindsBackup.put(keyBinding.getName(), keyVal);
         }
 
 
@@ -87,7 +92,13 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
             if (!keyBinding.getCategory().equals(ModKeybinds.KEY_CATEGORY)) continue;
             Integer key = keyBindsBackup.get(keyBinding.getName());
             if (key == null) continue;
-            keyBinding.setKey(InputConstants.Type.KEYSYM.getOrCreate(key));
+            if (key < -9) {
+                key = -key -10;
+                keyBinding.setKey(InputConstants.Type.MOUSE.getOrCreate(key));
+            } else {
+                keyBinding.setKey(InputConstants.Type.KEYSYM.getOrCreate(key));
+            }
+
         }
 
     }
