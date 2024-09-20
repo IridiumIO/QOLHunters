@@ -93,16 +93,16 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.GENERAL_GROUP);
 
-            VANILLA_SAFE_MODE = CLIENT_BUILDER.comment("Disables QOL mods that cannot work on vanilla VH servers (disables all mods in the 'Client-Server Extensions' list)\nBe very careful if you change this on single player worlds! For example, if you have emeralds in your enchantment table and you enable this, those will probably get deleted if you load the world before changing this back").define(ConfigPaths.VANILLA_SAFE_MODE, false);
+            VANILLA_SAFE_MODE = CLIENT_BUILDER.comment("Disables QOL mods that cannot work on vanilla VH servers (disables all mods in the 'Client-Server Extensions' list)\nBe very careful if you change this on single player worlds! For example, if you have emeralds in your enchantment table and you enable this, those will probably get deleted if you load the world before changing this back\nRequires Restart").define(ConfigPaths.VANILLA_SAFE_MODE, false);
 
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_GROUP);
 
-            BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
+            BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
-            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").worldRestart().define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
-            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
+            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
+            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
 
@@ -131,7 +131,7 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
 
-            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
+            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
 
         CLIENT_SPEC = CLIENT_BUILDER.build();
 

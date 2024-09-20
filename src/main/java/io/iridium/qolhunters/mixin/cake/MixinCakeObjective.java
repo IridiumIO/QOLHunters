@@ -33,7 +33,7 @@ public abstract class MixinCakeObjective {
      */
     @OnlyIn(Dist.CLIENT) @Overwrite(remap = false)
     protected void renderVignette(TextColor color, float alpha, int width, int height) {
-        color = TextColor.fromRgb(SuperCakeObjective.qol$colorIndex.getColorCode());
+        color = TextColor.fromRgb(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.get().getColorCode());
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
         RenderSystem.defaultBlendFunc();
@@ -42,7 +42,7 @@ public abstract class MixinCakeObjective {
         float g = (float)(colorValue >> 8 & 255) / 255.0F;
         float r = (float)(colorValue >> 16 & 255) / 255.0F;
 
-        if(SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE) {
+        if(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.get() == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE) {
             RenderSystem.setShaderColor(r, g, b, alpha);
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, VIGNETTE);

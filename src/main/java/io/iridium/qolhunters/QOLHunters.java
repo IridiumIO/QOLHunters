@@ -5,6 +5,8 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.foundation.config.ui.ConfigHelper;
+import com.simibubi.create.foundation.config.ui.SubMenuConfigScreen;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.customimplementations.Scavenger;
@@ -26,6 +28,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -93,19 +96,26 @@ public class QOLHunters {
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
 
             if (KeyBindings.TOGGLE_CAKE_OVERLAY_COLOR.consumeClick()) {
-                SuperCakeObjective.qol$colorIndex = QOLHuntersClientConfigs.CakeVaultOverlayColor.values()[(SuperCakeObjective.qol$colorIndex.ordinal() + 1) % QOLHuntersClientConfigs.CakeVaultOverlayColor.values().length];
-
-                Style style = Style.EMPTY.withColor(SuperCakeObjective.qol$colorIndex.getColorCode());
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(
+                        QOLHuntersClientConfigs.CakeVaultOverlayColor.values()[
+                                (QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.get().ordinal() + 1) % QOLHuntersClientConfigs.CakeVaultOverlayColor.values().length
+                                ]
+                );
+                Style style = Style.EMPTY.withColor(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.get().getColorCode());
                 displayMessageOnScreen(new TextComponent("Changed Cake Overlay Color").withStyle(style));
-                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(SuperCakeObjective.qol$colorIndex);
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.get());
             }
 
             if (KeyBindings.TOGGLE_CAKE_OVERLAY_STYLE.consumeClick()) {
-                SuperCakeObjective.qol$overlayStyle = SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE ? QOLHuntersClientConfigs.CakeVaultOverlayStyle.RADAR : QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE;
-                Style style = Style.EMPTY.withColor(SuperCakeObjective.qol$colorIndex.getColorCode());
-                String styleText = SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE ? "Vignette" : "Radar";
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(
+                        QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.get() == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE
+                                ? QOLHuntersClientConfigs.CakeVaultOverlayStyle.RADAR
+                                : QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE
+                );
+                Style style = Style.EMPTY.withColor(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.get().getColorCode());
+                String styleText = QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.get() == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE ? "Vignette" : "Radar";
                 displayMessageOnScreen(new TextComponent("Changed Cake Overlay Style: " + styleText).withStyle(style));
-                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
+                QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.get());
             }
 
             if (event.getKey() == KeyBindings.TOGGLE_MAGNET_GUI.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && Minecraft.getInstance().screen != null ) {
@@ -118,6 +128,8 @@ public class QOLHunters {
                     (event.getModifiers() & GLFW.GLFW_MOD_ALT) != 0) {
                 Scavenger.ScavengerItems.clear();
                 QOLHunters.LOGGER.info("Scavenger items cleared");
+                SubMenuConfigScreen screen = SubMenuConfigScreen.find(ConfigHelper.ConfigPath.parse("qolhunters:client.Client-Only Extensions"));
+                Minecraft.getInstance().setScreen(screen);
             }
 
             if (event.getKey() == GLFW.GLFW_KEY_O && event.getAction() == GLFW.GLFW_PRESS &&
@@ -134,7 +146,7 @@ public class QOLHunters {
         public static void onScreenRender(ScreenEvent.DrawScreenEvent.Post event) {
 
             Player player = Minecraft.getInstance().player;
-            if (!(QOLHuntersClientConfigs.SHOW_GEAR_COOLDOWN_TIME.get()) || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) return;
+            if (!(QOLHuntersClientConfigs.SHOW_GEAR_COOLDOWN_TIME.get()) || (event.getScreen() instanceof CreativeModeInventoryScreen) || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) return;
 
             ItemCooldowns cooldowns = player.getCooldowns();
 
