@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import iskallia.vault.core.vault.objective.CakeObjective;
 import net.minecraft.client.renderer.GameRenderer;
@@ -15,7 +16,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.*;
 
-import static io.iridium.qolhunters.interfaces.SuperCakeObjective.COLORMAP;
 
 @Mixin(CakeObjective.class)
 public abstract class MixinCakeObjective {
@@ -33,7 +33,7 @@ public abstract class MixinCakeObjective {
      */
     @OnlyIn(Dist.CLIENT) @Overwrite(remap = false)
     protected void renderVignette(TextColor color, float alpha, int width, int height) {
-        color = TextColor.fromRgb(COLORMAP.get(SuperCakeObjective.qol$colorIndex));
+        color = TextColor.fromRgb(SuperCakeObjective.qol$colorIndex.getColorCode());
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
         RenderSystem.defaultBlendFunc();
@@ -42,7 +42,7 @@ public abstract class MixinCakeObjective {
         float g = (float)(colorValue >> 8 & 255) / 255.0F;
         float r = (float)(colorValue >> 16 & 255) / 255.0F;
 
-        if(SuperCakeObjective.qol$overlayStyle == 0) {
+        if(SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE) {
             RenderSystem.setShaderColor(r, g, b, alpha);
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, VIGNETTE);

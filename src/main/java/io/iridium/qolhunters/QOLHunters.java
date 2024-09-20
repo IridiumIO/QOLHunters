@@ -27,6 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -76,16 +77,17 @@ public class QOLHunters {
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
 
             if (KeyBindings.TOGGLE_CAKE_OVERLAY_COLOR.consumeClick()) {
-                SuperCakeObjective.qol$colorIndex = (SuperCakeObjective.qol$colorIndex + 1) % SuperCakeObjective.COLORMAP.size();
-                Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
+                SuperCakeObjective.qol$colorIndex = QOLHuntersClientConfigs.CakeVaultOverlayColor.values()[(SuperCakeObjective.qol$colorIndex.ordinal() + 1) % QOLHuntersClientConfigs.CakeVaultOverlayColor.values().length];
+
+                Style style = Style.EMPTY.withColor(SuperCakeObjective.qol$colorIndex.getColorCode());
                 displayMessageOnScreen(new TextComponent("Changed Cake Overlay Color").withStyle(style));
                 QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_COLOR.set(SuperCakeObjective.qol$colorIndex);
             }
 
             if (KeyBindings.TOGGLE_CAKE_OVERLAY_STYLE.consumeClick()) {
-                SuperCakeObjective.qol$overlayStyle = (SuperCakeObjective.qol$overlayStyle + 1) % 2;
-                Style style = Style.EMPTY.withColor(SuperCakeObjective.COLORMAP.get(SuperCakeObjective.qol$colorIndex));
-                String styleText = SuperCakeObjective.qol$overlayStyle == 0 ? "Vignette" : "Radar";
+                SuperCakeObjective.qol$overlayStyle = SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE ? QOLHuntersClientConfigs.CakeVaultOverlayStyle.RADAR : QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE;
+                Style style = Style.EMPTY.withColor(SuperCakeObjective.qol$colorIndex.getColorCode());
+                String styleText = SuperCakeObjective.qol$overlayStyle == QOLHuntersClientConfigs.CakeVaultOverlayStyle.VIGNETTE ? "Vignette" : "Radar";
                 displayMessageOnScreen(new TextComponent("Changed Cake Overlay Style: " + styleText).withStyle(style));
                 QOLHuntersClientConfigs.CAKE_VAULT_OVERLAY_STYLE.set(SuperCakeObjective.qol$overlayStyle);
             }
@@ -93,6 +95,22 @@ public class QOLHunters {
             if (event.getKey() == KeyBindings.TOGGLE_MAGNET_GUI.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && Minecraft.getInstance().screen != null ) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
             }
+
+            if (event.getKey() == GLFW.GLFW_KEY_Q && event.getAction() == GLFW.GLFW_PRESS &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_SHIFT) != 0 &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_CONTROL) != 0 &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_ALT) != 0) {
+                Scavenger.ScavengerItems.clear();
+                QOLHunters.LOGGER.info("Scavenger items cleared");
+            }
+
+            if (event.getKey() == GLFW.GLFW_KEY_O && event.getAction() == GLFW.GLFW_PRESS &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_SHIFT) != 0 &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_CONTROL) != 0 &&
+                    (event.getModifiers() & GLFW.GLFW_MOD_ALT) != 0) {
+                displayMessageOnScreen(new TextComponent("OBS MODE ENABLED").withStyle(ChatFormatting.RED));
+            }
+
 
         }
 
@@ -130,6 +148,10 @@ public class QOLHunters {
             Scavenger.ScavengerItems.clear();
         }
 
+        @SubscribeEvent
+        public static void onVaultComplete(PlayerEvent.PlayerChangedDimensionEvent event){
+            Scavenger.ScavengerItems.clear();
+        }
 
 
         public static String getVaultObjective(String key) {

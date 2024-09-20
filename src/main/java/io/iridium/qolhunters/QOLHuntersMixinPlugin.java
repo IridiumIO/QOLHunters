@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+import static io.iridium.qolhunters.config.QOLHuntersClientConfigs.*;
+
 public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
     private static boolean vanillaSafeMode = false;
@@ -26,49 +28,44 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static boolean isWoldsVaultModInstalled = false;
 
 
-
-    private static final Supplier<Boolean> TRUE = () -> true;
-    private static final Supplier<Boolean> FALSE = () -> false;
-
-    private static final Map<String, Supplier<Boolean>> BETTER_DESCRIPTIONS_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
-            "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
-            "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled,
-            "io.iridium.qolhunters.mixin.configs.MixinBingoConfig", () -> QOLHuntersMixinPlugin.betterDescriptions && !QOLHuntersMixinPlugin.isWoldsVaultModInstalled
-    );
-
-
-    private static final Map<String, Supplier<Boolean>> VAULT_ENCHANTER_EMERALD_SLOT_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.vaultenchanter.MixinEnchantmentCost", () -> QOLHuntersMixinPlugin.vaultEnchanterEmeraldSlot && !QOLHuntersMixinPlugin.vanillaSafeMode,
-            "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterBlock", () -> QOLHuntersMixinPlugin.vaultEnchanterEmeraldSlot && !QOLHuntersMixinPlugin.vanillaSafeMode,
-            "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterContainer", () -> QOLHuntersMixinPlugin.vaultEnchanterEmeraldSlot && !QOLHuntersMixinPlugin.vanillaSafeMode,
-            "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterScreen", () -> QOLHuntersMixinPlugin.vaultEnchanterEmeraldSlot && !QOLHuntersMixinPlugin.vanillaSafeMode,
-            "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterTileEntity", () -> QOLHuntersMixinPlugin.vaultEnchanterEmeraldSlot && !QOLHuntersMixinPlugin.vanillaSafeMode
-    );
-
-
-    private static final Map<String, Supplier<Boolean>> VAULT_KEYBINDS_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.keybinds.MixinBountyScreen", () -> QOLHuntersMixinPlugin.vaultInterfaceKeybinds,
-            "io.iridium.qolhunters.mixin.keybinds.MixinForgeRecipeContainerScreen", () -> QOLHuntersMixinPlugin.vaultInterfaceKeybinds,
-            "io.iridium.qolhunters.mixin.keybinds.MixinModifierWorkbenchScreen", () -> QOLHuntersMixinPlugin.vaultInterfaceKeybinds,
-            "io.iridium.qolhunters.mixin.keybinds.MixinVaultEnchanterScreen", () -> QOLHuntersMixinPlugin.vaultInterfaceKeybinds
-    );
-
-
-    private static final Map<String, Supplier<Boolean>> BETTER_ABILITIES_TAB_CONDITIONS = ImmutableMap.of(
-            "io.iridium.qolhunters.mixin.Abilities.MixinAbilityDialog", () -> QOLHuntersMixinPlugin.betterAbilitiesTab
+    private static final Map<String, Map<String, Supplier<Boolean>>> MIXIN_CONDITIONS = ImmutableMap.of(
+            "BETTER_DESCRIPTIONS", ImmutableMap.of(
+                    "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+                    "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+                    "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+                    "io.iridium.qolhunters.mixin.configs.MixinBingoConfig", () -> betterDescriptions && !isWoldsVaultModInstalled
+            ),
+            "VAULT_ENCHANTER_EMERALD_SLOT", ImmutableMap.of(
+                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinEnchantmentCost", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
+                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterBlock", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
+                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterContainer", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
+                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterScreen", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
+                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterTileEntity", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode
+            ),
+            "VAULT_KEYBINDS", ImmutableMap.of(
+                    "io.iridium.qolhunters.mixin.keybinds.MixinBountyScreen", () -> vaultInterfaceKeybinds,
+                    "io.iridium.qolhunters.mixin.keybinds.MixinForgeRecipeContainerScreen", () -> vaultInterfaceKeybinds,
+                    "io.iridium.qolhunters.mixin.keybinds.MixinModifierWorkbenchScreen", () -> vaultInterfaceKeybinds,
+                    "io.iridium.qolhunters.mixin.keybinds.MixinVaultEnchanterScreen", () -> vaultInterfaceKeybinds
+            ),
+            "BETTER_ABILITIES_TAB", ImmutableMap.of(
+                    "io.iridium.qolhunters.mixin.Abilities.MixinAbilityDialog", () -> betterAbilitiesTab
+            )
     );
 
 
 
+    private static String ConfigPathBuilder(String... path){
+        return String.join(".", path);
+    }
 
 
     private static final String CONFIG_FILE_NAME = "qolhunters-client.toml";
-    private static final String VANILLA_SAFE_MODE_CONFIG_VALUE = "General Configs.Vanilla Safe Mode";
-    private static final String BETTER_DESCRIPTIONS_CONFIG_VALUE = "Client-Only Extensions.Better Descriptions";
-    private static final String VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE = "Client-Only Extensions.Vault Interface Keybinds";
-    private static final String VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE = "Client-Server Extensions.Vault Enchanter Emeralds Slot";
-    private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = "Client-Only Extensions.Better Abilities Tab";
+    private static final String VANILLA_SAFE_MODE_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.GENERAL_GROUP, ConfigPaths.VANILLA_SAFE_MODE);
+    private static final String BETTER_DESCRIPTIONS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_DESCRIPTIONS);
+    private static final String VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.VAULT_INTERFACE_KEYBINDS);
+    private static final String VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_SERVER_GROUP, ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT);
+    private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_ABILITIES_TAB);
 
 
     private static void loadConfig(){
@@ -101,23 +98,15 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-
-        boolean shouldApply;
-
-        if(VAULT_ENCHANTER_EMERALD_SLOT_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = VAULT_ENCHANTER_EMERALD_SLOT_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else if(BETTER_DESCRIPTIONS_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = BETTER_DESCRIPTIONS_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else if(VAULT_KEYBINDS_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = VAULT_KEYBINDS_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else if(BETTER_ABILITIES_TAB_CONDITIONS.containsKey(mixinClassName)){
-            shouldApply = BETTER_ABILITIES_TAB_CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
-        } else {
-            shouldApply = TRUE.get();
+        for (Map<String, Supplier<Boolean>> conditions : MIXIN_CONDITIONS.values()) {
+            if (conditions.containsKey(mixinClassName)) {
+                boolean shouldApply = conditions.get(mixinClassName).get();
+                QOLHunters.LOGGER.info("QOLHunters: shouldApplyMixin: " + mixinClassName + " -> " + shouldApply);
+                return shouldApply;
+            }
         }
-        QOLHunters.LOGGER.info("QOLHunters: shouldApplyMixin: " + mixinClassName + " -> " + shouldApply);
-
-        return shouldApply;
+        QOLHunters.LOGGER.info("QOLHunters: shouldApplyMixin: " + mixinClassName + " -> true");
+        return true;
     }
 
     // Boilerplate

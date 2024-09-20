@@ -77,24 +77,24 @@ public class MixinMonolithRenderer {
         tileEntity.getModifiers().forEach((id, count) -> {
             VaultModifierRegistry.getOpt(id).ifPresent((modifier) -> {
 
-                if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 0) {
+                if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.DEFAULT) {
                     lines.add(modifier.getChatDisplayNameComponent(count));
                     description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 1) {
+                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE1) {
                     if (distance < 12) {
                         lines.add(modifier.getChatDisplayNameComponent(count));
                         description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
                     }
 
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 2) {
+                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE2) {
                     if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
                         lines.add(modifier.getChatDisplayNameComponent(count));
                         description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
                     }
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == 3) {
+                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE3) {
                     lines.add(modifier.getChatDisplayNameComponent(count));
                     if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
                         description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
