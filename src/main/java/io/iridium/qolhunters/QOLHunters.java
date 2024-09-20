@@ -5,6 +5,8 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.foundation.config.ui.ConfigHelper;
+import com.simibubi.create.foundation.config.ui.SubMenuConfigScreen;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.customimplementations.Scavenger;
@@ -118,6 +120,8 @@ public class QOLHunters {
                     (event.getModifiers() & GLFW.GLFW_MOD_ALT) != 0) {
                 Scavenger.ScavengerItems.clear();
                 QOLHunters.LOGGER.info("Scavenger items cleared");
+                SubMenuConfigScreen screen = SubMenuConfigScreen.find(ConfigHelper.ConfigPath.parse("qolhunters:client.Client-Only Extensions"));
+                Minecraft.getInstance().setScreen(screen);
             }
 
             if (event.getKey() == GLFW.GLFW_KEY_O && event.getAction() == GLFW.GLFW_PRESS &&
