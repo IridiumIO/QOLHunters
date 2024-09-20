@@ -26,6 +26,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_HIGHLIGHTER;
     public static final ForgeConfigSpec.EnumValue<BrazierHologramMode> BRAZIER_HOLOGRAM_MODE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
 
 
     public enum BrazierHologramMode {
@@ -68,6 +69,7 @@ public class QOLHuntersClientConfigs {
         public static final String SAVE_KEYBINDS_WITH_SKILL_ALTAR = "Skill Altar Save Keybinds";
         public static final String BRAZIER_HOLOGRAM_MODE = "Brazier Hologram Mode";
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
+        public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -101,8 +103,8 @@ public class QOLHuntersClientConfigs {
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
             VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").worldRestart().define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
-
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
+            SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
                 BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);

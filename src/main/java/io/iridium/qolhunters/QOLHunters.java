@@ -1,5 +1,9 @@
 package io.iridium.qolhunters;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
@@ -13,18 +17,30 @@ import iskallia.vault.core.vault.WorldManager;
 import iskallia.vault.core.vault.objective.Objectives;
 import iskallia.vault.event.event.VaultJoinEvent;
 import iskallia.vault.event.event.VaultLeaveEvent;
+import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.init.ModNetwork;
+import iskallia.vault.item.CardDeckItem;
+import iskallia.vault.item.MagnetItem;
 import iskallia.vault.network.message.ServerboundMagnetToggleMessage;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemCooldowns;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -113,6 +129,44 @@ public class QOLHunters {
 
 
         }
+
+        @SubscribeEvent
+        public static void onScreenRender(ScreenEvent.DrawScreenEvent.Post event) {
+
+            Player player = Minecraft.getInstance().player;
+            if (!(QOLHuntersClientConfigs.SHOW_GEAR_COOLDOWN_TIME.get()) || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) return;
+
+            ItemCooldowns cooldowns = player.getCooldowns();
+
+            for (Slot slot : screen.getMenu().slots){
+                ItemStack itemStack = slot.getItem();
+                Item item = itemStack.getItem();
+                if (cooldowns.isOnCooldown(item) && (item instanceof VaultGearItem || item instanceof CardDeckItem || item instanceof MagnetItem)) {
+                    float cooldownPercent = cooldowns.getCooldownPercent(item, 0F);
+                    QOLHunters.LOGGER.info("Cooldown Percent: " + cooldownPercent);
+                    int absoluteCooldownSeconds = Math.round(cooldownPercent * 20.0F);
+                    PoseStack poseStack = event.getPoseStack();
+                    int x = slot.x + screen.getGuiLeft();
+                    int y = slot.y + screen.getGuiTop();
+
+                    RenderSystem.disableDepthTest();
+                    poseStack.pushPose();
+                    poseStack.translate(x, y, 400);
+
+                    poseStack.scale(0.6F, 0.6F, 1.0F);
+                    Tesselator tesselator = Tesselator.getInstance();
+                    BufferBuilder bufferBuilder = tesselator.getBuilder();
+                    MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
+
+                    Font font = Minecraft.getInstance().font;
+                    font.drawInBatch(new TextComponent(absoluteCooldownSeconds + "s").withStyle(ChatFormatting.GREEN), 0, (int)(16/0.6)-font.lineHeight, 0xFFFFFFFF, true, poseStack.last().pose(), bufferSource, false, 0, 15728880);
+                    bufferSource.endBatch();
+
+                    poseStack.popPose();
+                }
+            }
+        }
+
 
         private static Component vaultTitle;
         private static Component vaultSubtitle;

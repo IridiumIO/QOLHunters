@@ -32,7 +32,6 @@ public class ConfigBuilder {
 
     }
 
-
     public static void buildBetterDescriptionsConfigFiles(){
         if (isWoldsVaultModInstalled()) return;
         copyResourceToFile("betterconfigs/abilities_descriptions.json", ABILITIES_DESCRIPTIONS_CUSTOM);
