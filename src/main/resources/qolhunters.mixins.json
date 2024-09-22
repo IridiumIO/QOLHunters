@@ -11,6 +11,7 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
+    "bingo.MixinBingoRenderer",
     "MixinMonolithRenderer",
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",

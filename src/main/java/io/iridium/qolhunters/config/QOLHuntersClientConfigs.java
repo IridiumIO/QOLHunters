@@ -27,7 +27,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.EnumValue<BrazierHologramMode> BRAZIER_HOLOGRAM_MODE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
-
+    public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -70,11 +70,13 @@ public class QOLHuntersClientConfigs {
         public static final String BRAZIER_HOLOGRAM_MODE = "Brazier Hologram Mode";
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
+        public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
             public static final String CAKE_GROUP = "Cake Vaults";
+            public static final String BINGO_GROUP = "Bingo Vaults";
             public static final String BLACK_MARKET_GROUP = "Black Market";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
@@ -123,6 +125,10 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.push(ConfigPaths.Group.CAKE_GROUP);
                 CAKE_VAULT_OVERLAY_COLOR = CLIENT_BUILDER.comment("Changes the color of the Vault Cake overlay").defineEnum(ConfigPaths.CAKE_VAULT_OVERLAY_COLOR, CakeVaultOverlayColor.PINK);
                 CAKE_VAULT_OVERLAY_STYLE = CLIENT_BUILDER.comment("Changes the style of the Vault Cake overlay").defineEnum(ConfigPaths.CAKE_VAULT_OVERLAY_STYLE, CakeVaultOverlayStyle.VIGNETTE);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
+                BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
