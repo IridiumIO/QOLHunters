@@ -3,5 +3,6 @@
   "key.qolhunters.forge": "Press to craft/forge/reroll item depending on the interface.",
   "key.qolhunters.cake_overlay_color": "Cake Overlay: Cycle Color",
   "key.qolhunters.cake_overlay_style": "Cake Overlay: Toggle Style",
-  "key.qolhunters.magnet_gui": "Magnet on/off toggle (in GUI screens)"
+  "key.qolhunters.magnet_gui": "Magnet on/off toggle (in GUI screens)",
+  "key.qolhunters.open_config": "Open QOL Hunters Config"
 }

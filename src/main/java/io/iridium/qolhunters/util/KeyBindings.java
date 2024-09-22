@@ -15,14 +15,16 @@ public class KeyBindings {
     public static final String KEY_CAKE_OVERLAY_COLOR = "key.qolhunters.cake_overlay_color";
     public static final String KEY_CAKE_OVERLAY_STYLE = "key.qolhunters.cake_overlay_style";
     public static final String KEY_MAGNET_GUI = "key.qolhunters.magnet_gui";
+    public static final String KEY_OPEN_CONFIG = "key.qolhunters.open_config";
 
     public static final KeyMapping FORGE_ITEM = new KeyMapping(KEY_FORGE, KeyConflictContext.GUI, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_SPACE, KEY_CATEGORY);
 
     public static final KeyMapping TOGGLE_CAKE_OVERLAY_COLOR = new KeyMapping(KEY_CAKE_OVERLAY_COLOR, KeyConflictContext.IN_GAME, KeyModifier.CONTROL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_EQUAL, KEY_CATEGORY);
     public static final KeyMapping TOGGLE_CAKE_OVERLAY_STYLE = new KeyMapping(KEY_CAKE_OVERLAY_STYLE, KeyConflictContext.IN_GAME, KeyModifier.CONTROL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_MINUS, KEY_CATEGORY);
 
-
     public static final KeyMapping TOGGLE_MAGNET_GUI = new KeyMapping(KEY_MAGNET_GUI, KeyConflictContext.GUI, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_GRAVE_ACCENT, ModKeybinds.KEY_CATEGORY);
+
+    public static final KeyMapping OPEN_CONFIG = new KeyMapping(KEY_OPEN_CONFIG, KeyConflictContext.IN_GAME, KeyModifier.ALT, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Q, KEY_CATEGORY);
 
 
     public static void init() {
@@ -31,6 +33,7 @@ public class KeyBindings {
         ClientRegistry.registerKeyBinding(TOGGLE_CAKE_OVERLAY_COLOR);
         ClientRegistry.registerKeyBinding(TOGGLE_CAKE_OVERLAY_STYLE);
         ClientRegistry.registerKeyBinding(TOGGLE_MAGNET_GUI);
+        ClientRegistry.registerKeyBinding(OPEN_CONFIG);
     }
 
 }
