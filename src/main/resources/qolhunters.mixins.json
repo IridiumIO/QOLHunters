@@ -32,6 +32,7 @@
     "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
     "scavenger.MixinStorageScreenBase",
+    "shop.MixinShopPedestalBlockTileRenderer",
     "skillaltar.MixinSkillAltarContainerDefault",
     "skillaltar.MixinSkillAltarScreen",
     "vaultenchanter.MixinVaultEnchanterScreen",

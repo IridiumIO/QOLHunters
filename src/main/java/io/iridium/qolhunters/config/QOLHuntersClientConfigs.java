@@ -34,6 +34,10 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
+    public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
+
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -79,6 +83,8 @@ public class QOLHuntersClientConfigs {
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
+        public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
+        public static final String BARTERING_DISCOUNT = "Bartering Discount";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -87,6 +93,7 @@ public class QOLHuntersClientConfigs {
             public static final String BINGO_GROUP = "Bingo Vaults";
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String BLACK_MARKET_GROUP = "Black Market";
+            public static final String SHOPPING_GROUP = "Shopping Pedestals";
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
@@ -154,6 +161,11 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.PARADOX_GATE_GROUP);
                 PARADOX_GATE_ZOOM = CLIENT_BUILDER.comment("Hold <SHIFT> to enlarge the paradox vault gate unlock text.\nNote: Designed for BUILD mode, but currently also takes effect when running the vault too.").define(ConfigPaths.PARADOX_GATE_ZOOM, true);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.SHOPPING_GROUP);
+                ENABLE_BARTERING_DISCOUNT_DISPLAY = CLIENT_BUILDER.comment("Includes your bartering discount on shopping pedestals").define(ConfigPaths.ENABLE_BARTERING_DISCOUNT_DISPLAY, true);
+                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
