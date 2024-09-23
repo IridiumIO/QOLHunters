@@ -11,10 +11,11 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-    "bingo.MixinBingoRenderer",
+    "MixinGateLockRenderer",
     "MixinMonolithRenderer",
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",
+    "bingo.MixinBingoRenderer",
     "blackmarket.MixinShardTradeScreen",
     "cake.MixinCakeObjective",
     "configs.MixinAbilitiesDescriptionsConfig",
@@ -22,6 +23,7 @@
     "configs.MixinMenuPlayerStatDescriptionConfig",
     "configs.MixinModConfigs",
     "configs.MixinSkillDescriptionsConfig",
+    "godaltars.MixinGodAltarOverlay",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",

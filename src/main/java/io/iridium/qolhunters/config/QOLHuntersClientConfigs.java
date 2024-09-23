@@ -29,6 +29,11 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
 
+    public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -71,13 +76,20 @@ public class QOLHuntersClientConfigs {
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
+        public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
+        public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
+        public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
             public static final String CAKE_GROUP = "Cake Vaults";
             public static final String BINGO_GROUP = "Bingo Vaults";
+            public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String BLACK_MARKET_GROUP = "Black Market";
+
+            public static final String HUD_POSITION_GROUP = "HUD Positioning";
+            public static final String GOD_OBJECTIVE_GROUP = "God Objective";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
             public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
@@ -129,6 +141,19 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
                 BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
+
+                CLIENT_BUILDER.push(ConfigPaths.Group.GOD_OBJECTIVE_GROUP);
+                    GOD_OBJECTIVE_X_OFFSET = CLIENT_BUILDER.comment("Changes the X offset of the God Objective\nDefined as % of screen width").defineInRange(ConfigPaths.GOD_OBJECTIVE_X_OFFSET, 0, 0, 100);
+                    GOD_OBJECTIVE_Y_OFFSET = CLIENT_BUILDER.comment("Changes the Y offset of the God Objective\nDefined as % of screen height").defineInRange(ConfigPaths.GOD_OBJECTIVE_Y_OFFSET, 45, 0, 100);
+                CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.PARADOX_GATE_GROUP);
+                PARADOX_GATE_ZOOM = CLIENT_BUILDER.comment("Hold <SHIFT> to enlarge the paradox vault gate unlock text.\nNote: Designed for BUILD mode, but currently also takes effect when running the vault too.").define(ConfigPaths.PARADOX_GATE_ZOOM, true);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
