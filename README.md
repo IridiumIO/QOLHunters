@@ -1,24 +1,18 @@
-Bakes text overlays onto the  Modifier icons to make it easier to identify which modifiers are active inside a vault. 
+Adds several quality-of-life features to Vault Hunters, aiming to remain within the spirit of the game but improving the player experience. 
+
+[Click here to see the full list of added features](https://github.com/IridiumIO/QOLHunters/wiki)
+
+Most of the features can be used as a client-only mod, with the exception of the Emerald slot in the enchanting table (which can be disabled in the client config allowing you to play on vanilla servers). 
 
 **Installation**
 
-- Drop into your mods folder
-- If updating from a previous version, make sure you delete `configs/the_vault/vault_modifiers_iridium.json`
+- Download from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/qol-hunters) and drop into your mods folder
+- Most features can be toggled on/off using the in-game configuration menu accessible with `Alt+Q`
 
 **Compatibility**
 
 - VH 3.15.1.4
 - ?Wold's Vaults 0.11.3a (for some reason it doesn't fully work)
 
-**Interpretation**
-
-- White text = standard positive modifiers
-- Orange text = negative modifiers
-- Green text = special positive modifiers
-
-
-
-**Planned Features**
-I plan to expand this mod with additional features across the rest of the UI, not just the vault modifiers icons. The biggest thing I want to do is update the abilities page to include more details as well as overlevel information 
 
 https://discord.com/channels/889424759018901514/1278708249742282824
