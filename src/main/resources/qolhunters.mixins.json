@@ -12,6 +12,7 @@
   ],
   "client": [
     "MixinGateLockRenderer",
+    "MixinInputEvents",
     "MixinMonolithRenderer",
     "Abilities.MixinAbilityDialog",
     "accessors.AccessorAbstractContainerScreen",
