@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
-import io.iridium.qolhunters.customimplementations.Scavenger;
+import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;

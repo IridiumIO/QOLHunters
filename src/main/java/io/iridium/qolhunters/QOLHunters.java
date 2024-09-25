@@ -9,9 +9,12 @@ import com.simibubi.create.foundation.config.ui.ConfigHelper;
 import com.simibubi.create.foundation.config.ui.SubMenuConfigScreen;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
-import io.iridium.qolhunters.customimplementations.Scavenger;
-import io.iridium.qolhunters.interfaces.SuperCakeObjective;
+import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import io.iridium.qolhunters.util.KeyBindings;
+import iskallia.vault.config.AbilitiesDescriptionsConfig;
+import iskallia.vault.config.BingoConfig;
+import iskallia.vault.config.MenuPlayerStatDescriptionConfig;
+import iskallia.vault.config.SkillDescriptionsConfig;
 import iskallia.vault.core.data.key.ThemeKey;
 import iskallia.vault.core.vault.Vault;
 import iskallia.vault.core.vault.VaultRegistry;
@@ -20,6 +23,7 @@ import iskallia.vault.core.vault.objective.Objectives;
 import iskallia.vault.event.event.VaultJoinEvent;
 import iskallia.vault.event.event.VaultLeaveEvent;
 import iskallia.vault.gear.item.VaultGearItem;
+import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModNetwork;
 import iskallia.vault.item.CardDeckItem;
 import iskallia.vault.item.MagnetItem;
@@ -235,6 +239,42 @@ public class QOLHunters {
         }
 
 
+        private static Boolean isBetterAbilitiesDescriptionEnabled = null;
+        private static Boolean isBetterStatsDescriptionEnabled = null;
+        private static Boolean isBetterSkillDescriptionEnabled = null;
+        private static Boolean isBetterBingoEnabled = null;
+        private static long LastCheckedTime = 0;
+
+        @SubscribeEvent
+        public static void CheckIfMixinConfigsAreChanged(TickEvent.ClientTickEvent event) {
+            if(isBetterAbilitiesDescriptionEnabled == null) {
+                isBetterAbilitiesDescriptionEnabled = QOLHuntersClientConfigs.BETTER_ABILITIES_DESCRIPTIONS.get();
+                isBetterStatsDescriptionEnabled = QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get();
+                isBetterSkillDescriptionEnabled = QOLHuntersClientConfigs.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS.get();
+                isBetterBingoEnabled = QOLHuntersClientConfigs.BETTER_BINGO_DESCRIPTIONS.get();
+            }
+
+            if (System.currentTimeMillis() < LastCheckedTime + 5000 ||
+                    (isBetterAbilitiesDescriptionEnabled == QOLHuntersClientConfigs.BETTER_ABILITIES_DESCRIPTIONS.get() &&
+                    isBetterStatsDescriptionEnabled == QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get() &&
+                    isBetterSkillDescriptionEnabled == QOLHuntersClientConfigs.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS.get() &&
+                    isBetterBingoEnabled == QOLHuntersClientConfigs.BETTER_BINGO_DESCRIPTIONS.get()
+                    ))
+                return;
+
+            isBetterAbilitiesDescriptionEnabled = QOLHuntersClientConfigs.BETTER_ABILITIES_DESCRIPTIONS.get();
+            isBetterStatsDescriptionEnabled = QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get();
+            isBetterSkillDescriptionEnabled = QOLHuntersClientConfigs.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS.get();
+            isBetterBingoEnabled = QOLHuntersClientConfigs.BETTER_BINGO_DESCRIPTIONS.get();
+
+            ModConfigs.MENU_PLAYER_STAT_DESCRIPTIONS = (new MenuPlayerStatDescriptionConfig()).readConfig();
+            ModConfigs.ABILITIES_DESCRIPTIONS = (new AbilitiesDescriptionsConfig()).readConfig();
+            ModConfigs.SKILL_DESCRIPTIONS = (new SkillDescriptionsConfig()).readConfig();
+            ModConfigs.BINGO = (new BingoConfig()).readConfig();
+
+            LastCheckedTime = System.currentTimeMillis();
+
+        }
     }
 
     @OnlyIn(Dist.CLIENT)

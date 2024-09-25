@@ -1,11 +1,10 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.brazier;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Vector3f;
-import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.block.MonolithBlock;
 import iskallia.vault.block.entity.MonolithTileEntity;

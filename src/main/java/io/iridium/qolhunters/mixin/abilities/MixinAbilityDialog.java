@@ -1,7 +1,9 @@
-package io.iridium.qolhunters.mixin.Abilities;
+package io.iridium.qolhunters.mixin.abilities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.features.betterabilitiestab.IBetterAbilities;
 import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.component.ScrollableContainer;
 import iskallia.vault.client.gui.overlay.VaultBarOverlay;
@@ -13,7 +15,6 @@ import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityWidget;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModTextureAtlases;
 import iskallia.vault.skill.ability.component.AbilityDescriptionFactory;
-import iskallia.vault.skill.ability.component.AbilityLabelBindingRegistry;
 import iskallia.vault.skill.ability.component.AbilityLabelContext;
 import iskallia.vault.skill.ability.component.AbilityLabelFactory;
 import iskallia.vault.skill.base.LearnableSkill;
@@ -21,48 +22,45 @@ import iskallia.vault.skill.base.Skill;
 import iskallia.vault.skill.base.SpecializedSkill;
 import iskallia.vault.skill.base.TieredSkill;
 import iskallia.vault.skill.tree.AbilityTree;
-import iskallia.vault.util.calc.CooldownHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @Mixin(AbilityDialog.class)
-public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElementContainerScreen> {
-
-    @Shadow(remap = false) @Final private AbilityTree abilityTree;
-    @Shadow(remap = false) private MutableComponent descriptionContentComponent;
-    @Shadow(remap = false) private String selectedAbility;
-    @Shadow(remap = false) private String prevSelectedAbility = null;
-    @Shadow(remap = false) private int prevAbilityLevel = -1;
-    @Shadow(remap = false) private AbilityWidget selectedAbilityWidget;
-
-    @Shadow(remap = false) protected abstract void selectSpecialization();
-    @Shadow(remap = false) protected abstract void upgradeAbility();
-    @Shadow(remap = false) protected abstract void downgradeAbility();
-    @Shadow(remap = false) protected abstract void renderDescriptions(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks);
+public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElementContainerScreen> implements IBetterAbilities {
 
 
-    protected MixinAbilityDialog(AbilitiesElementContainerScreen skillTreeScreen) {super(skillTreeScreen);}
+    @Inject(method = "update", at = @At("HEAD"), cancellable = true, remap = false)
+    public void update(CallbackInfo ci) {
+        if(QOLHuntersClientConfigs.BETTER_ABILITIES_TAB.get()){
+            qOLHunters$update();
+            ci.cancel();
+        }
+    }
+
+
+    //===========================================================================================================
+    // Custom Implementations
+    //===========================================================================================================
 
 
     /**
-     * Overwrites the update() method.
-     * @author IridiumIO
-     * @reason Large changes to the method to improve the abilities tab.
+     * Custom implementation of the update method for the ability dialog.
+     * Handles the creation of the ability widget, builds description components,
+     * and determines the state of the learn and regret buttons.
      */
-    @Overwrite(remap = false)
-    public void update() {
+    @Unique
+    public void qOLHunters$update() {
 
         if (this.selectedAbility == null || Minecraft.getInstance().player == null) return;
 
@@ -151,26 +149,6 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
     }
 
 
-    //===========================================================================================================
-    // Support Methods
-    //===========================================================================================================
-
-
-    /**
-     * Builds the learn button with the specified parameters.
-     *
-     * @param buttonText The text to display on the button.
-     * @param pressAction The action to perform when the button is pressed.
-     * @param activeState The active state of the button.
-     */
-    @Unique
-    private void qOLHunters$buildLearnButton(String buttonText, Button.OnPress pressAction, boolean activeState) {
-        this.learnButton = new Button(0, 0, 0, 0, new TextComponent(buttonText), pressAction, Button.NO_TOOLTIP);
-        this.learnButton.active = activeState;
-    }
-
-
-
     /**
      * Builds the description component for the ability dialog. Includes all ability levels and overlevels.
      *
@@ -227,53 +205,35 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
 
 
-    //TODO: None of this should be in this mixin at all. Move it to a separate class.
-    void HijackAbilityLabelFactory() throws NoSuchFieldException, IllegalAccessException {
-       Field FACTORY_MAP_FIELD = AbilityLabelFactory.class.getDeclaredField("FACTORY_MAP");
-        FACTORY_MAP_FIELD.setAccessible(true);
-
-        // Retrieve the value of the field
-        Map<String, AbilityLabelFactory.IAbilityComponentFactory> factoryMap =
-                (Map<String, AbilityLabelFactory.IAbilityComponentFactory>) FACTORY_MAP_FIELD.get(null);
 
 
-        Player player = Minecraft.getInstance().player;
+    //===========================================================================================================
+    // Support Methods
+    //===========================================================================================================
 
-        factoryMap.put("cooldown",
-                context -> labelWithCooldownValue(
-                        "\n Cooldown: ",
-                        binding(context.config(), "cooldown"),
-                        "cooldown",
-                        player != null ? CooldownHelper.getCooldownMultiplier(player) : 0.0F
-                ));
 
-    }
-
-    private static <C extends Skill> String binding(C config, String key) {
-        return AbilityLabelBindingRegistry.getBindingValue(config, key);
-    }
-
-    private static MutableComponent labelWithCooldownValue(String label, String value, String colorKey, float abilityValue) {
-        float result = Float.parseFloat(value.replace("s", ""));
-        return new TextComponent(label)
-                .withStyle(Style.EMPTY.withColor(ModConfigs.COLORS.getColor("text")))
-                .append(text(value, colorKey).append(text(" (" + String.format("%.1f", result * (1.0 - abilityValue)) + "s)", colorKey)));
-    }
-
-    private static MutableComponent text(String text, String colorKey) {
-        return text(text, ModConfigs.COLORS.getColor(colorKey));
-    }
-
-    private static MutableComponent text(String text, TextColor color) {
-        return new TextComponent(text).withStyle(Style.EMPTY.withColor(color));
+    /**
+     * Builds the learn button with the specified parameters.
+     *
+     * @param buttonText The text to display on the button.
+     * @param pressAction The action to perform when the button is pressed.
+     * @param activeState The active state of the button.
+     */
+    @Unique
+    private void qOLHunters$buildLearnButton(String buttonText, Button.OnPress pressAction, boolean activeState) {
+        this.learnButton = new Button(0, 0, 0, 0, new TextComponent(buttonText), pressAction, Button.NO_TOOLTIP);
+        this.learnButton.active = activeState;
     }
 
 
-
-
-
-
-
+    /**
+     * Appends labels to the given component based on the provided keys and context.
+     *
+     * @param component The component to which the labels will be appended.
+     * @param keys A list of keys used to retrieve the labels.
+     * @param header The header text component to be appended before the labels.
+     * @param context The context in which the labels are created.
+     */
      @Unique
      void qOLHunters$appendLabels(MutableComponent component, List<String> keys, TextComponent header, AbilityLabelContext<?> context) {
          if (keys.isEmpty()) return;
@@ -359,5 +319,29 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
                 TextureAtlasRegion.of(ModTextureAtlases.ABILITIES, ModConfigs.ABILITIES_GUI.getIcon(this.selectedAbility))
         );
     }
+
+
+
+    //===========================================================================================================
+    // Shadowed Methods
+    //===========================================================================================================
+
+    @Shadow(remap = false) @Final private AbilityTree abilityTree;
+    @Shadow(remap = false) private MutableComponent descriptionContentComponent;
+    @Shadow(remap = false) private String selectedAbility;
+    @Shadow(remap = false) private String prevSelectedAbility = null;
+    @Shadow(remap = false) private int prevAbilityLevel = -1;
+    @Shadow(remap = false) private AbilityWidget selectedAbilityWidget;
+
+    @Shadow(remap = false) protected abstract void selectSpecialization();
+    @Shadow(remap = false) protected abstract void upgradeAbility();
+    @Shadow(remap = false) protected abstract void downgradeAbility();
+    @Shadow(remap = false) protected abstract void renderDescriptions(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks);
+
+
+    protected MixinAbilityDialog(AbilitiesElementContainerScreen skillTreeScreen) {super(skillTreeScreen);}
+
+
+
 
 }

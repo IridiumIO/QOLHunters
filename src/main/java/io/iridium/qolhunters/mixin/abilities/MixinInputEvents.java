@@ -1,7 +1,6 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.abilities;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.gui.screen.AbilitySelectionScreen;
 import iskallia.vault.client.gui.screen.achievements.AchievementScreen;
