@@ -37,6 +37,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
     public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
+
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -85,6 +87,7 @@ public class QOLHuntersClientConfigs {
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
         public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
         public static final String BARTERING_DISCOUNT = "Bartering Discount";
+        public static final String ABILITY_MULTICAST = "Ability Multicast";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -126,6 +129,7 @@ public class QOLHuntersClientConfigs {
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
+            ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
                 BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
