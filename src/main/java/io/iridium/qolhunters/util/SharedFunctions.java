@@ -106,4 +106,23 @@ public class SharedFunctions {
 
     }
 
+
+    public static int DataSlotToNetworkSlot(int index) {
+        if(index == 100)
+            index = 8;
+        else if(index == 101)
+            index = 7;
+        else if(index == 102)
+            index = 6;
+        else if(index == 103)
+            index = 5;
+        else if(index == -106)
+            index = 45;
+        else if(index <= 8)
+            index += 36;
+        else if(index >= 80 && index <= 83)
+            index -= 79;
+        return index;
+    }
+
 }

@@ -38,6 +38,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
 
 
     public enum BrazierHologramMode {
@@ -88,6 +89,7 @@ public class QOLHuntersClientConfigs {
         public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
         public static final String BARTERING_DISCOUNT = "Bartering Discount";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
+        public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -130,6 +132,7 @@ public class QOLHuntersClientConfigs {
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
+            CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
                 BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
