@@ -30,10 +30,10 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
     private static final Map<String, Map<String, Supplier<Boolean>>> MIXIN_CONDITIONS = ImmutableMap.of(
             //"BETTER_DESCRIPTIONS", ImmutableMap.of(
-                 //   "io.iridium.qolhunters.mixin.configs.MixinAbilitiesDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
-//                    "io.iridium.qolhunters.mixin.configs.MixinMenuPlayerStatDescriptionConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
-//                    "io.iridium.qolhunters.mixin.configs.MixinSkillDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
-//                    "io.iridium.qolhunters.mixin.configs.MixinBingoConfig", () -> betterDescriptions && !isWoldsVaultModInstalled
+                 //   "io.iridium.qolhunters.mixin.betterdescriptions.MixinAbilitiesDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+//                    "io.iridium.qolhunters.mixin.betterdescriptions.MixinMenuPlayerStatDescriptionConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+//                    "io.iridium.qolhunters.mixin.betterdescriptions.MixinSkillDescriptionsConfig", () -> betterDescriptions && !isWoldsVaultModInstalled,
+//                    "io.iridium.qolhunters.mixin.betterdescriptions.MixinBingoConfig", () -> betterDescriptions && !isWoldsVaultModInstalled
            // ),
             "VAULT_ENCHANTER_EMERALD_SLOT", ImmutableMap.of(
                     "io.iridium.qolhunters.mixin.vaultenchanter.MixinEnchantmentCost", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
