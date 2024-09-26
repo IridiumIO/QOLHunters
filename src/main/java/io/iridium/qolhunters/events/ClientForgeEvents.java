@@ -12,27 +12,17 @@ import iskallia.vault.config.AbilitiesDescriptionsConfig;
 import iskallia.vault.config.BingoConfig;
 import iskallia.vault.config.MenuPlayerStatDescriptionConfig;
 import iskallia.vault.config.SkillDescriptionsConfig;
-import iskallia.vault.core.data.key.ThemeKey;
-import iskallia.vault.core.vault.Vault;
-import iskallia.vault.core.vault.VaultRegistry;
-import iskallia.vault.core.vault.WorldManager;
-import iskallia.vault.core.vault.objective.Objectives;
-import iskallia.vault.event.event.VaultJoinEvent;
 import iskallia.vault.event.event.VaultLeaveEvent;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModNetwork;
 import iskallia.vault.network.message.ServerboundMagnetToggleMessage;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -40,7 +30,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
 import static io.iridium.qolhunters.QOLHunters.MOD_ID;
-import static io.iridium.qolhunters.util.SharedFunctions.*;
+import static io.iridium.qolhunters.util.SharedFunctions.displayMessageOnScreen;
 
 @Mod.EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
 public  class ClientForgeEvents {
@@ -101,35 +91,6 @@ public  class ClientForgeEvents {
 
 
 
-    private static Component vaultTitle;
-    private static Component vaultSubtitle;
-
-    @SubscribeEvent
-    public static void onVaultJoin(VaultJoinEvent event) {
-
-        ResourceLocation theme = event.getVault().get(Vault.WORLD).get(WorldManager.THEME);
-        ThemeKey themeKey = VaultRegistry.THEME.getKey(theme);
-        vaultSubtitle = new TextComponent(themeKey.getName()).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(themeKey.getColor()))).withStyle(ChatFormatting.ITALIC);
-        String obj = getVaultObjective(event.getVault().get(Vault.OBJECTIVES).get(Objectives.KEY));
-        vaultTitle = new TextComponent(obj + " Vault").withStyle((Style.EMPTY.withColor(TextColor.fromRgb(14536734))));
-
-
-        // Register ClientTickEvent listener
-        MinecraftForge.EVENT_BUS.addListener(new java.util.function.Consumer<TickEvent.ClientTickEvent>() {
-            @Override
-            public void accept(TickEvent.ClientTickEvent tickEvent) {
-                if (vaultTitle != null && Minecraft.getInstance().player != null && Minecraft.getInstance().screen == null) {
-                    displayTitleOnScreen(vaultTitle);
-                    displaySubtitleOnScreen(vaultSubtitle);
-                    vaultTitle = null;
-                    vaultSubtitle = null;
-                    // Unregister the listener after displaying the message
-                    MinecraftForge.EVENT_BUS.unregister(this);
-                }
-            }
-        });
-    }
-
     @SubscribeEvent
     public static void onVaultLeave(VaultLeaveEvent event) {
         Scavenger.ScavengerItems.clear();
@@ -140,17 +101,6 @@ public  class ClientForgeEvents {
         Scavenger.ScavengerItems.clear();
     }
 
-
-    public static String getVaultObjective(String key) {
-        String var2 = key == null ? "" : key.toLowerCase();
-
-        return switch (var2) {
-            case "boss" -> "Hunt the Guardians";
-            case "monolith" -> "Brazier";
-            case "empty", "" -> "";
-            default -> key.substring(0, 1).toUpperCase() + key.substring(1);
-        };
-    }
 
 
 
