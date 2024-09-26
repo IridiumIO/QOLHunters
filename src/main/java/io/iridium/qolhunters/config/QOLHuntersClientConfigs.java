@@ -47,6 +47,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -103,6 +104,7 @@ public class QOLHuntersClientConfigs {
         public static final String BARTERING_DISCOUNT = "Bartering Discount";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
+        public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -133,7 +135,7 @@ public class QOLHuntersClientConfigs {
         CLIENT_BUILDER.comment("QOLHunters Configuration\nSOME CHANGES REQUIRE A CLIENT RESTART");
 
         CLIENT_BUILDER.push(ConfigPaths.Group.GENERAL_GROUP);
-
+            SHOW_CONFIG_BUTTON = CLIENT_BUILDER.comment("Show the Config Button in the Statistics Menu (H)").define(ConfigPaths.SHOW_CONFIG_BUTTON, true);
             VANILLA_SAFE_MODE = CLIENT_BUILDER.comment("Disables QOL mods that cannot work on vanilla VH servers (disables all mods in the 'Client-Server Extensions' list)\nBe very careful if you change this on single player worlds! For example, if you have emeralds in your enchantment table and you enable this, those will probably get deleted if you load the world before changing this back\nRequires Restart").define(ConfigPaths.VANILLA_SAFE_MODE, false);
 
         CLIENT_BUILDER.pop();
