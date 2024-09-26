@@ -3,6 +3,7 @@ package io.iridium.qolhunters.features.vault_scavenger;
 import io.iridium.qolhunters.QOLHunters;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
@@ -31,6 +32,15 @@ public class Scavenger {
             }
 
         }
+
+
+        @SubscribeEvent
+        public static void onVaultComplete(PlayerEvent.PlayerChangedDimensionEvent event) {
+            Scavenger.ScavengerItems.clear();
+        }
+
+
+
 
     }
 
