@@ -1,6 +1,7 @@
 package io.iridium.qolhunters.mixin.keybinds;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.util.KeyBindings;
 import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
 import iskallia.vault.client.gui.framework.render.spi.ITooltipRendererFactory;
@@ -27,7 +28,7 @@ public abstract class MixinModifierWorkbenchScreen extends AbstractElementContai
     public void keyPressed(int pKeyCode, int pScanCode, int pModifiers, CallbackInfoReturnable<Boolean> cir)  {
         InputConstants.Key key = InputConstants.getKey(pKeyCode, pScanCode);
 
-        if (key.equals(KeyBindings.FORGE_ITEM.getKey())) {
+        if (key.equals(KeyBindings.FORGE_ITEM.getKey()) && QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get()) {
 
             this.tryCraft();
 

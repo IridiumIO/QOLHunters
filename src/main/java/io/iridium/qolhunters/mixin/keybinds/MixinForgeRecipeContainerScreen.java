@@ -1,5 +1,6 @@
 package io.iridium.qolhunters.mixin.keybinds;
 
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.mixin.accessors.AccessorAbstractContainerScreen;
 import io.iridium.qolhunters.util.KeyBindings;
 import iskallia.vault.block.entity.base.ForgeRecipeTileEntity;
@@ -59,7 +60,7 @@ public abstract class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileE
 
         if((isInstanceOfForgeRecipeContainerScreen((ForgeRecipeContainerScreen<V,T>)(Object)this))) {
 
-            if(pKeyCode == KeyBindings.FORGE_ITEM.getKey().getValue()) {
+            if(pKeyCode == KeyBindings.FORGE_ITEM.getKey().getValue() && QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get()) {
 
                 Method onCraftClickMethod = ForgeRecipeContainerScreen.class.getDeclaredMethod("onCraftClick");
                 onCraftClickMethod.setAccessible(true);
@@ -76,7 +77,7 @@ public abstract class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileE
         ForgeRecipeContainer<?> forgeRecipeContainer = ((ForgeRecipeContainerScreen<V, T>) (Object) this).getMenu();
 
         if (forgeRecipeContainer.getResultSlot().hasItem()) {
-            if (Screen.hasShiftDown()) {
+            if (Screen.hasShiftDown() && QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get()) {
                 ((AccessorAbstractContainerScreen) this).invokeSlotClicked(forgeRecipeContainer.getResultSlot(), forgeRecipeContainer.getResultSlot().index, 0, ClickType.QUICK_MOVE);
             }
         }

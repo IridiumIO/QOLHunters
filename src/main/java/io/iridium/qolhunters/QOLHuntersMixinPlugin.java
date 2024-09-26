@@ -42,15 +42,15 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 //                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterScreen", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode,
 //                    "io.iridium.qolhunters.mixin.vaultenchanter.MixinVaultEnchanterTileEntity", () -> vaultEnchanterEmeraldSlot && !vanillaSafeMode
 //            ),
-            "VAULT_KEYBINDS", ImmutableMap.of(
-                    "io.iridium.qolhunters.mixin.keybinds.MixinBountyScreen", () -> vaultInterfaceKeybinds,
-                    "io.iridium.qolhunters.mixin.keybinds.MixinForgeRecipeContainerScreen", () -> vaultInterfaceKeybinds,
-                    "io.iridium.qolhunters.mixin.keybinds.MixinModifierWorkbenchScreen", () -> vaultInterfaceKeybinds,
-                    "io.iridium.qolhunters.mixin.keybinds.MixinVaultEnchanterScreen", () -> vaultInterfaceKeybinds
-            ),
-            "BETTER_ABILITIES_TAB", ImmutableMap.of(
-                    "io.iridium.qolhunters.mixin.abilities.MixinAbilityDialog", () -> betterAbilitiesTab
-            )
+//            "VAULT_KEYBINDS", ImmutableMap.of(
+//                    "io.iridium.qolhunters.mixin.keybinds.MixinBountyScreen", () -> vaultInterfaceKeybinds,
+//                    "io.iridium.qolhunters.mixin.keybinds.MixinForgeRecipeContainerScreen", () -> vaultInterfaceKeybinds,
+//                    "io.iridium.qolhunters.mixin.keybinds.MixinModifierWorkbenchScreen", () -> vaultInterfaceKeybinds,
+//                    "io.iridium.qolhunters.mixin.keybinds.MixinVaultEnchanterScreen", () -> vaultInterfaceKeybinds
+//            ),
+//            "BETTER_ABILITIES_TAB", ImmutableMap.of(
+//                    "io.iridium.qolhunters.mixin.abilities.MixinAbilityDialog", () -> betterAbilitiesTab
+//            )
     );
 
 
@@ -61,11 +61,11 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
 
     private static final String CONFIG_FILE_NAME = "qolhunters-client.toml";
-    private static final String VANILLA_SAFE_MODE_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.GENERAL_GROUP, ConfigPaths.VANILLA_SAFE_MODE);
-  //  private static final String BETTER_DESCRIPTIONS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_DESCRIPTIONS);
-    private static final String VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.VAULT_INTERFACE_KEYBINDS);
+//    private static final String VANILLA_SAFE_MODE_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.GENERAL_GROUP, ConfigPaths.VANILLA_SAFE_MODE);
+//    private static final String BETTER_DESCRIPTIONS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_DESCRIPTIONS);
+//    private static final String VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.VAULT_INTERFACE_KEYBINDS);
 //    private static final String VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_SERVER_GROUP, ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT);
-    private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_ABILITIES_TAB);
+//    private static final String BETTER_ABILITIES_TAB_CONFIG_VALUE = ConfigPathBuilder(ConfigPaths.Group.CLIENT_GROUP, ConfigPaths.BETTER_ABILITIES_TAB);
 
 
     private static void loadConfig(){
@@ -79,11 +79,11 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
             if (configFile.exists()) {
                 FileConfig config = FileConfig.of(configFile);
                 config.load();
-                vanillaSafeMode = config.getOrElse(VANILLA_SAFE_MODE_CONFIG_VALUE, false);
+//                vanillaSafeMode = config.getOrElse(VANILLA_SAFE_MODE_CONFIG_VALUE, false);
                // betterDescriptions = config.getOrElse(BETTER_DESCRIPTIONS_CONFIG_VALUE, true);
-                vaultInterfaceKeybinds = config.getOrElse(VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE, true);
+//                vaultInterfaceKeybinds = config.getOrElse(VAULT_INTERFACE_KEYBINDS_CONFIG_VALUE, true);
 //                vaultEnchanterEmeraldSlot = config.getOrElse(VAULT_ENCHANTER_EMERALD_SLOT_CONFIG_VALUE, true);
-                betterAbilitiesTab = config.getOrElse(BETTER_ABILITIES_TAB_CONFIG_VALUE, true);
+//                betterAbilitiesTab = config.getOrElse(BETTER_ABILITIES_TAB_CONFIG_VALUE, true);
 
                 config.close();
             }
