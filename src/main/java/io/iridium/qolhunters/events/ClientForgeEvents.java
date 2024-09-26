@@ -43,6 +43,7 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
@@ -129,7 +130,7 @@ public  class ClientForgeEvents {
         for (Slot slot : screen.getMenu().slots) {
             ItemStack itemStack = slot.getItem();
             Item item = itemStack.getItem();
-            if (cooldowns.isOnCooldown(item) && (item instanceof VaultGearItem || item instanceof CardDeckItem || item instanceof MagnetItem)) {
+            if (cooldowns.isOnCooldown(item) && (item instanceof VaultGearItem || item instanceof CardDeckItem || item instanceof MagnetItem || item instanceof ElytraItem)) {
                 float cooldownPercent = cooldowns.getCooldownPercent(item, 0F);
                 QOLHunters.LOGGER.info("Cooldown Percent: " + cooldownPercent);
                 int absoluteCooldownSeconds = Math.round(cooldownPercent * 20.0F);
