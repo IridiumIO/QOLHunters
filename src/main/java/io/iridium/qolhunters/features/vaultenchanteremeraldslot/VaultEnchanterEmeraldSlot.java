@@ -1,8 +1,8 @@
 package io.iridium.qolhunters.features.vaultenchanteremeraldslot;
 
-import io.iridium.qolhunters.events.ClientForgeEvents;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.events.ClientForgeEvents;
 import io.iridium.qolhunters.networking.ModMessages;
 import io.iridium.qolhunters.networking.packet.HandshakeRespondModIsOnClientC2SPacket;
 import net.minecraft.client.Minecraft;
@@ -39,7 +39,7 @@ public class VaultEnchanterEmeraldSlot {
                         (isVaultEnchanterEmeraldSlotEnabledClient == QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get())) {
                     return;
                 }
-                QOLHunters.LOGGER.info("Updating Client config!");
+//                QOLHunters.LOGGER.info("Updating Client config!");
                 isVaultEnchanterEmeraldSlotEnabledClient = QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get();
                 ModMessages.sendToServer(new HandshakeRespondModIsOnClientC2SPacket(isVaultEnchanterEmeraldSlotEnabledClient));
                 LastCheckedTime = System.currentTimeMillis();
@@ -51,14 +51,14 @@ public class VaultEnchanterEmeraldSlot {
 
     public static boolean isSlotEnabled(Player player) {
         if(!(Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)) {
-            QOLHunters.LOGGER.error("isSlotEnabled called on client side");
+//            QOLHunters.LOGGER.error("isSlotEnabled called on client side");
             return isSlotEnabledClient();
         } else {
-            QOLHunters.LOGGER.error("isSlotEnabled called on server side");
+//            QOLHunters.LOGGER.error("isSlotEnabled called on server side");
 
             ServerPlayer serverPlayer = (ServerPlayer) player;
             if (!(player instanceof ServerPlayer)) {
-                QOLHunters.LOGGER.error("Player is not a ServerPlayer!");
+//                QOLHunters.LOGGER.error("Player is not a ServerPlayer!");
                 return false;
             }
             return isSlotEnabledServer(serverPlayer);

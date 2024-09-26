@@ -44,7 +44,7 @@ public class GearCooldownTimer {
             Item item = itemStack.getItem();
             if (cooldowns.isOnCooldown(item) && (item instanceof VaultGearItem || item instanceof CardDeckItem || item instanceof MagnetItem || item instanceof ElytraItem)) {
                 float cooldownPercent = cooldowns.getCooldownPercent(item, 0F);
-                QOLHunters.LOGGER.info("Cooldown Percent: " + cooldownPercent);
+
                 int absoluteCooldownSeconds = Math.round(cooldownPercent * 20.0F);
                 PoseStack poseStack = event.getPoseStack();
                 int x = slot.x + screen.getGuiLeft();

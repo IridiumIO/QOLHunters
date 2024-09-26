@@ -1,10 +1,6 @@
 package io.iridium.qolhunters.networking.packet;
 
-import io.iridium.qolhunters.QOLHunters;
-import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot;
-import io.iridium.qolhunters.networking.ModMessages;
-import iskallia.vault.core.vault.Vault;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -30,7 +26,7 @@ public class HandshakeRespondModIsOnClientC2SPacket {
         context.enqueueWork(() -> {
 
             // THIS IS ALL ON THE SERVER!!!!
-            QOLHunters.LOGGER.info("Mod is enabled on client: " + isEnabled);
+//            QOLHunters.LOGGER.info("Mod is enabled on client: " + isEnabled);
             VaultEnchanterEmeraldSlot.playerHasMod.put(context.getSender(), isEnabled);
         });
 

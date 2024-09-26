@@ -1,17 +1,14 @@
 package io.iridium.qolhunters.mixin.vaultenchanter;
 
 import com.google.common.collect.Sets;
-import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot;
 import iskallia.vault.container.VaultEnchanterContainer;
-import iskallia.vault.mixin.AccessorAbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -19,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Optional;
 import java.util.Set;
 
 import static io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot.qol$canAddItemToSlot;
@@ -35,7 +31,7 @@ public class MixinAbstractContainerMenu {
         boolean clientCheck = FMLEnvironment.dist.isClient() && QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get();
 
         if (VaultEnchanterEmeraldSlot.isSlotEnabled(pPlayer) && (((AbstractContainerMenu) (Object) this) instanceof VaultEnchanterContainer)) {
-            QOLHunters.LOGGER.info("VaultEnchanterContainer clicked");
+//            QOLHunters.LOGGER.info("VaultEnchanterContainer clicked");
             qol$clicked(pSlotId, pButton, pClickType, pPlayer);
             ci.cancel();
         }

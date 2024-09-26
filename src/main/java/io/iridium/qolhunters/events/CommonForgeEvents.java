@@ -24,10 +24,10 @@ public class CommonForgeEvents {
         BlockState blockState = event.getWorld().getBlockState(event.getPos());
         if (blockState.getBlock() instanceof VaultEnchanterBlock) {
             if(!(event.getPlayer() instanceof ServerPlayer)) {
-                QOLHunters.LOGGER.info("PING sent from Client!");
+//                QOLHunters.LOGGER.info("PING sent from Client!");
                 ModMessages.sendToServer(new HandshakeRespondModIsOnClientC2SPacket(QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get()));
             }
-            QOLHunters.LOGGER.info("Vault Enchanter Block Right Clicked");
+//            QOLHunters.LOGGER.info("Vault Enchanter Block Right Clicked");
         }
     }
 
