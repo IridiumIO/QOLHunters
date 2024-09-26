@@ -10,7 +10,14 @@ import com.simibubi.create.foundation.config.ui.SubMenuConfigScreen;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
+import io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot;
+import io.iridium.qolhunters.networking.ModMessages;
+import io.iridium.qolhunters.networking.packet.HandshakeCheckModIsOnClientS2CPacket;
+import io.iridium.qolhunters.networking.packet.HandshakeCheckModIsOnServerC2SPacket;
+import io.iridium.qolhunters.networking.packet.HandshakeRespondModIsOnClientC2SPacket;
+import io.iridium.qolhunters.networking.packet.HandshakeRespondModIsOnServerS2CPacket;
 import io.iridium.qolhunters.util.KeyBindings;
+import iskallia.vault.block.VaultEnchanterBlock;
 import iskallia.vault.config.AbilitiesDescriptionsConfig;
 import iskallia.vault.config.BingoConfig;
 import iskallia.vault.config.MenuPlayerStatDescriptionConfig;
@@ -39,18 +46,22 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -90,11 +101,38 @@ public class QOLHunters {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(ModMessages::register);
+    }
+//
+    @Mod.EventBusSubscriber(modid = MOD_ID)
+    public static class ServerForgeEvents {
+
+        @SubscribeEvent
+        public static void onBlockInteract(PlayerInteractEvent.RightClickBlock event) {
+            BlockState blockState = event.getWorld().getBlockState(event.getPos());
+            if (blockState.getBlock() instanceof VaultEnchanterBlock) {
+                if(!(event.getPlayer() instanceof ServerPlayer)) {
+                    QOLHunters.LOGGER.info("PING sent from Client!");
+                    ModMessages.sendToServer(new HandshakeRespondModIsOnClientC2SPacket(QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get()));
+                }
+                QOLHunters.LOGGER.info("Vault Enchanter Block Right Clicked");
+            }
+        }
+
+        @SubscribeEvent
+        public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+            if (!(event.getPlayer() instanceof ServerPlayer)) return;
+            QOLHunters.LOGGER.info("Player Joined: " + ((ServerPlayer) event.getPlayer()).getUUID());
+            VaultEnchanterEmeraldSlot.playerHasMod.put((ServerPlayer) event.getPlayer(), false);
+            ModMessages.sendToClient(new HandshakeCheckModIsOnClientS2CPacket(), (ServerPlayer) event.getPlayer());
+        }
+
     }
 
 
     @Mod.EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientForgeEvents {
+        public static ModMode MOD_MODE = ModMode.CLIENTONLY;
 
         @SubscribeEvent
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
@@ -238,6 +276,28 @@ public class QOLHunters {
             };
         }
 
+        private static Boolean isVaultEnchanterEmeraldSlotEnabledClient = null;
+
+        @SubscribeEvent
+        public static void CheckIfVaultEnchanterEmeraldSlotChanged(TickEvent.PlayerTickEvent event) {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.player == null) {
+                LastCheckedTime = System.currentTimeMillis();
+                return; // Ensure Minecraft instance and player are available
+            }
+
+            mc.execute(() -> {
+                if (System.currentTimeMillis() < LastCheckedTime + 2000 ||
+                        (isVaultEnchanterEmeraldSlotEnabledClient == QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get())) {
+                    return;
+                }
+                QOLHunters.LOGGER.info("Updating Client config!");
+                isVaultEnchanterEmeraldSlotEnabledClient = QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get();
+                ModMessages.sendToServer(new HandshakeRespondModIsOnClientC2SPacket(isVaultEnchanterEmeraldSlotEnabledClient));
+                LastCheckedTime = System.currentTimeMillis();
+            });
+        }
+
 
         private static Boolean isBetterAbilitiesDescriptionEnabled = null;
         private static Boolean isBetterStatsDescriptionEnabled = null;
@@ -262,6 +322,7 @@ public class QOLHunters {
                     ))
                 return;
 
+            QOLHunters.LOGGER.info(MOD_MODE.toString());
             isBetterAbilitiesDescriptionEnabled = QOLHuntersClientConfigs.BETTER_ABILITIES_DESCRIPTIONS.get();
             isBetterStatsDescriptionEnabled = QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get();
             isBetterSkillDescriptionEnabled = QOLHuntersClientConfigs.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS.get();
@@ -275,6 +336,23 @@ public class QOLHunters {
             LastCheckedTime = System.currentTimeMillis();
 
         }
+
+        @SubscribeEvent
+        public static void onJoinServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
+
+            MOD_MODE = ModMode.CLIENTONLY;
+            ModMessages.sendToServer(new HandshakeCheckModIsOnServerC2SPacket());
+
+
+        }
+
+    }
+
+
+    public enum ModMode {
+        CLIENTONLY,
+        CLIENTANDSERVER,
+        SERVERONLY
     }
 
     @OnlyIn(Dist.CLIENT)

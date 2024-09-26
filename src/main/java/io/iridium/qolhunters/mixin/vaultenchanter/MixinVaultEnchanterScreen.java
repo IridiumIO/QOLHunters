@@ -1,5 +1,7 @@
 package io.iridium.qolhunters.mixin.vaultenchanter;
 
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot;
 import io.iridium.qolhunters.interfaces.IModifiedInventory;
 import iskallia.vault.client.gui.framework.ScreenTextures;
 import iskallia.vault.client.gui.framework.element.*;
@@ -21,10 +23,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -59,8 +60,20 @@ public abstract class MixinVaultEnchanterScreen extends AbstractElementContainer
         super(container, inventory, title, elementRenderer, tooltipRendererFactory);
     }
 
+
     @Inject(method = "<init>(Liskallia/vault/container/VaultEnchanterContainer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/network/chat/Component;)V", at = @At("TAIL"), remap = false)
     public void VaultEnchanterScreen(VaultEnchanterContainer container, Inventory inventory, Component title, CallbackInfo ci) {
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            if (VaultEnchanterEmeraldSlot.isSlotEnabled(container.getPlayer())) {
+                qol$VaultEnchanterScreen(container, inventory, title, ci);
+            }
+        });
+    }
+
+
+
+    @Unique
+    private void qol$VaultEnchanterScreen(VaultEnchanterContainer container, Inventory inventory, Component title, CallbackInfo ci) {
 
         OverSizedInventory modifiedInventory = ((IModifiedInventory) container.getTileEntity()).getOverSizedInventory();
 
@@ -178,6 +191,6 @@ public abstract class MixinVaultEnchanterScreen extends AbstractElementContainer
     }
 
     @Shadow(remap = false)
-    abstract void tryCraft();
+    protected abstract void tryCraft();
 
 }
