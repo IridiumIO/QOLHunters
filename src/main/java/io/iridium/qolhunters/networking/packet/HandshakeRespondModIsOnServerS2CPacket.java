@@ -1,5 +1,6 @@
 package io.iridium.qolhunters.networking.packet;
 
+import io.iridium.qolhunters.events.ClientForgeEvents;
 import io.iridium.qolhunters.QOLHunters;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
@@ -20,7 +21,7 @@ public class HandshakeRespondModIsOnServerS2CPacket {
         context.enqueueWork(() -> {
             // THIS IS ALL ON THE CLIENT!!!!
             QOLHunters.LOGGER.info("Mod is enabled on server: true");
-            QOLHunters.ClientForgeEvents.MOD_MODE = QOLHunters.ModMode.CLIENTANDSERVER;
+            ClientForgeEvents.MOD_MODE = QOLHunters.ModMode.CLIENTANDSERVER;
 
         });
 

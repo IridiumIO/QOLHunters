@@ -1,23 +1,53 @@
 package io.iridium.qolhunters.features.vaultenchanteremeraldslot;
 
+import io.iridium.qolhunters.events.ClientForgeEvents;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.networking.ModMessages;
+import io.iridium.qolhunters.networking.packet.HandshakeRespondModIsOnClientC2SPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.thread.SidedThreadGroups;
-import org.spongepowered.asm.mixin.Unique;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.HashMap;
-import java.util.Optional;
 
 public class VaultEnchanterEmeraldSlot {
+
+    @Mod.EventBusSubscriber(modid = QOLHunters.MOD_ID, value = Dist.CLIENT)
+    public static class EnchanterEvents {
+
+        private static Boolean isVaultEnchanterEmeraldSlotEnabledClient = null;
+        private static long LastCheckedTime = 0;
+
+        @SubscribeEvent
+        public static void CheckIfVaultEnchanterEmeraldSlotChanged(TickEvent.PlayerTickEvent event) {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.player == null) return;
+
+            mc.execute(() -> {
+                if (System.currentTimeMillis() < LastCheckedTime + 2000 ||
+                        (isVaultEnchanterEmeraldSlotEnabledClient == QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get())) {
+                    return;
+                }
+                QOLHunters.LOGGER.info("Updating Client config!");
+                isVaultEnchanterEmeraldSlotEnabledClient = QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get();
+                ModMessages.sendToServer(new HandshakeRespondModIsOnClientC2SPacket(isVaultEnchanterEmeraldSlotEnabledClient));
+                LastCheckedTime = System.currentTimeMillis();
+            });
+        }
+
+    }
+
 
     public static boolean isSlotEnabled(Player player) {
         if(!(Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)) {
@@ -36,7 +66,7 @@ public class VaultEnchanterEmeraldSlot {
     }
 
     public static boolean isSlotEnabledClient() {
-        return QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get() && QOLHunters.ClientForgeEvents.MOD_MODE == QOLHunters.ModMode.CLIENTANDSERVER;
+        return QOLHuntersClientConfigs.VAULT_ENCHANTER_EMERALDS_SLOT.get() && ClientForgeEvents.MOD_MODE == QOLHunters.ModMode.CLIENTANDSERVER;
     }
 
     public static boolean isSlotEnabledServer(ServerPlayer player) {
