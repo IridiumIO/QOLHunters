@@ -1,11 +1,6 @@
 package io.iridium.qolhunters.config;
 
-import io.iridium.qolhunters.QOLHunters;
 import net.minecraftforge.common.ForgeConfigSpec;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 public class QOLHuntersClientConfigs {
 
@@ -144,8 +139,8 @@ public class QOLHuntersClientConfigs {
 
             //BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
-            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
-            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
+            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
+            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
@@ -158,7 +153,7 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
-                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
+                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Displays the number of shards in your Shard Pouch within the Black Market's interface").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
                 BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for the Black Market Shard Pouch count (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND, false);
             CLIENT_BUILDER.pop();
 
@@ -205,7 +200,7 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
 
-            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
+            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nThis setting will be safely ignored if you connect to a server without QOLHunters installed").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
 
         CLIENT_SPEC = CLIENT_BUILDER.build();
 
