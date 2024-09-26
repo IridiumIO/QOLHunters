@@ -1,4 +1,4 @@
-package io.iridium.qolhunters.mixin;
+package io.iridium.qolhunters.mixin.boosterpack;
 
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.gui.screen.BoosterPackSelectionScreen;

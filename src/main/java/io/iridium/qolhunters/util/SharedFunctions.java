@@ -5,12 +5,16 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
-import io.iridium.qolhunters.customimplementations.Scavenger;
+import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import iskallia.vault.util.InventoryUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.GuiUtils;
 import net.p3pp3rf1y.sophisticatedbackpacks.api.CapabilityBackpackWrapper;
 import net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem;
@@ -124,5 +128,29 @@ public class SharedFunctions {
             index -= 79;
         return index;
     }
+
+
+
+    @OnlyIn(Dist.CLIENT)
+    public static void displayTitleOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> mc.gui.setTitle(message));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void displaySubtitleOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> mc.gui.setSubtitle(message));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void displayMessageOnScreen(Component message) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> {
+            mc.gui.setOverlayMessage(message, false);
+        });
+    }
+
+
 
 }

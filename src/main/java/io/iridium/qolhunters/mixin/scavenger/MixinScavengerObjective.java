@@ -2,13 +2,11 @@ package io.iridium.qolhunters.mixin.scavenger;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.customimplementations.Scavenger;
+import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import io.iridium.qolhunters.util.SharedFunctions;
 import iskallia.vault.client.gui.helper.UIHelper;
-import iskallia.vault.core.vault.influence.VaultGod;
 import iskallia.vault.core.vault.objective.ScavengerObjective;
 import iskallia.vault.core.vault.objective.scavenger.ScavengerGoal;
-import iskallia.vault.item.GodBlessingItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -16,7 +14,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,9 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Mixin(ScavengerObjective.class)
 public class MixinScavengerObjective {

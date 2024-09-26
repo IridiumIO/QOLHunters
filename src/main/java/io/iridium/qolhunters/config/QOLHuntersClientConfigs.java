@@ -1,11 +1,6 @@
 package io.iridium.qolhunters.config;
 
-import io.iridium.qolhunters.QOLHunters;
 import net.minecraftforge.common.ForgeConfigSpec;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 public class QOLHuntersClientConfigs {
 
@@ -13,7 +8,14 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec CLIENT_SPEC;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> VANILLA_SAFE_MODE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
+
+    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
+
+
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_ENCHANTER_EMERALDS_SLOT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
@@ -40,6 +42,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -68,7 +71,13 @@ public class QOLHuntersClientConfigs {
 
     public record ConfigPaths() {
         public static final String VANILLA_SAFE_MODE = "Vanilla Safe Mode";
+
         public static final String BETTER_DESCRIPTIONS = "Better Descriptions";
+        public static final String BETTER_STATS_DESCRIPTIONS = "Better Stats Descriptions";
+        public static final String BETTER_ABILITIES_DESCRIPTIONS = "Better Abilities Descriptions";
+        public static final String BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = "Better Talents, Expertise, Research Descriptions";
+        public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
+
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
         public static final String VAULT_ENCHANTER_EMERALDS_SLOT = "Vault Enchanter Emeralds Slot";
         public static final String VAULT_INTERFACE_KEYBINDS = "Vault Interface Keybinds";
@@ -90,6 +99,7 @@ public class QOLHuntersClientConfigs {
         public static final String BARTERING_DISCOUNT = "Bartering Discount";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
+        public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -99,6 +109,8 @@ public class QOLHuntersClientConfigs {
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String BLACK_MARKET_GROUP = "Black Market";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
+            public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
+
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
@@ -118,24 +130,30 @@ public class QOLHuntersClientConfigs {
         CLIENT_BUILDER.comment("QOLHunters Configuration\nSOME CHANGES REQUIRE A CLIENT RESTART");
 
         CLIENT_BUILDER.push(ConfigPaths.Group.GENERAL_GROUP);
-
+            SHOW_CONFIG_BUTTON = CLIENT_BUILDER.comment("Show the Config Button in the Statistics Menu (H)").define(ConfigPaths.SHOW_CONFIG_BUTTON, true);
             VANILLA_SAFE_MODE = CLIENT_BUILDER.comment("Disables QOL mods that cannot work on vanilla VH servers (disables all mods in the 'Client-Server Extensions' list)\nBe very careful if you change this on single player worlds! For example, if you have emeralds in your enchantment table and you enable this, those will probably get deleted if you load the world before changing this back\nRequires Restart").define(ConfigPaths.VANILLA_SAFE_MODE, false);
 
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_GROUP);
 
-            BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
+            //BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
-            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
-            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_ABILITIES_TAB, true);
+            VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
+            BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
 
+            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
+                BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
+                BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
+                BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
+            CLIENT_BUILDER.pop();
+
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
-                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Shows the amount of shards in the Shard Pouch in the Black Market").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
+                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Displays the number of shards in your Shard Pouch within the Black Market's interface").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
                 BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for the Black Market Shard Pouch count (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND, false);
             CLIENT_BUILDER.pop();
 
@@ -155,6 +173,7 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
                 BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
+                BETTER_BINGO_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of bingo objectives in Bingo Vaults\nMight not work on servers?").define(ConfigPaths.BETTER_BINGO_DESCRIPTIONS, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
@@ -181,7 +200,7 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
 
-            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nRequires Restart").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
+            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nThis setting will be safely ignored if you connect to a server without QOLHunters installed").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
 
         CLIENT_SPEC = CLIENT_BUILDER.build();
 
