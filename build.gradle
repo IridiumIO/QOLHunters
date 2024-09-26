@@ -169,6 +169,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:4515363")
     implementation fg.deobf("curse.maven:sophisticated-core-618298:4489807")
     implementation fg.deobf("curse.maven:create-328085:4550986")
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4136407")
 //    runtimeOnly fg.deobf("curse.maven:lightspeedmod-821790:4594803")
 //    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
