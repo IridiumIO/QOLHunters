@@ -5,9 +5,6 @@ import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.networking.ModMessages;
 import io.iridium.qolhunters.util.KeyBindings;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -37,7 +34,6 @@ public class QOLHunters {
         MinecraftForge.EVENT_BUS.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, QOLHuntersClientConfigs.CLIENT_SPEC, "qolhunters-client.toml");
-        EditBox editBox = new EditBox(Minecraft.getInstance().font, 0, 0, 0, 0, TextComponent.EMPTY);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
