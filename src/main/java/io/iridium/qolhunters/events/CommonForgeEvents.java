@@ -1,6 +1,5 @@
 package io.iridium.qolhunters.events;
 
-import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vaultenchanteremeraldslot.VaultEnchanterEmeraldSlot;
 import io.iridium.qolhunters.networking.ModMessages;
@@ -34,7 +33,7 @@ public class CommonForgeEvents {
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getPlayer() instanceof ServerPlayer)) return;
-        QOLHunters.LOGGER.info("Player Joined: " + ((ServerPlayer) event.getPlayer()).getUUID());
+//        QOLHunters.LOGGER.info("Player Joined: " + ((ServerPlayer) event.getPlayer()).getUUID());
         VaultEnchanterEmeraldSlot.playerHasMod.put((ServerPlayer) event.getPlayer(), false);
         ModMessages.sendToClient(new HandshakeCheckModIsOnClientS2CPacket(), (ServerPlayer) event.getPlayer());
     }

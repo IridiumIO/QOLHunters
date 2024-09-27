@@ -1,6 +1,9 @@
 package io.iridium.qolhunters.mixin.cardsearcher;
 
+import io.iridium.qolhunters.util.SharedFunctions;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.network.chat.TextComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,6 +30,11 @@ public class MixinEditBox {
 
         String currentValue = editBox.getValue();
 
+        if(currentValue.contains("\\obs")){
+            Minecraft.getInstance().setScreen(null);
+            SharedFunctions.displayTitleOnScreen(new TextComponent("OBS Mode Enabled"));
+            return;
+        }
 
         // Iterate through the replacements and check if the current value contains any sequence
         for (Map.Entry<String, Character> entry : REPL.entrySet()) {
@@ -46,7 +54,7 @@ public class MixinEditBox {
 
 
         // pattern to match the bracketed list for card searching in AE2 \#(tag1, tag2, tag...)
-        Pattern pattern = Pattern.compile("\\\\#\\(([^)]+)\\)");
+        Pattern pattern = Pattern.compile("#\\(([^)]+)\\)");
         Matcher matcher = pattern.matcher(currentValue);
 
         if (matcher.find()) {

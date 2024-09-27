@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
-import static io.iridium.qolhunters.config.QOLHuntersClientConfigs.*;
-
 public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
 
     private static boolean vanillaSafeMode = false;
@@ -71,7 +69,6 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
     private static void loadConfig(){
 
         isWoldsVaultModInstalled = FMLLoader.getLoadingModList().getModFileById("woldsvaults") != null;
-        QOLHunters.LOGGER.info("QOLHunters: WoldsVaults mod is installed: " + isWoldsVaultModInstalled);
 
         try {
             Path configPath = FMLPaths.CONFIGDIR.get().resolve(CONFIG_FILE_NAME);
@@ -101,11 +98,9 @@ public final class QOLHuntersMixinPlugin implements IMixinConfigPlugin {
         for (Map<String, Supplier<Boolean>> conditions : MIXIN_CONDITIONS.values()) {
             if (conditions.containsKey(mixinClassName)) {
                 boolean shouldApply = conditions.get(mixinClassName).get();
-                QOLHunters.LOGGER.info("QOLHunters: shouldApplyMixin: " + mixinClassName + " -> " + shouldApply);
                 return shouldApply;
             }
         }
-        QOLHunters.LOGGER.info("QOLHunters: shouldApplyMixin: " + mixinClassName + " -> true");
         return true;
     }
 

@@ -44,6 +44,11 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
+//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_LEGENDARY_PREFIX;
+//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_FROZEN_PREFIX;
+//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_AE2TAGS_PREFIX;
+
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -100,6 +105,9 @@ public class QOLHuntersClientConfigs {
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
+        public static final String SEARCH_LEGENDARY_PREFIX = "✦ 'Legendary' Search Command";
+        public static final String SEARCH_FROZEN_PREFIX = "❰ 'Frozen' Search Command";
+        public static final String SEARCH_AE2TAGS_PREFIX = "AE2 MultiTags Search Prefix";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -114,6 +122,7 @@ public class QOLHuntersClientConfigs {
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
+            public static final String SEARCH_GROUP = "Search Commands";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
             public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
@@ -193,6 +202,12 @@ public class QOLHuntersClientConfigs {
                 ENABLE_BARTERING_DISCOUNT_DISPLAY = CLIENT_BUILDER.comment("Includes your bartering discount on shopping pedestals").define(ConfigPaths.ENABLE_BARTERING_DISCOUNT_DISPLAY, true);
                 BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
             CLIENT_BUILDER.pop();
+
+//            CLIENT_BUILDER.push(ConfigPaths.Group.SEARCH_GROUP);
+//                SEARCH_LEGENDARY_PREFIX = CLIENT_BUILDER.comment("Command to type in chat/search to type in the 'Legendary' symbol (✦)").define(ConfigPaths.SEARCH_LEGENDARY_PREFIX, "\\leg");
+//                SEARCH_FROZEN_PREFIX = CLIENT_BUILDER.comment("Command to type in chat/search to type in the 'Frozen' symbol (❰)").define(ConfigPaths.SEARCH_FROZEN_PREFIX, "\\frozen");
+//                SEARCH_AE2TAGS_PREFIX = CLIENT_BUILDER.comment("Shortcut Prefix to search in AE2 for multiple tags. Will be expanded into the full regex form\nBy default, requires a '#' with each tag separated by a comma inside a pair of braces, e.g.\n'#(green,foil,offensive)").define(ConfigPaths.SEARCH_AE2TAGS_PREFIX, "#");
+//            CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
 
