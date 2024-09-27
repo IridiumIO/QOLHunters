@@ -123,10 +123,10 @@ public class QOLHuntersClientConfigs {
         public static final String RARITY_HIGHLIGHTER_EPIC = "Highlight Epic Gear";
         public static final String RARITY_HIGHLIGHTER_OMEGA = "Highlight Omega Gear";
         public static final String RARITY_HIGHLIGHTER_UNIQUE = "Highlight Unique Gear";
-        public static final String VIRTUAL_DEHAMMERIZER_X = "Virtual Dehammerizer X";
-        public static final String VIRTUAL_DEHAMMERIZER_Y = "Virtual Dehammerizer Y";
-        public static final String VIRTUAL_DEHAMMERIZER_Z = "Virtual Dehammerizer Z";
-        public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Virtual Dehammerizer Range";
+        public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
+        public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
+        public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
+        public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
