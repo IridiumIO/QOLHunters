@@ -238,7 +238,7 @@ public class QOLHuntersClientConfigs {
                 VIRTUAL_DEHAMMERIZER_X = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_X, 0);
                 VIRTUAL_DEHAMMERIZER_Y = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Y, 0);
                 VIRTUAL_DEHAMMERIZER_Z = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Z, 0);
-                VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 0, 5, 64);
+                VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 16, 5, 64);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
