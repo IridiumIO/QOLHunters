@@ -224,6 +224,7 @@ public class QOLHuntersClientConfigs {
                 RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
             CLIENT_BUILDER.pop();
 
+        CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
 
