@@ -6,6 +6,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
+import iskallia.vault.gear.VaultGearRarity;
+import iskallia.vault.gear.data.VaultGearData;
+import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -109,6 +112,50 @@ public class SharedFunctions {
 
 
     }
+
+    public static void renderSlotRarityHighlight(PoseStack poseStack, ItemStack itemStack, int x, int y){
+
+        if (!(itemStack.getItem() instanceof VaultGearItem)) return;
+
+        VaultGearData gearData = VaultGearData.read(itemStack);
+
+        VaultGearRarity rarity = gearData.getRarity();
+        if (rarity == VaultGearRarity.SCRAPPY || rarity == VaultGearRarity.COMMON) return;
+
+        int color = 0xDD000000 | rarity.getColor().getValue();
+//        if (rarity == VaultGearRarity.OMEGA){
+//            color = 0xDD000000 | 0x70e000;
+//        }else if (rarity == VaultGearRarity.EPIC){
+//            color = 0xDD000000 | 0x7b2cbf;
+//        }else if (rarity == VaultGearRarity.RARE){
+//            color = 0xDD000000 | 0xffdd00;
+//        }else if (rarity == VaultGearRarity.UNIQUE) {
+//            color = 0xDD000000 | 0xED7B24;
+//        }
+
+        RenderSystem.disableDepthTest();
+        poseStack.pushPose();
+        poseStack.translate(0, 0, 100);
+        Matrix4f matrix = poseStack.last().pose();
+
+
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder bufferBuilder = tesselator.getBuilder();
+        MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
+
+        if(true){
+            GuiUtils.drawGradientRect(matrix, -1, x,y + 4,x + 16,y + 16, 0x00000000, color);
+        }
+        else {
+            GuiUtils.drawGradientRect(matrix, -1, x, y + 15,x + 16,y + 16, color, color);
+        }
+
+        bufferSource.endBatch();
+        poseStack.popPose();
+
+
+    }
+
 
 
     public static int DataSlotToNetworkSlot(int index) {

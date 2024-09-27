@@ -12,7 +12,6 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-//    "MixinMinecraft",
     "abilities.MixinAbilityDialog",
     "abilities.MixinInputEvents",
     "accessors.AccessorAbstractContainerScreen",
@@ -35,6 +34,8 @@
     "keybinds.MixinVaultEnchanterScreen",
     "paradox.MixinGateLockRenderer",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
+    "rarityhighlighter.MixinAbstractContainer",
+    "rarityhighlighter.MixinStorageScreenBase",
     "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
     "scavenger.MixinStorageScreenBase",
