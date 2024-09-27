@@ -12,7 +12,7 @@
     "vaultenchanter.MixinVaultEnchanterTileEntity"
   ],
   "client": [
-    "MixinMinecraft",
+//    "MixinMinecraft",
     "abilities.MixinAbilityDialog",
     "abilities.MixinInputEvents",
     "accessors.AccessorAbstractContainerScreen",

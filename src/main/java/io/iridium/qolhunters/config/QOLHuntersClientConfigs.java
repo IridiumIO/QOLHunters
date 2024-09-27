@@ -37,7 +37,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
-    public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
+//    public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
@@ -200,7 +200,7 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SHOPPING_GROUP);
                 ENABLE_BARTERING_DISCOUNT_DISPLAY = CLIENT_BUILDER.comment("Includes your bartering discount on shopping pedestals").define(ConfigPaths.ENABLE_BARTERING_DISCOUNT_DISPLAY, true);
-                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
+//                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
             CLIENT_BUILDER.pop();
 
 //            CLIENT_BUILDER.push(ConfigPaths.Group.SEARCH_GROUP);
