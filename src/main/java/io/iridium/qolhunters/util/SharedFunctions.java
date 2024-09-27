@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import iskallia.vault.gear.VaultGearRarity;
 import iskallia.vault.gear.data.VaultGearData;
@@ -122,16 +123,13 @@ public class SharedFunctions {
         VaultGearRarity rarity = gearData.getRarity();
         if (rarity == VaultGearRarity.SCRAPPY || rarity == VaultGearRarity.COMMON) return;
 
-        int color = 0xDD000000 | rarity.getColor().getValue();
-//        if (rarity == VaultGearRarity.OMEGA){
-//            color = 0xDD000000 | 0x70e000;
-//        }else if (rarity == VaultGearRarity.EPIC){
-//            color = 0xDD000000 | 0x7b2cbf;
-//        }else if (rarity == VaultGearRarity.RARE){
-//            color = 0xDD000000 | 0xffdd00;
-//        }else if (rarity == VaultGearRarity.UNIQUE) {
-//            color = 0xDD000000 | 0xED7B24;
-//        }
+        if (rarity == VaultGearRarity.RARE && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_RARE.get()) return;
+        if (rarity == VaultGearRarity.EPIC && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_EPIC.get()) return;
+        if (rarity == VaultGearRarity.OMEGA && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_OMEGA.get()) return;
+        if (rarity == VaultGearRarity.UNIQUE && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_UNIQUE.get()) return;
+
+        int color = 0xFF000000 | rarity.getColor().getValue();
+
 
         RenderSystem.disableDepthTest();
         poseStack.pushPose();
@@ -143,11 +141,11 @@ public class SharedFunctions {
         BufferBuilder bufferBuilder = tesselator.getBuilder();
         MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
 
-        if(true){
-            GuiUtils.drawGradientRect(matrix, -1, x,y + 4,x + 16,y + 16, 0x00000000, color);
+        if(QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_MODE.get() == QOLHuntersClientConfigs.RarityHighlighterMode.GRADIENT){
+            GuiUtils.drawGradientRect(matrix, -99, x,y + 1,x + 16,y + 16, 0x00000000, color);
         }
         else {
-            GuiUtils.drawGradientRect(matrix, -1, x, y + 15,x + 16,y + 16, color, color);
+            GuiUtils.drawGradientRect(matrix, -99, x, y + 14,x + 16,y + 16, color, color);
         }
 
         bufferSource.endBatch();

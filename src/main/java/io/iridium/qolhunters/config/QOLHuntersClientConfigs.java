@@ -44,9 +44,12 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
-//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_LEGENDARY_PREFIX;
-//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_FROZEN_PREFIX;
-//    public static final ForgeConfigSpec.ConfigValue<String> SEARCH_AE2TAGS_PREFIX;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER;
+    public static final ForgeConfigSpec.EnumValue<RarityHighlighterMode> RARITY_HIGHLIGHTER_MODE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_RARE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_EPIC;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
 
     public enum BrazierHologramMode {
@@ -70,6 +73,11 @@ public class QOLHuntersClientConfigs {
         private final int colorCode;
         CakeVaultOverlayColor(int colorCode) {this.colorCode = colorCode;}
         public int getColorCode() {return colorCode;}
+    }
+
+    public enum RarityHighlighterMode {
+        GRADIENT,
+        UNDERLINE
     }
 
 
@@ -105,9 +113,12 @@ public class QOLHuntersClientConfigs {
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
-        public static final String SEARCH_LEGENDARY_PREFIX = "✦ 'Legendary' Search Command";
-        public static final String SEARCH_FROZEN_PREFIX = "❰ 'Frozen' Search Command";
-        public static final String SEARCH_AE2TAGS_PREFIX = "AE2 MultiTags Search Prefix";
+        public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter";
+        public static final String RARITY_HIGHLIGHTER_MODE = "Highlighter Mode";
+        public static final String RARITY_HIGHLIGHTER_RARE = "Highlight Rare Gear";
+        public static final String RARITY_HIGHLIGHTER_EPIC = "Highlight Epic Gear";
+        public static final String RARITY_HIGHLIGHTER_OMEGA = "Highlight Omega Gear";
+        public static final String RARITY_HIGHLIGHTER_UNIQUE = "Highlight Unique Gear";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -119,6 +130,7 @@ public class QOLHuntersClientConfigs {
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
 
+            public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
@@ -203,14 +215,14 @@ public class QOLHuntersClientConfigs {
 //                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
             CLIENT_BUILDER.pop();
 
-//            CLIENT_BUILDER.push(ConfigPaths.Group.SEARCH_GROUP);
-//                SEARCH_LEGENDARY_PREFIX = CLIENT_BUILDER.comment("Command to type in chat/search to type in the 'Legendary' symbol (✦)").define(ConfigPaths.SEARCH_LEGENDARY_PREFIX, "\\leg");
-//                SEARCH_FROZEN_PREFIX = CLIENT_BUILDER.comment("Command to type in chat/search to type in the 'Frozen' symbol (❰)").define(ConfigPaths.SEARCH_FROZEN_PREFIX, "\\frozen");
-//                SEARCH_AE2TAGS_PREFIX = CLIENT_BUILDER.comment("Shortcut Prefix to search in AE2 for multiple tags. Will be expanded into the full regex form\nBy default, requires a '#' with each tag separated by a comma inside a pair of braces, e.g.\n'#(green,foil,offensive)").define(ConfigPaths.SEARCH_AE2TAGS_PREFIX, "#");
-//            CLIENT_BUILDER.pop();
-
-        CLIENT_BUILDER.pop();
-
+            CLIENT_BUILDER.push(ConfigPaths.Group.RARITY_HIGHLIGHTER_GROUP);
+                RARITY_HIGHLIGHTER = CLIENT_BUILDER.comment("Enable highlighting Vault Gear in your Inventory while holding <SHIFT>").define(ConfigPaths.RARITY_HIGHLIGHTER, true);
+                RARITY_HIGHLIGHTER_MODE = CLIENT_BUILDER.comment("Highlighter Mode").defineEnum(ConfigPaths.RARITY_HIGHLIGHTER_MODE, RarityHighlighterMode.GRADIENT);
+                RARITY_HIGHLIGHTER_RARE = CLIENT_BUILDER.comment("Highlight Rare Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_RARE, true);
+                RARITY_HIGHLIGHTER_EPIC = CLIENT_BUILDER.comment("Highlight Epic Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_EPIC, true);
+                RARITY_HIGHLIGHTER_OMEGA = CLIENT_BUILDER.comment("Highlight Omega Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_OMEGA, true);
+                RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
+            CLIENT_BUILDER.pop();
 
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
