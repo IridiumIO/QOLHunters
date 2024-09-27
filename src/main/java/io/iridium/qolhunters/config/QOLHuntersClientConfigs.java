@@ -51,6 +51,10 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
+    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_X;
+    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_Y;
+    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_Z;
+    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -119,6 +123,10 @@ public class QOLHuntersClientConfigs {
         public static final String RARITY_HIGHLIGHTER_EPIC = "Highlight Epic Gear";
         public static final String RARITY_HIGHLIGHTER_OMEGA = "Highlight Omega Gear";
         public static final String RARITY_HIGHLIGHTER_UNIQUE = "Highlight Unique Gear";
+        public static final String VIRTUAL_DEHAMMERIZER_X = "Virtual Dehammerizer X";
+        public static final String VIRTUAL_DEHAMMERIZER_Y = "Virtual Dehammerizer Y";
+        public static final String VIRTUAL_DEHAMMERIZER_Z = "Virtual Dehammerizer Z";
+        public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Virtual Dehammerizer Range";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -131,6 +139,8 @@ public class QOLHuntersClientConfigs {
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
+
+            public static final String VIRTUAL_DEHAMMERIZER_GROUP = "Virtual Dehammerizer";
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
@@ -222,6 +232,13 @@ public class QOLHuntersClientConfigs {
                 RARITY_HIGHLIGHTER_EPIC = CLIENT_BUILDER.comment("Highlight Epic Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_EPIC, true);
                 RARITY_HIGHLIGHTER_OMEGA = CLIENT_BUILDER.comment("Highlight Omega Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_OMEGA, true);
                 RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
+                VIRTUAL_DEHAMMERIZER_X = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_X, 0);
+                VIRTUAL_DEHAMMERIZER_Y = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Y, 0);
+                VIRTUAL_DEHAMMERIZER_Z = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Z, 0);
+                VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 0, 5, 64);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
