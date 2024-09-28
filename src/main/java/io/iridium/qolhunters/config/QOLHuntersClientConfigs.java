@@ -51,6 +51,9 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> CHALLENGER_ROCK_EMBER_GRANT_AMOUNT;
+
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
     public static final ForgeConfigSpec.EnumValue<VirtualDehammerizerMode> VIRTUAL_DEHAMMERIZER_MODE;
 
@@ -133,6 +136,8 @@ public class QOLHuntersClientConfigs {
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
         public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
+        public static final String ASCENSION_CRYSTAL_GRANT = "Ascension Crystal Ember Grant Amount";
+        public static final String CHALLENGER_ROCK_GRANT = "Challenger Rock Ember Grant Amount";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -147,6 +152,8 @@ public class QOLHuntersClientConfigs {
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
             public static final String VIRTUAL_DEHAMMERIZER_GROUP = "Virtual Dehammerizer";
+
+            public static final String ASCENSION = "Ascension Vaults";
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
@@ -244,6 +251,11 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
                 VIRTUAL_DEHAMMERIZER_MODE = CLIENT_BUILDER.comment("Virtual Dehammerizer Mode\nChoose SPHERE for a sphere defined around the chosen block position.\nChoose CYLINDER to encompass the full height of the map").defineEnum(ConfigPaths.VIRTUAL_DEHAMMERIZER_MODE, VirtualDehammerizerMode.SPHERE);
                 VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 24, 8, 64);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.ASCENSION);
+                ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT = CLIENT_BUILDER.comment("Enable a tooltip to show the amount of Ember granted on a failed Ascension Vault while holding <SHIFT>").define(ConfigPaths.ASCENSION_CRYSTAL_GRANT, true);
+                CHALLENGER_ROCK_EMBER_GRANT_AMOUNT = CLIENT_BUILDER.comment("Enable a tooltip to show the amount of Ember granted on a failed Ascension Vault while holding <SHIFT>").define(ConfigPaths.CHALLENGER_ROCK_GRANT, true);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();
