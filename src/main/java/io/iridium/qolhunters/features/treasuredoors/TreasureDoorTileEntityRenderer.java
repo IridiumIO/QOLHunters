@@ -18,6 +18,8 @@ public class TreasureDoorTileEntityRenderer implements BlockEntityRenderer<Treas
         // Initialization code if needed
     }
 
+    private String playerName = null;
+
     @Override
     public void render(TreasureDoorTileEntity tileEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
         if(!QOLHuntersClientConfigs.TREASURE_DOOR_NAMES.get()) return;
@@ -53,6 +55,10 @@ public class TreasureDoorTileEntityRenderer implements BlockEntityRenderer<Treas
 
         //SMH devs can't spell
         text = text.equals("PETZANITE") ? "PETEZANITE" : text;
+
+        if(playerName == null) playerName = Minecraft.getInstance().player.getName().getString();
+
+        text = text.equals("ISKALLIUM") && playerName.equals("HrryBrry") ? "GLORPIUM" : text;
 
         int xOffset = Minecraft.getInstance().font.width(text);
         Minecraft.getInstance().font.drawInBatch(text, (float) (-xOffset)/2.0F, 0, 0xFFFFFF, true, poseStack.last().pose(), bufferSource, false, 0, combinedLight);

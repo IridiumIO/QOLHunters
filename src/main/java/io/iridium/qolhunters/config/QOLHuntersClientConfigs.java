@@ -51,10 +51,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
-    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_X;
-    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_Y;
-    public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_Z;
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
+    public static final ForgeConfigSpec.EnumValue<VirtualDehammerizerMode> VIRTUAL_DEHAMMERIZER_MODE;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_DOOR_NAMES;
 
@@ -86,6 +84,10 @@ public class QOLHuntersClientConfigs {
         UNDERLINE
     }
 
+    public enum VirtualDehammerizerMode {
+        SPHERE,
+        CYLINDER,
+    }
 
 
     public record ConfigPaths() {
@@ -129,6 +131,7 @@ public class QOLHuntersClientConfigs {
         public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
         public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
+        public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
         public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
 
         public record Group() {
@@ -239,9 +242,7 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
-                VIRTUAL_DEHAMMERIZER_X = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_X, 0);
-                VIRTUAL_DEHAMMERIZER_Y = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Y, 0);
-                VIRTUAL_DEHAMMERIZER_Z = CLIENT_BUILDER.define(ConfigPaths.VIRTUAL_DEHAMMERIZER_Z, 0);
+                VIRTUAL_DEHAMMERIZER_MODE = CLIENT_BUILDER.comment("Virtual Dehammerizer Mode\nChoose SPHERE for a sphere defined around the chosen block position.\nChoose CYLINDER to encompass the full height of the map").defineEnum(ConfigPaths.VIRTUAL_DEHAMMERIZER_MODE, VirtualDehammerizerMode.SPHERE);
                 VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 16, 5, 64);
             CLIENT_BUILDER.pop();
 

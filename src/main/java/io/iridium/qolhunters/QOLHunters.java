@@ -1,6 +1,7 @@
 package io.iridium.qolhunters;
 
 import com.mojang.logging.LogUtils;
+import io.iridium.qolhunters.config.DehammerizerConfig;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import io.iridium.qolhunters.features.treasuredoors.TreasureDoorTileEntityRenderer;
@@ -26,6 +27,7 @@ public class QOLHunters {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static SkillAltarConfig SKILL_ALTAR_CONFIG;
+    public static DehammerizerConfig DEHAMMERIZER_CONFIG;
 
     public QOLHunters() {
 
@@ -41,6 +43,7 @@ public class QOLHunters {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
+        DEHAMMERIZER_CONFIG = DehammerizerConfig.load();
         BlockEntityRenderers.register(ModBlocks.TREASURE_DOOR_TILE_ENTITY, TreasureDoorTileEntityRenderer::new);
 
         KeyBindings.init();
