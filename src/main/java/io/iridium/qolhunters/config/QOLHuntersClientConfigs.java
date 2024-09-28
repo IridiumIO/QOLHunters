@@ -56,6 +56,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_Z;
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_DOOR_NAMES;
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -127,6 +129,7 @@ public class QOLHuntersClientConfigs {
         public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
         public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
+        public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -176,6 +179,7 @@ public class QOLHuntersClientConfigs {
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
+            TREASURE_DOOR_NAMES = CLIENT_BUILDER.comment("Show treasure door names in the vault").define(ConfigPaths.TREASURE_DOOR_NAMES, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
