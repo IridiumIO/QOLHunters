@@ -9,7 +9,6 @@ import iskallia.vault.init.ModGearAttributes;
 import iskallia.vault.item.tool.ToolItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
@@ -38,21 +37,31 @@ public class VirtualDehammerizer {
     private static int currentDehammerizerIndex = 1;
 
 
-    @SubscribeEvent
-    public static synchronized void onKeyInput(InputEvent.KeyInputEvent event) {
-        Player player = Minecraft.getInstance().player;
-        if(player == null) return;
-        if(player.level.dimension() != Level.OVERWORLD) return;
+    private static boolean sanityCheck(Player player, Item checkItem){
+
+        if(player == null) return false;
+        if(player.level.dimension() != Level.OVERWORLD) return false;
+
+        if(!QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.get()) return false;
 
         ItemStack heldItem = player.getMainHandItem();
         Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if (item != checkItem) return false;
+
+        return true;
+
+    }
 
 
-        if (event.getKey() == GLFW.GLFW_KEY_UP && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex < 5) {
+    @SubscribeEvent
+    public static synchronized void onKeyInput(InputEvent.KeyInputEvent event) {
+
+        if(!sanityCheck(Minecraft.getInstance().player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
+
+        if (event.getKey() == GLFW.GLFW_KEY_UP && (event.getAction() == GLFW.GLFW_PRESS || event.getAction() == GLFW.GLFW_REPEAT) && currentDehammerizerIndex < 25) {
             currentDehammerizerIndex++;
         }
-        if (event.getKey() == GLFW.GLFW_KEY_DOWN && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex > 1) {
+        if (event.getKey() == GLFW.GLFW_KEY_DOWN && (event.getAction() == GLFW.GLFW_PRESS || event.getAction() == GLFW.GLFW_REPEAT) && currentDehammerizerIndex > 1) {
             currentDehammerizerIndex--;
         }
 
@@ -72,11 +81,7 @@ public class VirtualDehammerizer {
     @SubscribeEvent
     public static synchronized void onItemUse(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getPlayer();
-        if(player.level.dimension() != Level.OVERWORLD) return;
-
-        ItemStack heldItem = player.getMainHandItem();
-        Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if(!sanityCheck(player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
         if(!InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LCONTROL)) return;
 
@@ -91,11 +96,7 @@ public class VirtualDehammerizer {
     @SubscribeEvent
     public static synchronized void whileHoldingDehammerizer(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        if(player.level.dimension() != Level.OVERWORLD) return;
-
-        ItemStack heldItem = player.getMainHandItem();
-        Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if(!sanityCheck(player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
         DehammerizerConfig.Coordinates coordinates = getDehammerizer(currentDehammerizerIndex);
 
@@ -122,35 +123,47 @@ public class VirtualDehammerizer {
 
     @SubscribeEvent
     public static void onBlockStartBreak(InputEvent.ClickInputEvent event) {
+
+        if (!event.isAttack()) return;
+
         Player player = Minecraft.getInstance().player;
         if(player.level.dimension() != Level.OVERWORLD) return;
 
+        if(!QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.get()) return;
+
         ItemStack heldItem = player.getMainHandItem();
         if (!(heldItem.getItem() instanceof ToolItem)) return;
+
 
         VaultGearData data = VaultGearData.read(heldItem);
         if(!data.has(ModGearAttributes.HAMMERING)) return;
         Integer radius = QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_RANGE.get();
 
+
+        int playerX = player.blockPosition().getX();
+        int playerY = player.blockPosition().getY();
+        int playerZ = player.blockPosition().getZ();
+        boolean isCylinderMode = QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_MODE.get() == QOLHuntersClientConfigs.VirtualDehammerizerMode.CYLINDER;
+        double radiusSquared = radius * radius;
+
+
         for(Map<Integer, DehammerizerConfig.Coordinates> dehammerizer : QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.values()){
             for(DehammerizerConfig.Coordinates coordinates : dehammerizer.values()){
 
-                int y = coordinates.y;
-                if(QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_MODE.get() == QOLHuntersClientConfigs.VirtualDehammerizerMode.CYLINDER){
-                    y = player.blockPosition().getY();
-                }
+                int y = isCylinderMode ? playerY : coordinates.y;
 
-                BlockPos dehammerizerPos = new BlockPos(coordinates.x, y, coordinates.z);
-                double distance = player.blockPosition().distSqr(dehammerizerPos);
-                if (distance < radius * radius) {
+                double dx = playerX - coordinates.x;
+                double dy = playerY - y;
+                double dz = playerZ - coordinates.z;
+                double distSquared = dx * dx + dy * dy + dz * dz;
+
+                if (distSquared < radiusSquared) {
                     event.setCanceled(true);
+                    displayMessageOnScreen(new TextComponent("This region is protected by the Dehammerizer!").withStyle(ChatFormatting.RED));
                     return;
                 }
             }
         }
-
-
-
 
     }
 

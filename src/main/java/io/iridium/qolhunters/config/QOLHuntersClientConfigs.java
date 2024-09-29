@@ -54,6 +54,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHALLENGER_ROCK_EMBER_GRANT_AMOUNT;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_VIRTUAL_DEHAMMERIZER;
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
     public static final ForgeConfigSpec.EnumValue<VirtualDehammerizerMode> VIRTUAL_DEHAMMERIZER_MODE;
 
@@ -133,6 +134,7 @@ public class QOLHuntersClientConfigs {
         public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
         public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
         public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
+        public static final String ENABLE_VIRTUAL_DEHAMMERIZER = "Enable Virtual Dehammerizer";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
         public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
@@ -248,7 +250,8 @@ public class QOLHuntersClientConfigs {
                 RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
             CLIENT_BUILDER.pop();
 
-            CLIENT_BUILDER.push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
+            CLIENT_BUILDER.comment("Use a Warped Fungus on a Stick to configure Virtual Dehammerizer.\nUse arrow UP/DOWN keys to cycle between Dehammerizers.\nUse Ctrl+RightClick to add a Dehammerizer.\nUse Ctrl+Delete to remove a Dehammerizer").push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
+                ENABLE_VIRTUAL_DEHAMMERIZER = CLIENT_BUILDER.comment("Enable Virtual Dehammerizer").define(ConfigPaths.ENABLE_VIRTUAL_DEHAMMERIZER, true);
                 VIRTUAL_DEHAMMERIZER_MODE = CLIENT_BUILDER.comment("Virtual Dehammerizer Mode\nChoose SPHERE for a sphere defined around the chosen block position.\nChoose CYLINDER to encompass the full height of the map").defineEnum(ConfigPaths.VIRTUAL_DEHAMMERIZER_MODE, VirtualDehammerizerMode.SPHERE);
                 VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 24, 8, 64);
             CLIENT_BUILDER.pop();
