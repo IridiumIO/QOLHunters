@@ -9,7 +9,6 @@ import iskallia.vault.init.ModGearAttributes;
 import iskallia.vault.item.tool.ToolItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
@@ -140,23 +139,30 @@ public class VirtualDehammerizer {
         if(!data.has(ModGearAttributes.HAMMERING)) return;
         Integer radius = QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_RANGE.get();
 
+
+        int playerX = player.blockPosition().getX();
+        int playerY = player.blockPosition().getY();
+        int playerZ = player.blockPosition().getZ();
+        boolean isCylinderMode = QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_MODE.get() == QOLHuntersClientConfigs.VirtualDehammerizerMode.CYLINDER;
+        double radiusSquared = radius * radius;
+
+
         for(Map<Integer, DehammerizerConfig.Coordinates> dehammerizer : QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.values()){
             for(DehammerizerConfig.Coordinates coordinates : dehammerizer.values()){
 
-                int y = coordinates.y;
-                if(QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_MODE.get() == QOLHuntersClientConfigs.VirtualDehammerizerMode.CYLINDER){
-                    y = player.blockPosition().getY();
-                }
+                int y = isCylinderMode ? playerY : coordinates.y;
 
-                BlockPos dehammerizerPos = new BlockPos(coordinates.x, y, coordinates.z);
-                double distance = player.blockPosition().distSqr(dehammerizerPos);
-                if (distance < radius * radius) {
+                double dx = playerX - coordinates.x;
+                double dy = playerY - y;
+                double dz = playerZ - coordinates.z;
+                double distSquared = dx * dx + dy * dy + dz * dz;
+
+                if (distSquared < radiusSquared) {
                     event.setCanceled(true);
                     return;
                 }
             }
         }
-
 
 
 
