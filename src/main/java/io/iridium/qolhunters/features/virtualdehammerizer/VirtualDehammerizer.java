@@ -58,10 +58,10 @@ public class VirtualDehammerizer {
 
         if(!sanityCheck(Minecraft.getInstance().player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
-        if (event.getKey() == GLFW.GLFW_KEY_UP && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex < 25) {
+        if (event.getKey() == GLFW.GLFW_KEY_UP && (event.getAction() == GLFW.GLFW_PRESS || event.getAction() == GLFW.GLFW_REPEAT) && currentDehammerizerIndex < 25) {
             currentDehammerizerIndex++;
         }
-        if (event.getKey() == GLFW.GLFW_KEY_DOWN && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex > 1) {
+        if (event.getKey() == GLFW.GLFW_KEY_DOWN && (event.getAction() == GLFW.GLFW_PRESS || event.getAction() == GLFW.GLFW_REPEAT) && currentDehammerizerIndex > 1) {
             currentDehammerizerIndex--;
         }
 
@@ -159,12 +159,11 @@ public class VirtualDehammerizer {
 
                 if (distSquared < radiusSquared) {
                     event.setCanceled(true);
+                    displayMessageOnScreen(new TextComponent("This region is protected by the Dehammerizer!").withStyle(ChatFormatting.RED));
                     return;
                 }
             }
         }
-
-
 
     }
 
