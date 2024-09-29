@@ -38,16 +38,26 @@ public class VirtualDehammerizer {
     private static int currentDehammerizerIndex = 1;
 
 
-    @SubscribeEvent
-    public static synchronized void onKeyInput(InputEvent.KeyInputEvent event) {
-        Player player = Minecraft.getInstance().player;
-        if(player == null) return;
-        if(player.level.dimension() != Level.OVERWORLD) return;
+    private static boolean sanityCheck(Player player, Item checkItem){
+
+        if(player == null) return false;
+        if(player.level.dimension() != Level.OVERWORLD) return false;
+
+        if(!QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.get()) return false;
 
         ItemStack heldItem = player.getMainHandItem();
         Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if (item != checkItem) return false;
 
+        return true;
+
+    }
+
+
+    @SubscribeEvent
+    public static synchronized void onKeyInput(InputEvent.KeyInputEvent event) {
+
+        if(!sanityCheck(Minecraft.getInstance().player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
         if (event.getKey() == GLFW.GLFW_KEY_UP && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex < 5) {
             currentDehammerizerIndex++;
@@ -72,11 +82,7 @@ public class VirtualDehammerizer {
     @SubscribeEvent
     public static synchronized void onItemUse(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getPlayer();
-        if(player.level.dimension() != Level.OVERWORLD) return;
-
-        ItemStack heldItem = player.getMainHandItem();
-        Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if(!sanityCheck(player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
         if(!InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LCONTROL)) return;
 
@@ -91,11 +97,7 @@ public class VirtualDehammerizer {
     @SubscribeEvent
     public static synchronized void whileHoldingDehammerizer(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        if(player.level.dimension() != Level.OVERWORLD) return;
-
-        ItemStack heldItem = player.getMainHandItem();
-        Item item = heldItem.getItem();
-        if (item != Items.WARPED_FUNGUS_ON_A_STICK) return;
+        if(!sanityCheck(player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
         DehammerizerConfig.Coordinates coordinates = getDehammerizer(currentDehammerizerIndex);
 
@@ -122,11 +124,17 @@ public class VirtualDehammerizer {
 
     @SubscribeEvent
     public static void onBlockStartBreak(InputEvent.ClickInputEvent event) {
+
+        if (!event.isAttack()) return;
+
         Player player = Minecraft.getInstance().player;
         if(player.level.dimension() != Level.OVERWORLD) return;
 
+        if(!QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.get()) return;
+
         ItemStack heldItem = player.getMainHandItem();
         if (!(heldItem.getItem() instanceof ToolItem)) return;
+
 
         VaultGearData data = VaultGearData.read(heldItem);
         if(!data.has(ModGearAttributes.HAMMERING)) return;
