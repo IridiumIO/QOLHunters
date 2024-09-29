@@ -50,8 +50,8 @@ public class QOLHunters {
         BlockEntityRenderers.register(ModBlocks.TREASURE_DOOR_TILE_ENTITY, TreasureDoorTileEntityRenderer::new);
         KeyBindings.init();
 
-        ArtifactVersion modversion = getModVersion("the_vault");
-        checkIfVaultVersionIsTooNew(modversion);
+        ArtifactVersion vaultModVersion = getModVersion("the_vault");
+        checkIfVaultVersionIsTooNew(vaultModVersion);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -82,8 +82,6 @@ public class QOLHunters {
 
         QOLHunters.LOGGER.info("QOLHunters: The Vault Installed version" + CurrentVaultVersion);
         QOLHunters.LOGGER.info("QOLHunters: The Vault Working version" + WorkingVersion);
-
-        QOLHunters.LOGGER.info(String.valueOf(CurrentVaultVersion.compareTo(WorkingVersion)));
 
        if(CurrentVaultVersion.compareTo(WorkingVersion) > 0){
            QOLHunters.LOGGER.warn("Your Vault Hunters mod version is too new! Some features will be disabled to prevent crashes.");
