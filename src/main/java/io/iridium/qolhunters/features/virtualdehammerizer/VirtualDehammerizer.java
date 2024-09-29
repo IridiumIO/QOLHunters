@@ -58,7 +58,7 @@ public class VirtualDehammerizer {
 
         if(!sanityCheck(Minecraft.getInstance().player, Items.WARPED_FUNGUS_ON_A_STICK)) return;
 
-        if (event.getKey() == GLFW.GLFW_KEY_UP && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex < 5) {
+        if (event.getKey() == GLFW.GLFW_KEY_UP && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex < 25) {
             currentDehammerizerIndex++;
         }
         if (event.getKey() == GLFW.GLFW_KEY_DOWN && event.getAction() == GLFW.GLFW_PRESS && currentDehammerizerIndex > 1) {
