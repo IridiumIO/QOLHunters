@@ -28,7 +28,7 @@ mixin {
 
 
 
-version = '0.20.2-1.18.2'
+version = '0.21.0-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -170,6 +170,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sophisticated-core-618298:4489807")
     implementation fg.deobf("curse.maven:create-328085:4550986")
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:4136407")
+    implementation fg.deobf("curse.maven:refined-storage-243076:4902316")
 //    runtimeOnly fg.deobf("curse.maven:lightspeedmod-821790:4594803")
 //    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
