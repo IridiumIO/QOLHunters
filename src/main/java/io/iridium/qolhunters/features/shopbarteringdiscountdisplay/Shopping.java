@@ -74,7 +74,7 @@ public class Shopping {
         Player player = event.getPlayer();
         if(!player.level.dimension().location().toString().startsWith("the_vault:vault")) return;
 
-        if(QOLHuntersClientConfigs.ENABLE_SHOPPING_PED_THROW_ITEMS.get()) return;
+        if(!QOLHuntersClientConfigs.ENABLE_SHOPPING_PED_THROW_ITEMS.get()) return;
 
         BlockState block = event.getWorld().getBlockState(event.getPos());
 
