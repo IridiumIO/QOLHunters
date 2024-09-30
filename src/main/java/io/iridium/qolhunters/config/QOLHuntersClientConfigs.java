@@ -37,7 +37,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
-//    public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_SHOPPING_PED_THROW_ITEMS;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
@@ -118,7 +118,7 @@ public class QOLHuntersClientConfigs {
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
         public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
-        public static final String BARTERING_DISCOUNT = "Bartering Discount";
+        public static final String ENABLE_SHOPPING_PED_THROW_ITEMS = "Shopping Pedestal Throws Items";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
@@ -231,7 +231,7 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SHOPPING_GROUP);
                 ENABLE_BARTERING_DISCOUNT_DISPLAY = CLIENT_BUILDER.comment("Includes your bartering discount on shopping pedestals").define(ConfigPaths.ENABLE_BARTERING_DISCOUNT_DISPLAY, true);
-//                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
+                ENABLE_SHOPPING_PED_THROW_ITEMS = CLIENT_BUILDER.comment("Shopping pedestals throw items so that your magnets/bags can pick them up instead").define(ConfigPaths.ENABLE_SHOPPING_PED_THROW_ITEMS, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.RARITY_HIGHLIGHTER_GROUP);
