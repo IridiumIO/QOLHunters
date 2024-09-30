@@ -35,6 +35,8 @@
     "paradox.MixinGateLockRenderer",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
     "rarityhighlighter.MixinAbstractContainer",
+    "rarityhighlighter.MixinAEBaseScreen",
+    "rarityhighlighter.MixinRefinedGridScreen",
     "rarityhighlighter.MixinStorageScreenBase",
     "scavenger.MixinAbstractContainer",
     "scavenger.MixinScavengerObjective",
