@@ -83,6 +83,24 @@ public class SharedFunctions {
         }
     }
 
+    public static String formatNumberWithDecimal(double number) {
+        if (number >= 10_000_000) {
+            return String.format("%.1fM", number / 1_000_000_000.0);
+        } else
+        if (number >= 1_000_000) {
+            return String.format("%.1fM", number / 1_000_000.0);
+        } else if (number >= 100_000) {
+            return String.format("%.0fK", number / 1_000.0);
+        } else if (number >= 10_000) {
+            return String.format("%.1fK", number / 1_000.0);
+        } else if (number >= 1_000) {
+            return String.format("%.2fK", number / 1_000.0);
+        } else if (number >= 100){
+            return String.format("%.0f", number);
+        }else {
+            return String.format("%.2f", number);
+        }
+    }
 
 
     public static void renderSlotHighlight(PoseStack poseStack, ItemStack itemStack, int x, int y){

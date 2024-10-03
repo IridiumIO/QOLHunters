@@ -19,6 +19,7 @@
     "betterdescriptions.MixinBingoConfig",
     "betterdescriptions.MixinMenuPlayerStatDescriptionConfig",
     "betterdescriptions.MixinSkillDescriptionsConfig",
+    "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
     "blackmarket.MixinShardTradeScreen",
     "boosterpack.MixinBoosterPackSelectionScreen",

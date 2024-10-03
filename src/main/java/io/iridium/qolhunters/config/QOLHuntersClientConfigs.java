@@ -57,6 +57,10 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_DOOR_NAMES;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_SHORTHAND;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_USE_SHARDS;
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -135,6 +139,9 @@ public class QOLHuntersClientConfigs {
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
         public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
+        public static final String BETTER_SOUL_VALUE = "Enable Better Tooltips";
+        public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
+        public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -145,6 +152,7 @@ public class QOLHuntersClientConfigs {
             public static final String BLACK_MARKET_GROUP = "Black Market";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
+            public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
@@ -190,6 +198,13 @@ public class QOLHuntersClientConfigs {
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
                 BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
                 BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
+
+                CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
+                    BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
+                    BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
+                    BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
+                CLIENT_BUILDER.pop();
+
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
