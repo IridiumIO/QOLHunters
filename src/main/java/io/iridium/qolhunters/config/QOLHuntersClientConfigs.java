@@ -63,6 +63,16 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BACKPACK_CYCLER;
 
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_BLOCKS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_GILDED;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_LIVING;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_ORNATE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_COINS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_WOODEN;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_OTHER;
+
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -146,6 +156,15 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
         public static final String BACKPACK_CYCLER = "Backpack Cycler";
 
+        public static final String HUNTER_PARTICLES_BLOCKS = "Objectives";
+        public static final String HUNTER_PARTICLES_GILDED = "Gilded";
+        public static final String HUNTER_PARTICLES_LIVING = "Living";
+        public static final String HUNTER_PARTICLES_ORNATE = "Ornate";
+        public static final String HUNTER_PARTICLES_COINS = "Coins";
+        public static final String HUNTER_PARTICLES_WOODEN = "Wooden";
+        public static final String HUNTER_PARTICLES_OTHER = "Default";
+
+
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
@@ -164,6 +183,7 @@ public class QOLHuntersClientConfigs {
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
             public static final String SEARCH_GROUP = "Search Commands";
+            public static final String HUNTER_PARTICLES_GROUP = "Hunter Particles";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
             public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
@@ -266,6 +286,16 @@ public class QOLHuntersClientConfigs {
                 ENABLE_VIRTUAL_DEHAMMERIZER = CLIENT_BUILDER.comment("Enable Virtual Dehammerizer").define(ConfigPaths.ENABLE_VIRTUAL_DEHAMMERIZER, true);
                 VIRTUAL_DEHAMMERIZER_MODE = CLIENT_BUILDER.comment("Virtual Dehammerizer Mode\nChoose SPHERE for a sphere defined around the chosen block position.\nChoose CYLINDER to encompass the full height of the map").defineEnum(ConfigPaths.VIRTUAL_DEHAMMERIZER_MODE, VirtualDehammerizerMode.SPHERE);
                 VIRTUAL_DEHAMMERIZER_RANGE = CLIENT_BUILDER.comment("Virtual Dehammerizer Range").defineInRange(ConfigPaths.VIRTUAL_DEHAMMERIZER_RANGE, 24, 8, 64);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.HUNTER_PARTICLES_GROUP);
+                HUNTER_PARTICLES_BLOCKS = CLIENT_BUILDER.comment("Show Hunter Particles for Objectives/Altars").define(ConfigPaths.HUNTER_PARTICLES_BLOCKS, true);
+                HUNTER_PARTICLES_GILDED = CLIENT_BUILDER.comment("Show Hunter Particles for Gilded Chests").define(ConfigPaths.HUNTER_PARTICLES_GILDED, true);
+                HUNTER_PARTICLES_LIVING = CLIENT_BUILDER.comment("Show Hunter Particles for Living Chests").define(ConfigPaths.HUNTER_PARTICLES_LIVING, true);
+                HUNTER_PARTICLES_ORNATE = CLIENT_BUILDER.comment("Show Hunter Particles for Ornate Chests").define(ConfigPaths.HUNTER_PARTICLES_ORNATE, true);
+                HUNTER_PARTICLES_COINS = CLIENT_BUILDER.comment("Show Hunter Particles for Coins").define(ConfigPaths.HUNTER_PARTICLES_COINS, true);
+                HUNTER_PARTICLES_WOODEN = CLIENT_BUILDER.comment("Show Hunter Particles for Wooden Chests").define(ConfigPaths.HUNTER_PARTICLES_WOODEN, true);
+                HUNTER_PARTICLES_OTHER = CLIENT_BUILDER.comment("Show Default White Hunter Particles").define(ConfigPaths.HUNTER_PARTICLES_OTHER, true);
             CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.pop();

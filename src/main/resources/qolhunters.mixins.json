@@ -29,6 +29,8 @@
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",
     "godaltars.MixinGodAltarOverlay",
+    "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
+    "hunterparticles.MixinClientboundHunterParticlesMessage",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
