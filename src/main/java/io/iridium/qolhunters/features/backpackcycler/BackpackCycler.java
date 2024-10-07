@@ -1,6 +1,7 @@
 package io.iridium.qolhunters.features.backpackcycler;
 
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -37,9 +38,9 @@ public class BackpackCycler {
     @SubscribeEvent
     public static void keyInputScreen(InputEvent.KeyInputEvent event){
 
-        if(event.getAction() != GLFW.GLFW_PRESS) return;
+        if(event.getAction() != GLFW.GLFW_PRESS || !QOLHuntersClientConfigs.BACKPACK_CYCLER.get()) return;
 
-        if(event.getKey() == KeybindHandler.BACKPACK_OPEN_KEYBIND.getKey().getValue()){
+        if(event.getKey() == KeybindHandler.BACKPACK_OPEN_KEYBIND.getKey().getValue() ){
             if(!KeyConflictContext.GUI.isActive()){
                 CycleButton.wasLastBackpackOpenedDoneSoAutomaticallyUsingTheOneThatTriesToOpenFromTheCuriosSlot = true;
                 return;
@@ -62,7 +63,8 @@ public class BackpackCycler {
 
     @SubscribeEvent
     public static void addCustomButtonToInventoryS(ScreenEvent.InitScreenEvent.Post event) {
-        if (event.getScreen() instanceof BackpackScreen screen) {
+
+        if (event.getScreen() instanceof BackpackScreen screen && QOLHuntersClientConfigs.BACKPACK_CYCLER.get()) {
             event.addListener(new CycleButton(screen, 2, "←", -1));
             event.addListener(new CycleButton(screen, 21, "→", 1));
         }
@@ -132,7 +134,7 @@ public class BackpackCycler {
 
     @SubscribeEvent
     public static void testRender(ScreenEvent.DrawScreenEvent.Post event) {
-        if (event.getScreen() instanceof InventoryScreen || event.getScreen() instanceof BackpackScreen ) {
+        if (event.getScreen() instanceof BackpackScreen && QOLHuntersClientConfigs.BACKPACK_CYCLER.get()) {
             Screen screen = event.getScreen();
             screen.renderables.forEach(widget -> {
                 if (widget instanceof CycleButton) {

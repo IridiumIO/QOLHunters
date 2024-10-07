@@ -61,6 +61,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_SHORTHAND;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_USE_SHARDS;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BACKPACK_CYCLER;
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -142,6 +144,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SOUL_VALUE = "Enable Better Tooltips";
         public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
         public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
+        public static final String BACKPACK_CYCLER = "Backpack Cycler";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -193,6 +196,7 @@ public class QOLHuntersClientConfigs {
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             TREASURE_DOOR_NAMES = CLIENT_BUILDER.comment("Show treasure door names in the vault").define(ConfigPaths.TREASURE_DOOR_NAMES, true);
+            BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
