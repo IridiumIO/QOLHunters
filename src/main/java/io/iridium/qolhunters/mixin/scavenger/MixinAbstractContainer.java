@@ -1,5 +1,6 @@
 package io.iridium.qolhunters.mixin.scavenger;
 
+import com.jaquadro.minecraft.storagedrawers.inventory.DrawerScreen;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.util.SharedFunctions;
@@ -16,7 +17,8 @@ public abstract class MixinAbstractContainer{
 
     @Inject(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderAndDecorateItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;III)V", shift = At.Shift.AFTER))
         public void renderSlot(PoseStack pPoseStack, Slot pSlot, CallbackInfo ci) {
-        if (!QOLHuntersClientConfigs.SCAVENGER_HIGHLIGHTER.get() ) return;
+        if (!QOLHuntersClientConfigs.SCAVENGER_HIGHLIGHTER.get()) return;
+        if(((AbstractContainerScreen<?>)(Object)this) instanceof DrawerScreen) return;
 
         SharedFunctions.renderSlotHighlight(pPoseStack, pSlot.getItem(), pSlot.x, pSlot.y);
         }
