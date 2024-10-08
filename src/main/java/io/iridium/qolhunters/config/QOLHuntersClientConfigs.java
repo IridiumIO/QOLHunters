@@ -17,6 +17,7 @@ public class QOLHuntersClientConfigs {
 
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIERS_TOP_RIGHT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_ENCHANTER_EMERALDS_SLOT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
@@ -117,6 +118,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
+        public static final String VAULT_MODIFIERS_TOP_RIGHT = "Vault Modifiers In Top Right";
         public static final String VAULT_ENCHANTER_EMERALDS_SLOT = "Vault Enchanter Emeralds Slot";
         public static final String VAULT_INTERFACE_KEYBINDS = "Vault Interface Keybinds";
         public static final String BETTER_ABILITIES_TAB = "Better Abilities Tab";
@@ -175,6 +177,7 @@ public class QOLHuntersClientConfigs {
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
+            public static final String VAULT_MODIFIERS_GROUP = "Vault Modifiers";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
@@ -260,6 +263,10 @@ public class QOLHuntersClientConfigs {
                 CLIENT_BUILDER.push(ConfigPaths.Group.GOD_OBJECTIVE_GROUP);
                     GOD_OBJECTIVE_X_OFFSET = CLIENT_BUILDER.comment("Changes the X offset of the God Objective\nDefined as % of screen width").defineInRange(ConfigPaths.GOD_OBJECTIVE_X_OFFSET, 0, 0, 100);
                     GOD_OBJECTIVE_Y_OFFSET = CLIENT_BUILDER.comment("Changes the Y offset of the God Objective\nDefined as % of screen height").defineInRange(ConfigPaths.GOD_OBJECTIVE_Y_OFFSET, 45, 0, 100);
+                CLIENT_BUILDER.pop();
+
+                CLIENT_BUILDER.push(ConfigPaths.Group.VAULT_MODIFIERS_GROUP);
+                    VAULT_MODIFIERS_TOP_RIGHT = CLIENT_BUILDER.comment("Render Vault Modifiers in the top right corner of the screen").define(ConfigPaths.VAULT_MODIFIERS_TOP_RIGHT, false);
                 CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.pop();

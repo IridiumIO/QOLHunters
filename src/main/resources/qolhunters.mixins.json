@@ -48,7 +48,8 @@
     "skillaltar.MixinSkillAltarContainerDefault",
     "skillaltar.MixinSkillAltarScreen",
     "vaultenchanter.MixinVaultEnchanterScreen",
-    "vaultmodifiers.MixinModifiersRenderer"
+    "vaultmodifiers.MixinModifiersRenderer",
+    "vaultmodifiers.MixinModifiersRendererScreenPos"
   ],
   "minVersion": "0.8"
 }
