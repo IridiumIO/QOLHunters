@@ -2,6 +2,7 @@ package io.iridium.qolhunters.features.backpackcycler;
 
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -88,7 +89,7 @@ public class BackpackCycler {
 
         private static List<ItemStack> findBackpacks(Player player) {
             List<ItemStack> backpacks = new ArrayList<>();
-            for (ItemStack stack : player.getInventory().items) {
+            for (ItemStack stack : InventoryUtil.findAllItems(player).stream().map(InventoryUtil.ItemAccess::getStack).toList()) {
                 if (stack.getItem() instanceof BackpackItem) {
                     backpacks.add(stack);
                 }
@@ -103,8 +104,10 @@ public class BackpackCycler {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             List<ItemStack> backpacks = CycleButton.findBackpacks(player);
+            QOLHunters.LOGGER.info("Backpacks: " + backpacks.size());
             if (!backpacks.isEmpty()) {
                 currentBackpackIndex = (currentBackpackIndex + direction + backpacks.size()) % backpacks.size();
+                QOLHunters.LOGGER.info("Current Backpack Index: " + currentBackpackIndex);
                 ItemStack backpack = backpacks.get(currentBackpackIndex);
 
                 int backpackSlot = player.getInventory().findSlotMatchingItem(backpack);
