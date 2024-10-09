@@ -73,6 +73,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_WOODEN;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_OTHER;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_KEY_SWAPPER;
+
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -157,6 +159,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
         public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
         public static final String BACKPACK_CYCLER = "Backpack Cycler";
+        public static final String TREASURE_KEY_SWAPPER = "Treasure Key Swapper";
 
         public static final String HUNTER_PARTICLES_BLOCKS = "Objectives";
         public static final String HUNTER_PARTICLES_GILDED = "Gilded";
@@ -220,6 +223,7 @@ public class QOLHuntersClientConfigs {
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             TREASURE_DOOR_NAMES = CLIENT_BUILDER.comment("Show treasure door names in the vault").define(ConfigPaths.TREASURE_DOOR_NAMES, true);
             BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
+            TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);

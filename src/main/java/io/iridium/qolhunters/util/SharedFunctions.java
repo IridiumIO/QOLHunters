@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
+import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import iskallia.vault.gear.VaultGearRarity;
@@ -63,6 +64,11 @@ public class SharedFunctions {
 
     public static Integer GetPlayerInventoryItemCount(LocalPlayer player, ItemStack itemStack, Integer cacheTimeout) {
         return GetPlayerInventoryItems(player, cacheTimeout).getOrDefault(itemStack.getHoverName().getString(), 0);
+    }
+
+    public static Integer GetPlayerInventoryItemCount(LocalPlayer player, Item item) {
+        QOLHunters.LOGGER.info("GetPlayerInventoryItemCount");
+        return GetPlayerInventoryItemCount(player, new ItemStack(item), 0);
     }
 
 

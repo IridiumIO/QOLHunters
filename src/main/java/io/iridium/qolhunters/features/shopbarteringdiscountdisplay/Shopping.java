@@ -2,6 +2,7 @@ package io.iridium.qolhunters.features.shopbarteringdiscountdisplay;
 
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import io.iridium.qolhunters.util.Cacheable;
 import io.iridium.qolhunters.util.SharedFunctions;
 import iskallia.vault.block.ShopPedestalBlock;
 import iskallia.vault.block.entity.ShopPedestalBlockTile;
@@ -40,6 +41,9 @@ public class Shopping {
     public static int invGoldCount = 0;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+    private static final Cacheable<Integer> CacheableBronzeCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_BRONZE.asItem()));
+    private static final Cacheable<Integer> CacheableSilverCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_SILVER.asItem()));
+    private static final Cacheable<Integer> CacheableGoldCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_GOLD.asItem()));
 
     @SubscribeEvent
     public static void onBlockHover(DrawSelectionEvent.HighlightBlock event) {
@@ -55,14 +59,11 @@ public class Shopping {
             return;
         }
         isLookingAtShopPedestal = true;
-        ItemStack bronzeItem = new ItemStack(ModBlocks.VAULT_BRONZE.asItem());
-        ItemStack silverItem = new ItemStack(ModBlocks.VAULT_SILVER.asItem());
-        ItemStack goldItem = new ItemStack(ModBlocks.VAULT_GOLD.asItem());
 
-        //TODO: Optimize this so it doesn't run a separate inventory search for each item
-        int BronzeCount = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, bronzeItem, 200);
-        int SilverCount = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, silverItem, 200) + (BronzeCount/9);
-        int GoldCount = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, goldItem, 200) + (SilverCount/9);
+        //TODO: Optimize this so it doesn't run a separate inventory search for each item\
+        int BronzeCount = CacheableBronzeCount.get();
+        int SilverCount = CacheableSilverCount.get() + (BronzeCount/9);
+        int GoldCount = CacheableGoldCount.get() + (SilverCount/9);
         invGoldCount = GoldCount;
 
     }
