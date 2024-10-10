@@ -140,14 +140,16 @@ public class MixinMonolithRenderer {
         matrixStack.translate((double)(-right), (double)(-bottom), 0.0);
 
         VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
-        matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
 
         //Need to disable the custom position for the vault modifiers otherwise the location is off
-        boolean initialVaultModifiersTopRight = QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get();
+        if(QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get()){
+            matrixStack.translate(config.rightMargin - 8.0, bottom - config.bottomMargin - config.size - 4.0, 0);
+        }else {
+            matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
 
-        QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.set(false);
+        }
+
         ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack);
-        QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.set(initialVaultModifiersTopRight);
 
         matrixStack.popPose();
         matrixStack.popPose();

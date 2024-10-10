@@ -95,14 +95,17 @@ public abstract class MixinGateLockRenderer {
                 matrices.translate((double)(-right), (double)(-reputation), 0.0);
                 VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
                 matrices.translate((double)config.spacingX + (double)((config.size + config.spacingX) * count) / 2.0, 0.0, 0.0);
-                matrices.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
 
                 //Need to disable the custom position for the vault modifiers otherwise the location is off
-                boolean initialModifierLocation = QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get();
+                if(QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get()){
+                    matrices.translate(config.rightMargin - 8.0, reputation - config.bottomMargin - config.size - 4.0, 0);
+                }else {
+                    matrices.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
 
-                QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.set(false);
+                }
+
                 ModifiersRenderer.renderVaultModifiers(entity.getModifiers(), matrices);
-                QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.set(initialModifierLocation);
+
 
                 matrices.popPose();
             }
