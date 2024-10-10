@@ -75,6 +75,8 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_KEY_SWAPPER;
 
+    public static final ForgeConfigSpec.EnumValue<BingoGridCompletionColor> BINGO_GRID_COMPLETED_COLOR;
+    public static final ForgeConfigSpec.EnumValue<BingoGridSelectionColor> BINGO_GRID_SELECTION_COLOR;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -98,6 +100,31 @@ public class QOLHuntersClientConfigs {
         CakeVaultOverlayColor(int colorCode) {this.colorCode = colorCode;}
         public int getColorCode() {return colorCode;}
     }
+
+    public enum BingoGridCompletionColor {
+        RED(0x64ff0000),
+        BLUE(0x6400d2ff),
+        YELLOW(0x64ffff00),
+        GREEN(0x6400ff00),
+        GLORP(0x64ff00ff);
+
+        private final int colorCode;
+        BingoGridCompletionColor(int colorCode) {this.colorCode = colorCode;}
+        public int getColorCode() {return colorCode;}
+    }
+
+    public enum BingoGridSelectionColor {
+        RED(0x40ff0000),
+        BLUE(0x4000d2ff),
+        YELLOW(0x40ffff00),
+        GREEN(0x4000ff00),
+        GLORP(0x40ff00ff);
+
+        private final int colorCode;
+        BingoGridSelectionColor(int colorCode) {this.colorCode = colorCode;}
+        public int getColorCode() {return colorCode;}
+    }
+
 
     public enum RarityHighlighterMode {
         GRADIENT,
@@ -169,6 +196,8 @@ public class QOLHuntersClientConfigs {
         public static final String HUNTER_PARTICLES_WOODEN = "Wooden";
         public static final String HUNTER_PARTICLES_OTHER = "Default";
 
+        public static final String BINGO_GRID_COMPLETED_COLOR = "Grid Completion Color";
+        public static final String BINGO_GRID_SELECTION_COLOR = "Grid Selection Color";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -260,6 +289,8 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
                 BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
                 BETTER_BINGO_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of bingo objectives in Bingo Vaults\nMight not work on servers?").define(ConfigPaths.BETTER_BINGO_DESCRIPTIONS, true);
+                BINGO_GRID_COMPLETED_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid completion overlay").defineEnum(ConfigPaths.BINGO_GRID_COMPLETED_COLOR, BingoGridCompletionColor.GREEN);
+                BINGO_GRID_SELECTION_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid selection overlay").defineEnum(ConfigPaths.BINGO_GRID_SELECTION_COLOR, BingoGridSelectionColor.YELLOW);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
