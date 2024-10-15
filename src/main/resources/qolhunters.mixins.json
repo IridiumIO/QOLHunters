@@ -47,6 +47,7 @@
     "shop.MixinShopPedestalBlockTileRenderer",
     "skillaltar.MixinSkillAltarContainerDefault",
     "skillaltar.MixinSkillAltarScreen",
+    "skillaltar.MixinSkillAltarScreen2",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultmodifiers.MixinModifiersRenderer",
     "vaultmodifiers.MixinModifiersRendererScreenPos"
