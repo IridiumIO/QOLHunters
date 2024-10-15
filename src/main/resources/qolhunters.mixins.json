@@ -28,6 +28,7 @@
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",
+    "elytra.MixinLocalPlayer",
     "godaltars.MixinGodAltarOverlay",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
