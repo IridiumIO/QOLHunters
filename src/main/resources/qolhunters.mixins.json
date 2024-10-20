@@ -25,6 +25,7 @@
     "boosterpack.MixinBoosterPackSelectionScreen",
     "brazier.MixinMonolithRenderer",
     "cake.MixinCakeObjective",
+    "carddeck.MixinCardDeckScreen",
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",
