@@ -26,6 +26,7 @@
     "brazier.MixinMonolithRenderer",
     "cake.MixinCakeObjective",
     "carddeck.MixinCardDeckScreen",
+    "cardessenceextractor.MixinCardEssenceExtractorScreen",
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",
