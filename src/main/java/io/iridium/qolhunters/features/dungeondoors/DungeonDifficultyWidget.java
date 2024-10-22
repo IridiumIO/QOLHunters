@@ -26,7 +26,7 @@ public class DungeonDifficultyWidget {
 
     public static AABB getDungeonAABB() {
         if (dungeonPos == null) return null;
-        return new AABB(dungeonPos.offset(-20, -10, -20), dungeonPos.offset(20, 10, 20));
+        return new AABB(dungeonPos.offset(-30, -15, -30), dungeonPos.offset(30, 20, 30));
     }
 
     public static boolean isPlayerNearDungeon(BlockPos playerPos) {
@@ -43,7 +43,6 @@ public class DungeonDifficultyWidget {
             if(isDungeonActive) {
                 drawText(event.getMatrixStack(), difficulty);
             }else{
-                // Render "Dungeon is inactive"
             }
         }
 
@@ -55,7 +54,7 @@ public class DungeonDifficultyWidget {
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
         int x = width / 2 - fontRenderer.width(text) / 2;
-        int y = height -65; // Position the text 60 pixels from the bottom
+        int y = height -65;
 
         RenderSystem.enableBlend();
         fontRenderer.draw(matrixStack, text, x, y, difficultyColor);
