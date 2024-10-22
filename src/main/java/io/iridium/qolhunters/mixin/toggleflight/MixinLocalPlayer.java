@@ -1,4 +1,4 @@
-package io.iridium.qolhunters.mixin.elytra;
+package io.iridium.qolhunters.mixin.toggleflight;
 
 import net.minecraft.client.player.LocalPlayer;
 import org.objectweb.asm.Opcodes;
@@ -6,7 +6,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import static io.iridium.qolhunters.features.elytra.ToggleElytra.elytraEnabled;
+import static io.iridium.qolhunters.features.toggleflight.ToggleElytra.elytraEnabled;
+
+//For Toggling Elytra/Wings
 
 @Mixin(value = LocalPlayer.class)
 public class MixinLocalPlayer {

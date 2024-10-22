@@ -32,8 +32,6 @@
     "configs.MixinModConfigs",
     "dungeondoors.MixinClientboundSetSubtitleTextPacket",
     "dungeondoors.MixinDungeonDoorBlock",
-    "elytra.MixinLocalPlayer",
-    "feathertoggle.MixinMultiJumpTrinket",
     "godaltars.MixinGodAltarOverlay",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
@@ -55,6 +53,8 @@
     "skillaltar.MixinSkillAltarContainerDefault",
     "skillaltar.MixinSkillAltarScreen",
     "skillaltar.MixinSkillAltarScreen2",
+    "toggleflight.MixinLocalPlayer",
+    "toggleflight.MixinMultiJumpTrinket",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultmodifiers.MixinModifiersRenderer",
     "vaultmodifiers.MixinModifiersRendererScreenPos"
