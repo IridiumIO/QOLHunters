@@ -33,6 +33,7 @@
     "dungeondoors.MixinClientboundSetSubtitleTextPacket",
     "dungeondoors.MixinDungeonDoorBlock",
     "elytra.MixinLocalPlayer",
+    "feathertoggle.MixinMultiJumpTrinket",
     "godaltars.MixinGodAltarOverlay",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
