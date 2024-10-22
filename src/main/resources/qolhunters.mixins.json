@@ -13,6 +13,7 @@
   ],
   "client": [
     "abilities.MixinAbilityDialog",
+    "abilities.MixinAbilityWidgetSelectable",
     "abilities.MixinInputEvents",
     "accessors.AccessorAbstractContainerScreen",
     "betterdescriptions.MixinAbilitiesDescriptionsConfig",
