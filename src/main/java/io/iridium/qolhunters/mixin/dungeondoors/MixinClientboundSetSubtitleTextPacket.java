@@ -19,7 +19,8 @@ public abstract class MixinClientboundSetSubtitleTextPacket {
 
         String text = this.getText().getString();
         if(text.startsWith("Difficulty:")) {
-            DungeonDifficultyWidget.difficulty = "Dungeon " + text;
+            String strippedText = text.replace("Difficulty: ", "");
+            DungeonDifficultyWidget.difficulty = strippedText + " Dungeon";
             DungeonDifficultyWidget.dungeonPos = Minecraft.getInstance().player.getOnPos();
             DungeonDifficultyWidget.isDungeonActive = true;
             DungeonDifficultyWidget.difficultyColor = this.getText().getStyle().getColor().getValue();
