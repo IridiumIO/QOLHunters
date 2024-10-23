@@ -5,6 +5,7 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
+
     "vaultenchanter.MixinAbstractContainerMenu",
     "vaultenchanter.MixinEnchantmentCost",
     "vaultenchanter.MixinVaultEnchanterBlock",
@@ -36,6 +37,8 @@
     "godaltars.MixinGodAltarOverlay",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
+    "jewelapplicationtable.MixinVaultJewelApplicationStationContainer",
+    "jewelapplicationtable.MixinVaultJewelApplicationStationScreen",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",

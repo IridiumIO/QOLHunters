@@ -78,6 +78,10 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.EnumValue<BingoGridCompletionColor> BINGO_GRID_COMPLETED_COLOR;
     public static final ForgeConfigSpec.EnumValue<BingoGridSelectionColor> BINGO_GRID_SELECTION_COLOR;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_JEWEL_APPLICATION;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_CARD_DECK;
+
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -199,6 +203,9 @@ public class QOLHuntersClientConfigs {
         public static final String BINGO_GRID_COMPLETED_COLOR = "Grid Completion Color";
         public static final String BINGO_GRID_SELECTION_COLOR = "Grid Selection Color";
 
+        public static final String BETTER_SCREEN_JEWEL_APPLICATION = "Better Jewel Application Screen";
+        public static final String BETTER_SCREEN_CARD_DECK = "Better Card Deck Screen";
+
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
@@ -223,6 +230,8 @@ public class QOLHuntersClientConfigs {
             public static final String CLIENT_GROUP = "Client-Only Extensions";
             public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
             public static final String GENERAL_GROUP = "General Configs";
+
+            public static final String BETTER_SCREENS_GROUP = "Better Screens";
 
         }
     }
@@ -339,6 +348,11 @@ public class QOLHuntersClientConfigs {
                 HUNTER_PARTICLES_WOODEN = CLIENT_BUILDER.comment("Show Hunter Particles for Wooden Chests").define(ConfigPaths.HUNTER_PARTICLES_WOODEN, true);
                 HUNTER_PARTICLES_OTHER = CLIENT_BUILDER.comment("Show Default White Hunter Particles").define(ConfigPaths.HUNTER_PARTICLES_OTHER, true);
             CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SCREENS_GROUP);
+                BETTER_SCREEN_JEWEL_APPLICATION = CLIENT_BUILDER.comment("Improves the Jewel Application Screen").define(ConfigPaths.BETTER_SCREEN_JEWEL_APPLICATION, true);
+                BETTER_SCREEN_CARD_DECK = CLIENT_BUILDER.comment("Improves the Card Deck Screen").define(ConfigPaths.BETTER_SCREEN_CARD_DECK, true);
+
 
         CLIENT_BUILDER.pop();
 
