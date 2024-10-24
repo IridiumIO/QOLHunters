@@ -80,7 +80,8 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_JEWEL_APPLICATION;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_CARD_DECK;
-
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ELIXIR_SHADOWLESS_ORBS;
+    public static final ForgeConfigSpec.EnumValue<ElixirOrbCountCulling> ELIXIR_ORB_CULLING;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -138,6 +139,17 @@ public class QOLHuntersClientConfigs {
     public enum VirtualDehammerizerMode {
         SPHERE,
         CYLINDER,
+    }
+
+    public enum ElixirOrbCountCulling {
+        NONE(999),
+        LOW(100),
+        MED(50),
+        HIGH(25);
+
+        private final int count;
+        ElixirOrbCountCulling(int count) {this.count = count;}
+        public int getCount() {return count;}
     }
 
 
@@ -206,12 +218,16 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SCREEN_JEWEL_APPLICATION = "Better Jewel Application Screen";
         public static final String BETTER_SCREEN_CARD_DECK = "Better Card Deck Screen";
 
+        public static final String ELIXIR_SHADOWLESS_ORBS = "Shadowless Elixir Orbs";
+        public static final String ELIXIR_ORB_CULLING = "Elixir Orb Culling";
+
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
             public static final String CAKE_GROUP = "Cake Vaults";
             public static final String BINGO_GROUP = "Bingo Vaults";
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
+            public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String BLACK_MARKET_GROUP = "Black Market";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
@@ -300,6 +316,11 @@ public class QOLHuntersClientConfigs {
                 BETTER_BINGO_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of bingo objectives in Bingo Vaults\nMight not work on servers?").define(ConfigPaths.BETTER_BINGO_DESCRIPTIONS, true);
                 BINGO_GRID_COMPLETED_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid completion overlay").defineEnum(ConfigPaths.BINGO_GRID_COMPLETED_COLOR, BingoGridCompletionColor.GREEN);
                 BINGO_GRID_SELECTION_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid selection overlay").defineEnum(ConfigPaths.BINGO_GRID_SELECTION_COLOR, BingoGridSelectionColor.YELLOW);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.ELIXIR_GROUP);
+                ELIXIR_SHADOWLESS_ORBS = CLIENT_BUILDER.comment("Removes shadows from Elixir orbs. Significantly improves performance.\nRequires Restart").define(ConfigPaths.ELIXIR_SHADOWLESS_ORBS, true);
+                ELIXIR_ORB_CULLING = CLIENT_BUILDER.comment("Culls Elixir orbs when there are more than this many on screen\nLOW=100\nMED=50\nHIGH=25").defineEnum(ConfigPaths.ELIXIR_ORB_CULLING, ElixirOrbCountCulling.MED);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
