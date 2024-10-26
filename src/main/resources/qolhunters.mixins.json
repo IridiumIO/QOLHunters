@@ -5,6 +5,7 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
+
     "vaultenchanter.MixinAbstractContainerMenu",
     "vaultenchanter.MixinEnchantmentCost",
     "vaultenchanter.MixinVaultEnchanterBlock",
@@ -22,6 +23,7 @@
     "betterdescriptions.MixinSkillDescriptionsConfig",
     "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
+    "bingo.MixinBingoRendererLeaf",
     "blackmarket.MixinShardTradeScreen",
     "boosterpack.MixinBoosterPackSelectionScreen",
     "brazier.MixinMonolithRenderer",
