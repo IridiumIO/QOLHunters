@@ -48,6 +48,7 @@
     "keybinds.MixinVaultEnchanterScreen",
     "panregion.MixinAbstractPanRegion",
     "paradox.MixinGateLockRenderer",
+    "player.MixinPlayer",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
     "rarityhighlighter.MixinAbstractContainer",
     "rarityhighlighter.MixinAEStackRendering",
