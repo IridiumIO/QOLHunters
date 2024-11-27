@@ -83,6 +83,13 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ELIXIR_SHADOWLESS_ORBS;
     public static final ForgeConfigSpec.EnumValue<ElixirOrbCountCulling> ELIXIR_ORB_CULLING;
 
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_SCRAPPY;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_COMMON;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_RARE;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_EPIC;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_OMEGA;
+
+
     public enum BrazierHologramMode {
         DEFAULT,
         MODE1,
@@ -221,6 +228,12 @@ public class QOLHuntersClientConfigs {
         public static final String ELIXIR_SHADOWLESS_ORBS = "Shadowless Elixir Orbs";
         public static final String ELIXIR_ORB_CULLING = "Elixir Orb Culling";
 
+        public static final String GEAR_ROLL_COLOR_SCRAPPY = "Scrappy+";
+        public static final String GEAR_ROLL_COLOR_COMMON = "Common+";
+        public static final String GEAR_ROLL_COLOR_RARE = "Rare+";
+        public static final String GEAR_ROLL_COLOR_EPIC = "Epic+";
+        public static final String GEAR_ROLL_COLOR_OMEGA = "Omega";
+
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
@@ -249,6 +262,7 @@ public class QOLHuntersClientConfigs {
 
             public static final String BETTER_SCREENS_GROUP = "Better Screens";
 
+            public static final String GEAR_ROLL_COLOR_GROUP = "Gear Roll Colors";
         }
     }
 
@@ -373,6 +387,15 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SCREENS_GROUP);
                 BETTER_SCREEN_JEWEL_APPLICATION = CLIENT_BUILDER.comment("Improves the Jewel Application Screen").define(ConfigPaths.BETTER_SCREEN_JEWEL_APPLICATION, true);
                 BETTER_SCREEN_CARD_DECK = CLIENT_BUILDER.comment("Improves the Card Deck Screen").define(ConfigPaths.BETTER_SCREEN_CARD_DECK, true);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.GEAR_ROLL_COLOR_GROUP);
+                GEAR_ROLL_COLOR_SCRAPPY = CLIENT_BUILDER.comment("Scrappy+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_SCRAPPY, 12369084);
+                GEAR_ROLL_COLOR_COMMON = CLIENT_BUILDER.comment("Common+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_COMMON, 5353215);
+                GEAR_ROLL_COLOR_RARE = CLIENT_BUILDER.comment("Rare+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_RARE, 16771072);
+                GEAR_ROLL_COLOR_EPIC = CLIENT_BUILDER.comment("Epic+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_EPIC, 16711935);
+                GEAR_ROLL_COLOR_OMEGA = CLIENT_BUILDER.comment("Omega Gear").define(ConfigPaths.GEAR_ROLL_COLOR_OMEGA, 7012096);
+            CLIENT_BUILDER.pop();
 
 
         CLIENT_BUILDER.pop();

@@ -37,6 +37,7 @@
     "dungeondoors.MixinDungeonDoorBlock",
     "elixirrenderer.MixinElixirOrbRenderer",
     "elixirrenderer.MixinSummonElixirOrbMessage",
+    "gear.MixinVaultGearHelper",
     "godaltars.MixinGodAltarOverlay",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
