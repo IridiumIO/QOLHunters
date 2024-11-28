@@ -85,7 +85,7 @@ public class QOLHunters {
 
        if(CurrentVaultVersion.compareTo(WorkingVersion) > 0){
            QOLHunters.LOGGER.warn("Your Vault Hunters mod version is too new! Some features will be disabled to prevent crashes.");
-           QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.set(false);
+           //QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.set(false);
        }
 
     }
