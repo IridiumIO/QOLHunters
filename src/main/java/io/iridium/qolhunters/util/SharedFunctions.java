@@ -31,21 +31,21 @@ import java.util.Map;
 
 public class SharedFunctions {
 
-    public static Map<String, Integer> CachedInventoryItems = new HashMap<>();
+    public static Map<Item, Integer> CachedInventoryItems = new HashMap<>();
     public static long lastCheckedTime = 0;
 
-    public static Map<String, Integer> GetPlayerInventoryItems(LocalPlayer player, Integer cacheTimeout) {
+    public static Map<Item, Integer> GetPlayerInventoryItems(LocalPlayer player, Integer cacheTimeout) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastCheckedTime < cacheTimeout) return new HashMap<>(CachedInventoryItems);
 
-        Map<String, Integer> InventoryItems = new HashMap<>();
+        Map<Item, Integer> InventoryItems = new HashMap<>();
 
         for (InventoryUtil.ItemAccess items : InventoryUtil.findAllItems(player)) {
             ItemStack stack = items.getStack();
             if (stack.isEmpty()) continue;
 
             Item key = stack.getItem();
-            InventoryItems.put(stack.getHoverName().getString(), InventoryItems.getOrDefault(stack.getHoverName().getString(), 0) + stack.getCount());
+            InventoryItems.put(stack.getItem(), InventoryItems.getOrDefault(stack.getItem(), 0) + stack.getCount());
             if (!(key instanceof BackpackItem)) continue;
 
             stack.getCapability(CapabilityBackpackWrapper.getCapabilityInstance()).ifPresent((w) ->
@@ -63,7 +63,7 @@ public class SharedFunctions {
 
 
     public static Integer GetPlayerInventoryItemCount(LocalPlayer player, ItemStack itemStack, Integer cacheTimeout) {
-        return GetPlayerInventoryItems(player, cacheTimeout).getOrDefault(itemStack.getHoverName().getString(), 0);
+        return GetPlayerInventoryItems(player, cacheTimeout).getOrDefault(itemStack.getItem(), 0);
     }
 
     public static Integer GetPlayerInventoryItemCount(LocalPlayer player, Item item) {
@@ -111,7 +111,7 @@ public class SharedFunctions {
 
     public static void renderSlotHighlight(PoseStack poseStack, ItemStack itemStack, int x, int y){
 
-        if (!Scavenger.ScavengerItems.containsKey(itemStack.getHoverName().getString())) return;
+        if (!Scavenger.ScavengerItems.containsKey(itemStack.getItem())) return;
 
 
         RenderSystem.disableDepthTest();
@@ -119,7 +119,7 @@ public class SharedFunctions {
         poseStack.translate(0, 0, 100);
         Matrix4f matrix = poseStack.last().pose();
 
-        int color = 0xDD000000 | Scavenger.ScavengerItems.get(itemStack.getHoverName().getString());
+        int color = 0xDD000000 | Scavenger.ScavengerItems.get(itemStack.getItem());
 
         Tesselator tesselator = Tesselator.getInstance();
         BufferBuilder bufferBuilder = tesselator.getBuilder();
