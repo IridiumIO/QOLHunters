@@ -1,6 +1,7 @@
 package io.iridium.qolhunters.features.vault_scavenger;
 
 import io.iridium.qolhunters.QOLHunters;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.InputEvent;
@@ -15,7 +16,7 @@ import java.util.Map;
 @Mod.EventBusSubscriber(modid= QOLHunters.MOD_ID, value = Dist.CLIENT)
 public class Scavenger {
 
-    public static Map<String, Integer> ScavengerItems = new HashMap<>();
+    public static Map<Item, Integer> ScavengerItems = new HashMap<>();
 
     @SubscribeEvent
     public static void onKeyInput(InputEvent.KeyInputEvent event) {

@@ -32,9 +32,9 @@ public class MixinScavengerObjective {
             cancellable = true, remap = false, locals = LocalCapture.CAPTURE_FAILHARD)
     private static void renderItemRequirement(PoseStack matrixStack, ScavengerGoal goal, int itemBoxWidth, int totalX, int totalY, float partialTicks, CallbackInfoReturnable<Integer> cir, List<ScavengerGoal.Entry> entries, float time, ScavengerGoal.Entry entry, ItemStack requiredStack, ResourceLocation iconPath, String requiredText, MutableComponent cmp) throws NoSuchFieldException {
 
-        if(!Scavenger.ScavengerItems.containsKey(requiredStack.getHoverName().getString())){
+        if(!Scavenger.ScavengerItems.containsKey(requiredStack.getItem())){
 
-            Scavenger.ScavengerItems.put(requiredStack.getHoverName().getString(), entry.getColor());
+            Scavenger.ScavengerItems.put(requiredStack.getItem(), entry.getColor());
 
         }
 
