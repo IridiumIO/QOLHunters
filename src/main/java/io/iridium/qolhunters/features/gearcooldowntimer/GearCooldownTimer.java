@@ -6,7 +6,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import iskallia.vault.config.Config;
+import iskallia.vault.config.gear.VaultGearCommonConfig;
 import iskallia.vault.gear.item.VaultGearItem;
+import iskallia.vault.init.ModConfigs;
 import iskallia.vault.item.CardDeckItem;
 import iskallia.vault.item.MagnetItem;
 import net.minecraft.ChatFormatting;
@@ -45,7 +48,8 @@ public class GearCooldownTimer {
             if (cooldowns.isOnCooldown(item) && (item instanceof VaultGearItem || item instanceof CardDeckItem || item instanceof MagnetItem || item instanceof ElytraItem)) {
                 float cooldownPercent = cooldowns.getCooldownPercent(item, 0F);
 
-                int absoluteCooldownSeconds = Math.round(cooldownPercent * 20.0F);
+                float maxTime = ModConfigs.VAULT_GEAR_COMMON.getSwapCooldown() / 20f;
+                int absoluteCooldownSeconds = Math.round(cooldownPercent * maxTime);
                 PoseStack poseStack = event.getPoseStack();
                 int x = slot.x + screen.getGuiLeft();
                 int y = slot.y + screen.getGuiTop();
