@@ -37,7 +37,7 @@ public class DungeonDifficultyWidget {
 
     @SubscribeEvent
     public static void onRenderGameOverlay(RenderGameOverlayEvent event) {
-//        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) return;
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) return;
 
         if(isPlayerNearDungeon(Minecraft.getInstance().player.blockPosition())) {
             if(isDungeonActive) {
