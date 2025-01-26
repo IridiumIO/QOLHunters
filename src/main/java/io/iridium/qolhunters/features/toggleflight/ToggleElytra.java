@@ -25,7 +25,7 @@ public class ToggleElytra {
 
     @SubscribeEvent
     public static void onKeyInput(InputEvent.KeyInputEvent event) {
-        if (event.getKey() == KeyBindings.TOGGLE_ELYTRA.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && mc.screen == null) {
+        if (KeyBindings.TOGGLE_ELYTRA.consumeClick()) {
             elytraEnabled = !elytraEnabled;
         }
     }

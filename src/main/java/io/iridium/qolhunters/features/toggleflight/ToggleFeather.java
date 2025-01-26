@@ -24,7 +24,7 @@ public class ToggleFeather {
 
     @SubscribeEvent
     public static void onKeyInput(InputEvent.KeyInputEvent event) {
-        if (event.getKey() == KeyBindings.TOGGLE_FEATHER.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && mc.screen == null) {
+        if (KeyBindings.TOGGLE_FEATHER.consumeClick()) {
             featherEnabled = !featherEnabled;
         }
     }
