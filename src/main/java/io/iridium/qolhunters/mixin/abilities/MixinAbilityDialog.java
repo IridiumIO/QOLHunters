@@ -8,10 +8,13 @@ import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.component.ScrollableContainer;
 import iskallia.vault.client.gui.overlay.VaultBarOverlay;
 import iskallia.vault.client.gui.screen.player.AbilitiesElementContainerScreen;
+import iskallia.vault.client.gui.screen.player.element.RegretButton;
 import iskallia.vault.client.gui.screen.player.legacy.tab.split.dialog.AbilityDialog;
 import iskallia.vault.client.gui.screen.player.legacy.tab.split.spi.AbstractDialog;
 import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityNodeTextures;
 import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityWidget;
+import iskallia.vault.core.vault.ClientVaults;
+import iskallia.vault.init.ModBlocks;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModTextureAtlases;
 import iskallia.vault.skill.ability.component.AbilityDescriptionFactory;
@@ -22,11 +25,14 @@ import iskallia.vault.skill.base.Skill;
 import iskallia.vault.skill.base.SpecializedSkill;
 import iskallia.vault.skill.base.TieredSkill;
 import iskallia.vault.skill.tree.AbilityTree;
+import iskallia.vault.util.CoinDefinition;
+import iskallia.vault.util.InventoryUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -254,7 +260,6 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
     @Unique
     private void qOLHunters$buildRegretButton(SpecializedSkill parentAbility, int regretCost) {
 
-        String regretButtonText = !parentAbility.isUnlocked() ? "Unlearn" : "Unlearn (" + regretCost + ")";
         boolean hasDependants = false;
 
         // Check if the ability has dependants that are unlocked
@@ -268,11 +273,19 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         }
 
         // Create the regret button with the determined text and action
-        this.regretButton = new Button(0, 0, 0, 0, new TextComponent(regretButtonText), button -> this.downgradeAbility(), Button.NO_TOOLTIP);
-        this.regretButton.active = parentAbility.isUnlocked()
-                && regretCost <= VaultBarOverlay.unspentRegretPoints
-                && ((TieredSkill) parentAbility.getSpecialization()).getUnmodifiedTier() > 0
-                && !hasDependants;
+        this.regretButton = new RegretButton(
+            this.bounds.x, this.bounds.y, 0, 0, this.bounds.x, this.bounds.y, regretCost, button -> this.downgradeAbility()
+        );
+        this.regretButton.active = parentAbility.isUnlocked() && ((TieredSkill)parentAbility.getSpecialization()).getUnmodifiedTier() > 0 && !hasDependants;
+        if (this.regretButton.isActive()) {
+            List<InventoryUtil.ItemAccess> allItems = InventoryUtil.findAllItems(Minecraft.getInstance().player);
+            if (!CoinDefinition.hasEnoughCurrency(allItems, new ItemStack(ModBlocks.VAULT_GOLD, regretCost))) {
+                this.regretButton.active = false;
+            }
+            if (ClientVaults.getActive().isPresent()) {
+                this.regretButton.active = false;
+            }
+        }
     }
 
 
