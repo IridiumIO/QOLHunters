@@ -28,7 +28,7 @@ public  class ClientForgeEvents {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.KeyInputEvent event) {
 
-        if (event.getKey() == KeyBindings.TOGGLE_MAGNET_GUI.getKey().getValue() && event.getAction() == GLFW.GLFW_PRESS && Minecraft.getInstance().screen != null) {
+        if (KeyBindings.TOGGLE_MAGNET_GUI.consumeClick()) {
             ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
         }
 

@@ -9,9 +9,11 @@ import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.block.MonolithBlock;
 import iskallia.vault.block.entity.MonolithTileEntity;
 import iskallia.vault.block.render.MonolithRenderer;
+import iskallia.vault.config.VaultModifierOverlayConfig;
 import iskallia.vault.core.vault.modifier.VaultModifierStack;
 import iskallia.vault.core.vault.modifier.registry.VaultModifierRegistry;
 import iskallia.vault.core.vault.overlay.ModifiersRenderer;
+import iskallia.vault.init.ModConfigs;
 import iskallia.vault.task.renderer.context.RendererContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -136,7 +138,19 @@ public class MixinMonolithRenderer {
         int right = minecraft.getWindow().getGuiScaledWidth();
         int bottom = minecraft.getWindow().getGuiScaledHeight();
         matrixStack.translate((double)(-right), (double)(-bottom), 0.0);
+
+        VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
+
+        //Need to disable the custom position for the vault modifiers otherwise the location is off
+        if(QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get()){
+            matrixStack.translate(config.rightMargin - 8.0, bottom - config.bottomMargin - config.size - 4.0, 0);
+        }else {
+            matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
+
+        }
+
         ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack);
+
         matrixStack.popPose();
         matrixStack.popPose();
     }

@@ -136,7 +136,7 @@ public class VirtualDehammerizer {
 
 
         VaultGearData data = VaultGearData.read(heldItem);
-        if(!data.has(ModGearAttributes.HAMMERING)) return;
+        if(!data.has(ModGearAttributes.HAMMERING, VaultGearData.Type.ALL_MODIFIERS)) return;
         Integer radius = QOLHuntersClientConfigs.VIRTUAL_DEHAMMERIZER_RANGE.get();
 
 

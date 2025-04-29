@@ -11,25 +11,26 @@ public class QOLHuntersClientConfigs {
 
     //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS;
+    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
+    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
 
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIERS_TOP_RIGHT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_ENCHANTER_EMERALDS_SLOT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayColor> CAKE_VAULT_OVERLAY_COLOR;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayStyle> CAKE_VAULT_OVERLAY_STYLE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_INV_COUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_HIGHLIGHTER;
     public static final ForgeConfigSpec.EnumValue<BrazierHologramMode> BRAZIER_HOLOGRAM_MODE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_ASCENSION_FORGE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_TRANSMOG_TABLE;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -37,7 +38,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
-//    public static final ForgeConfigSpec.ConfigValue<Integer> BARTERING_DISCOUNT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_SHOPPING_PED_THROW_ITEMS;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
@@ -58,7 +59,37 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
     public static final ForgeConfigSpec.EnumValue<VirtualDehammerizerMode> VIRTUAL_DEHAMMERIZER_MODE;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_DOOR_NAMES;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_SHORTHAND;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_USE_SHARDS;
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BACKPACK_CYCLER;
+
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_BLOCKS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_GILDED;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_LIVING;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_ORNATE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_COINS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_WOODEN;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_OTHER;
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_KEY_SWAPPER;
+
+    public static final ForgeConfigSpec.EnumValue<BingoGridCompletionColor> BINGO_GRID_COMPLETED_COLOR;
+    public static final ForgeConfigSpec.EnumValue<BingoGridSelectionColor> BINGO_GRID_SELECTION_COLOR;
+
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_JEWEL_APPLICATION;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_CARD_DECK;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ELIXIR_SHADOWLESS_ORBS;
+    public static final ForgeConfigSpec.EnumValue<ElixirOrbCountCulling> ELIXIR_ORB_CULLING;
+
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_SCRAPPY;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_COMMON;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_RARE;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_EPIC;
+    public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_OMEGA;
+
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -83,6 +114,31 @@ public class QOLHuntersClientConfigs {
         public int getColorCode() {return colorCode;}
     }
 
+    public enum BingoGridCompletionColor {
+        RED(0x64ff0000),
+        BLUE(0x6400d2ff),
+        YELLOW(0x64ffff00),
+        GREEN(0x6400ff00),
+        GLORP(0x64ff00ff);
+
+        private final int colorCode;
+        BingoGridCompletionColor(int colorCode) {this.colorCode = colorCode;}
+        public int getColorCode() {return colorCode;}
+    }
+
+    public enum BingoGridSelectionColor {
+        RED(0x40ff0000),
+        BLUE(0x4000d2ff),
+        YELLOW(0x40ffff00),
+        GREEN(0x4000ff00),
+        GLORP(0x40ff00ff);
+
+        private final int colorCode;
+        BingoGridSelectionColor(int colorCode) {this.colorCode = colorCode;}
+        public int getColorCode() {return colorCode;}
+    }
+
+
     public enum RarityHighlighterMode {
         GRADIENT,
         UNDERLINE
@@ -91,6 +147,17 @@ public class QOLHuntersClientConfigs {
     public enum VirtualDehammerizerMode {
         SPHERE,
         CYLINDER,
+    }
+
+    public enum ElixirOrbCountCulling {
+        NONE(999),
+        LOW(100),
+        MED(50),
+        HIGH(25);
+
+        private final int count;
+        ElixirOrbCountCulling(int count) {this.count = count;}
+        public int getCount() {return count;}
     }
 
 
@@ -104,6 +171,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
+        public static final String VAULT_MODIFIERS_TOP_RIGHT = "Vault Modifiers In Top Right";
         public static final String VAULT_ENCHANTER_EMERALDS_SLOT = "Vault Enchanter Emeralds Slot";
         public static final String VAULT_INTERFACE_KEYBINDS = "Vault Interface Keybinds";
         public static final String BETTER_ABILITIES_TAB = "Better Abilities Tab";
@@ -117,11 +185,13 @@ public class QOLHuntersClientConfigs {
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
+        public static final String SEARCHABLE_ASCENSION_FORGE = "Searchable Ascension Forge";
+        public static final String SEARCHABLE_TRANSMOG_TABLE = "Searchable Transmog Table";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
         public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
-        public static final String BARTERING_DISCOUNT = "Bartering Discount";
+        public static final String ENABLE_SHOPPING_PED_THROW_ITEMS = "Shopping Pedestal Throws Items";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
@@ -140,6 +210,34 @@ public class QOLHuntersClientConfigs {
         public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
         public static final String ASCENSION_CRYSTAL_GRANT = "Ascension Crystal Ember Grant Amount";
         public static final String CHALLENGER_ROCK_GRANT = "Challenger Rock Ember Grant Amount";
+        public static final String BETTER_SOUL_VALUE = "Enable Better Tooltips";
+        public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
+        public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
+        public static final String BACKPACK_CYCLER = "Backpack Cycler";
+        public static final String TREASURE_KEY_SWAPPER = "Treasure Key Swapper";
+
+        public static final String HUNTER_PARTICLES_BLOCKS = "Objectives";
+        public static final String HUNTER_PARTICLES_GILDED = "Gilded";
+        public static final String HUNTER_PARTICLES_LIVING = "Living";
+        public static final String HUNTER_PARTICLES_ORNATE = "Ornate";
+        public static final String HUNTER_PARTICLES_COINS = "Coins";
+        public static final String HUNTER_PARTICLES_WOODEN = "Wooden";
+        public static final String HUNTER_PARTICLES_OTHER = "Default";
+
+        public static final String BINGO_GRID_COMPLETED_COLOR = "Grid Completion Color";
+        public static final String BINGO_GRID_SELECTION_COLOR = "Grid Selection Color";
+
+        public static final String BETTER_SCREEN_JEWEL_APPLICATION = "Better Jewel Application Screen";
+        public static final String BETTER_SCREEN_CARD_DECK = "Better Card Deck Screen";
+
+        public static final String ELIXIR_SHADOWLESS_ORBS = "Shadowless Elixir Orbs";
+        public static final String ELIXIR_ORB_CULLING = "Elixir Orb Culling";
+
+        public static final String GEAR_ROLL_COLOR_SCRAPPY = "Scrappy+";
+        public static final String GEAR_ROLL_COLOR_COMMON = "Common+";
+        public static final String GEAR_ROLL_COLOR_RARE = "Rare+";
+        public static final String GEAR_ROLL_COLOR_EPIC = "Epic+";
+        public static final String GEAR_ROLL_COLOR_OMEGA = "Omega";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -147,9 +245,11 @@ public class QOLHuntersClientConfigs {
             public static final String CAKE_GROUP = "Cake Vaults";
             public static final String BINGO_GROUP = "Bingo Vaults";
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
-            public static final String BLACK_MARKET_GROUP = "Black Market";
+            public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
+            public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
+            public static final String VAULT_MODIFIERS_GROUP = "Vault Modifiers";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
@@ -160,11 +260,15 @@ public class QOLHuntersClientConfigs {
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
             public static final String SEARCH_GROUP = "Search Commands";
+            public static final String HUNTER_PARTICLES_GROUP = "Hunter Particles";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
             public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
             public static final String GENERAL_GROUP = "General Configs";
 
+            public static final String BETTER_SCREENS_GROUP = "Better Screens";
+
+            public static final String GEAR_ROLL_COLOR_GROUP = "Gear Roll Colors";
         }
     }
 
@@ -191,17 +295,22 @@ public class QOLHuntersClientConfigs {
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
-            TREASURE_DOOR_NAMES = CLIENT_BUILDER.comment("Show treasure door names in the vault").define(ConfigPaths.TREASURE_DOOR_NAMES, true);
+            BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
+            TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
+            SEARCHABLE_ASCENSION_FORGE = CLIENT_BUILDER.comment("Should the JEI search filter the ascension forge?").define(ConfigPaths.SEARCHABLE_ASCENSION_FORGE, true);
+            SEARCHABLE_TRANSMOG_TABLE = CLIENT_BUILDER.comment("Should the JEI search filter the transmog table?").define(ConfigPaths.SEARCHABLE_TRANSMOG_TABLE, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
-                BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
-                BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
-            CLIENT_BUILDER.pop();
+                //BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
+                //BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
 
-            CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
-                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Displays the number of shards in your Shard Pouch within the Black Market's interface").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
-                BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for the Black Market Shard Pouch count (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND, false);
+                CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
+                    BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
+                    BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
+                    BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
+                CLIENT_BUILDER.pop();
+
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SCAVENGER_GROUP);
@@ -221,6 +330,13 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
                 BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
                 BETTER_BINGO_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of bingo objectives in Bingo Vaults\nMight not work on servers?").define(ConfigPaths.BETTER_BINGO_DESCRIPTIONS, true);
+                BINGO_GRID_COMPLETED_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid completion overlay").defineEnum(ConfigPaths.BINGO_GRID_COMPLETED_COLOR, BingoGridCompletionColor.GREEN);
+                BINGO_GRID_SELECTION_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid selection overlay").defineEnum(ConfigPaths.BINGO_GRID_SELECTION_COLOR, BingoGridSelectionColor.YELLOW);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.ELIXIR_GROUP);
+                ELIXIR_SHADOWLESS_ORBS = CLIENT_BUILDER.comment("Removes shadows from Elixir orbs. Significantly improves performance.\nRequires Restart").define(ConfigPaths.ELIXIR_SHADOWLESS_ORBS, true);
+                ELIXIR_ORB_CULLING = CLIENT_BUILDER.comment("Culls Elixir orbs when there are more than this many on screen\nLOW=100\nMED=50\nHIGH=25").defineEnum(ConfigPaths.ELIXIR_ORB_CULLING, ElixirOrbCountCulling.MED);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
@@ -228,6 +344,10 @@ public class QOLHuntersClientConfigs {
                 CLIENT_BUILDER.push(ConfigPaths.Group.GOD_OBJECTIVE_GROUP);
                     GOD_OBJECTIVE_X_OFFSET = CLIENT_BUILDER.comment("Changes the X offset of the God Objective\nDefined as % of screen width").defineInRange(ConfigPaths.GOD_OBJECTIVE_X_OFFSET, 0, 0, 100);
                     GOD_OBJECTIVE_Y_OFFSET = CLIENT_BUILDER.comment("Changes the Y offset of the God Objective\nDefined as % of screen height").defineInRange(ConfigPaths.GOD_OBJECTIVE_Y_OFFSET, 45, 0, 100);
+                CLIENT_BUILDER.pop();
+
+                CLIENT_BUILDER.push(ConfigPaths.Group.VAULT_MODIFIERS_GROUP);
+                    VAULT_MODIFIERS_TOP_RIGHT = CLIENT_BUILDER.comment("Render Vault Modifiers in the top right corner of the screen").define(ConfigPaths.VAULT_MODIFIERS_TOP_RIGHT, false);
                 CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.pop();
@@ -238,7 +358,7 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SHOPPING_GROUP);
                 ENABLE_BARTERING_DISCOUNT_DISPLAY = CLIENT_BUILDER.comment("Includes your bartering discount on shopping pedestals").define(ConfigPaths.ENABLE_BARTERING_DISCOUNT_DISPLAY, true);
-//                BARTERING_DISCOUNT = CLIENT_BUILDER.comment("Enter your current bartering discount (%) to update the shown cost on pedestals.\nOne day I will figure out how to grab this data automatically...").defineInRange(ConfigPaths.BARTERING_DISCOUNT, 0, 0, 100);
+                ENABLE_SHOPPING_PED_THROW_ITEMS = CLIENT_BUILDER.comment("Shopping pedestals throw items so that your magnets/bags can pick them up instead").define(ConfigPaths.ENABLE_SHOPPING_PED_THROW_ITEMS, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.RARITY_HIGHLIGHTER_GROUP);
@@ -260,6 +380,30 @@ public class QOLHuntersClientConfigs {
                 ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT = CLIENT_BUILDER.comment("Enable a tooltip to show the amount of Ember granted on a failed Ascension Vault while holding <SHIFT> on Ascension Crystals").define(ConfigPaths.ASCENSION_CRYSTAL_GRANT, true);
                 CHALLENGER_ROCK_EMBER_GRANT_AMOUNT = CLIENT_BUILDER.comment("Enable a tooltip to show the amount of Ember granted on a failed Ascension Vault while holding <SHIFT> on Challenger Rocks").define(ConfigPaths.CHALLENGER_ROCK_GRANT, true);
             CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.HUNTER_PARTICLES_GROUP);
+                HUNTER_PARTICLES_BLOCKS = CLIENT_BUILDER.comment("Show Hunter Particles for Objectives/Altars").define(ConfigPaths.HUNTER_PARTICLES_BLOCKS, true);
+                HUNTER_PARTICLES_GILDED = CLIENT_BUILDER.comment("Show Hunter Particles for Gilded Chests").define(ConfigPaths.HUNTER_PARTICLES_GILDED, true);
+                HUNTER_PARTICLES_LIVING = CLIENT_BUILDER.comment("Show Hunter Particles for Living Chests").define(ConfigPaths.HUNTER_PARTICLES_LIVING, true);
+                HUNTER_PARTICLES_ORNATE = CLIENT_BUILDER.comment("Show Hunter Particles for Ornate Chests").define(ConfigPaths.HUNTER_PARTICLES_ORNATE, true);
+                HUNTER_PARTICLES_COINS = CLIENT_BUILDER.comment("Show Hunter Particles for Coins").define(ConfigPaths.HUNTER_PARTICLES_COINS, true);
+                HUNTER_PARTICLES_WOODEN = CLIENT_BUILDER.comment("Show Hunter Particles for Wooden Chests").define(ConfigPaths.HUNTER_PARTICLES_WOODEN, true);
+                HUNTER_PARTICLES_OTHER = CLIENT_BUILDER.comment("Show Default White Hunter Particles").define(ConfigPaths.HUNTER_PARTICLES_OTHER, true);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SCREENS_GROUP);
+                BETTER_SCREEN_JEWEL_APPLICATION = CLIENT_BUILDER.comment("Improves the Jewel Application Screen").define(ConfigPaths.BETTER_SCREEN_JEWEL_APPLICATION, true);
+                BETTER_SCREEN_CARD_DECK = CLIENT_BUILDER.comment("Improves the Card Deck Screen").define(ConfigPaths.BETTER_SCREEN_CARD_DECK, true);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.GEAR_ROLL_COLOR_GROUP);
+                GEAR_ROLL_COLOR_SCRAPPY = CLIENT_BUILDER.comment("Scrappy+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_SCRAPPY, 12369084);
+                GEAR_ROLL_COLOR_COMMON = CLIENT_BUILDER.comment("Common+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_COMMON, 5353215);
+                GEAR_ROLL_COLOR_RARE = CLIENT_BUILDER.comment("Rare+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_RARE, 16771072);
+                GEAR_ROLL_COLOR_EPIC = CLIENT_BUILDER.comment("Epic+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_EPIC, 16711935);
+                GEAR_ROLL_COLOR_OMEGA = CLIENT_BUILDER.comment("Omega Gear").define(ConfigPaths.GEAR_ROLL_COLOR_OMEGA, 7012096);
+            CLIENT_BUILDER.pop();
+
 
         CLIENT_BUILDER.pop();
 

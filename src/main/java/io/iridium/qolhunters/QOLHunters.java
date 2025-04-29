@@ -4,11 +4,8 @@ import com.mojang.logging.LogUtils;
 import io.iridium.qolhunters.config.DehammerizerConfig;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
-import io.iridium.qolhunters.features.treasuredoors.TreasureDoorTileEntityRenderer;
 import io.iridium.qolhunters.networking.ModMessages;
 import io.iridium.qolhunters.util.KeyBindings;
-import iskallia.vault.init.ModBlocks;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -47,7 +44,6 @@ public class QOLHunters {
     private void clientSetup(final FMLClientSetupEvent event) {
         SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
         DEHAMMERIZER_CONFIG = DehammerizerConfig.load();
-        BlockEntityRenderers.register(ModBlocks.TREASURE_DOOR_TILE_ENTITY, TreasureDoorTileEntityRenderer::new);
         KeyBindings.init();
 
         ArtifactVersion vaultModVersion = getModVersion("the_vault");
@@ -85,7 +81,7 @@ public class QOLHunters {
 
        if(CurrentVaultVersion.compareTo(WorkingVersion) > 0){
            QOLHunters.LOGGER.warn("Your Vault Hunters mod version is too new! Some features will be disabled to prevent crashes.");
-           QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.set(false);
+           //QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.set(false);
        }
 
     }
