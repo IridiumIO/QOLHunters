@@ -5,7 +5,8 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
-
+    "ascension.MixinAscensionCrystalObjective",
+    "ascension.MixinSoulFlameItem",
     "vaultenchanter.MixinAbstractContainerMenu",
     "vaultenchanter.MixinEnchantmentCost",
     "vaultenchanter.MixinVaultEnchanterBlock",
