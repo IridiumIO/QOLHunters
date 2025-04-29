@@ -5,13 +5,12 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
-    "ascension.MixinAscensionCrystalObjective",
-    "ascension.MixinSoulFlameItem"
   ],
   "client": [
     "abilities.MixinAbilityDialog",
     "abilities.MixinInputEvents",
-    "accessors.AccessorAbstractContainerScreen",
+    "accessors.AccessorAbstractContainerScreen",    "ascension.MixinAscensionCrystalObjective",
+    "ascension.MixinSoulFlameItem",
     "ascenscionforge.MixinAscensionForgeSelectElement",
     "ascenscionforge.MixinDiscoveredModelSelectorModel",
     "betterdescriptions.MixinAbilitiesDescriptionsConfig",
