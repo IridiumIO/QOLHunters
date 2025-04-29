@@ -6,6 +6,7 @@ import iskallia.vault.client.gui.framework.element.ScrollableItemStackSelectorEl
 import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
 import iskallia.vault.client.gui.framework.spatial.spi.ISpatial;
 import mezz.jei.Internal;
+import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,6 +28,10 @@ public abstract class MixinAscensionForgeSelectElement<E extends MixinAscensionF
         if (!newFilter.equals(qOLHunters$filter)) {
             qOLHunters$filter = newFilter;
             refreshElements();
+        }
+        if (!newFilter.isEmpty()) {
+            int width = Minecraft.getInstance().font.width(newFilter);
+            Minecraft.getInstance().font.draw(poseStack, newFilter, this.right() - width, this.top() - Minecraft.getInstance().font.lineHeight - 1, 0x00AA00);
         }
     }
 }
