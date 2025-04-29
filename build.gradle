@@ -167,35 +167,32 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.9'
     implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:${vault_hunters_version}")
-    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:4515363")
-    implementation fg.deobf("curse.maven:sophisticated-core-618298:4489807")
-    implementation fg.deobf("curse.maven:create-328085:4550986")
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4136407")
-    implementation fg.deobf("curse.maven:refined-storage-243076:4902316")
-    implementation fg.deobf("curse.maven:storage-drawers-223852:3807626")
-    implementation fg.deobf("curse.maven:jei-238222:4351311")
-//    runtimeOnly fg.deobf("curse.maven:lightspeedmod-821790:4594803")
-//    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
+    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:${sophisticated_backpacks_version}")
+    implementation fg.deobf("curse.maven:sophisticated-core-618298:${sophisticated_core_version}")
+    implementation fg.deobf("curse.maven:create-328085:${create_version}")
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:${applied_energistics_version}")
+    implementation fg.deobf("curse.maven:refined-storage-243076:${refined_storage_version}")
+    implementation fg.deobf("curse.maven:storage-drawers-223852:${storage_drawers_version}")
+    implementation fg.deobf("curse.maven:jei-238222:${jei_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 
     // Dependencies for Runtime Debug
-//    implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
-//    implementation fg.deobf("curse.maven:applied-energistics-2-223794:${applied_energistics_version}")
-//    implementation fg.deobf("curse.maven:refined-storage-243076:${refined_storage_version}")
-//    implementation fg.deobf("curse.maven:mekanism-268560:${mekanism_version}")
-//    implementation fg.deobf("curse.maven:simple-storage-network-268495:${simple_storage_version}")
-//    implementation fg.deobf("curse.maven:architects-palette-433862:${architects_palette_version}")
-//    implementation fg.deobf("curse.maven:curios-309927:${curious_version}")
-//    implementation fg.deobf("curse.maven:autoreglib-250363:${autoreglib_version}")
-//    implementation fg.deobf("curse.maven:sophisticated-core-618298:${sophisticated_core_version}")
-//    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:${sophisticated_backpacks_version}")
-//    implementation fg.deobf("curse.maven:sophisticated-backpacks-vault-hunters-edition-696425:${sophisticated_backpacks_vh_version}")
-//    implementation fg.deobf("curse.maven:configured-457570:${configured_version}")
-//    implementation fg.deobf("curse.maven:storage-drawers-223852:${storage_drawers_version}")
-//    implementation fg.deobf("curse.maven:geckolib-388172:${geckolib_version}")
-//    implementation fg.deobf("curse.maven:citadel-331936:${citadel_version}")
-//    implementation fg.deobf("curse.maven:jei-238222:${jei_version}")
+    runtimeOnly fg.deobf("curse.maven:quark-243121:${quark_version}")
+    runtimeOnly fg.deobf("curse.maven:mekanism-268560:${mekanism_version}")
+    runtimeOnly fg.deobf("curse.maven:simple-storage-network-268495:${simple_storage_version}")
+    runtimeOnly fg.deobf("curse.maven:architects-palette-433862:${architects_palette_version}")
+    runtimeOnly fg.deobf("curse.maven:curios-309927:${curious_version}")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:${autoreglib_version}")
+    runtimeOnly fg.deobf("curse.maven:sophisticated-backpacks-vault-hunters-edition-696425:${sophisticated_backpacks_vh_version}")
+    runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
+    runtimeOnly fg.deobf("curse.maven:geckolib-388172:${geckolib_version}")
+    runtimeOnly fg.deobf("curse.maven:citadel-331936:${citadel_version}")
+    runtimeOnly fg.deobf("curse.maven:alexs-mobs-426558:${alexs_mobs_version}")
+
+    // Load times in runtime debug
+    runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
+    runtimeOnly fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

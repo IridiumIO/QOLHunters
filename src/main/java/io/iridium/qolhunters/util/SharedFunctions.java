@@ -6,11 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Matrix4f;
 import io.iridium.qolhunters.QOLHunters;
-import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
-import iskallia.vault.gear.VaultGearRarity;
-import iskallia.vault.gear.data.VaultGearData;
-import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -138,48 +134,6 @@ public class SharedFunctions {
 
     }
 
-    public static void renderSlotRarityHighlight(PoseStack poseStack, ItemStack itemStack, int x, int y){
-
-        if (!(itemStack.getItem() instanceof VaultGearItem)) return;
-
-        VaultGearData gearData = VaultGearData.read(itemStack);
-
-        VaultGearRarity rarity = gearData.getRarity();
-        if (rarity == VaultGearRarity.SCRAPPY || rarity == VaultGearRarity.COMMON) return;
-
-        if (rarity == VaultGearRarity.RARE && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_RARE.get()) return;
-        if (rarity == VaultGearRarity.EPIC && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_EPIC.get()) return;
-        if (rarity == VaultGearRarity.OMEGA && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_OMEGA.get()) return;
-        if (rarity == VaultGearRarity.UNIQUE && !QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_UNIQUE.get()) return;
-
-        int color = 0xFF000000 | rarity.getColor().getValue();
-
-
-        RenderSystem.disableDepthTest();
-        poseStack.pushPose();
-        poseStack.translate(0, 0, 100);
-        Matrix4f matrix = poseStack.last().pose();
-
-
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferBuilder = tesselator.getBuilder();
-        MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
-
-        if(QOLHuntersClientConfigs.RARITY_HIGHLIGHTER_MODE.get() == QOLHuntersClientConfigs.RarityHighlighterMode.GRADIENT){
-            GuiUtils.drawGradientRect(matrix, -99, x,y + 1,x + 16,y + 16, 0x00000000, color);
-        }
-        else {
-            GuiUtils.drawGradientRect(matrix, -99, x, y + 14,x + 16,y + 16, color, color);
-        }
-
-        bufferSource.endBatch();
-        poseStack.popPose();
-
-
-    }
-
-
-
     public static int DataSlotToNetworkSlot(int index) {
         if(index == 100)
             index = 8;
@@ -215,9 +169,7 @@ public class SharedFunctions {
     @OnlyIn(Dist.CLIENT)
     public static void displayMessageOnScreen(Component message) {
         Minecraft mc = Minecraft.getInstance();
-        mc.execute(() -> {
-            mc.gui.setOverlayMessage(message, false);
-        });
+        mc.execute(() -> mc.gui.setOverlayMessage(message, false));
     }
 
 

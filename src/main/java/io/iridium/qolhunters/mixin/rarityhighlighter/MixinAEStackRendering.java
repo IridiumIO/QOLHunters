@@ -5,7 +5,7 @@ import appeng.api.stacks.AEKey;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.util.SharedFunctions;
+import iskallia.vault.client.gui.helper.GearRarityRenderer;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,7 +19,7 @@ public abstract class MixinAEStackRendering {
     private static void renderSlot(Minecraft minecraft, PoseStack poseStack, int x, int y, int z, AEKey what, CallbackInfo ci) {
         if (QOLHuntersClientConfigs.RARITY_HIGHLIGHTER.get()) {
             if ((InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT))) {
-                SharedFunctions.renderSlotRarityHighlight(poseStack, what.wrapForDisplayOrFilter(), x, y);
+                GearRarityRenderer.renderRarityHighlight(poseStack, what.wrapForDisplayOrFilter(), x, y);
             }
         }
 

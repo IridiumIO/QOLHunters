@@ -7,8 +7,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> VANILLA_SAFE_MODE;
-
     //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
     //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
@@ -18,7 +16,6 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIERS_TOP_RIGHT;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_ENCHANTER_EMERALDS_SLOT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayColor> CAKE_VAULT_OVERLAY_COLOR;
@@ -46,11 +43,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER;
-    public static final ForgeConfigSpec.EnumValue<RarityHighlighterMode> RARITY_HIGHLIGHTER_MODE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_RARE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_EPIC;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHALLENGER_ROCK_EMBER_GRANT_AMOUNT;
@@ -162,7 +154,6 @@ public class QOLHuntersClientConfigs {
 
 
     public record ConfigPaths() {
-        public static final String VANILLA_SAFE_MODE = "Vanilla Safe Mode";
 
         public static final String BETTER_DESCRIPTIONS = "Better Descriptions";
         public static final String BETTER_STATS_DESCRIPTIONS = "Better Stats Descriptions";
@@ -172,13 +163,10 @@ public class QOLHuntersClientConfigs {
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
         public static final String VAULT_MODIFIERS_TOP_RIGHT = "Vault Modifiers In Top Right";
-        public static final String VAULT_ENCHANTER_EMERALDS_SLOT = "Vault Enchanter Emeralds Slot";
         public static final String VAULT_INTERFACE_KEYBINDS = "Vault Interface Keybinds";
         public static final String BETTER_ABILITIES_TAB = "Better Abilities Tab";
         public static final String CAKE_VAULT_OVERLAY_COLOR = "Cake Vault Overlay Color";
         public static final String CAKE_VAULT_OVERLAY_STYLE = "Cake Vault Overlay Style";
-        public static final String BLACK_MARKET_SHARD_POUCH_COUNT = "Black Market Shard Pouch Count";
-        public static final String BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = "Black Market Shard Pouch Count Shorthand";
         public static final String SCAVENGER_INV_COUNT = "Scavenger Inventory Count";
         public static final String SAVE_KEYBINDS_WITH_SKILL_ALTAR = "Skill Altar Save Keybinds";
         public static final String BRAZIER_HOLOGRAM_MODE = "Brazier Hologram Mode";
@@ -195,19 +183,13 @@ public class QOLHuntersClientConfigs {
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
-        public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter";
-        public static final String RARITY_HIGHLIGHTER_MODE = "Highlighter Mode";
-        public static final String RARITY_HIGHLIGHTER_RARE = "Highlight Rare Gear";
-        public static final String RARITY_HIGHLIGHTER_EPIC = "Highlight Epic Gear";
-        public static final String RARITY_HIGHLIGHTER_OMEGA = "Highlight Omega Gear";
-        public static final String RARITY_HIGHLIGHTER_UNIQUE = "Highlight Unique Gear";
+        public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter in AE and RS";
         public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
         public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
         public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
         public static final String ENABLE_VIRTUAL_DEHAMMERIZER = "Enable Virtual Dehammerizer";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
-        public static final String TREASURE_DOOR_NAMES = "Treasure Door Names";
         public static final String ASCENSION_CRYSTAL_GRANT = "Ascension Crystal Ember Grant Amount";
         public static final String CHALLENGER_ROCK_GRANT = "Challenger Rock Ember Grant Amount";
         public static final String BETTER_SOUL_VALUE = "Enable Better Tooltips";
@@ -263,7 +245,6 @@ public class QOLHuntersClientConfigs {
             public static final String HUNTER_PARTICLES_GROUP = "Hunter Particles";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
-            public static final String CLIENT_SERVER_GROUP = "Client-Server Extensions";
             public static final String GENERAL_GROUP = "General Configs";
 
             public static final String BETTER_SCREENS_GROUP = "Better Screens";
@@ -281,7 +262,6 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.GENERAL_GROUP);
             SHOW_CONFIG_BUTTON = CLIENT_BUILDER.comment("Show the Config Button in the Statistics Menu (H)").define(ConfigPaths.SHOW_CONFIG_BUTTON, true);
-            VANILLA_SAFE_MODE = CLIENT_BUILDER.comment("Disables QOL mods that cannot work on vanilla VH servers (disables all mods in the 'Client-Server Extensions' list)\nBe very careful if you change this on single player worlds! For example, if you have emeralds in your enchantment table and you enable this, those will probably get deleted if you load the world before changing this back\nRequires Restart").define(ConfigPaths.VANILLA_SAFE_MODE, false);
 
         CLIENT_BUILDER.pop();
 
@@ -362,12 +342,7 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.RARITY_HIGHLIGHTER_GROUP);
-                RARITY_HIGHLIGHTER = CLIENT_BUILDER.comment("Enable highlighting Vault Gear in your Inventory while holding <SHIFT>").define(ConfigPaths.RARITY_HIGHLIGHTER, true);
-                RARITY_HIGHLIGHTER_MODE = CLIENT_BUILDER.comment("Highlighter Mode").defineEnum(ConfigPaths.RARITY_HIGHLIGHTER_MODE, RarityHighlighterMode.GRADIENT);
-                RARITY_HIGHLIGHTER_RARE = CLIENT_BUILDER.comment("Highlight Rare Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_RARE, true);
-                RARITY_HIGHLIGHTER_EPIC = CLIENT_BUILDER.comment("Highlight Epic Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_EPIC, true);
-                RARITY_HIGHLIGHTER_OMEGA = CLIENT_BUILDER.comment("Highlight Omega Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_OMEGA, true);
-                RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
+                RARITY_HIGHLIGHTER = CLIENT_BUILDER.comment("Enable highlighting Vault Gear in AE and RS while holding <SHIFT>").define(ConfigPaths.RARITY_HIGHLIGHTER, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.comment("Use a Warped Fungus on a Stick to configure Virtual Dehammerizer.\nUse arrow UP/DOWN keys to cycle between Dehammerizers.\nUse Ctrl+RightClick to add a Dehammerizer.\nUse Ctrl+Delete to remove a Dehammerizer").push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
@@ -406,10 +381,6 @@ public class QOLHuntersClientConfigs {
 
 
         CLIENT_BUILDER.pop();
-
-        CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_SERVER_GROUP);
-
-            VAULT_ENCHANTER_EMERALDS_SLOT = CLIENT_BUILDER.comment("Adds an emerald slot to the Vault Enchanter\nThis setting will be safely ignored if you connect to a server without QOLHunters installed").worldRestart().define(ConfigPaths.VAULT_ENCHANTER_EMERALDS_SLOT, true);
 
         CLIENT_SPEC = CLIENT_BUILDER.build();
 
