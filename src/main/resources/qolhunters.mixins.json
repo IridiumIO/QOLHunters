@@ -17,6 +17,8 @@
     "abilities.MixinAbilityWidgetSelectable",
     "abilities.MixinInputEvents",
     "accessors.AccessorAbstractContainerScreen",
+    "ascenscionforge.MixinAscensionForgeSelectElement",
+    "ascenscionforge.MixinDiscoveredModelSelectorModel",
     "betterdescriptions.MixinAbilitiesDescriptionsConfig",
     "betterdescriptions.MixinBingoConfig",
     "betterdescriptions.MixinMenuPlayerStatDescriptionConfig",
@@ -63,6 +65,9 @@
     "skillaltar.MixinSkillAltarScreen2",
     "toggleflight.MixinLocalPlayer",
     "toggleflight.MixinMultiJumpTrinket",
+    "transmogtable.AccessorTransmogModelEntry",
+    "transmogtable.MixinDiscoveredModelSelectElement",
+    "transmogtable.MixinDiscoveredModelSelectorModel",
     "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultmodifiers.MixinModifiersRenderer",
     "vaultmodifiers.MixinModifiersRendererScreenPos"

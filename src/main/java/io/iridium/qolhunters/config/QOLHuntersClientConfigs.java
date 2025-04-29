@@ -29,6 +29,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_ASCENSION_FORGE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_TRANSMOG_TABLE;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -180,6 +182,8 @@ public class QOLHuntersClientConfigs {
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
+        public static final String SEARCHABLE_ASCENSION_FORGE = "Searchable Ascension Forge";
+        public static final String SEARCHABLE_TRANSMOG_TABLE = "Searchable Transmog Table";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
@@ -286,6 +290,8 @@ public class QOLHuntersClientConfigs {
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
+            SEARCHABLE_ASCENSION_FORGE = CLIENT_BUILDER.comment("Should the JEI search filter the ascension forge?").define(ConfigPaths.SEARCHABLE_ASCENSION_FORGE, true);
+            SEARCHABLE_TRANSMOG_TABLE = CLIENT_BUILDER.comment("Should the JEI search filter the transmog table?").define(ConfigPaths.SEARCHABLE_TRANSMOG_TABLE, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
