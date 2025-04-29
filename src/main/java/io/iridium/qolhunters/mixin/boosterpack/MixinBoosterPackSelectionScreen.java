@@ -18,7 +18,7 @@ import static io.iridium.qolhunters.util.SharedFunctions.DataSlotToNetworkSlot;
 @Mixin(value = BoosterPackSelectionScreen.CardSection.class)
 public class MixinBoosterPackSelectionScreen {
 
-    @Inject(method="onPress", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER))
+    @Inject(method="onPress", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER, remap = false))
     private void onPress(CallbackInfo ci) {
 
         if(QOLHuntersClientConfigs.CHAIN_BOOSTER_PACKS.get()) {

@@ -24,7 +24,6 @@
     "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
     "bingo.MixinBingoRendererLeaf",
-    "blackmarket.MixinShardTradeScreen",
     "boosterpack.MixinBoosterPackSelectionScreen",
     "brazier.MixinMonolithRenderer",
     "cake.MixinCakeObjective",
