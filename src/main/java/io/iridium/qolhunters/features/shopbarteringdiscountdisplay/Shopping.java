@@ -4,9 +4,12 @@ import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.util.Cacheable;
 import io.iridium.qolhunters.util.SharedFunctions;
+import iskallia.vault.VaultMod;
 import iskallia.vault.block.ShopPedestalBlock;
 import iskallia.vault.block.entity.ShopPedestalBlockTile;
 import iskallia.vault.init.ModBlocks;
+import iskallia.vault.util.CoinDefinition;
+import iskallia.vault.util.InventoryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -41,10 +44,6 @@ public class Shopping {
     public static int invGoldCount = 0;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    private static final Cacheable<Integer> CacheableBronzeCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_BRONZE.asItem()));
-    private static final Cacheable<Integer> CacheableSilverCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_SILVER.asItem()));
-    private static final Cacheable<Integer> CacheableGoldCount = new Cacheable<>(1000, () -> SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, ModBlocks.VAULT_GOLD.asItem()));
-
     @SubscribeEvent
     public static void onBlockHover(DrawSelectionEvent.HighlightBlock event) {
 
@@ -60,12 +59,26 @@ public class Shopping {
         }
         isLookingAtShopPedestal = true;
 
-        //TODO: Optimize this so it doesn't run a separate inventory search for each item\
-        int BronzeCount = CacheableBronzeCount.get();
-        int SilverCount = CacheableSilverCount.get() + (BronzeCount/9);
-        int GoldCount = CacheableGoldCount.get() + (SilverCount/9);
-        invGoldCount = GoldCount;
+        // same logic as CoinDefinition#hasEnoughCurrency in 3.18.0.ec00457
+        var currency = ModBlocks.VAULT_GOLD.asItem();
+        CoinDefinition.getCoinDefinition(currency).map(priceCoinDefinition -> {
+            int availableValue = 0;
 
+            for (InventoryUtil.ItemAccess itemAccess : InventoryUtil.findAllItems(player)) {
+                try {
+                    ItemStack stack = itemAccess.getStack();
+                    if (stack != null && !stack.isEmpty()) {
+                        availableValue +=
+                            CoinDefinition.getCoinDefinition(stack.getItem()).map(coinDefinition -> coinDefinition.coinValue * stack.getCount())
+                                .orElse(0);
+                    }
+                } catch (Exception var8) {
+                    VaultMod.LOGGER.error("Error while checking currency availability", var8);
+                }
+            }
+            invGoldCount = availableValue / priceCoinDefinition.coinValue;
+            return availableValue;
+        });
     }
 
     @SubscribeEvent

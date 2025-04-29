@@ -23,8 +23,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayColor> CAKE_VAULT_OVERLAY_COLOR;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayStyle> CAKE_VAULT_OVERLAY_STYLE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_INV_COUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_HIGHLIGHTER;
     public static final ForgeConfigSpec.EnumValue<BrazierHologramMode> BRAZIER_HOLOGRAM_MODE;
@@ -57,8 +55,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_VIRTUAL_DEHAMMERIZER;
     public static final ForgeConfigSpec.ConfigValue<Integer> VIRTUAL_DEHAMMERIZER_RANGE;
     public static final ForgeConfigSpec.EnumValue<VirtualDehammerizerMode> VIRTUAL_DEHAMMERIZER_MODE;
-
-    public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_DOOR_NAMES;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_SHORTHAND;
@@ -245,7 +241,6 @@ public class QOLHuntersClientConfigs {
             public static final String BINGO_GROUP = "Bingo Vaults";
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String ELIXIR_GROUP = "Elixir Vaults";
-            public static final String BLACK_MARKET_GROUP = "Black Market";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
@@ -293,7 +288,6 @@ public class QOLHuntersClientConfigs {
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
-            TREASURE_DOOR_NAMES = CLIENT_BUILDER.comment("Show treasure door names in the vault").define(ConfigPaths.TREASURE_DOOR_NAMES, true);
             BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
             SEARCHABLE_ASCENSION_FORGE = CLIENT_BUILDER.comment("Should the JEI search filter the ascension forge?").define(ConfigPaths.SEARCHABLE_ASCENSION_FORGE, true);
@@ -310,11 +304,6 @@ public class QOLHuntersClientConfigs {
                     BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
                 CLIENT_BUILDER.pop();
 
-            CLIENT_BUILDER.pop();
-
-            CLIENT_BUILDER.push(ConfigPaths.Group.BLACK_MARKET_GROUP);
-                BLACK_MARKET_SHARD_POUCH_COUNT = CLIENT_BUILDER.comment("Displays the number of shards in your Shard Pouch within the Black Market's interface").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT, true);
-                BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for the Black Market Shard Pouch count (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BLACK_MARKET_SHARD_POUCH_COUNT_SHORTHAND, false);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SCAVENGER_GROUP);

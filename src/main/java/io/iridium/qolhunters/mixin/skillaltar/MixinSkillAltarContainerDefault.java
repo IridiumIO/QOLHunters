@@ -66,8 +66,8 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
 
     }
 
-    @Inject(method="setPlayerAbilitiesAndTalentsFromTemplate(I)V", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER), remap = false)
-    private void loadTemplate(int unspentRegretPoints, CallbackInfo ci) {
+    @Inject(method="setPlayerAbilitiesAndTalentsFromTemplate()V", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER), remap = false)
+    private void loadTemplate(CallbackInfo ci) {
         QOLHunters.SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
 
         String saveName = "";
