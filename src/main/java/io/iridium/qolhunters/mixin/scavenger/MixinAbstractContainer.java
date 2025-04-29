@@ -3,7 +3,7 @@ package io.iridium.qolhunters.mixin.scavenger;
 import com.jaquadro.minecraft.storagedrawers.inventory.DrawerScreen;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.util.SharedFunctions;
+import iskallia.vault.client.gui.helper.GearRarityRenderer;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,6 +20,6 @@ public abstract class MixinAbstractContainer{
         if (!QOLHuntersClientConfigs.SCAVENGER_HIGHLIGHTER.get()) return;
         if(((AbstractContainerScreen<?>)(Object)this) instanceof DrawerScreen) return;
 
-        SharedFunctions.renderSlotHighlight(pPoseStack, pSlot.getItem(), pSlot.x, pSlot.y);
+        GearRarityRenderer.renderRarityHighlight(pPoseStack, pSlot.getItem(), pSlot.x, pSlot.y);
         }
 }

@@ -43,11 +43,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER;
-    public static final ForgeConfigSpec.EnumValue<RarityHighlighterMode> RARITY_HIGHLIGHTER_MODE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_RARE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_EPIC;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_OMEGA;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> RARITY_HIGHLIGHTER_UNIQUE;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHALLENGER_ROCK_EMBER_GRANT_AMOUNT;
@@ -188,12 +183,7 @@ public class QOLHuntersClientConfigs {
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
-        public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter";
-        public static final String RARITY_HIGHLIGHTER_MODE = "Highlighter Mode";
-        public static final String RARITY_HIGHLIGHTER_RARE = "Highlight Rare Gear";
-        public static final String RARITY_HIGHLIGHTER_EPIC = "Highlight Epic Gear";
-        public static final String RARITY_HIGHLIGHTER_OMEGA = "Highlight Omega Gear";
-        public static final String RARITY_HIGHLIGHTER_UNIQUE = "Highlight Unique Gear";
+        public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter in AE and RS";
         public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
         public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
         public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
@@ -352,12 +342,7 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.RARITY_HIGHLIGHTER_GROUP);
-                RARITY_HIGHLIGHTER = CLIENT_BUILDER.comment("Enable highlighting Vault Gear in your Inventory while holding <SHIFT>").define(ConfigPaths.RARITY_HIGHLIGHTER, true);
-                RARITY_HIGHLIGHTER_MODE = CLIENT_BUILDER.comment("Highlighter Mode").defineEnum(ConfigPaths.RARITY_HIGHLIGHTER_MODE, RarityHighlighterMode.GRADIENT);
-                RARITY_HIGHLIGHTER_RARE = CLIENT_BUILDER.comment("Highlight Rare Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_RARE, true);
-                RARITY_HIGHLIGHTER_EPIC = CLIENT_BUILDER.comment("Highlight Epic Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_EPIC, true);
-                RARITY_HIGHLIGHTER_OMEGA = CLIENT_BUILDER.comment("Highlight Omega Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_OMEGA, true);
-                RARITY_HIGHLIGHTER_UNIQUE = CLIENT_BUILDER.comment("Highlight Unique Gear").define(ConfigPaths.RARITY_HIGHLIGHTER_UNIQUE, true);
+                RARITY_HIGHLIGHTER = CLIENT_BUILDER.comment("Enable highlighting Vault Gear in AE and RS while holding <SHIFT>").define(ConfigPaths.RARITY_HIGHLIGHTER, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.comment("Use a Warped Fungus on a Stick to configure Virtual Dehammerizer.\nUse arrow UP/DOWN keys to cycle between Dehammerizers.\nUse Ctrl+RightClick to add a Dehammerizer.\nUse Ctrl+Delete to remove a Dehammerizer").push(ConfigPaths.Group.VIRTUAL_DEHAMMERIZER_GROUP);
