@@ -6,12 +6,7 @@
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
     "ascension.MixinAscensionCrystalObjective",
-    "ascension.MixinSoulFlameItem",
-    "vaultenchanter.MixinAbstractContainerMenu",
-    "vaultenchanter.MixinEnchantmentCost",
-    "vaultenchanter.MixinVaultEnchanterBlock",
-    "vaultenchanter.MixinVaultEnchanterContainer",
-    "vaultenchanter.MixinVaultEnchanterTileEntity"
+    "ascension.MixinSoulFlameItem"
   ],
   "client": [
     "abilities.MixinAbilityDialog",
@@ -69,7 +64,6 @@
     "transmogtable.AccessorTransmogModelEntry",
     "transmogtable.MixinDiscoveredModelSelectElement",
     "transmogtable.MixinDiscoveredModelSelectorModel",
-    "vaultenchanter.MixinVaultEnchanterScreen",
     "vaultmodifiers.MixinModifiersRenderer",
     "vaultmodifiers.MixinModifiersRendererScreenPos"
   ],
