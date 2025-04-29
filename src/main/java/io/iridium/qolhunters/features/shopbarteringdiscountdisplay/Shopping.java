@@ -2,8 +2,6 @@ package io.iridium.qolhunters.features.shopbarteringdiscountdisplay;
 
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.util.Cacheable;
-import io.iridium.qolhunters.util.SharedFunctions;
 import iskallia.vault.VaultMod;
 import iskallia.vault.block.ShopPedestalBlock;
 import iskallia.vault.block.entity.ShopPedestalBlockTile;
@@ -62,22 +60,21 @@ public class Shopping {
         // same logic as CoinDefinition#hasEnoughCurrency in 3.18.0.ec00457
         var currency = ModBlocks.VAULT_GOLD.asItem();
         CoinDefinition.getCoinDefinition(currency).map(priceCoinDefinition -> {
-            int availableValue = 0;
+            int availableCount = 0;
 
-            for (InventoryUtil.ItemAccess itemAccess : InventoryUtil.findAllItems(player)) {
+            for(InventoryUtil.ItemAccess itemAccess : InventoryUtil.findAllItems(player)) {
                 try {
                     ItemStack stack = itemAccess.getStack();
-                    if (stack != null && !stack.isEmpty()) {
-                        availableValue +=
-                            CoinDefinition.getCoinDefinition(stack.getItem()).map(coinDefinition -> coinDefinition.coinValue * stack.getCount())
-                                .orElse(0);
+                    if (stack != null && !stack.isEmpty() && stack.getItem() == currency) {
+                        availableCount += stack.getCount();
                     }
-                } catch (Exception var8) {
-                    VaultMod.LOGGER.error("Error while checking currency availability", var8);
+                } catch (Exception e) {
+                    VaultMod.LOGGER.error("Error while checking currency availability", e);
                 }
             }
-            invGoldCount = availableValue / priceCoinDefinition.coinValue;
-            return availableValue;
+
+            invGoldCount = availableCount;
+            return availableCount;
         });
     }
 
