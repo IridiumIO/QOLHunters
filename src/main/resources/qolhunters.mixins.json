@@ -9,7 +9,8 @@
   "client": [
     "abilities.MixinAbilityDialog",
     "abilities.MixinInputEvents",
-    "accessors.AccessorAbstractContainerScreen",    "ascension.MixinAscensionCrystalObjective",
+    "accessors.AccessorAbstractContainerScreen",
+    "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
     "ascenscionforge.MixinAscensionForgeSelectElement",
     "ascenscionforge.MixinDiscoveredModelSelectorModel",

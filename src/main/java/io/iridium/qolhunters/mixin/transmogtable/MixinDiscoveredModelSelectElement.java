@@ -1,11 +1,11 @@
 package io.iridium.qolhunters.mixin.transmogtable;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.iridium.qolhunters.QOLJEIPlugin;
 import iskallia.vault.client.gui.framework.element.DiscoveredModelSelectElement;
 import iskallia.vault.client.gui.framework.element.ScrollableItemStackSelectorElement;
 import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
 import iskallia.vault.client.gui.framework.spatial.spi.ISpatial;
-import mezz.jei.Internal;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -23,8 +23,8 @@ public abstract class MixinDiscoveredModelSelectElement<E extends MixinDiscovere
 
     @Inject(at = @At("TAIL"), method = "render", remap = false)
     public void render(IElementRenderer renderer, PoseStack poseStack, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
-        if (Internal.getRuntime() == null) return;
-        String newFilter = Internal.getRuntime().getIngredientFilter().getFilterText().toLowerCase();
+        if (QOLJEIPlugin.getRuntime() == null) return;
+        String newFilter = QOLJEIPlugin.getRuntime().getIngredientFilter().getFilterText().toLowerCase();
         if (!newFilter.equals(qOLHunters$filter)) {
             qOLHunters$filter = newFilter;
             refreshElements();
