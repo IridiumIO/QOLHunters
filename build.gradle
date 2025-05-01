@@ -29,7 +29,7 @@ mixin {
 
 
 
-version = '0.30.0-1.18.2'
+version = '0.30.1-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
