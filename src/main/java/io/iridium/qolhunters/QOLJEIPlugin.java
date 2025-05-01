@@ -14,11 +14,8 @@ import java.util.List;
 
 @JeiPlugin
 public class QOLJEIPlugin implements IModPlugin {
-    public static QOLJEIPlugin INSTANCE;
 
-    private IJeiRuntime runtime;
-
-
+    private static IJeiRuntime runtime;
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -47,10 +44,10 @@ public class QOLJEIPlugin implements IModPlugin {
 
     @Override
     public void onRuntimeAvailable(IJeiRuntime runtime) {
-        this.runtime = runtime;
+        QOLJEIPlugin.runtime = runtime;
     }
 
-    public IJeiRuntime getRuntime() {
+    public static IJeiRuntime getRuntime() {
         return runtime;
     }
 

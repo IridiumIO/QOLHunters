@@ -1,11 +1,11 @@
 package io.iridium.qolhunters.mixin.transmogtable;
 
+import io.iridium.qolhunters.QOLJEIPlugin;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.gui.framework.element.DiscoveredModelSelectElement;
 import iskallia.vault.dynamodel.DynamicModel;
 import iskallia.vault.gear.VaultGearRarity;
 import iskallia.vault.init.ModConfigs;
-import mezz.jei.Internal;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 public class MixinDiscoveredModelSelectorModel {
     @Inject(at = @At("RETURN"), method = "getEntries", cancellable = true, remap = false)
     public void filterSearch(CallbackInfoReturnable<List<DiscoveredModelSelectElement.TransmogModelEntry>> cir) {
-        if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_TRANSMOG_TABLE.get()) || Internal.getRuntime() == null) {
+        if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_TRANSMOG_TABLE.get()) || QOLJEIPlugin.getRuntime() == null) {
             return;
         }
 
-        String[] filters = Internal.getRuntime().getIngredientFilter().getFilterText().toLowerCase().split(" ");
+        String[] filters = QOLJEIPlugin.getRuntime().getIngredientFilter().getFilterText().toLowerCase().split(" ");
 
         List<DiscoveredModelSelectElement.TransmogModelEntry> entries = new ArrayList<>(cir.getReturnValue());
         cir.setReturnValue(entries);
