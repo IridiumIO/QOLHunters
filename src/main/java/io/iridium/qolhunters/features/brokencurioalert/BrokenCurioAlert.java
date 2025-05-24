@@ -25,7 +25,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 public class BrokenCurioAlert {
 
     private static int alertColor = 0xFF0000; // Red
-
+    private static int firstBrokenTick = 0; // only show alert after 20 ticks (1 second) - prevent flashing when traveling from/to vaults where the check logic changes
 
     @SubscribeEvent
     public static void onRenderGameOverlay(RenderGameOverlayEvent event) {
@@ -38,7 +38,18 @@ public class BrokenCurioAlert {
         var vaultCharm = brokenGodCharm(player);
         var voidStone = brokenVoidStone(player);
 
-        if (!trinket && !vaultCharm && !voidStone) {return;}
+        if (!trinket && !vaultCharm && !voidStone) {
+            firstBrokenTick = 0; // reset the tick counter if no broken curios
+            return;
+        }
+
+        if (firstBrokenTick == 0 || Minecraft.getInstance().player.tickCount < firstBrokenTick) {
+            firstBrokenTick = Minecraft.getInstance().player.tickCount;
+            return;
+        }
+        if (Minecraft.getInstance().player.tickCount - firstBrokenTick < 20) {
+            return; // only show alert after 20 ticks (1 second)
+        }
 
         MutableComponent text = new TextComponent("Broken Curios: ");
         if (trinket) {
