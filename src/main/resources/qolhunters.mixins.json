@@ -3,7 +3,6 @@
   "package": "io.iridium.qolhunters.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "qolhunters.refmap.json",
-  "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
     "keybinds.AccessorBountyTableContainerElement"
   ],
@@ -12,10 +11,7 @@
     "abilities.MixinInputEvents",
     "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
-    "betterdescriptions.MixinAbilitiesDescriptionsConfig",
-    "betterdescriptions.MixinBingoConfig",
     "betterdescriptions.MixinMenuPlayerStatDescriptionConfig",
-    "betterdescriptions.MixinSkillDescriptionsConfig",
     "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
     "bingo.MixinBingoRendererLeaf",
@@ -28,7 +24,6 @@
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",
     "dungeondoors.MixinClientboundSetSubtitleTextPacket",
-    "dungeondoors.MixinDungeonDoorBlock",
     "elixirrenderer.MixinElixirOrbRenderer",
     "elixirrenderer.MixinSummonElixirOrbMessage",
     "gear.MixinVaultGearHelper",

@@ -7,7 +7,6 @@ import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.interfaces.SuperCakeObjective;
 import iskallia.vault.core.vault.objective.CakeObjective;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.TextColor;

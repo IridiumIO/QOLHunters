@@ -7,10 +7,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
 
 
@@ -282,8 +279,6 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
-                //BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
-                //BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
 
                 CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                     BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
