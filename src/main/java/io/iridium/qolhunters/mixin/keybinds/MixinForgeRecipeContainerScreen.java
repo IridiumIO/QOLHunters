@@ -1,17 +1,13 @@
 package io.iridium.qolhunters.mixin.keybinds;
 
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.mixin.accessors.AccessorAbstractContainerScreen;
+import io.iridium.qolhunters.features.searchablevaultstations.SearchableScreen;
 import io.iridium.qolhunters.util.KeyBindings;
 import iskallia.vault.block.entity.base.ForgeRecipeTileEntity;
 import iskallia.vault.client.gui.framework.element.ButtonElement;
 import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
 import iskallia.vault.client.gui.framework.render.spi.ITooltipRendererFactory;
 import iskallia.vault.client.gui.framework.screen.AbstractElementContainerScreen;
-import iskallia.vault.client.gui.screen.CatalystInfusionTableScreen;
-import iskallia.vault.client.gui.screen.block.InscriptionTableScreen;
-import iskallia.vault.client.gui.screen.block.ToolStationScreen;
-import iskallia.vault.client.gui.screen.block.VaultForgeScreen;
 import iskallia.vault.client.gui.screen.block.base.ForgeRecipeContainerScreen;
 import iskallia.vault.container.spi.ForgeRecipeContainer;
 import net.minecraft.ChatFormatting;
@@ -29,63 +25,35 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
-@Mixin(ForgeRecipeContainerScreen.class)
+@Mixin(value = ForgeRecipeContainerScreen.class, remap = false)
 public abstract class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileEntity, T extends ForgeRecipeContainer<V>> extends AbstractElementContainerScreen<T> {
 
-    //Store a list of all screens that are instances of the VaultForgeScreen class
-    private static final List<Class> ForgeRecipeContainerScreens = Arrays.asList(
-            VaultForgeScreen.class,
-            ToolStationScreen.class,
-            CatalystInfusionTableScreen.class,
-            InscriptionTableScreen.class
-    );
-
-    private static boolean isInstanceOfForgeRecipeContainerScreen(Object screen) {
-        for (Class<?> clazz : ForgeRecipeContainerScreens) {
-            if (clazz.isInstance(screen)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     @Inject(method="keyPressed", at=@At(value="HEAD"), cancellable=true)
-    public void keyPressed(int pKeyCode, int pScanCode, int pModifiers, CallbackInfoReturnable<Boolean> cir) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-
-        if((isInstanceOfForgeRecipeContainerScreen((ForgeRecipeContainerScreen<V,T>)(Object)this))) {
-
-            if(pKeyCode == KeyBindings.FORGE_ITEM.getKey().getValue() && QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get()) {
-
-                Method onCraftClickMethod = ForgeRecipeContainerScreen.class.getDeclaredMethod("onCraftClick");
-                onCraftClickMethod.setAccessible(true);
-                onCraftClickMethod.invoke((ForgeRecipeContainerScreen<V, T>) (Object) this);
-                cir.setReturnValue(true);
+    public void keyPressed(int pKeyCode, int pScanCode, int pModifiers, CallbackInfoReturnable<Boolean> cir) {
+        if (this instanceof SearchableScreen searchableScreen){
+            var searchBox = searchableScreen.getSearchBox();
+            if (searchBox != null && searchBox.isFocused()) {
+                return;
             }
         }
-
+        if(pKeyCode == KeyBindings.FORGE_ITEM.getKey().getValue() && Boolean.TRUE.equals(QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get())) {
+            this.onCraftClick();
+            cir.setReturnValue(true);
+        }
     }
 
 
     @Inject(method = "onCraftClick", at = @At(value = "HEAD"), remap = false)
     public void onCraftClick(CallbackInfo ci) {
-        ForgeRecipeContainer<?> forgeRecipeContainer = ((ForgeRecipeContainerScreen<V, T>) (Object) this).getMenu();
-
-        if (forgeRecipeContainer.getResultSlot().hasItem()) {
-            if (Screen.hasShiftDown() && QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get()) {
-                ((AccessorAbstractContainerScreen) this).invokeSlotClicked(forgeRecipeContainer.getResultSlot(), forgeRecipeContainer.getResultSlot().index, 0, ClickType.QUICK_MOVE);
-            }
+        if (this.getMenu().getResultSlot().hasItem() && Screen.hasShiftDown() && Boolean.TRUE.equals(QOLHuntersClientConfigs.VAULT_INTERFACE_KEYBINDS.get())) {
+            this.slotClicked(this.getMenu().getResultSlot(), this.getMenu().getResultSlot().index, 0, ClickType.QUICK_MOVE);
         }
     }
 
 
-    @Shadow(remap = false) @Final
-    private ButtonElement<?> craftButton;
+    @Shadow @Final protected ButtonElement<?> craftButton;
+
+    @Shadow protected abstract void onCraftClick();
 
     @Inject(method="containerTick", at=@At("TAIL"))
     protected void qol$containerTick(CallbackInfo ci) {

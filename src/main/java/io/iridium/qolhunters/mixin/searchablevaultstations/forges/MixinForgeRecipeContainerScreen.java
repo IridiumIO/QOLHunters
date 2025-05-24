@@ -32,7 +32,7 @@ public class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileEntity, T 
 
     @Unique private QOLSearchElement qolhunters$searchBox;
 
-    @Inject(method = "<init>(Liskallia/vault/container/spi/ForgeRecipeContainer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/network/chat/Component;II)V", at = @At("TAIL"), remap = false)
+    @Inject(method = "<init>(Liskallia/vault/container/spi/ForgeRecipeContainer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/network/chat/Component;II)V", at = @At("TAIL"))
     public void init(CallbackInfo ci) {
         if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_VAULT_STATIONS.get())) {
             return;

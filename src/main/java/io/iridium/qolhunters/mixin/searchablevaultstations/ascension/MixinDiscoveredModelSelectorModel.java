@@ -11,9 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(AscensionForgeSelectElement.DiscoveredModelSelectorModel.class)
+@Mixin(value = AscensionForgeSelectElement.DiscoveredModelSelectorModel.class, remap = false)
 public class MixinDiscoveredModelSelectorModel {
-    @Inject(at = @At("RETURN"), method = "getEntries", remap = false)
+    @Inject(at = @At("RETURN"), method = "getEntries")
     public void filterSearch(CallbackInfoReturnable<List<AscensionForgeSelectElement.AscencionForgeModelEntry>> cir) {
         if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_VAULT_STATIONS.get())) {
             return;

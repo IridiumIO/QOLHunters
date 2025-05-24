@@ -5,11 +5,11 @@
   "refmap": "qolhunters.refmap.json",
   "plugin": "io.iridium.qolhunters.QOLHuntersMixinPlugin",
   "mixins": [
+    "keybinds.AccessorBountyTableContainerElement"
   ],
   "client": [
     "abilities.MixinAbilityDialog",
     "abilities.MixinInputEvents",
-    "accessors.AccessorAbstractContainerScreen",
     "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
     "betterdescriptions.MixinAbilitiesDescriptionsConfig",

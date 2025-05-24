@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mixin(DiscoveredModelSelectElement.DiscoveredModelSelectorModel.class)
+@Mixin(value = DiscoveredModelSelectElement.DiscoveredModelSelectorModel.class, remap = false)
 public class MixinDiscoveredModelSelectorModel {
-    @Inject(at = @At("RETURN"), method = "getEntries", cancellable = true, remap = false)
+    @Inject(at = @At("RETURN"), method = "getEntries", cancellable = true)
     public void filterSearch(CallbackInfoReturnable<List<DiscoveredModelSelectElement.TransmogModelEntry>> cir) {
         if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_VAULT_STATIONS.get())) {
             return;

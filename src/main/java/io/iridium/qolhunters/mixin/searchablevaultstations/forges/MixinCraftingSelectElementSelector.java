@@ -17,7 +17,7 @@ import java.util.List;
 
 @Mixin(value = CraftingSelectorElement.CraftingSelector.class, remap = false)
 public class MixinCraftingSelectElementSelector {
-    @Inject(at = @At("RETURN"), method = "getEntries", cancellable = true, remap = false)
+    @Inject(at = @At("RETURN"), method = "getEntries", cancellable = true)
     public void filterSearch(CallbackInfoReturnable<List<CraftingSelectorElement.CraftingEntry>> cir) {
         if (!Boolean.TRUE.equals(QOLHuntersClientConfigs.SEARCHABLE_VAULT_STATIONS.get())) {
             return;
