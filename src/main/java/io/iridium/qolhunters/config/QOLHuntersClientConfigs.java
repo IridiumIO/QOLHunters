@@ -25,6 +25,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_VAULT_STATIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BROKEN_CURIO_ALERT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -169,6 +170,7 @@ public class QOLHuntersClientConfigs {
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
         public static final String SEARCHABLE_VAULT_STATIONS = "Searchable Vault Stations";
         public static final String BROKEN_CURIO_ALERT = "Broken Curio Alert";
+        public static final String GREEN_RESEARCHED = "Green Unlocked Researches";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
@@ -272,6 +274,7 @@ public class QOLHuntersClientConfigs {
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
+            GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
                 BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Fixes lines in descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);

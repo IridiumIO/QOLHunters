@@ -28,6 +28,7 @@
     "elixirrenderer.MixinSummonElixirOrbMessage",
     "gear.MixinVaultGearHelper",
     "godaltars.MixinGodAltarOverlay",
+    "greenresearched.MixinResearchWidget",
     "hunterparticles.MixinClientboundHunterParticlesFromJavelinMessage",
     "hunterparticles.MixinClientboundHunterParticlesMessage",
     "jewelapplicationtable.MixinVaultJewelApplicationStationContainer",
