@@ -16,8 +16,7 @@ import static io.iridium.qolhunters.QOLHunters.LOGGER;
 @OnlyIn(Dist.CLIENT)
 public class ConfigBuilder {
 
-    public  static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/vault_modifiers.json").toString());
-    public static final File MENU_PLAYER_STAT_DESCRIPTION_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/menu_player_stat_description.json").toString());
+    public static final File VAULT_MODIFIERS_CONFIG_FILE_CUSTOM = new File(FMLPaths.CONFIGDIR.get().resolve("the_vault/iridium/vault_modifiers.json").toString());
 
 
 
@@ -25,13 +24,6 @@ public class ConfigBuilder {
 
         LOGGER.info("QOLHunters: Building custom configs!");
         buildModifiersConfigFile();
-        buildBetterDescriptionsConfigFiles();
-
-    }
-
-    public static void buildBetterDescriptionsConfigFiles(){
-        if (isWoldsVaultModInstalled()) return;
-        copyResourceToFile("betterconfigs/menu_player_stat_description.json", MENU_PLAYER_STAT_DESCRIPTION_CUSTOM);
     }
 
 

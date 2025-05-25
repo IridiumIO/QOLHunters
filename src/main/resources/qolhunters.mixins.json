@@ -11,7 +11,7 @@
     "abilities.MixinInputEvents",
     "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
-    "betterdescriptions.MixinMenuPlayerStatDescriptionConfig",
+    "betterdescriptions.MixinStatLabelElementBuilder",
     "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
     "bingo.MixinBingoRendererLeaf",

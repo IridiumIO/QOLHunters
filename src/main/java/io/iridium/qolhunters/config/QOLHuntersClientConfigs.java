@@ -152,10 +152,7 @@ public class QOLHuntersClientConfigs {
 
     public record ConfigPaths() {
 
-        public static final String BETTER_DESCRIPTIONS = "Better Descriptions";
         public static final String BETTER_STATS_DESCRIPTIONS = "Better Stats Descriptions";
-        public static final String BETTER_ABILITIES_DESCRIPTIONS = "Better Abilities Descriptions";
-        public static final String BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = "Better Talents, Expertise, Research Descriptions";
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
@@ -264,7 +261,6 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_GROUP);
 
-            //BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
             VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
@@ -278,7 +274,7 @@ public class QOLHuntersClientConfigs {
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
-                BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
+                BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Fixes lines in descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
 
                 CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                     BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
