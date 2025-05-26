@@ -7,7 +7,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
 
 
@@ -153,7 +153,7 @@ public class QOLHuntersClientConfigs {
 
     public record ConfigPaths() {
 
-        public static final String BETTER_STATS_DESCRIPTIONS = "Better Stats Descriptions";
+        public static final String MULTILINE_STAT_LABELS = "Multiline Stat Labels";
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
@@ -180,9 +180,6 @@ public class QOLHuntersClientConfigs {
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
         public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter in AE and RS";
-        public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
-        public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
-        public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
         public static final String ENABLE_VIRTUAL_DEHAMMERIZER = "Enable Virtual Dehammerizer";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
@@ -225,7 +222,6 @@ public class QOLHuntersClientConfigs {
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
-            public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
             public static final String VAULT_MODIFIERS_GROUP = "Vault Modifiers";
 
@@ -237,7 +233,6 @@ public class QOLHuntersClientConfigs {
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
-            public static final String SEARCH_GROUP = "Search Commands";
             public static final String HUNTER_PARTICLES_GROUP = "Hunter Particles";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
@@ -275,16 +270,12 @@ public class QOLHuntersClientConfigs {
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
             GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
+            MULTILINE_STAT_LABELS = CLIENT_BUILDER.comment("Fixes lines breaks in descriptions in the 'Statistics' Tab.").define(ConfigPaths.MULTILINE_STAT_LABELS, true);
 
-            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
-                BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Fixes lines in descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
-
-                CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
-                    BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
-                    BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
-                    BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
-                CLIENT_BUILDER.pop();
-
+            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
+                BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
+                BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
+                BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SCAVENGER_GROUP);

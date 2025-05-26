@@ -1,4 +1,4 @@
-package io.iridium.qolhunters.mixin.betterdescriptions;
+package io.iridium.qolhunters.mixin.multilinestatlabels;
 
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.gui.screen.player.element.StatLabelElementBuilder;
@@ -37,7 +37,7 @@ public abstract class MixinStatLabelElementBuilder<V extends Comparable<V>> {
 
     @Redirect(method = "lambda$build$5", at = @At(value = "INVOKE", target = "Ljava/util/List;of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;"))
     private List<Component> splitCapped(Object e1, Object e2, Object e3) {
-        if(QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get()){
+        if(QOLHuntersClientConfigs.MULTILINE_STAT_LABELS.get()){
             List<Component> compList = new ArrayList<>();
             compList.add(new TextComponent(this.labelSupplier.get()));
             compList.add(this.buildCapDescription(
@@ -63,7 +63,7 @@ public abstract class MixinStatLabelElementBuilder<V extends Comparable<V>> {
 
     @Redirect(method = "lambda$build$5", at = @At(value = "INVOKE", target = "Ljava/util/List;of(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;"))
     private List<Component> splitCapped(Object e1, Object e2) {
-        if(QOLHuntersClientConfigs.BETTER_STATS_DESCRIPTIONS.get()) {
+        if(QOLHuntersClientConfigs.MULTILINE_STAT_LABELS.get()) {
 
 
             List<Component> compList = new ArrayList<>();
