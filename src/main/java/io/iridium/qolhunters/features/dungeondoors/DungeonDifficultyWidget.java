@@ -42,7 +42,6 @@ public class DungeonDifficultyWidget {
         if(isPlayerNearDungeon(Minecraft.getInstance().player.blockPosition())) {
             if(isDungeonActive) {
                 drawText(event.getMatrixStack(), difficulty);
-            }else{
             }
         }
 

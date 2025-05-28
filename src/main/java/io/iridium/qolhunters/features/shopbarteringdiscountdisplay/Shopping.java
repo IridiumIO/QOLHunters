@@ -57,7 +57,8 @@ public class Shopping {
         }
         isLookingAtShopPedestal = true;
 
-        // same logic as CoinDefinition#hasEnoughCurrency in 3.18.0.ec00457
+        // shopping pedestal logic is different from stations - it also considers gold in backpacks and other inventories
+        // so we can't use CoinPouchItem#getGoldAmount to get the amount of gold available
         var currency = ModBlocks.VAULT_GOLD.asItem();
         CoinDefinition.getCoinDefinition(currency).map(priceCoinDefinition -> {
             int availableCount = 0;

@@ -7,10 +7,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_DESCRIPTIONS;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_STATS_DESCRIPTIONS;
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_DESCRIPTIONS;
-    //public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
 
 
@@ -26,8 +23,9 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_ASCENSION_FORGE;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_TRANSMOG_TABLE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_VAULT_STATIONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BROKEN_CURIO_ALERT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -155,10 +153,7 @@ public class QOLHuntersClientConfigs {
 
     public record ConfigPaths() {
 
-        public static final String BETTER_DESCRIPTIONS = "Better Descriptions";
-        public static final String BETTER_STATS_DESCRIPTIONS = "Better Stats Descriptions";
-        public static final String BETTER_ABILITIES_DESCRIPTIONS = "Better Abilities Descriptions";
-        public static final String BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = "Better Talents, Expertise, Research Descriptions";
+        public static final String MULTILINE_STAT_LABELS = "Multiline Stat Labels";
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
@@ -173,8 +168,9 @@ public class QOLHuntersClientConfigs {
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
-        public static final String SEARCHABLE_ASCENSION_FORGE = "Searchable Ascension Forge";
-        public static final String SEARCHABLE_TRANSMOG_TABLE = "Searchable Transmog Table";
+        public static final String SEARCHABLE_VAULT_STATIONS = "Searchable Vault Stations";
+        public static final String BROKEN_CURIO_ALERT = "Broken Curio Alert";
+        public static final String GREEN_RESEARCHED = "Green Unlocked Researches";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
         public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
@@ -184,9 +180,6 @@ public class QOLHuntersClientConfigs {
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
         public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter in AE and RS";
-        public static final String VIRTUAL_DEHAMMERIZER_X = "Dehammerizer X";
-        public static final String VIRTUAL_DEHAMMERIZER_Y = "Dehammerizer Y";
-        public static final String VIRTUAL_DEHAMMERIZER_Z = "Dehammerizer Z";
         public static final String ENABLE_VIRTUAL_DEHAMMERIZER = "Enable Virtual Dehammerizer";
         public static final String VIRTUAL_DEHAMMERIZER_RANGE = "Dehammerizer Range";
         public static final String VIRTUAL_DEHAMMERIZER_MODE = "Dehammerizer Mode";
@@ -229,7 +222,6 @@ public class QOLHuntersClientConfigs {
             public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
-            public static final String BETTER_DESCRIPTIONS_GROUP = "Better Descriptions";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
             public static final String VAULT_MODIFIERS_GROUP = "Vault Modifiers";
 
@@ -241,7 +233,6 @@ public class QOLHuntersClientConfigs {
 
             public static final String HUD_POSITION_GROUP = "HUD Positioning";
             public static final String GOD_OBJECTIVE_GROUP = "God Objective";
-            public static final String SEARCH_GROUP = "Search Commands";
             public static final String HUNTER_PARTICLES_GROUP = "Hunter Particles";
 
             public static final String CLIENT_GROUP = "Client-Only Extensions";
@@ -267,7 +258,6 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_GROUP);
 
-            //BETTER_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of abilities, talents, expertises and researches\nRequires Restart").worldRestart().define(ConfigPaths.BETTER_DESCRIPTIONS, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
             VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
@@ -277,20 +267,15 @@ public class QOLHuntersClientConfigs {
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
-            SEARCHABLE_ASCENSION_FORGE = CLIENT_BUILDER.comment("Should the JEI search filter the ascension forge?").define(ConfigPaths.SEARCHABLE_ASCENSION_FORGE, true);
-            SEARCHABLE_TRANSMOG_TABLE = CLIENT_BUILDER.comment("Should the JEI search filter the transmog table?").define(ConfigPaths.SEARCHABLE_TRANSMOG_TABLE, true);
+            SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
+            BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
+            GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
+            MULTILINE_STAT_LABELS = CLIENT_BUILDER.comment("Fixes lines breaks in descriptions in the 'Statistics' Tab.").define(ConfigPaths.MULTILINE_STAT_LABELS, true);
 
-            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_DESCRIPTIONS_GROUP);
-                BETTER_STATS_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Statistics' Tab.").define(ConfigPaths.BETTER_STATS_DESCRIPTIONS, true);
-                //BETTER_ABILITIES_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Abilities' Tab.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_ABILITIES_DESCRIPTIONS, true);
-                //BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves descriptions in the 'Talents', 'Expertises', and 'Researches' Tabs.\nDisable if you're not on version 3.15.1.4").define(ConfigPaths.BETTER_TALENTS_EXPERTISE_RESEARCH_DESCRIPTIONS, true);
-
-                CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
-                    BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
-                    BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
-                    BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
-                CLIENT_BUILDER.pop();
-
+            CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
+                BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
+                BETTER_SOUL_VALUE_SHORTHAND = CLIENT_BUILDER.comment("Uses shorthand for soul values in tooltips (e.g. 1.4M instead of 1408933)").define(ConfigPaths.BETTER_SOUL_VALUE_SHORTHAND, true);
+                BETTER_SOUL_VALUE_USE_SHARDS = CLIENT_BUILDER.comment("Use soul shards instead of soul value ").define(ConfigPaths.BETTER_SOUL_VALUE_USE_SHARDS, false);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SCAVENGER_GROUP);
