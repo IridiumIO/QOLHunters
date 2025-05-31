@@ -32,12 +32,13 @@ public class AbsolutelyCursedJewelPouchOpener {
 
     @SubscribeEvent
     public static void onItemUse(PlayerInteractEvent.RightClickItem event) {
+        if (event.getSide().isServer()) {
+            // handling server events in singleplayer would open pouch in your inventory even if machine opened another pouch
+            return;
+        }
         if (event.getItemStack().getHoverName().getString().contains("Jewel Pouch")) {
             wasJewelPouchOpened = true;
             scheduler.schedule(() -> MinecraftForge.EVENT_BUS.register(CursedTicker.class), 1, TimeUnit.SECONDS);
-
-
-
         }
     }
 
