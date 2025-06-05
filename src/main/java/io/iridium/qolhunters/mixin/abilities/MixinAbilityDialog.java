@@ -95,7 +95,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
 
         int cost = current.getSpecialization().getLearnPointCost();
-        int regretCost = parentAbility.isUnlocked() ? parentAbility.getRegretPointCost() : 0;
+        int regretCost = parentAbility.isUnlocked() ? parentAbility.getRegretCost() : 0;
 
 
         boolean hasEnoughSkillPoints = cost <= VaultBarOverlay.unspentSkillPoints;
