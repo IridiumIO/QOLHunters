@@ -13,6 +13,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.MixinEnvironment;
 
 
 @Mod(QOLHunters.MOD_ID)
@@ -25,6 +26,7 @@ public class QOLHunters {
     public static DehammerizerConfig DEHAMMERIZER_CONFIG;
 
     public QOLHunters() {
+//        MixinEnvironment.getCurrentEnvironment().audit();
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
