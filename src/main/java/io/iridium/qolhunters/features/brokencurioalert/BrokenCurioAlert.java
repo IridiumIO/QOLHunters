@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import iskallia.vault.core.vault.ClientVaults;
 import iskallia.vault.gear.trinket.TrinketHelper;
 import iskallia.vault.init.ModItems;
 import iskallia.vault.item.gear.VaultCharmItem;
@@ -31,7 +32,7 @@ public class BrokenCurioAlert {
     public static void onRenderGameOverlay(RenderGameOverlayEvent event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {return;}
         Player player = Minecraft.getInstance().player;
-        if (player == null || player.isSpectator()) {return;}
+        if (player == null || player.isSpectator() || ClientVaults.getActive().isPresent()) {return;}
         if (!(QOLHuntersClientConfigs.BROKEN_CURIO_ALERT.get())) {return;}
 
         var trinket = brokenTrinket(player);
