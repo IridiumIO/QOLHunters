@@ -149,7 +149,7 @@ public class MixinMonolithRenderer {
 
         }
 
-        ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack);
+        ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack, false); // TODO: is this vh feat now?
 
         matrixStack.popPose();
         matrixStack.popPose();
