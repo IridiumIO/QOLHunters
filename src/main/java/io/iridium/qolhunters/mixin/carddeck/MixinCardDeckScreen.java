@@ -39,7 +39,7 @@ public class MixinCardDeckScreen extends AbstractElementContainerScreen<CardDeck
                 .findFirst().ifPresent(this::removeElement);
 
         this.tooltip = this.addElement(
-                new TooltipContainerElement(Spatials.positionXY(-116, 0).height(184).width(107), ItemStack.EMPTY)
+                new TooltipContainerElement(Spatials.positionXY(-139, 0).height(184).width(130), ItemStack.EMPTY)
                         .layout((screen, gui, parent, world) -> world.translateXYZ(gui))
         );
 
