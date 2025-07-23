@@ -43,8 +43,9 @@ public class MixinModifiersRendererScreenPos {
     @Final @Shadow public static Vector3f SHADOW_OFFSET;
 
 
-    @Inject(method="renderVaultModifiers(Ljava/util/Map;Lcom/mojang/blaze3d/vertex/PoseStack;Z)V", at=@At("HEAD"), cancellable = true)
-    private static void renderVaultModifiersScreenPos(Map<VaultModifier<?>, Integer> group, PoseStack matrixStack, boolean depthTest, CallbackInfo ci) {
+    // TODO: is this vanilla vh feat?
+    @Inject(method="renderVaultModifiers(Ljava/util/Map;Lcom/mojang/blaze3d/vertex/PoseStack;ZZ)V", at=@At("HEAD"), cancellable = true)
+    private static void renderVaultModifiersScreenPos(Map<VaultModifier<?>, Integer> group, PoseStack matrixStack, boolean depthTest, boolean useInvHudPositions, CallbackInfo ci) {
 
         if(QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get()){
 

@@ -13,7 +13,7 @@ public class MixinBingoRendererLeaf {
 
     @Shadow public String name;
 
-   @Redirect(method="onRender(Liskallia/vault/task/Task;Liskallia/vault/task/renderer/context/BingoRendererContext;)V",
+   @Redirect(method="onRender(Liskallia/vault/task/Task;Liskallia/vault/task/renderer/context/TaskRendererContext;)V",
    at = @At(value = "FIELD", target = "Liskallia/vault/task/renderer/BingoRenderer$Leaf;name:Ljava/lang/String;", opcode = Opcodes.GETFIELD))
     private String onRenderRedirectName(iskallia.vault.task.renderer.BingoRenderer.Leaf leaf) {
 
