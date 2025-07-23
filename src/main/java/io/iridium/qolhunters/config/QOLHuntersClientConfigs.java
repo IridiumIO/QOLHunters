@@ -52,9 +52,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_SHORTHAND;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SOUL_VALUE_USE_SHARDS;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BACKPACK_CYCLER;
-
-
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_BLOCKS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_GILDED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_LIVING;
@@ -186,7 +183,6 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SOUL_VALUE = "Enable Better Tooltips";
         public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
         public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
-        public static final String BACKPACK_CYCLER = "Backpack Cycler";
         public static final String TREASURE_KEY_SWAPPER = "Treasure Key Swapper";
 
         public static final String HUNTER_PARTICLES_BLOCKS = "Objectives";
@@ -263,7 +259,6 @@ public class QOLHuntersClientConfigs {
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
-            BACKPACK_CYCLER = CLIENT_BUILDER.comment("Add inventory buttons / use arrow keys to cycle through backpacks in your inventory").define(ConfigPaths.BACKPACK_CYCLER, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
