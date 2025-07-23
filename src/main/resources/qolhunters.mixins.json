@@ -59,8 +59,7 @@
     "skillaltar.MixinSkillAltarScreen2",
     "toggleflight.MixinLocalPlayer",
     "toggleflight.MixinMultiJumpTrinket",
-    "vaultmodifiers.MixinModifiersRenderer",
-    "vaultmodifiers.MixinModifiersRendererScreenPos"
+    "vaultmodifiers.MixinModifiersRenderer"
   ],
   "minVersion": "0.8"
 }

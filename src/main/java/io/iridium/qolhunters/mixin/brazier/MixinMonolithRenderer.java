@@ -141,15 +141,9 @@ public class MixinMonolithRenderer {
 
         VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
 
-        //Need to disable the custom position for the vault modifiers otherwise the location is off
-        if(QOLHuntersClientConfigs.VAULT_MODIFIERS_TOP_RIGHT.get()){
-            matrixStack.translate(config.rightMargin - 8.0, bottom - config.bottomMargin - config.size - 4.0, 0);
-        }else {
-            matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
+        matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
 
-        }
-
-        ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack, false); // TODO: is this vh feat now?
+        ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack, false);
 
         matrixStack.popPose();
         matrixStack.popPose();
