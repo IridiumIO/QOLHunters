@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinBingoRenderer {
 
 
-    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/BingoRendererContext.drawColoredRect (FFFFI)V", ordinal = 0), index = 4)
+    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/TaskRendererContext.drawColoredRect (FFFFI)V", ordinal = 0), index = 4)
     public int modifyBackgroundOpacity(int color){
 
         int configopacity = QOLHuntersClientConfigs.BINGO_GRID_BACKGROUND_OPACITY.get();
@@ -24,21 +24,21 @@ public class MixinBingoRenderer {
     }
 
 
-    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/BingoRendererContext.drawColoredRect (FFFFI)V", ordinal = 1), index = 4)
+    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/TaskRendererContext.drawColoredRect (FFFFI)V", ordinal = 1), index = 4)
     public int modifySelectionColorExpanded(int color){
 
         return (QOLHuntersClientConfigs.BINGO_GRID_SELECTION_COLOR.get().getColorCode());
 
     }
 
-    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/BingoRendererContext.drawColoredRect (FFFFI)V", ordinal = 2), index = 4)
+    @ModifyArg(method="renderExpanded", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/TaskRendererContext.drawColoredRect (FFFFI)V", ordinal = 2), index = 4)
     public int modifyCompletedColorExpanded(int color){
 
         return (QOLHuntersClientConfigs.BINGO_GRID_COMPLETED_COLOR.get().getColorCode());
 
     }
 
-    @ModifyArg(method="renderCompact", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/BingoRendererContext.drawColoredRect (FFFFI)V", ordinal = 2), index = 4)
+    @ModifyArg(method="renderCompact", at= @At(value = "INVOKE", target = "iskallia/vault/task/renderer/context/TaskRendererContext.drawColoredRect (FFFFI)V", ordinal = 2), index = 4)
     public int modifySelectionColorCompact(int color){
         return (QOLHuntersClientConfigs.BINGO_GRID_SELECTION_COLOR.get().getColorCode());
     }
