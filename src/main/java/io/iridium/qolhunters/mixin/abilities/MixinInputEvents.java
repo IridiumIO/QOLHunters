@@ -2,17 +2,30 @@ package io.iridium.qolhunters.mixin.abilities;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import iskallia.vault.client.gui.overlay.VaultMapOverlay;
 import iskallia.vault.client.gui.screen.AbilitySelectionScreen;
+import iskallia.vault.client.gui.screen.PrestigePowerSelectionScreen;
 import iskallia.vault.client.gui.screen.achievements.AchievementScreen;
 import iskallia.vault.client.gui.screen.bestiary.BestiaryScreen;
+import iskallia.vault.client.gui.screen.map.FullScreenMapScreen;
 import iskallia.vault.client.gui.screen.quest.QuestOverviewElementScreen;
+import iskallia.vault.client.render.IVaultOptions;
+import iskallia.vault.core.vault.ClientVaults;
+import iskallia.vault.core.vault.Vault;
+import iskallia.vault.core.vault.objective.RoyaleObjective;
+import iskallia.vault.core.vault.stat.DiscoveredRoomStat;
+import iskallia.vault.core.vault.stat.DiscoveredTunnelStat;
+import iskallia.vault.core.vault.stat.StatCollector;
 import iskallia.vault.event.InputEvents;
+import iskallia.vault.init.ModItems;
 import iskallia.vault.init.ModKeybinds;
 import iskallia.vault.init.ModNetwork;
 import iskallia.vault.network.message.*;
 import iskallia.vault.network.message.bounty.ServerboundBountyProgressMessage;
+import iskallia.vault.research.StageManager;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.TextComponent;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,6 +35,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 @Mixin(value = InputEvents.class, remap = false)
 public class MixinInputEvents {
@@ -136,7 +151,9 @@ public class MixinInputEvents {
             } else if (ModKeybinds.abilityWheelKey.isActiveAndMatches(key)) {
                 minecraft.setScreen(new AbilitySelectionScreen());
                 ServerboundAbilityKeyMessage.send(ServerboundAbilityKeyMessage.Opcode.CancelKeyDown);
-            } else if (ModKeybinds.openAbilityTree.isActiveAndMatches(key)) {
+            } else if (ModKeybinds.prestigeActivationScreenKey.isActiveAndMatches(key)) {
+                minecraft.setScreen(new PrestigePowerSelectionScreen());
+            }  else if (ModKeybinds.openAbilityTree.isActiveAndMatches(key)) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundOpenStatisticsMessage.INSTANCE);
             } else if (ModKeybinds.bountyStatusKey.isActiveAndMatches(key)) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundBountyProgressMessage.INSTANCE);
@@ -144,6 +161,8 @@ public class MixinInputEvents {
                 ModNetwork.CHANNEL.sendToServer(AngelToggleMessage.INSTANCE);
             } else if (ModKeybinds.magnetToggleKey.isActiveAndMatches(key)) {
                 ModNetwork.CHANNEL.sendToServer(ServerboundMagnetToggleMessage.INSTANCE);
+            } else if (ModKeybinds.useCompanionTemporal.isActiveAndMatches(key)) {
+                ModNetwork.CHANNEL.sendToServer(ServerboundUseCompanionTemporalMessage.INSTANCE);
             } else if (ModKeybinds.openQuestScreen.isActiveAndMatches(key)) {
                 Minecraft.getInstance().setScreen(new QuestOverviewElementScreen());
             } else if (ModKeybinds.openBestiary.isActiveAndMatches(key)) {
@@ -152,6 +171,39 @@ public class MixinInputEvents {
                 Minecraft.getInstance().setScreen(new AchievementScreen());
             } else if (ModKeybinds.openCardDeck.isActiveAndMatches(key)) {
                 ModNetwork.CHANNEL.sendToServer(new OpenCardDeckMessage());
+            } else if (ModKeybinds.openVaultMap.isActiveAndMatches(key)) {
+                Optional<Vault> vaultOpt = ClientVaults.getActive();
+                if (vaultOpt.isPresent()
+                    && (StageManager.RESEARCH_TREE.isResearched("Vault Map") || !vaultOpt.get().get(Vault.OBJECTIVES).getAll(RoyaleObjective.class).isEmpty())
+                )
+                {
+                    if (minecraft.player != null && minecraft.player.getInventory().hasAnyOf(Set.of(ModItems.OPEN_MAP))) {
+                        Vault vault = vaultOpt.get();
+                        StatCollector statCollector = vault.get(Vault.STATS).get(minecraft.player.getUUID());
+                        DiscoveredRoomStat roomStat = statCollector.get(StatCollector.ROOMS_DISCOVERED);
+                        DiscoveredTunnelStat tunnelStat = statCollector.get(StatCollector.DISCOVERED_TUNNELS);
+                        minecraft.setScreen(new FullScreenMapScreen(vault, roomStat, tunnelStat));
+                    } else if (minecraft.player != null) {
+                        minecraft.player.displayClientMessage(new TextComponent("You need a Vault Map to view the vault map!"), true);
+                    }
+                }
+            } else if (ModKeybinds.holdVaultMap.isActiveAndMatches(key) && ClientVaults.getActive().isPresent()) {
+                Vault vault = ClientVaults.getActive().get();
+                if (StageManager.RESEARCH_TREE.isResearched("Vault Map") || !vault.get(Vault.OBJECTIVES).getAll(RoyaleObjective.class).isEmpty()) {
+                    if ((minecraft.player == null || !minecraft.player.getInventory().hasAnyOf(Set.of(ModItems.OPEN_MAP)))
+                        && !VaultMapOverlay.showLargeOverlay) {
+                        if (minecraft.player != null) {
+                            minecraft.player.displayClientMessage(new TextComponent("You need a Vault Map to view the vault map!"), true);
+                        }
+                    } else {
+                        IVaultOptions options = (IVaultOptions)Minecraft.getInstance().options;
+                        if (options.isToggleMapOverlay()) {
+                            VaultMapOverlay.showLargeOverlay = !VaultMapOverlay.showLargeOverlay;
+                        }
+                    }
+                }
+            } else if (ModKeybinds.cycleSpectatorKey.isActiveAndMatches(key) && minecraft.player.isSpectator()) {
+                ModNetwork.CHANNEL.sendToServer(new ServerboundChangeSpectatorMessage());
             }
         }
 
