@@ -14,6 +14,7 @@ import iskallia.vault.client.gui.screen.player.legacy.tab.split.spi.AbstractDial
 import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityNodeTextures;
 import iskallia.vault.client.gui.screen.player.legacy.widget.AbilityWidget;
 import iskallia.vault.core.vault.ClientVaults;
+import iskallia.vault.core.vault.VaultUtils;
 import iskallia.vault.init.ModBlocks;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModTextureAtlases;
@@ -102,7 +103,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isParentTierBelowMaxLearnable = ((TieredSkill) parentAbility.getSpecialization()).getUnmodifiedTier() < ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isTargetTierBelowMaxLearnable = ((TieredSkill) target.getSpecialization()).getUnmodifiedTier() <= ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isVaultLevelSufficient = VaultBarOverlay.vaultLevel >= current.getUnlockLevel();
-
+        boolean isInRoyaleVault = ClientVaults.getActive().isPresent() && VaultUtils.isRoyaleVault(ClientVaults.getActive().get());
 
         try {
             HijackAbilityLabelFactory();
@@ -128,7 +129,8 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
                         && parentAbility.isUnlocked() && activelySelectedAbility.isUnlocked()
                         && isParentTierBelowMaxLearnable
                         && isTargetTierBelowMaxLearnable
-                        && isVaultLevelSufficient;
+                        && isVaultLevelSufficient
+                        && !isInRoyaleVault;
             }
 
         } else { //The target is not specialized
@@ -139,7 +141,8 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             activeState = hasEnoughSkillPoints
                         && isParentTierBelowMaxLearnable
                         && isTargetTierBelowMaxLearnable
-                        && isVaultLevelSufficient;
+                        && isVaultLevelSufficient
+                        && !isInRoyaleVault;
 
             if (target.isUnlocked())  {
                 buttonText = qOLHunters$determineButtonText(parentAbility, target, activelySelectedAbility, current);
