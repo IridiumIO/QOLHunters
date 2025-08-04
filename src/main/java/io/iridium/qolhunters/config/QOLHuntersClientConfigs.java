@@ -7,7 +7,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
 
 
@@ -25,6 +24,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_VAULT_STATIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BROKEN_CURIO_ALERT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> PRESTIGE_TOGGLES;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -198,6 +199,7 @@ public class QOLHuntersClientConfigs {
 
         public static final String BETTER_SCREEN_JEWEL_APPLICATION = "Better Jewel Application Screen";
         public static final String BETTER_SCREEN_CARD_DECK = "Better Card Deck Screen";
+        public static final String PRESTIGE_TOGGLES = "Prestige Toggles";
 
         public static final String ELIXIR_SHADOWLESS_ORBS = "Shadowless Elixir Orbs";
         public static final String ELIXIR_ORB_CULLING = "Elixir Orb Culling";
@@ -264,6 +266,7 @@ public class QOLHuntersClientConfigs {
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
             GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
             MULTILINE_STAT_LABELS = CLIENT_BUILDER.comment("Fixes lines breaks in descriptions in the 'Statistics' Tab.").define(ConfigPaths.MULTILINE_STAT_LABELS, true);
+            PRESTIGE_TOGGLES = CLIENT_BUILDER.comment("Adds toggles to prestige selection screen").define(ConfigPaths.PRESTIGE_TOGGLES, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);

@@ -40,6 +40,7 @@
     "panregion.MixinAbstractPanRegion",
     "paradox.MixinGateLockRenderer",
     "player.MixinPlayer",
+    "prestigetoggles.MixinPrestigePowerWidget",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
     "rarityhighlighter.MixinAEStackRendering",
     "rarityhighlighter.MixinRefinedGridScreen",
