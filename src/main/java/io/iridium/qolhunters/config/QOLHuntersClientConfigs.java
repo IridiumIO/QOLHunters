@@ -13,6 +13,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_DURATION_OVERLAY;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayColor> CAKE_VAULT_OVERLAY_COLOR;
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayStyle> CAKE_VAULT_OVERLAY_STYLE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_INV_COUNT;
@@ -156,6 +157,7 @@ public class QOLHuntersClientConfigs {
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
         public static final String VAULT_INTERFACE_KEYBINDS = "Vault Interface Keybinds";
         public static final String BETTER_ABILITIES_TAB = "Better Abilities Tab";
+        public static final String ABILITY_DURATION_OVERLAY = "Ability Duration Overlay";
         public static final String CAKE_VAULT_OVERLAY_COLOR = "Cake Vault Overlay Color";
         public static final String CAKE_VAULT_OVERLAY_STYLE = "Cake Vault Overlay Style";
         public static final String SCAVENGER_INV_COUNT = "Scavenger Inventory Count";
@@ -257,6 +259,7 @@ public class QOLHuntersClientConfigs {
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
             VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
+            ABILITY_DURATION_OVERLAY = CLIENT_BUILDER.comment("Show duration in the cooldown overlay while ability is active (only works with abilities which cooldown starts after their duration ends)").define(ConfigPaths.ABILITY_DURATION_OVERLAY, true);
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
