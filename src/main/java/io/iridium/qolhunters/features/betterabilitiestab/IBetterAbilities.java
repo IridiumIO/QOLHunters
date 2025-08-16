@@ -5,6 +5,7 @@ import iskallia.vault.skill.ability.component.AbilityLabelBindingRegistry;
 import iskallia.vault.skill.ability.component.AbilityLabelFactory;
 import iskallia.vault.skill.base.Skill;
 import iskallia.vault.util.calc.CooldownHelper;
+import iskallia.vault.util.calc.EffectDurationHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -37,6 +38,15 @@ public interface IBetterAbilities {
                         player != null ? CooldownHelper.getCooldownMultiplier(player) : 0.0F
                 ));
 
+        factoryMap.put("duration",
+            context -> labelWithDurationValue(
+                "\n Duration: ",
+                binding(context.config(), "duration"),
+                "duration",
+                player
+            ));
+
+
     }
 
     private static <C extends Skill> String binding(C config, String key) {
@@ -48,6 +58,16 @@ public interface IBetterAbilities {
         return new TextComponent(label)
                 .withStyle(Style.EMPTY.withColor(ModConfigs.COLORS.getColor("text")))
                 .append(stylizeText(value, colorKey).append(stylizeText(" (" + String.format("%.1f", result * (1.0 - abilityValue)) + "s)", colorKey)));
+    }
+
+    private static MutableComponent labelWithDurationValue(String label, String value, String colorKey, Player player) {
+        float durationSeconds = Float.parseFloat(value.replace("s", ""));
+        int modifiedDurationTicks = EffectDurationHelper.adjustEffectDurationFloor(player, durationSeconds * 20);
+        float modifiedDurationSeconds = modifiedDurationTicks/20f;
+
+        return new TextComponent(label)
+            .withStyle(Style.EMPTY.withColor(ModConfigs.COLORS.getColor("text")))
+            .append(stylizeText(value, colorKey).append(stylizeText(" (" + String.format("%.1f", modifiedDurationSeconds) + "s)", colorKey)));
     }
 
     private static MutableComponent stylizeText(String text, String colorKey) {
