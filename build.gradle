@@ -29,7 +29,7 @@ mixin {
 
 
 
-version = '0.32.3-1.18.2'
+version = '0.33.0-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -176,6 +176,10 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:${jei_version}")
     implementation fg.deobf("curse.maven:curios-309927:${curious_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.1")) {
+        jarJar.ranged(it, "[0.4.1,)")
+    }
 
 
     // Dependencies for Runtime Debug
@@ -206,6 +210,9 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
+
+tasks.jar.archiveClassifier.set('slim')
+tasks.jarJar.archiveClassifier.set('')
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
