@@ -19,6 +19,8 @@
     "cake.MixinCakeObjective",
     "carddeck.MixinCardDeckScreen",
     "cardessenceextractor.MixinCardEssenceExtractorScreen",
+    "cardrollrange.AccessorTaskLootCardModifierConfig",
+    "cardrollrange.MixinTaskLootCardModifier",
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
     "configs.MixinModConfigs",

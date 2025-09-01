@@ -27,6 +27,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> PRESTIGE_TOGGLES;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RESOURCE_CARD_ROLL_RANGE;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -189,6 +190,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_SOUL_VALUE_SHORTHAND = "Use Shorthand";
         public static final String BETTER_SOUL_VALUE_USE_SHARDS = "Use Soul Shards";
         public static final String TREASURE_KEY_SWAPPER = "Treasure Key Swapper";
+        public static final String RESOURCE_CARD_ROLL_RANGE = "Resource Card Roll Range";
 
         public static final String HUNTER_PARTICLES_BLOCKS = "Objectives";
         public static final String HUNTER_PARTICLES_GILDED = "Gilded";
@@ -223,7 +225,6 @@ public class QOLHuntersClientConfigs {
             public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
-            public static final String VAULT_MODIFIERS_GROUP = "Vault Modifiers";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
@@ -272,6 +273,7 @@ public class QOLHuntersClientConfigs {
             GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
             MULTILINE_STAT_LABELS = CLIENT_BUILDER.comment("Fixes lines breaks in descriptions in the 'Statistics' Tab.").define(ConfigPaths.MULTILINE_STAT_LABELS, true);
             PRESTIGE_TOGGLES = CLIENT_BUILDER.comment("Adds toggles to prestige selection screen").define(ConfigPaths.PRESTIGE_TOGGLES, true);
+            RESOURCE_CARD_ROLL_RANGE = CLIENT_BUILDER.comment("Adds roll ranges to resource cards when holding shift").define(ConfigPaths.RESOURCE_CARD_ROLL_RANGE, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
