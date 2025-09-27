@@ -64,6 +64,9 @@
     "skillaltar.MixinSkillAltarContainerDefault",
     "skillaltar.MixinSkillAltarScreen",
     "skillaltar.MixinSkillAltarScreen2",
+    "temporalmodifiertimer.MixinModifiers",
+    "temporalmodifiertimer.MixinModifiersRenderer",
+    "temporalmodifiertimer.MixinVaultModifier",
     "toggleflight.MixinLocalPlayer",
     "toggleflight.MixinMultiJumpTrinket",
     "vaultmodifiers.MixinModifiersRenderer"
