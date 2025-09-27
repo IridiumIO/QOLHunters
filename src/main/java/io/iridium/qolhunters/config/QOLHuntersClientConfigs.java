@@ -80,6 +80,10 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_EPIC;
     public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_OMEGA;
 
+    public static final ForgeConfigSpec.ConfigValue<Boolean> TEMPORAL_MODIFIER_TIMER_ENABLE;
+    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_SCALE;
+    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_X_OFFSET;
+    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_Y_OFFSET;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -128,12 +132,6 @@ public class QOLHuntersClientConfigs {
         public int getColorCode() {return colorCode;}
     }
 
-
-    public enum RarityHighlighterMode {
-        GRADIENT,
-        UNDERLINE
-    }
-
     public enum VirtualDehammerizerMode {
         SPHERE,
         CYLINDER,
@@ -149,7 +147,6 @@ public class QOLHuntersClientConfigs {
         ElixirOrbCountCulling(int count) {this.count = count;}
         public int getCount() {return count;}
     }
-
 
     public record ConfigPaths() {
 
@@ -216,6 +213,11 @@ public class QOLHuntersClientConfigs {
         public static final String GEAR_ROLL_COLOR_EPIC = "Epic+";
         public static final String GEAR_ROLL_COLOR_OMEGA = "Omega";
 
+        public static final String TEMPORAL_MODIFIER_TIMER_ENABLE = "Enable";
+        public static final String TEMPORAL_MODIFIER_TIMER_SCALE = "Scale";
+        public static final String TEMPORAL_MODIFIER_TIMER_X_OFFSET = "X Offset";
+        public static final String TEMPORAL_MODIFIER_TIMER_Y_OFFSET = "Y Offset";
+
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
@@ -242,6 +244,7 @@ public class QOLHuntersClientConfigs {
             public static final String BETTER_SCREENS_GROUP = "Better Screens";
 
             public static final String GEAR_ROLL_COLOR_GROUP = "Gear Roll Colors";
+            public static final String TEMPORAL_MODIFIER_TIMER_GROUP = "Temporal Modifier Timer";
         }
     }
 
@@ -362,6 +365,13 @@ public class QOLHuntersClientConfigs {
                 GEAR_ROLL_COLOR_RARE = CLIENT_BUILDER.comment("Rare+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_RARE, 16771072);
                 GEAR_ROLL_COLOR_EPIC = CLIENT_BUILDER.comment("Epic+ Gear").define(ConfigPaths.GEAR_ROLL_COLOR_EPIC, 16711935);
                 GEAR_ROLL_COLOR_OMEGA = CLIENT_BUILDER.comment("Omega Gear").define(ConfigPaths.GEAR_ROLL_COLOR_OMEGA, 7012096);
+            CLIENT_BUILDER.pop();
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.TEMPORAL_MODIFIER_TIMER_GROUP);
+                TEMPORAL_MODIFIER_TIMER_ENABLE = CLIENT_BUILDER.comment("Enable temporal modifier timer overlay").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_ENABLE, true);
+                TEMPORAL_MODIFIER_TIMER_SCALE = CLIENT_BUILDER.comment("Scale of the text").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_SCALE, 0.5f);
+                TEMPORAL_MODIFIER_TIMER_X_OFFSET = CLIENT_BUILDER.comment("Horizontal offset").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_X_OFFSET, 0f);
+                TEMPORAL_MODIFIER_TIMER_Y_OFFSET= CLIENT_BUILDER.comment("Vertical offset").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_Y_OFFSET, 6f);
             CLIENT_BUILDER.pop();
 
 
