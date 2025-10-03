@@ -29,7 +29,7 @@ mixin {
 
 
 
-version = '0.35.0-1.18.2'
+version = '0.35.1-1.18.2'
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -235,6 +235,20 @@ jar.finalizedBy('reobfJar')
 // However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
 // publish.dependsOn('reobfJar')
 
+
+tasks.register("deleteSlimJar") {
+    dependsOn tasks.jar
+    doLast {
+        def slimJarFile = tasks.jar.archiveFile.get().asFile
+        if (slimJarFile.exists()) {
+            println "Deleting slim jar: ${slimJarFile}"
+            slimJarFile.delete()
+        }
+    }
+}
+
+tasks.reobfJarJar.finalizedBy(tasks.deleteSlimJar)
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -256,6 +270,10 @@ task copyMostRecentFile {
         def sourceDir = file('build/libs')
         def destDir = file(System.getenv('APPDATA') + '\\ATLauncher\\instances\\VaultHunters3rdEditionVanilla\\mods')
 
+        if (!destDir.exists()) { // will only copy the file if you're using atlauncher with the instance
+            println "Destination directory does not exist: ${destDir}"
+            return
+        }
         // Find the most recent file
         def mostRecentFile = sourceDir.listFiles().max { it.lastModified() }
 
