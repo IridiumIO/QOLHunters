@@ -1,12 +1,13 @@
 package io.iridium.qolhunters.mixin.bingo;
 
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
+import iskallia.vault.task.Task;
 import iskallia.vault.task.renderer.BingoRenderer;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.*;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @Mixin(value = BingoRenderer.Root.class, remap = false)
 public class MixinBingoRenderer {
@@ -48,4 +49,8 @@ public class MixinBingoRenderer {
         return (QOLHuntersClientConfigs.BINGO_GRID_COMPLETED_COLOR.get().getColorCode());
     }
 
+    @Redirect(method = "renderCompact", at = @At(value = "NEW", target = "()Ljava/util/HashMap;"))
+    private HashMap<Integer, Task> sortedBingo(){
+        return new LinkedHashMap<>(); // LinkedHashMap#forEach iterates in insertion order
+    }
 }
