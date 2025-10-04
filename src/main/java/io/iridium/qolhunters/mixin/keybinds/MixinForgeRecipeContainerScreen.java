@@ -8,6 +8,7 @@ import iskallia.vault.block.entity.base.ForgeRecipeTileEntity;
 import iskallia.vault.client.gui.framework.element.ButtonElement;
 import iskallia.vault.client.gui.framework.render.Tooltips;
 import iskallia.vault.client.gui.framework.render.spi.IElementRenderer;
+import iskallia.vault.client.gui.framework.render.spi.ITooltipRenderFunction;
 import iskallia.vault.client.gui.framework.render.spi.ITooltipRendererFactory;
 import iskallia.vault.client.gui.framework.screen.AbstractElementContainerScreen;
 import iskallia.vault.client.gui.screen.block.base.ForgeRecipeContainerScreen;
@@ -81,6 +82,8 @@ public abstract class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileE
 
         if (!craftButton.isDisabled()) {
             craftButton.tooltip(Tooltips.multi(() -> tooltip));
+        } else {
+            craftButton.tooltip(ITooltipRenderFunction.NONE);
         }
     }
 
