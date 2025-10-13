@@ -3,7 +3,6 @@ package io.iridium.qolhunters.mixin.abilities;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import io.iridium.qolhunters.features.betterabilitiestab.IBetterAbilities;
 import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.component.ScrollableContainer;
 import iskallia.vault.client.gui.overlay.VaultBarOverlay;
@@ -34,7 +33,10 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -44,7 +46,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Mixin(AbilityDialog.class)
-public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElementContainerScreen> implements IBetterAbilities {
+public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElementContainerScreen> {
 
 
     @Inject(method = "update", at = @At("HEAD"), cancellable = true, remap = false)
@@ -104,12 +106,6 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isTargetTierBelowMaxLearnable = ((TieredSkill) target.getSpecialization()).getUnmodifiedTier() <= ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isVaultLevelSufficient = VaultBarOverlay.vaultLevel >= current.getUnlockLevel();
         boolean isInRoyaleVault = ClientVaults.getActive().isPresent() && VaultUtils.isRoyaleVault(ClientVaults.getActive().get());
-
-        try {
-            HijackAbilityLabelFactory();
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
 
 
         // Determine the button text and action based on whether the target is a specialization
