@@ -174,7 +174,7 @@ public class MixinInputEvents {
             } else if (ModKeybinds.openVaultMap.isActiveAndMatches(key)) {
                 Optional<Vault> vaultOpt = ClientVaults.getActive();
                 if (vaultOpt.isPresent()
-                    && (StageManager.RESEARCH_TREE.isResearched("Vault Map") || !vaultOpt.get().get(Vault.OBJECTIVES).getAll(RoyaleObjective.class).isEmpty())
+                    && (StageManager.RESEARCH_TREE.isResearched("Vault Map") && !vaultOpt.get().get(Vault.OBJECTIVES).getAll(RoyaleObjective.class).isEmpty())
                 )
                 {
                     if (minecraft.player != null && minecraft.player.getInventory().hasAnyOf(Set.of(ModItems.OPEN_MAP))) {
