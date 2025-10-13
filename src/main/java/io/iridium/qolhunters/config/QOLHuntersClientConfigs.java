@@ -62,6 +62,15 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_ORNATE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_COINS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_WOODEN;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_HARDENED;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_ENIGMA;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_FLESH;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_OBJECTIVES;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_GOD_ALTARS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_DUNGEONS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_VENDOORS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_TREASURE_DOORS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_PYLONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> HUNTER_PARTICLES_OTHER;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TREASURE_KEY_SWAPPER;
@@ -195,6 +204,15 @@ public class QOLHuntersClientConfigs {
         public static final String HUNTER_PARTICLES_ORNATE = "Ornate";
         public static final String HUNTER_PARTICLES_COINS = "Coins";
         public static final String HUNTER_PARTICLES_WOODEN = "Wooden";
+        public static final String HUNTER_PARTICLES_HARDENED = "Hardened";
+        public static final String HUNTER_PARTICLES_ENIGMA = "Enigma";
+        public static final String HUNTER_PARTICLES_FLESH = "Flesh";
+        public static final String HUNTER_PARTICLES_OBJECTIVES = "Objectives";
+        public static final String HUNTER_PARTICLES_GOD_ALTARS = "GodAltars";
+        public static final String HUNTER_PARTICLES_DUNGEONS = "Dungeons";
+        public static final String HUNTER_PARTICLES_VENDOORS = "Vendors";
+        public static final String HUNTER_PARTICLES_TREASURE_DOORS = "TreasureDoors";
+        public static final String HUNTER_PARTICLES_PYLONS = "Pylons";
         public static final String HUNTER_PARTICLES_OTHER = "Default";
 
         public static final String BINGO_GRID_COMPLETED_COLOR = "Grid Completion Color";
@@ -351,6 +369,15 @@ public class QOLHuntersClientConfigs {
                 HUNTER_PARTICLES_ORNATE = CLIENT_BUILDER.comment("Show Hunter Particles for Ornate Chests").define(ConfigPaths.HUNTER_PARTICLES_ORNATE, true);
                 HUNTER_PARTICLES_COINS = CLIENT_BUILDER.comment("Show Hunter Particles for Coins").define(ConfigPaths.HUNTER_PARTICLES_COINS, true);
                 HUNTER_PARTICLES_WOODEN = CLIENT_BUILDER.comment("Show Hunter Particles for Wooden Chests").define(ConfigPaths.HUNTER_PARTICLES_WOODEN, true);
+                HUNTER_PARTICLES_HARDENED = CLIENT_BUILDER.comment("Show Hunter Particles for Hardened Chests").define(ConfigPaths.HUNTER_PARTICLES_HARDENED, true);
+                HUNTER_PARTICLES_ENIGMA = CLIENT_BUILDER.comment("Show Hunter Particles for Enigma Chests").define(ConfigPaths.HUNTER_PARTICLES_ENIGMA, true);
+                HUNTER_PARTICLES_FLESH = CLIENT_BUILDER.comment("Show Hunter Particles for Flesh Chests").define(ConfigPaths.HUNTER_PARTICLES_FLESH, true);
+                HUNTER_PARTICLES_OBJECTIVES = CLIENT_BUILDER.comment("Show Hunter Particles for Objectives").define(ConfigPaths.HUNTER_PARTICLES_OBJECTIVES, true);
+                HUNTER_PARTICLES_GOD_ALTARS = CLIENT_BUILDER.comment("Show Hunter Particles for God Altars").define(ConfigPaths.HUNTER_PARTICLES_GOD_ALTARS, true);
+                HUNTER_PARTICLES_DUNGEONS = CLIENT_BUILDER.comment("Show Hunter Particles for Dungeons").define(ConfigPaths.HUNTER_PARTICLES_DUNGEONS, true);
+                HUNTER_PARTICLES_VENDOORS = CLIENT_BUILDER.comment("Show Hunter Particles for Vendors").define(ConfigPaths.HUNTER_PARTICLES_VENDOORS, true);
+                HUNTER_PARTICLES_TREASURE_DOORS = CLIENT_BUILDER.comment("Show Hunter Particles for Treasure Doors").define(ConfigPaths.HUNTER_PARTICLES_TREASURE_DOORS, true);
+                HUNTER_PARTICLES_PYLONS = CLIENT_BUILDER.comment("Show Hunter Particles for Pylons").define(ConfigPaths.HUNTER_PARTICLES_PYLONS, true);
                 HUNTER_PARTICLES_OTHER = CLIENT_BUILDER.comment("Show Default White Hunter Particles").define(ConfigPaths.HUNTER_PARTICLES_OTHER, true);
             CLIENT_BUILDER.pop();
 

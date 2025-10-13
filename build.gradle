@@ -29,7 +29,7 @@ mixin {
 
 
 
-version = '0.35.1-1.18.2'
+version = mod_version
 group = 'io.iridium.qolhunters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'QOL Hunters'
 
@@ -209,6 +209,16 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+processResources {
+    def replaceProperties = [
+            mod_version: mod_version
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
 }
 
 tasks.jar.archiveClassifier.set('slim')
