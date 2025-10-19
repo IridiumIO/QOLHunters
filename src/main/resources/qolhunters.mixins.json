@@ -69,6 +69,9 @@
     "temporalmodifiertimer.MixinVaultModifier",
     "toggleflight.MixinLocalPlayer",
     "toggleflight.MixinMultiJumpTrinket",
+    "betterlootstats.MixinVaultExitContainerScreenData",
+    "betterlootstats.MixinLootStatsContainerElement",
+    "betterlootstats.MixinVaultChestType",
     "vaultmodifiers.MixinModifiersRenderer"
   ],
   "minVersion": "0.8"
