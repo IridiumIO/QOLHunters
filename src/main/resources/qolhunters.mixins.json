@@ -8,9 +8,14 @@
   "client": [
     "abilities.MixinAbilitiesOverlay",
     "abilities.MixinAbilityDialog",
+    "abilities.MixinAbilityWidgetSelectable",
     "abilities.MixinInputEvents",
+    "abilities.MixinVaultAbilityKeybinding",
     "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
+    "betterlootstats.MixinLootStatsContainerElement",
+    "betterlootstats.MixinVaultChestType",
+    "betterlootstats.MixinVaultExitContainerScreenData",
     "bettersoulvalue.MixinClientEvents",
     "bingo.MixinBingoRenderer",
     "bingo.MixinBingoRendererLeaf",
@@ -69,10 +74,7 @@
     "temporalmodifiertimer.MixinVaultModifier",
     "toggleflight.MixinLocalPlayer",
     "toggleflight.MixinMultiJumpTrinket",
-    "betterlootstats.MixinVaultExitContainerScreenData",
-    "betterlootstats.MixinLootStatsContainerElement",
-    "betterlootstats.MixinVaultChestType",
-    "vaultmodifiers.MixinModifiersRenderer"
+    "vaultmodifiers.MixinModifiersRenderer",
     "voidcrucible.MixinScrollableItemListElement",
     "voidcrucible.MixinThemeListElement",
     "voidcrucible.MixinVoidCrucibleScreen"
