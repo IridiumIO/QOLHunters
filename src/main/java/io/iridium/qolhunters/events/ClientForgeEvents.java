@@ -30,13 +30,6 @@ public  class ClientForgeEvents {
             SubMenuConfigScreen screen = SubMenuConfigScreen.find(ConfigHelper.ConfigPath.parse("qolhunters:client.Client-Only Extensions"));
             Minecraft.getInstance().setScreen(screen);
         }
-
-        if (event.getKey() == GLFW.GLFW_KEY_O && event.getAction() == GLFW.GLFW_PRESS &&
-                (event.getModifiers() & GLFW.GLFW_MOD_SHIFT) != 0 &&
-                (event.getModifiers() & GLFW.GLFW_MOD_CONTROL) != 0 &&
-                (event.getModifiers() & GLFW.GLFW_MOD_ALT) != 0) {
-            displayMessageOnScreen(new TextComponent("OBS MODE ENABLED").withStyle(ChatFormatting.RED));
-        }
     }
 
 }
