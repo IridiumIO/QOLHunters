@@ -73,6 +73,9 @@
     "betterlootstats.MixinLootStatsContainerElement",
     "betterlootstats.MixinVaultChestType",
     "vaultmodifiers.MixinModifiersRenderer"
+    "voidcrucible.MixinScrollableItemListElement",
+    "voidcrucible.MixinThemeListElement",
+    "voidcrucible.MixinVoidCrucibleScreen"
   ],
   "minVersion": "0.8"
 }
