@@ -30,12 +30,6 @@ public class MixinEditBox {
 
         String currentValue = editBox.getValue();
 
-        if(currentValue.contains("\\obs")){
-            Minecraft.getInstance().setScreen(null);
-            SharedFunctions.displayTitleOnScreen(new TextComponent("OBS Mode Enabled"));
-            return;
-        }
-
         // Iterate through the replacements and check if the current value contains any sequence
         for (Map.Entry<String, Character> entry : REPL.entrySet()) {
             String sequenceToReplace = entry.getKey();
