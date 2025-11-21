@@ -28,6 +28,7 @@
     "cardrollrange.MixinTaskLootCardModifier",
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
+    "compassspinout.MixinModModels",
     "configs.MixinModConfigs",
     "dungeondoors.MixinClientboundSetSubtitleTextPacket",
     "elixirrenderer.MixinElixirOrbRenderer",
