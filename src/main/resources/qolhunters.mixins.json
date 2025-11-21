@@ -48,6 +48,7 @@
     "keybinds.MixinForgeRecipeContainerScreen",
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
+    "magnetstate.MixinItemRenderer",
     "multilinestatlabels.MixinStatLabelElementBuilder",
     "panregion.MixinAbstractPanRegion",
     "paradox.MixinGateLockRenderer",

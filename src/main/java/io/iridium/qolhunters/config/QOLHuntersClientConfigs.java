@@ -95,8 +95,8 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_Y_OFFSET;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_LOOT_STATS;
-
     public static final ForgeConfigSpec.ConfigValue<Boolean> COMPASS_SPIN_OUT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> MAGNET_STATE_OVERLAY;
 
     public enum BrazierHologramMode {
         DEFAULT,
@@ -241,6 +241,7 @@ public class QOLHuntersClientConfigs {
         public static final String TEMPORAL_MODIFIER_TIMER_Y_OFFSET = "Y Offset";
         public static final String BETTER_LOOT_STATS = "Better Loot Stats";
         public static final String COMPASS_SPIN_OUT = "Compass Spin Out";
+        public static final String MAGNET_STATE_OVERLAY = "Magnet State Overlay";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -303,6 +304,7 @@ public class QOLHuntersClientConfigs {
             RESOURCE_CARD_ROLL_RANGE = CLIENT_BUILDER.comment("Adds roll ranges to resource cards when holding shift").define(ConfigPaths.RESOURCE_CARD_ROLL_RANGE, true);
             BETTER_LOOT_STATS = CLIENT_BUILDER.comment("Show raw chests and speed up vault history screen").define(ConfigPaths.BETTER_LOOT_STATS, true);
             COMPASS_SPIN_OUT = CLIENT_BUILDER.comment("Spin out compasss when selected target is not found instead of pointing to the portal room.").define(ConfigPaths.COMPASS_SPIN_OUT, true);
+            MAGNET_STATE_OVERLAY = CLIENT_BUILDER.comment("Enable item overlay showing VOID/PICKUP/OFF state on magnets.").define(ConfigPaths.MAGNET_STATE_OVERLAY, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
