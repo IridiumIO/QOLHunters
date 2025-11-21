@@ -34,7 +34,7 @@ authors="Iridium" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 Multiple QOL Changes to Vault Hunters 3rd Edition'''
-
+clientSideOnly=true
 #showAsResourcePack=true
 #
 ## A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
