@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.awt.Rectangle;
 
 @Mixin(value = AbstractDialog.class, remap = false)
-public class MixinAbstractDialog implements IMouseRelease {
+public abstract class MixinAbstractDialog implements IMouseRelease {
     @Shadow protected ScrollableContainer descriptionComponent;
 
     @Shadow protected Rectangle bounds;
@@ -22,6 +22,8 @@ public class MixinAbstractDialog implements IMouseRelease {
     @Shadow protected Button learnButton;
 
     @Shadow protected Button regretButton;
+
+    @Shadow public abstract Rectangle getDescriptionsBounds();
 
     @Inject(method = "mouseClicked", at = @At("HEAD"))
     private void fixScrollClick(double screenX, double screenY, int button, CallbackInfoReturnable<Boolean> cir) {
@@ -31,6 +33,7 @@ public class MixinAbstractDialog implements IMouseRelease {
         if (this.descriptionComponent != null) {
             double containerX = screenX - this.bounds.x - 5.0F;
             double containerY = screenY - this.bounds.y - 5.0F;
+            this.descriptionComponent.setBounds(this.getDescriptionsBounds()); // fix NPE
             this.descriptionComponent.mouseClicked(containerX, containerY, button);
         }
     }
@@ -43,6 +46,7 @@ public class MixinAbstractDialog implements IMouseRelease {
         if (this.descriptionComponent != null) {
             double containerX = screenX - this.bounds.x - 5.0F;
             double containerY = screenY - this.bounds.y - 5.0F;
+            this.descriptionComponent.setBounds(this.getDescriptionsBounds()); // fix NPE
             this.descriptionComponent.mouseMoved(containerX, containerY);
         }
     }
@@ -66,6 +70,7 @@ public class MixinAbstractDialog implements IMouseRelease {
         if (this.descriptionComponent != null) {
             double containerX = mouseX - this.bounds.x - 5.0F;
             double containerY = mouseY - this.bounds.y - 5.0F;
+            this.descriptionComponent.setBounds(this.getDescriptionsBounds()); // fix NPE
             this.descriptionComponent.mouseReleased(containerX, containerY, button);
         }
 
