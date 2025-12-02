@@ -27,6 +27,9 @@ public class BrokenCurioAlert {
 
     private static int alertColor = 0xFF0000; // Red
     private static int firstBrokenTick = 0; // only show alert after 20 ticks (1 second) - prevent flashing when traveling from/to vaults where the check logic changes
+    private static Component lastText = new TextComponent("");
+    private static boolean shouldDraw = false;
+    private static int lastTick = 0;
 
     @SubscribeEvent
     public static void onRenderGameOverlay(RenderGameOverlayEvent event) {
@@ -35,10 +38,18 @@ public class BrokenCurioAlert {
         if (player == null || player.isSpectator() || ClientVaults.getActive().isPresent()) {return;}
         if (!(QOLHuntersClientConfigs.BROKEN_CURIO_ALERT.get())) {return;}
 
+        if (lastTick == Minecraft.getInstance().player.tickCount) {
+            if (shouldDraw) {
+                drawText(event.getMatrixStack(), lastText);
+            }
+            return;
+        }
         var trinket = brokenTrinket(player);
         var vaultCharm = brokenGodCharm(player);
         var voidStone = brokenVoidStone(player);
 
+        lastTick = Minecraft.getInstance().player.tickCount;
+        shouldDraw = false;
         if (!trinket && !vaultCharm && !voidStone) {
             firstBrokenTick = 0; // reset the tick counter if no broken curios
             return;
@@ -70,6 +81,8 @@ public class BrokenCurioAlert {
         }
 
         text.withStyle(ChatFormatting.BOLD);
+        shouldDraw = true;
+        lastText = text;
         drawText(event.getMatrixStack(), text);
     }
 
