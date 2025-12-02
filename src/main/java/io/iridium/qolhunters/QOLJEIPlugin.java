@@ -36,7 +36,7 @@ public class QOLJEIPlugin implements IModPlugin {
                 new IGuiContainerHandler<CardDeckScreen>() {
                     @Override
                     public List<Rect2i> getGuiExtraAreas(CardDeckScreen screen) {
-                        return java.util.Collections.singletonList(new Rect2i(screen.getGuiLeft() - 120, screen.getGuiTop() -5, 107, 189));
+                        return java.util.Collections.singletonList(new Rect2i(screen.getGuiLeft() - 140, screen.getGuiTop() -5, 130, 189));
                     }
                 });
 
