@@ -50,7 +50,6 @@
     "keybinds.MixinVaultEnchanterScreen",
     "magnetstate.MixinItemRenderer",
     "multilinestatlabels.MixinStatLabelElementBuilder",
-    "panregion.MixinAbstractPanRegion",
     "paradox.MixinGateLockRenderer",
     "player.MixinPlayer",
     "prestigetoggles.MixinPrestigePowerWidget",
@@ -79,7 +78,9 @@
     "vaultmodifiers.MixinModifiersRenderer",
     "voidcrucible.MixinScrollableItemListElement",
     "voidcrucible.MixinThemeListElement",
-    "voidcrucible.MixinVoidCrucibleScreen"
+    "voidcrucible.MixinVoidCrucibleScreen",
+    "zoomoutfurther.MixinAbstractPanRegion",
+    "zoomoutfurther.MixinVaultMapElement"
   ],
   "minVersion": "0.8"
 }
