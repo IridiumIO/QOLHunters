@@ -105,7 +105,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isParentTierBelowMaxLearnable = ((TieredSkill) parentAbility.getSpecialization()).getUnmodifiedTier() < ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isTargetTierBelowMaxLearnable = ((TieredSkill) target.getSpecialization()).getUnmodifiedTier() <= ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isVaultLevelSufficient = VaultBarOverlay.vaultLevel >= current.getUnlockLevel();
-        boolean isInRoyaleVault = ClientVaults.getActive().isPresent() && VaultUtils.isRoyaleVault(ClientVaults.getActive().get());
+        boolean isInRoyaleVault = ClientVaults.getActive().map(VaultUtils::isRoyaleVault).orElse(false);
 
 
         // Determine the button text and action based on whether the target is a specialization
@@ -173,11 +173,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             this.descriptionContentComponent.append("\n\n");
 
             TieredSkill tieredSkill = (TieredSkill) target.getSpecialization();
-
-            Field tiers = tieredSkill.getClass().getDeclaredField("tiers");
-            tiers.setAccessible(true);
-            List<LearnableSkill> childTiers = (List<LearnableSkill>) tiers.get(tieredSkill);
-
+            List<LearnableSkill> childTiers = ((AccessorTieredSkill)tieredSkill).getTiers();
 
             int containerWidth =  this.getDescriptionsBounds().width;
             int charWidth = Minecraft.getInstance().font.width("⋮");
