@@ -18,7 +18,10 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.EnumValue<CakeVaultOverlayStyle> CAKE_VAULT_OVERLAY_STYLE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_INV_COUNT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SCAVENGER_HIGHLIGHTER;
-    public static final ForgeConfigSpec.EnumValue<BrazierHologramMode> BRAZIER_HOLOGRAM_MODE;
+    public static final ForgeConfigSpec.EnumValue<BrazierHologramLineMode> BRAZIER_HOLOGRAM_MODIFIER_NAME;
+    public static final ForgeConfigSpec.EnumValue<BrazierHologramLineMode> BRAZIER_HOLOGRAM_MODIFIER_DESCRIPTION;
+    public static final ForgeConfigSpec.ConfigValue<Integer> BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> BRAZIER_DYNAMIC_SCALE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SAVE_KEYBINDS_WITH_SKILL_ALTAR;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
