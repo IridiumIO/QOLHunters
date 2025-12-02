@@ -1,152 +1,129 @@
 package io.iridium.qolhunters.mixin.brazier;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.sugar.ref.LocalFloatRef;
 import com.mojang.blaze3d.platform.InputConstants;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.math.Vector3f;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import iskallia.vault.block.MonolithBlock;
 import iskallia.vault.block.entity.MonolithTileEntity;
 import iskallia.vault.block.render.MonolithRenderer;
 import iskallia.vault.config.VaultModifierOverlayConfig;
-import iskallia.vault.core.vault.modifier.VaultModifierStack;
-import iskallia.vault.core.vault.modifier.registry.VaultModifierRegistry;
-import iskallia.vault.core.vault.overlay.ModifiersRenderer;
 import iskallia.vault.init.ModConfigs;
-import iskallia.vault.task.renderer.context.RendererContext;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.phys.Vec3;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-@Mixin(MonolithRenderer.class)
+/**
+ * Adds dynamic scaling to brazier hologram and configurable hologram content
+ *
+ * default => always show everything (icon, name, description)
+ * mode1 => always show icons, if < 12 blocks away show everything
+ * mode2 => always show icons, if SHIFT show everything
+ * mode3 => always show icons + name, if SHIFT show everything
+ */
+@Mixin(value = MonolithRenderer.class, remap = false)
 public class MixinMonolithRenderer {
 
-    @Shadow(remap = false) @Final
-    private Font font;
+    @Unique private static final ThreadLocal<Double> qolhunters$MONOLITH_DIST = ThreadLocal.withInitial(() -> 0.0);
 
-    /**
-     * @author
-     * @reason
-     */
-    @Overwrite(remap = false)
-    public void render(MonolithTileEntity tileEntity, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int combinedLight, int combinedOverlayIn) {
-        RenderSystem.enableDepthTest();
-        matrixStack.pushPose();
-
+    @Inject(method = "render(Liskallia/vault/block/entity/MonolithTileEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(DDD)V", ordinal = 0, remap = true))
+    private void modifyScale(MonolithTileEntity tileEntity, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int combinedLight,
+                             int combinedOverlayIn, CallbackInfo ci, @Local(name = "scale") LocalFloatRef scaleVar) {
         Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
         Vec3 tilePos = new Vec3(tileEntity.getBlockPos().getX() + 0.5, tileEntity.getBlockPos().getY() + 0.5, tileEntity.getBlockPos().getZ() + 0.5);
         double distance = cameraPos.distanceTo(tilePos);
+        qolhunters$MONOLITH_DIST.set(distance);
 
+        if (!QOLHuntersClientConfigs.BRAZIER_DYNAMIC_SCALE.get()) {
+            return;
+        }
         float minDistance = 0.0F;
         float maxDistance = 28.0F;
         float minScale = 0.02F;
         float maxScale = 0.07F;
 
-        float scale = minScale + (maxScale - minScale) * ((float)distance - minDistance) / (maxDistance - minDistance);
+        float scale = minScale + (maxScale - minScale) * ((float) distance - minDistance) / (maxDistance - minDistance);
         scale = Math.max(minScale, Math.min(scale, maxScale));
-        matrixStack.translate(0.5, 2.5, 0.5);
-        matrixStack.scale(scale, scale, scale);
-        matrixStack.mulPose(Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation());
-        matrixStack.mulPose(Vector3f.ZP.rotationDegrees(180.0F));
-        matrixStack.translate(-65.0, -11.0 * scale/0.02F - (2.5F * scale/0.02F), 0.0);
-        RendererContext context = new RendererContext(matrixStack, partialTicks, MultiBufferSource.immediate(Tesselator.getInstance().getBuilder()), this.font);
-        MonolithBlock.State state = (MonolithBlock.State)tileEntity.getBlockState().getValue(MonolithBlock.STATE);
-        List<Component> lines = new ArrayList();
-        List<Component> description = new ArrayList();
-        List<VaultModifierStack> stack = new ArrayList();
-        if (tileEntity.isOverStacking() && state == MonolithBlock.State.EXTINGUISHED) {
-            lines.add((new TextComponent("Pillage for Loot")).withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)));
-
-        }
-
-        tileEntity.getModifiers().forEach((id, count) -> {
-            VaultModifierRegistry.getOpt(id).ifPresent((modifier) -> {
-
-                if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.DEFAULT) {
-                    lines.add(modifier.getChatDisplayNameComponent(count));
-                    description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE1) {
-                    if (distance < 12) {
-                        lines.add(modifier.getChatDisplayNameComponent(count));
-                        description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-
-                    }
-
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE2) {
-                    if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
-                        lines.add(modifier.getChatDisplayNameComponent(count));
-                        description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-
-                    }
-                }else if (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODE.get() == QOLHuntersClientConfigs.BrazierHologramMode.MODE3) {
-                    lines.add(modifier.getChatDisplayNameComponent(count));
-                    if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
-                        description.add((new TextComponent(modifier.getDisplayDescriptionFormatted(count))).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-                    }
-                }
-
-
-
-                stack.add(VaultModifierStack.of(modifier, count));
-            });
-        });
-        Collections.reverse(lines);
-        Collections.reverse(stack);
-        Iterator var13 = description.iterator();
-
-        Component line;
-        MutableComponent shadow;
-        while(var13.hasNext()) {
-            line = (Component)var13.next();
-            shadow = (new TextComponent("")).append(line.getString()).withStyle(Style.EMPTY.withColor(ChatFormatting.BLACK));
-            context.renderText(shadow, 66.0F, 68.0F, true, true);
-            context.renderText(line, 65.0F, 67.0F, true, true);
-            context.translate(0.0, -11.0, 0.0);
-        }
-
-        var13 = lines.iterator();
-
-        while(var13.hasNext()) {
-            line = (Component)var13.next();
-            shadow = (new TextComponent("")).append(line.getString()).withStyle(Style.EMPTY.withColor(ChatFormatting.BLACK));
-            context.renderText(shadow, 66.0F, 66.0F, true, true);
-            context.renderText(line, 65.0F, 65.0F, true, true);
-            context.translate(0.0, -11.0, 0.0);
-        }
-
-        Minecraft minecraft = Minecraft.getInstance();
-        double xTranslation = stack.size() > 1 ? 82.5 + (double)(stack.size() * 5) : 82.5;
-        matrixStack.translate(xTranslation, 73.0, 0.0);
-        matrixStack.pushPose();
-        int right = minecraft.getWindow().getGuiScaledWidth();
-        int bottom = minecraft.getWindow().getGuiScaledHeight();
-        matrixStack.translate((double)(-right), (double)(-bottom), 0.0);
-
-        VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
-
-        matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
-
-        ModifiersRenderer.renderVaultModifiersWithDepth(stack, matrixStack, false);
-
-        matrixStack.popPose();
-        matrixStack.popPose();
+        scaleVar.set(scale);
     }
 
+
+    @Inject(method = "render(Liskallia/vault/block/entity/MonolithTileEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "NEW", target = "(Lcom/mojang/blaze3d/vertex/PoseStack;FLnet/minecraft/client/renderer/MultiBufferSource$BufferSource;Lnet/minecraft/client/gui/Font;)Liskallia/vault/task/renderer/context/RendererContext;"))
+    private void move(MonolithTileEntity tileEntity, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int combinedLight,
+                      int combinedOverlayIn, CallbackInfo ci, @Local(name = "scale") float scale) {
+        if (!QOLHuntersClientConfigs.BRAZIER_DYNAMIC_SCALE.get()) {
+            return;
+        }
+        matrixStack.translate(0.0F, Math.min(0, -(1.5 * 550 * scale) + 11), 0.0F);
+    }
+
+    @WrapOperation(method = "lambda$render$0", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", ordinal = 0))
+    private static <E> boolean modifyNameLines(List<Component> instance, E e, Operation<Boolean> original) {
+        double distance = qolhunters$MONOLITH_DIST.get();
+        switch (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_NAME.get()) {
+            case NEAR -> {
+                if (distance > QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE.get()) {
+                    return false; // no name if far
+                }
+            }
+            case SHIFT -> {
+                if (!InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
+                    return false; // no name if not shift
+                }
+            }
+            case SHIFT_OR_NEAR -> {
+                if (distance > QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE.get()
+                    && !InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
+                    return false; // far and not shift
+                }
+            }
+            default -> {/* no change */}
+        }
+        // name otherwise
+        return original.call(instance, e);
+    }
+
+    @WrapOperation(method = "lambda$render$0", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", ordinal = 1))
+    private static <E> boolean modifyDescriptionLines(List<Component> instance, E e, Operation<Boolean> original) {
+        double distance = qolhunters$MONOLITH_DIST.get();
+        switch (QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_DESCRIPTION.get()) {
+            case NEAR -> {
+                if (distance > QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE.get()) {
+                    return false; // no description if far
+                }
+            }
+            case SHIFT -> {
+                if (!InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
+                    return false; // no description if not shift
+                }
+
+            }
+            case SHIFT_OR_NEAR -> {
+                if (distance > QOLHuntersClientConfigs.BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE.get()
+                    && !InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), InputConstants.KEY_LSHIFT)) {
+                    return false; // far and not shift
+                }
+            }
+            default -> {/* no change */}
+        }
+        // name otherwise
+        return original.call(instance, e);
+    }
+
+    @Inject(method = "render(Liskallia/vault/block/entity/MonolithTileEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Liskallia/vault/core/vault/overlay/ModifiersRenderer;renderVaultModifiersWithDepth(Ljava/util/List;Lcom/mojang/blaze3d/vertex/PoseStack;Z)V"))
+    private void shiftModifiersUp(MonolithTileEntity tileEntity, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer,
+                                  int combinedLight, int combinedOverlayIn, CallbackInfo ci) {
+        VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
+        matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
+    }
 }
