@@ -35,8 +35,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> PARADOX_GATE_ZOOM;
-
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BARTERING_DISCOUNT_DISPLAY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_SHOPPING_PED_THROW_ITEMS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_TREASURE_PED_THROW_ITEMS;
@@ -102,12 +100,13 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> MAGNET_STATE_OVERLAY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ZOOM_OUT_FURTHER;
 
-    public enum BrazierHologramMode {
-        DEFAULT,
-        MODE1,
-        MODE2,
-        MODE3
+    public enum BrazierHologramLineMode {
+        ALWAYS,
+        NEAR,
+        SHIFT,
+        SHIFT_OR_NEAR
     }
+
 
     public enum CakeVaultOverlayStyle {
         VIGNETTE,
@@ -178,7 +177,10 @@ public class QOLHuntersClientConfigs {
         public static final String CAKE_VAULT_OVERLAY_STYLE = "Cake Vault Overlay Style";
         public static final String SCAVENGER_INV_COUNT = "Scavenger Inventory Count";
         public static final String SAVE_KEYBINDS_WITH_SKILL_ALTAR = "Skill Altar Save Keybinds";
-        public static final String BRAZIER_HOLOGRAM_MODE = "Brazier Hologram Mode";
+        public static final String BRAZIER_HOLOGRAM_MODIFIER_NAME = "Show Modifier Name on Brazier Hologram";
+        public static final String BRAZIER_HOLOGRAM_MODIFIER_DESCRIPTION = "Show Modifier Description on Brazier Hologram";
+        public static final String BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE = "Near distance";
+        public static final String BRAZIER_DYNAMIC_SCALE = "Dynamic Hologram Scale";
         public static final String SCAVENGER_HIGHLIGHTER = "Scavenger Highlighter";
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
@@ -187,7 +189,6 @@ public class QOLHuntersClientConfigs {
         public static final String GREEN_RESEARCHED = "Green Unlocked Researches";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
-        public static final String PARADOX_GATE_ZOOM = "Paradox Gate Zoom";
         public static final String ENABLE_BARTERING_DISCOUNT_DISPLAY = "Enable Bartering Discount Display";
         public static final String ENABLE_SHOPPING_PED_THROW_ITEMS = "Shopping Pedestal Throws Items";
         public static final String ENABLE_TREASURE_PED_THROW_ITEMS = "Treasure Pedestal Throws Items";
@@ -253,7 +254,6 @@ public class QOLHuntersClientConfigs {
             public static final String SCAVENGER_GROUP = "Scavenger Vaults";
             public static final String CAKE_GROUP = "Cake Vaults";
             public static final String BINGO_GROUP = "Bingo Vaults";
-            public static final String PARADOX_GATE_GROUP = "Paradox Vaults";
             public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
@@ -324,7 +324,10 @@ public class QOLHuntersClientConfigs {
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BRAZIER_GROUP);
-                BRAZIER_HOLOGRAM_MODE = CLIENT_BUILDER.comment("Changes the mode of the Brazier Hologram\nDEFAULT = Always show all icons and text\nMODE1 = Always show icons, text renders when close to the brazier\nMODE2 = Always show icons, hold SHIFT to show text\nMODE3 = Always show icons and labels, hold SHIFT to show descriptions").defineEnum(ConfigPaths.BRAZIER_HOLOGRAM_MODE, BrazierHologramMode.DEFAULT);
+                BRAZIER_HOLOGRAM_MODIFIER_NAME = CLIENT_BUILDER.comment("When should brazier hologram display modifier names.").defineEnum(ConfigPaths.BRAZIER_HOLOGRAM_MODIFIER_NAME, BrazierHologramLineMode.ALWAYS);
+                BRAZIER_HOLOGRAM_MODIFIER_DESCRIPTION = CLIENT_BUILDER.comment("When should brazier hologram display modifier descriptions.").defineEnum(ConfigPaths.BRAZIER_HOLOGRAM_MODIFIER_DESCRIPTION, BrazierHologramLineMode.ALWAYS);
+                BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE = CLIENT_BUILDER.comment("How far should modifier info render when the mode is NEAR.").defineInRange(ConfigPaths.BRAZIER_HOLOGRAM_MODIFIER_NEAR_DISTANCE, 12, 0, 64);
+                BRAZIER_DYNAMIC_SCALE = CLIENT_BUILDER.comment("Make Brazier Hologram larger when you're further away to make it readable").define(ConfigPaths.BRAZIER_DYNAMIC_SCALE, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.CAKE_GROUP);
@@ -351,10 +354,6 @@ public class QOLHuntersClientConfigs {
                     GOD_OBJECTIVE_Y_OFFSET = CLIENT_BUILDER.comment("Changes the Y offset of the God Objective\nDefined as % of screen height").defineInRange(ConfigPaths.GOD_OBJECTIVE_Y_OFFSET, 45, 0, 100);
                 CLIENT_BUILDER.pop();
 
-            CLIENT_BUILDER.pop();
-
-            CLIENT_BUILDER.push(ConfigPaths.Group.PARADOX_GATE_GROUP);
-                PARADOX_GATE_ZOOM = CLIENT_BUILDER.comment("Hold <SHIFT> to enlarge the paradox vault gate unlock text.\nNote: Designed for BUILD mode, but currently also takes effect when running the vault too.").define(ConfigPaths.PARADOX_GATE_ZOOM, true);
             CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.SHOPPING_GROUP);
