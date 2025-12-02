@@ -1,9 +1,10 @@
 package io.iridium.qolhunters.mixin.scavenger;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
-import io.iridium.qolhunters.util.SharedFunctions;
+import io.iridium.qolhunters.features.vault_scavenger.NamedItem;
 import iskallia.vault.client.gui.helper.UIHelper;
 import iskallia.vault.core.vault.objective.ScavengerObjective;
 import iskallia.vault.core.vault.objective.scavenger.ScavengerGoal;
@@ -13,34 +14,29 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-
-import java.util.List;
 
 @Mixin(ScavengerObjective.class)
 public class MixinScavengerObjective {
 
 
     @Inject(method = "renderItemRequirement", at = @At(value = "INVOKE",
-            target ="Liskallia/vault/client/gui/helper/UIHelper;renderCenteredWrappedText(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/network/chat/Component;II)I", shift = At.Shift.AFTER),
-            cancellable = true, remap = false, locals = LocalCapture.CAPTURE_FAILHARD)
-    private static void renderItemRequirement(PoseStack matrixStack, ScavengerGoal goal, int itemBoxWidth, int totalX, int totalY, float partialTicks, Player player, CallbackInfoReturnable<Integer> cir, List<ScavengerGoal.Entry> entries, float time, ScavengerGoal.Entry entry, ItemStack requiredStack, ResourceLocation iconPath, String requiredText, MutableComponent cmp){
+        target = "Liskallia/vault/client/gui/helper/UIHelper;renderCenteredWrappedText(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/network/chat/Component;II)I", shift = At.Shift.AFTER), cancellable = true, remap = false)
+    private static void renderItemRequirement(PoseStack matrixStack, ScavengerGoal goal, int itemBoxWidth, int totalX, int totalY, float partialTicks, Player player, CallbackInfoReturnable<Integer> cir,
+                                              @Local(name = "entry") ScavengerGoal.Entry entry, @Local(name = "requiredStack") ItemStack requiredStack){
 
-        if(!Scavenger.ScavengerItems.containsKey(requiredStack.getHoverName().getString())){
-
-            Scavenger.ScavengerItems.put(requiredStack.getHoverName().getString(), entry.getColor());
-
+        NamedItem scavItem = NamedItem.of(requiredStack);
+        if(!Scavenger.scavengerColors.containsKey(scavItem)){
+            Scavenger.scavengerColors.put(scavItem, entry.getColor());
         }
 
         if(QOLHuntersClientConfigs.SCAVENGER_INV_COUNT.get()) {
-            Integer inventoryItems = SharedFunctions.GetPlayerInventoryItemCount(Minecraft.getInstance().player, requiredStack, 500);
+            Integer inventoryItems = Scavenger.getPlayerInventoryItemCount(Minecraft.getInstance().player, scavItem, 500);
 
             if (inventoryItems > 0) {
                 matrixStack.translate(0.0, 10.0, 0.0);
