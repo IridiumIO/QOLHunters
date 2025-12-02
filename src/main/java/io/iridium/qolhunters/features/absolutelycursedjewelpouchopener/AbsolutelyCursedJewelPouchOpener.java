@@ -2,6 +2,7 @@ package io.iridium.qolhunters.features.absolutelycursedjewelpouchopener;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
+import iskallia.vault.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionHand;
@@ -60,7 +61,7 @@ public class AbsolutelyCursedJewelPouchOpener {
                     LocalPlayer player = Minecraft.getInstance().player;
 
                     for (ItemStack stack: player.getInventory().items){
-                        if (stack.getHoverName().getString().contains("Jewel Pouch")){
+                        if (stack.getItem() == ModItems.JEWEL_POUCH){
 
                             int currentBoosterSlot = DataSlotToNetworkSlot(player.getInventory().selected);
                             int nextBoosterSlot = DataSlotToNetworkSlot(player.getInventory().findSlotMatchingItem(stack));
