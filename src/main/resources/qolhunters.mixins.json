@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "abilities.AccessorTieredSkill",
     "abilities.MixinAbilitiesOverlay",
     "abilities.MixinAbilityDialog",
     "abilities.MixinAbilityWidgetSelectable",
@@ -50,7 +51,6 @@
     "keybinds.MixinVaultEnchanterScreen",
     "magnetstate.MixinItemRenderer",
     "multilinestatlabels.MixinStatLabelElementBuilder",
-    "paradox.MixinGateLockRenderer",
     "player.MixinPlayer",
     "prestigetoggles.MixinPrestigePowerWidget",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
