@@ -46,11 +46,10 @@ public class BrokenCurioAlert {
         }
         var trinket = brokenTrinket(player);
         var vaultCharm = brokenGodCharm(player);
-        var voidStone = brokenVoidStone(player);
 
         lastTick = Minecraft.getInstance().player.tickCount;
         shouldDraw = false;
-        if (!trinket && !vaultCharm && !voidStone) {
+        if (!trinket && !vaultCharm) {
             firstBrokenTick = 0; // reset the tick counter if no broken curios
             return;
         }
@@ -73,12 +72,6 @@ public class BrokenCurioAlert {
             }
             text.append(new TextComponent("Charm"));
         }
-        if (voidStone) {
-            if (trinket || vaultCharm) {
-                text.append(new TextComponent(", "));
-            }
-            text.append(new TextComponent("Void Stone"));
-        }
 
         text.withStyle(ChatFormatting.BOLD);
         shouldDraw = true;
@@ -97,14 +90,6 @@ public class BrokenCurioAlert {
         RenderSystem.enableBlend();
         fontRenderer.draw(matrixStack, text, x, y, alertColor);
         RenderSystem.disableBlend();
-    }
-
-    private static boolean brokenVoidStone(Player player) {
-        // simple check for void stone
-        if (CuriosApi.getCuriosHelper().findFirstCurio(player, ModItems.VOID_STONE.getItem()).isPresent()) {
-            return VoidStoneItem.getVoidStone(player).isEmpty(); // get* returns empty if the item is not usable
-        }
-        return false;
     }
 
     private static boolean brokenGodCharm(Player player) {

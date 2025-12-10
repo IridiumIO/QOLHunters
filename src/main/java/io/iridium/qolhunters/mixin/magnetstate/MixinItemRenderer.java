@@ -37,9 +37,9 @@ public class MixinItemRenderer {
         if (stack.getItem() == ModItems.MAGNET && QOLHuntersClientConfigs.MAGNET_STATE_OVERLAY.get() && GearDataCache.of(stack).getState() == VaultGearState.IDENTIFIED) {
             var pickupState = MagnetItem.getPickupState(stack);
             ResourceLocation overlayIcon = switch (pickupState) {
-                case VOID -> new ResourceLocation(QOLHunters.MOD_ID, "textures/gui/magnet_state/void.png");
-                case PICKUP_ONLY -> new ResourceLocation(QOLHunters.MOD_ID, "textures/gui/magnet_state/pickup.png");
-                case OFF -> new ResourceLocation(QOLHunters.MOD_ID, "textures/gui/magnet_state/off.png");
+                case VOID -> ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/gui/magnet_state/void.png");
+                case PICKUP_ONLY -> ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/gui/magnet_state/pickup.png");
+                case OFF -> ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/gui/magnet_state/off.png");
                 default -> null;
             };
             if (overlayIcon != null) {

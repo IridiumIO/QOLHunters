@@ -22,7 +22,7 @@ public class MixinAscensionCrystalObjective {
     protected int stacks;
 
     @Inject(method = "addText", at = @At(value = "HEAD"))
-    private void modifyStacksTooltip(List<Component> tooltip, int minIndex, TooltipFlag flag, float time, CallbackInfo ci) {
+    private void modifyStacksTooltip(List<Component> tooltip, int minIndex, TooltipFlag flag, float time, int level, CallbackInfo ci) {
         if(QOLHuntersClientConfigs.ASCENSION_CRYSTAL_EMBER_GRANT_AMOUNT.get()) {
             tooltip.remove(tooltip.size() - 1);
             if (Screen.hasShiftDown()) {

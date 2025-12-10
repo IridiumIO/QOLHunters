@@ -14,7 +14,7 @@ import java.util.Optional;
 public abstract class MixinModifiersRenderer {
 
 
-    @Redirect(method = "renderVaultModifiers(Ljava/util/Map;Lcom/mojang/blaze3d/vertex/PoseStack;ZZ)V", at = @At(value = "INVOKE", target = "Liskallia/vault/core/vault/modifier/spi/VaultModifier;getIcon()Ljava/util/Optional;"), remap = false)
+    @Redirect(method = "renderVaultModifiers(Ljava/util/Map;Lcom/mojang/blaze3d/vertex/PoseStack;ZFLiskallia/vault/util/Alignment;Z)V", at = @At(value = "INVOKE", target = "Liskallia/vault/core/vault/modifier/spi/VaultModifier;getIcon()Ljava/util/Optional;"), remap = false)
     private static Optional<ResourceLocation> getIconRedirect(VaultModifier<?> instance) {
 
         return VaultModifierOverlays.getModifierIcon(instance);

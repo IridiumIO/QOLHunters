@@ -5,7 +5,7 @@ import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.shopbarteringdiscountdisplay.Shopping;
 import io.iridium.qolhunters.util.SharedFunctions;
 import iskallia.vault.block.render.ShopPedestalBlockTileRenderer;
-import iskallia.vault.client.ClientExpertiseData;
+import iskallia.vault.client.data.ClientExpertiseData;
 import iskallia.vault.skill.base.TieredSkill;
 import iskallia.vault.skill.expertise.type.BarteringExpertise;
 import net.minecraft.client.Minecraft;
