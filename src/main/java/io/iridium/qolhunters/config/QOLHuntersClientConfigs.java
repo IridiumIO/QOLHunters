@@ -81,8 +81,8 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_JEWEL_APPLICATION;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_SCREEN_CARD_DECK;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> ELIXIR_SHADOWLESS_ORBS;
-    public static final ForgeConfigSpec.EnumValue<ElixirOrbCountCulling> ELIXIR_ORB_CULLING;
+//    public static final ForgeConfigSpec.ConfigValue<Boolean> ELIXIR_SHADOWLESS_ORBS;
+//    public static final ForgeConfigSpec.EnumValue<ElixirOrbCountCulling> ELIXIR_ORB_CULLING;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_SCRAPPY;
     public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_COMMON;
@@ -342,10 +342,10 @@ public class QOLHuntersClientConfigs {
                 BINGO_GRID_SELECTION_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid selection overlay").defineEnum(ConfigPaths.BINGO_GRID_SELECTION_COLOR, BingoGridSelectionColor.YELLOW);
             CLIENT_BUILDER.pop();
 
-            CLIENT_BUILDER.push(ConfigPaths.Group.ELIXIR_GROUP);
-                ELIXIR_SHADOWLESS_ORBS = CLIENT_BUILDER.comment("Removes shadows from Elixir orbs. Significantly improves performance.\nRequires Restart").define(ConfigPaths.ELIXIR_SHADOWLESS_ORBS, true);
-                ELIXIR_ORB_CULLING = CLIENT_BUILDER.comment("Culls Elixir orbs when there are more than this many on screen\nLOW=100\nMED=50\nHIGH=25").defineEnum(ConfigPaths.ELIXIR_ORB_CULLING, ElixirOrbCountCulling.MED);
-            CLIENT_BUILDER.pop();
+//            CLIENT_BUILDER.push(ConfigPaths.Group.ELIXIR_GROUP);
+//                ELIXIR_SHADOWLESS_ORBS = CLIENT_BUILDER.comment("Removes shadows from Elixir orbs. Significantly improves performance.\nRequires Restart").define(ConfigPaths.ELIXIR_SHADOWLESS_ORBS, true);
+//                ELIXIR_ORB_CULLING = CLIENT_BUILDER.comment("Culls Elixir orbs when there are more than this many on screen\nLOW=100\nMED=50\nHIGH=25").defineEnum(ConfigPaths.ELIXIR_ORB_CULLING, ElixirOrbCountCulling.MED);
+//            CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.HUD_POSITION_GROUP);
 
