@@ -19,7 +19,7 @@ public class QOLJEIPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(QOLHunters.MOD_ID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "jei_plugin");
     }
 
     @Override

@@ -22,7 +22,7 @@ public abstract class MixinCakeObjective {
     @Shadow(remap = false) @Final
     protected static ResourceLocation VIGNETTE;
     @Unique
-    private static final ResourceLocation CAKE_PING_LEFT = new ResourceLocation(QOLHunters.MOD_ID, "textures/gui/cake/ping.png");
+    private static final ResourceLocation CAKE_PING_LEFT = ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/gui/cake/ping.png");
 
 
     /**

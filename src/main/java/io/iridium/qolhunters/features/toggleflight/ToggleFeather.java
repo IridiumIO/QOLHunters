@@ -20,7 +20,7 @@ public class ToggleFeather {
     public static Minecraft mc = Minecraft.getInstance();
     public static boolean featherEnabled = true;
 
-    private static final ResourceLocation ICON = new ResourceLocation(QOLHunters.MOD_ID, "textures/hud/feather_disabled.png");
+    private static final ResourceLocation ICON = ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/hud/feather_disabled.png");
 
     @SubscribeEvent
     public static void onKeyInput(InputEvent.KeyInputEvent event) {

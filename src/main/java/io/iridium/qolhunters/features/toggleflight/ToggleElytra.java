@@ -20,7 +20,7 @@ public class ToggleElytra {
     public static Minecraft mc = Minecraft.getInstance();
     public static boolean elytraEnabled = true;
 
-    private static final ResourceLocation ICON = new ResourceLocation(QOLHunters.MOD_ID, "textures/hud/elytra_disabled.png");
+    private static final ResourceLocation ICON = ResourceLocation.fromNamespaceAndPath(QOLHunters.MOD_ID, "textures/hud/elytra_disabled.png");
 
 
     @SubscribeEvent

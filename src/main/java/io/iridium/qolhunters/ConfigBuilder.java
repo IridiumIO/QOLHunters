@@ -46,7 +46,7 @@ public class ConfigBuilder {
 
         LOGGER.info("QOLHunters: Copying resource {} to file {}", resourceName, targetFile);
 
-        ResourceLocation resource = new ResourceLocation("qolhunters", resourceName);
+        ResourceLocation resource = ResourceLocation.fromNamespaceAndPath("qolhunters", resourceName);
 
         if (targetFile.exists()) {
             targetFile.delete();

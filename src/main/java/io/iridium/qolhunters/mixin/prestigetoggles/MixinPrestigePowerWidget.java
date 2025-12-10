@@ -3,7 +3,7 @@ package io.iridium.qolhunters.mixin.prestigetoggles;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import iskallia.vault.client.ClientPrestigePowersData;
+import iskallia.vault.client.data.ClientPrestigePowersData;
 import iskallia.vault.client.atlas.ITextureAtlas;
 import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.framework.ScreenTextures;

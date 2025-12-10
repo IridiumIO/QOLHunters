@@ -20,6 +20,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
+apply from: 'vault-configs.gradle' // automatic downloading of vault configs
 
 mixin {
     add sourceSets.main, "qolhunters.refmap.json"
