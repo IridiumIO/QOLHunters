@@ -47,7 +47,6 @@
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
     "magnetstate.MixinItemRenderer",
-    "multilinestatlabels.MixinStatLabelElementBuilder",
     "player.MixinPlayer",
     "prestigetoggles.MixinPrestigePowerWidget",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
