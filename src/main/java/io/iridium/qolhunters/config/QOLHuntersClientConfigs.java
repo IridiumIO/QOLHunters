@@ -28,7 +28,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_VAULT_STATIONS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BROKEN_CURIO_ALERT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> MULTILINE_STAT_LABELS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> PRESTIGE_TOGGLES;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RESOURCE_CARD_ROLL_RANGE;
 
@@ -165,7 +164,6 @@ public class QOLHuntersClientConfigs {
 
     public record ConfigPaths() {
 
-        public static final String MULTILINE_STAT_LABELS = "Multiline Stat Labels";
         public static final String BETTER_BINGO_DESCRIPTIONS = "Better Bingo Descriptions";
 
         public static final String VAULT_MODIFIER_TEXT_OVERLAYS = "Vault Modifier Text Overlays";
@@ -302,7 +300,6 @@ public class QOLHuntersClientConfigs {
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
             BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
             GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
-            MULTILINE_STAT_LABELS = CLIENT_BUILDER.comment("Fixes lines breaks in descriptions in the 'Statistics' Tab.").define(ConfigPaths.MULTILINE_STAT_LABELS, true);
             PRESTIGE_TOGGLES = CLIENT_BUILDER.comment("Adds toggles to prestige selection screen").define(ConfigPaths.PRESTIGE_TOGGLES, true);
             RESOURCE_CARD_ROLL_RANGE = CLIENT_BUILDER.comment("Adds roll ranges to resource cards when holding shift").define(ConfigPaths.RESOURCE_CARD_ROLL_RANGE, true);
             BETTER_LOOT_STATS = CLIENT_BUILDER.comment("Show raw chests and speed up vault history screen").define(ConfigPaths.BETTER_LOOT_STATS, true);
