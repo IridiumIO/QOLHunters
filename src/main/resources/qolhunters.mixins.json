@@ -30,7 +30,6 @@
     "cardsearcher.MixinWidgetContainer",
     "compassspinout.MixinModModels",
     "configs.MixinModConfigs",
-    "dungeondoors.MixinClientboundSetSubtitleTextPacket",
 //    "elixirrenderer.MixinElixirOrbRenderer",
 //    "elixirrenderer.MixinSummonElixirOrbMessage",
     "fixscrollbar.MixinAbstractDialog",
