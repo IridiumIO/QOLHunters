@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = AbstractPanRegion.class, remap = false)
 public class MixinAbstractPanRegion {
 
-    @WrapOperation(method = "clampViewportScale", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F"))
+    @WrapOperation(method = "clampViewportScale", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", remap = true))
     private float zoomOutFurther(float pValue, float pMin, float pMax, Operation<Float> original) {
         // Mth.clamp(this.viewportScale, 0.3F, 5F)
         if (QOLHuntersClientConfigs.ZOOM_OUT_FURTHER.get()) {
