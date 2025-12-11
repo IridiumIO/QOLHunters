@@ -28,7 +28,6 @@
     "cardrollrange.MixinTaskLootCardModifier",
     "cardsearcher.MixinEditBox",
     "cardsearcher.MixinWidgetContainer",
-    "compassspinout.MixinModModels",
     "configs.MixinModConfigs",
 //    "elixirrenderer.MixinElixirOrbRenderer",
 //    "elixirrenderer.MixinSummonElixirOrbMessage",

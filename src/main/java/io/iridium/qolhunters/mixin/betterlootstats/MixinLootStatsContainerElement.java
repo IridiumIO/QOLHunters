@@ -59,13 +59,4 @@ public class MixinLootStatsContainerElement {
         }
         return original.call(instance, e);
     }
-
-    @ModifyConstant(method = "<init>", constant = @Constant(intValue = 75))
-    private int dynamicOffset(int input, @Local(name = "chestStats")  List<StatLabelListElement.Stat<?>> chestStats) {
-        if (!QOLHuntersClientConfigs.BETTER_LOOT_STATS.get()) {
-            return 75;
-        }
-        return 10 + chestStats.size() * 11 + 10; // 10 + 5 * 10 + 10 = 75
-    }
-
 }
