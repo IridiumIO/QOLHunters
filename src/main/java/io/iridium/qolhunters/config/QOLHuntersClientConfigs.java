@@ -7,9 +7,6 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT_SPEC;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_BINGO_DESCRIPTIONS;
-
-
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_MODIFIER_TEXT_OVERLAYS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> VAULT_INTERFACE_KEYBINDS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_ABILITIES_TAB;
@@ -331,7 +328,6 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BINGO_GROUP);
                 BINGO_GRID_BACKGROUND_OPACITY = CLIENT_BUILDER.comment("Changes the opacity (%) of the Bingo Grid background").defineInRange(ConfigPaths.BINGO_GRID_BACKGROUND_OPACITY, 50, 0, 100);
-                BETTER_BINGO_DESCRIPTIONS = CLIENT_BUILDER.comment("Improves the descriptions of bingo objectives in Bingo Vaults\nMight not work on servers?").define(ConfigPaths.BETTER_BINGO_DESCRIPTIONS, true);
                 BINGO_GRID_COMPLETED_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid completion overlay").defineEnum(ConfigPaths.BINGO_GRID_COMPLETED_COLOR, BingoGridCompletionColor.GREEN);
                 BINGO_GRID_SELECTION_COLOR = CLIENT_BUILDER.comment("Changes the color of the Bingo Grid selection overlay").defineEnum(ConfigPaths.BINGO_GRID_SELECTION_COLOR, BingoGridSelectionColor.YELLOW);
             CLIENT_BUILDER.pop();
