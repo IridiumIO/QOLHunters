@@ -23,10 +23,11 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_GEAR_COOLDOWN_TIME;
     public static final ForgeConfigSpec.ConfigValue<Integer> BINGO_GRID_BACKGROUND_OPACITY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SEARCHABLE_VAULT_STATIONS;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> BROKEN_CURIO_ALERT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ZERO_USES_ALERT;
     public static final ForgeConfigSpec.ConfigValue<Boolean> GREEN_RESEARCHED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> PRESTIGE_TOGGLES;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RESOURCE_CARD_ROLL_RANGE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> AUTOCHOSEN_JEWEL;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -179,7 +180,7 @@ public class QOLHuntersClientConfigs {
         public static final String SHOW_GEAR_COOLDOWN_TIME = "Show Gear Cooldown Time";
         public static final String BINGO_GRID_BACKGROUND_OPACITY = "Grid Background Opacity";
         public static final String SEARCHABLE_VAULT_STATIONS = "Searchable Vault Stations";
-        public static final String BROKEN_CURIO_ALERT = "Broken Curio Alert";
+        public static final String ZERO_USES_ALERT = "Zero Uses Alert";
         public static final String GREEN_RESEARCHED = "Green Unlocked Researches";
         public static final String GOD_OBJECTIVE_X_OFFSET = "God Objective X Offset";
         public static final String GOD_OBJECTIVE_Y_OFFSET = "God Objective Y Offset";
@@ -241,6 +242,7 @@ public class QOLHuntersClientConfigs {
         public static final String BETTER_LOOT_STATS = "Better Loot Stats";
         public static final String MAGNET_STATE_OVERLAY = "Magnet State Overlay";
         public static final String ZOOM_OUT_FURTHER = "Zoom Out Further";
+        public static final String AUTOCHOSEN_JEWEL = "Autochosen Jewel";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -295,13 +297,14 @@ public class QOLHuntersClientConfigs {
             CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
-            BROKEN_CURIO_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio is broken").define(ConfigPaths.BROKEN_CURIO_ALERT, true);
+            ZERO_USES_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio has zero uses").define(ConfigPaths.ZERO_USES_ALERT, true);
             GREEN_RESEARCHED = CLIENT_BUILDER.comment("Show unlocked research requirements in green color").define(ConfigPaths.GREEN_RESEARCHED, true);
             PRESTIGE_TOGGLES = CLIENT_BUILDER.comment("Adds toggles to prestige selection screen").define(ConfigPaths.PRESTIGE_TOGGLES, true);
             RESOURCE_CARD_ROLL_RANGE = CLIENT_BUILDER.comment("Adds roll ranges to resource cards when holding shift").define(ConfigPaths.RESOURCE_CARD_ROLL_RANGE, true);
             BETTER_LOOT_STATS = CLIENT_BUILDER.comment("Show raw chests and speed up vault history screen").define(ConfigPaths.BETTER_LOOT_STATS, true);
             MAGNET_STATE_OVERLAY = CLIENT_BUILDER.comment("Enable item overlay showing VOID/PICKUP/OFF state on magnets.").define(ConfigPaths.MAGNET_STATE_OVERLAY, true);
             ZOOM_OUT_FURTHER = CLIENT_BUILDER.comment("Zoom out further in zoomable vault screens (abilities, talents, researches, vault map).").define(ConfigPaths.ZOOM_OUT_FURTHER, true);
+            AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show AUTO above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, false);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);

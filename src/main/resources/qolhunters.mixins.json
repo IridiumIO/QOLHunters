@@ -40,6 +40,8 @@
     "invhud.MixinInventoryHudEditScreen",
     "jewelapplicationtable.MixinVaultJewelApplicationStationContainer",
     "jewelapplicationtable.MixinVaultJewelApplicationStationScreen",
+    "jewelselection.MixinJewelSelectionScreen",
+    "jewelselection.MixinUnboxingStationScreen",
     "keybinds.AccessorBountyTableContainerElement",
     "keybinds.MixinBountyScreen",
     "keybinds.MixinForgeRecipeContainerScreen",
