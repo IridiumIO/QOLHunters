@@ -31,7 +31,7 @@ public abstract class MixinInventoryHudEditScreen extends AbstractElementScreen 
         super(title, elementRenderer, tooltipRendererFactory);
     }
 
-    @Inject(method = "mouseClicked", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "mouseClicked", at = @At("HEAD"), cancellable = true, remap = true)
     private void rightClickToEdit(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir){
             if (button == InputConstants.MOUSE_BUTTON_RIGHT) {
                 for (InventoryHudModule mod : InventoryHudRenderer.getModules()) {
