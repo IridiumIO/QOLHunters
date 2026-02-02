@@ -17,30 +17,22 @@ public class MixinVaultGearHelper {
     @Shadow(remap = false) private String name;
 
 
-    @Unique
-    private static Cacheable<Integer> SCRAPPY = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_SCRAPPY);
-    private static Cacheable<Integer> COMMON = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_COMMON);
-    private static Cacheable<Integer> RARE = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_RARE);
-    private static Cacheable<Integer> EPIC = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_EPIC);
-    private static Cacheable<Integer> OMEGA = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_OMEGA);
+    @Unique private static Cacheable<Integer> qolhunters$SCRAPPY = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_SCRAPPY);
+    @Unique private static Cacheable<Integer> qolhunters$COMMON = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_COMMON);
+    @Unique private static Cacheable<Integer> qolhunters$RARE = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_RARE);
+    @Unique private static Cacheable<Integer> qolhunters$EPIC = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_EPIC);
+    @Unique private static Cacheable<Integer> qolhunters$OMEGA = new Cacheable<>(2500, QOLHuntersClientConfigs.GEAR_ROLL_COLOR_OMEGA);
 
     @Inject(method="getColor", at=@At("HEAD"), cancellable = true, remap = false)
     private void getGearColor(CallbackInfoReturnable<Integer> cir) {
 
         switch (this.name) {
-            case "Scrappy+" -> cir.setReturnValue(SCRAPPY.get());
-            case "Common+" -> cir.setReturnValue(COMMON.get());
-            case "Rare+" -> cir.setReturnValue(RARE.get());
-            case "Epic+" -> cir.setReturnValue(EPIC.get());
-            case "Omega" -> cir.setReturnValue(OMEGA.get());
+            case "Scrappy+" -> cir.setReturnValue(qolhunters$SCRAPPY.get());
+            case "Common+" -> cir.setReturnValue(qolhunters$COMMON.get());
+            case "Rare+" -> cir.setReturnValue(qolhunters$RARE.get());
+            case "Epic+" -> cir.setReturnValue(qolhunters$EPIC.get());
+            case "Omega" -> cir.setReturnValue(qolhunters$OMEGA.get());
         }
-
-
-    }
-
-    @Unique
-    private static Integer hexToInteger(String hex) {
-        return Integer.parseInt(hex, 16);
     }
 
 }

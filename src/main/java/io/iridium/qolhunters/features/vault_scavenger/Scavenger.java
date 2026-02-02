@@ -83,6 +83,12 @@ public class Scavenger {
     }
 
 
+    public static void updateGoals(int size) {
+        if (size != scavengerColors.size()) {
+            System.out.println("Clear, cached size: " + scavengerColors.size() + ", new size: " + size);
+            scavengerColors.clear();
+        }
+    }
 
 
 }

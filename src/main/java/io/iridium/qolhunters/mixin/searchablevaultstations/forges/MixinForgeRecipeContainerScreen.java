@@ -76,7 +76,7 @@ public class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileEntity, T 
         }
     }
 
-    @Override public QOLSearchElement getSearchBox() {
+    @Override public QOLSearchElement qolhunters$getSearchBox() {
         return qolhunters$searchBox;
     }
 }

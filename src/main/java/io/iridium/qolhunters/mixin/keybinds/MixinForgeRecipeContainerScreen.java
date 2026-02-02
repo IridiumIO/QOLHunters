@@ -37,7 +37,7 @@ public abstract class MixinForgeRecipeContainerScreen<V extends ForgeRecipeTileE
     @Inject(method="keyPressed", at=@At(value="HEAD"), cancellable=true, remap = true)
     public void keyPressed(int pKeyCode, int pScanCode, int pModifiers, CallbackInfoReturnable<Boolean> cir) {
         if (this instanceof SearchableScreen searchableScreen){
-            var searchBox = searchableScreen.getSearchBox();
+            var searchBox = searchableScreen.qolhunters$getSearchBox();
             if (searchBox != null && searchBox.isFocused()) {
                 return;
             }

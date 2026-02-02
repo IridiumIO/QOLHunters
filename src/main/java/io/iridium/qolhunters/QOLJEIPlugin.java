@@ -7,12 +7,16 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.gui.handlers.IGuiContainerHandler;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.resources.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @JeiPlugin
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class QOLJEIPlugin implements IModPlugin {
 
     private static IJeiRuntime runtime;

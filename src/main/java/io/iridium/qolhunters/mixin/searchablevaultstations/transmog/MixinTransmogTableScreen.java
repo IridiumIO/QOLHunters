@@ -75,7 +75,7 @@ public class MixinTransmogTableScreen extends AbstractElementContainerScreen<Tra
         }
     }
 
-    @Override public QOLSearchElement getSearchBox() {
+    @Override public QOLSearchElement qolhunters$getSearchBox() {
         return qolhunters$searchBox;
     }
 }

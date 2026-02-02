@@ -7,7 +7,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import iskallia.vault.VaultMod;
 import iskallia.vault.client.gui.helper.ScreenDrawHelper;
 import iskallia.vault.gear.VaultGearState;
 import iskallia.vault.gear.data.GearDataCache;

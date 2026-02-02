@@ -127,6 +127,7 @@ public class VirtualDehammerizer {
         if (!event.isAttack()) return;
 
         Player player = Minecraft.getInstance().player;
+        if (player == null) return;
         if(player.level.dimension() != Level.OVERWORLD) return;
 
         if(!QOLHuntersClientConfigs.ENABLE_VIRTUAL_DEHAMMERIZER.get()) return;

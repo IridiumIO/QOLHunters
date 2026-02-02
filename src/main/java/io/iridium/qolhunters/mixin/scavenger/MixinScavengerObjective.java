@@ -1,11 +1,13 @@
 package io.iridium.qolhunters.mixin.scavenger;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.features.vault_scavenger.Scavenger;
 import io.iridium.qolhunters.features.vault_scavenger.NamedItem;
 import iskallia.vault.client.gui.helper.UIHelper;
+import iskallia.vault.core.vault.Vault;
 import iskallia.vault.core.vault.objective.ScavengerObjective;
 import iskallia.vault.core.vault.objective.scavenger.ScavengerGoal;
 import net.minecraft.ChatFormatting;
@@ -21,12 +23,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ScavengerObjective.class)
+import java.util.List;
+
+@Mixin(value = ScavengerObjective.class, remap = false)
 public class MixinScavengerObjective {
 
 
     @Inject(method = "renderItemRequirement", at = @At(value = "INVOKE",
-        target = "Liskallia/vault/client/gui/helper/UIHelper;renderCenteredWrappedText(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/network/chat/Component;II)I", shift = At.Shift.AFTER), cancellable = true, remap = false)
+        target = "Liskallia/vault/client/gui/helper/UIHelper;renderCenteredWrappedText(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/network/chat/Component;II)I", shift = At.Shift.AFTER), cancellable = true)
     private static void renderItemRequirement(PoseStack matrixStack, ScavengerGoal goal, int itemBoxWidth, int totalX, int totalY, float partialTicks, Player player, CallbackInfoReturnable<Integer> cir,
                                               @Local(name = "entry") ScavengerGoal.Entry entry, @Local(name = "requiredStack") ItemStack requiredStack){
 
@@ -60,6 +64,11 @@ public class MixinScavengerObjective {
             matrixStack.popPose();
             cir.setReturnValue(25 + lines * 5);
         }
+    }
+
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0))
+    private void removeCompletedGoals(Vault vault, PoseStack matrixStack, Window window, float partialTicks, Player player, CallbackInfoReturnable<Boolean> cir, @Local(name = "filteredGoals") List<ScavengerGoal> filteredGoals){
+        Scavenger.updateGoals(filteredGoals.size());
     }
 
 }

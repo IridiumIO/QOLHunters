@@ -1,7 +1,6 @@
 package io.iridium.qolhunters.mixin.abilities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.iridium.qolhunters.QOLHunters;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.atlas.TextureAtlasRegion;
 import iskallia.vault.client.gui.component.ScrollableContainer;
@@ -41,7 +40,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Objects;
 
@@ -148,7 +146,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
         // Finally, Build the regret button, description component, and learn button
         qOLHunters$buildRegretButton(parentAbility, regretCost);
-        try {qOLHunters$buildDescriptionComponent(current, target);} catch (Exception e) {QOLHunters.LOGGER.error(e.getMessage());}
+        qOLHunters$buildDescriptionComponent(current, target);
         qOLHunters$buildLearnButton(buttonText, pressAction, activeState);
 
     }
@@ -161,7 +159,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
      * @param target The target specialization skill.
      */
     @Unique
-    private void qOLHunters$buildDescriptionComponent(SpecializedSkill current, SpecializedSkill target) throws NoSuchFieldException, IllegalAccessException {
+    private void qOLHunters$buildDescriptionComponent(SpecializedSkill current, SpecializedSkill target) {
         // Update the description component if the selected ability or its level has changed
         int descriptionTier = ((TieredSkill) current.getSpecialization()).getActualTier();
         if (!Objects.equals(this.selectedAbility, this.prevSelectedAbility) || this.prevAbilityLevel != descriptionTier) {

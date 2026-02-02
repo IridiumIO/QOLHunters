@@ -38,13 +38,13 @@ public abstract class MixinStatisticsElementContainerScreen extends AbstractSkil
 
         if (QOLHuntersClientConfigs.SHOW_CONFIG_BUTTON.get()){
 
-            this.addElement((ButtonElement)((ButtonElement)(new ButtonElement(Spatials.positionXY(-3, 3), ScreenTextures.BUTTON_RELIC_TEXTURES, () -> {
+            this.addElement(new ButtonElement<>(Spatials.positionXY(-3, 3), ScreenTextures.BUTTON_RELIC_TEXTURES, () -> {
                 SubMenuConfigScreen screen = SubMenuConfigScreen.find(ConfigHelper.ConfigPath.parse("qolhunters:client.Client-Only Extensions"));
                 Minecraft.getInstance().setScreen(screen);
 
-            })).layout((screen, gui, parent, world) -> {
+            }).layout((screen, gui, parent, world) -> {
                 world.width(21).height(21).translateX(gui.right() + 5).translateY(this.getTabContentSpatial().bottom() + 109);
-            })).tooltip((tooltipRenderer, poseStack, mouseX, mouseY, tooltipFlag) -> {
+            }).tooltip((tooltipRenderer, poseStack, mouseX, mouseY, tooltipFlag) -> {
                 tooltipRenderer.renderTooltip(poseStack, List.of(new TextComponent("QOLHunters Config")), mouseX, mouseY, ItemStack.EMPTY, TooltipDirection.RIGHT);
                 return false;
             }));

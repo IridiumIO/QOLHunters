@@ -18,7 +18,7 @@ public class MixinBingoRenderer {
 
         int configopacity = QOLHuntersClientConfigs.BINGO_GRID_BACKGROUND_OPACITY.get();
 
-        int opacity = (int) configopacity * 255 / 100;
+        int opacity = configopacity * 255 / 100;
 
         return (opacity << 24);
 

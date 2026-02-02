@@ -28,6 +28,7 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> PRESTIGE_TOGGLES;
     public static final ForgeConfigSpec.ConfigValue<Boolean> RESOURCE_CARD_ROLL_RANGE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> AUTOCHOSEN_JEWEL;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> AUTOCHOSEN_WEIGHT;
 
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_X_OFFSET;
     public static final ForgeConfigSpec.ConfigValue<Integer> GOD_OBJECTIVE_Y_OFFSET;
@@ -243,6 +244,7 @@ public class QOLHuntersClientConfigs {
         public static final String MAGNET_STATE_OVERLAY = "Magnet State Overlay";
         public static final String ZOOM_OUT_FURTHER = "Zoom Out Further";
         public static final String AUTOCHOSEN_JEWEL = "Autochosen Jewel";
+        public static final String AUTOCHOSEN_WEIGHT = "Autochosen Weight";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -304,7 +306,8 @@ public class QOLHuntersClientConfigs {
             BETTER_LOOT_STATS = CLIENT_BUILDER.comment("Show raw chests and speed up vault history screen").define(ConfigPaths.BETTER_LOOT_STATS, true);
             MAGNET_STATE_OVERLAY = CLIENT_BUILDER.comment("Enable item overlay showing VOID/PICKUP/OFF state on magnets.").define(ConfigPaths.MAGNET_STATE_OVERLAY, true);
             ZOOM_OUT_FURTHER = CLIENT_BUILDER.comment("Zoom out further in zoomable vault screens (abilities, talents, researches, vault map).").define(ConfigPaths.ZOOM_OUT_FURTHER, true);
-            AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show AUTO above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, false);
+            AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show ⌄ above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, true);
+            AUTOCHOSEN_WEIGHT = CLIENT_BUILDER.comment("Show jewel weights that determine which jewel gets chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_WEIGHT, false);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);
