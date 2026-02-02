@@ -20,7 +20,7 @@ public class MixinScrollableItemListElement {
     // <word> => match in name or resource location path
     // @<word> => match in resource location namespace
     // $<word> => match in item tag
-    @ModifyVariable(method = "<init>", at = @At(value = "STORE", ordinal = 0))
+    @ModifyVariable(method = "<init>", at = @At(value = "STORE", ordinal = 0), name = "asItem")
     private Item hideNonMatchingSearch(Item asItem) {
         if (Minecraft.getInstance().screen instanceof SearchableScreen searchableScreen) {
             String filterText = searchableScreen.getSearchText().toLowerCase();

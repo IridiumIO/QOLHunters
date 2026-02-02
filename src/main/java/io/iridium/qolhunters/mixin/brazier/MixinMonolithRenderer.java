@@ -9,8 +9,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.block.entity.MonolithTileEntity;
 import iskallia.vault.block.render.MonolithRenderer;
-import iskallia.vault.config.VaultModifierOverlayConfig;
-import iskallia.vault.init.ModConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
@@ -118,12 +116,5 @@ public class MixinMonolithRenderer {
         }
         // name otherwise
         return original.call(instance, e);
-    }
-
-    @Inject(method = "render(Liskallia/vault/block/entity/MonolithTileEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Liskallia/vault/core/vault/overlay/ModifiersRenderer;renderVaultModifiersWithDepth(Ljava/util/List;Lcom/mojang/blaze3d/vertex/PoseStack;Z)V"))
-    private void shiftModifiersUp(MonolithTileEntity tileEntity, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer,
-                                  int combinedLight, int combinedOverlayIn, CallbackInfo ci) {
-        VaultModifierOverlayConfig config = ModConfigs.VAULT_MODIFIER_OVERLAY;
-        matrixStack.translate(config.rightMargin - 8.0, config.bottomMargin - 4.0, 0.0);
     }
 }

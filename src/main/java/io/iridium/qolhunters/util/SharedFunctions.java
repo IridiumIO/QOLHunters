@@ -71,12 +71,7 @@ public class SharedFunctions {
         BufferBuilder bufferBuilder = tesselator.getBuilder();
         MultiBufferSource.BufferSource bufferSource = MultiBufferSource.immediate(bufferBuilder);
 
-        if(true){
-            GuiUtils.drawGradientRect(matrix, -1, x,y + 4,x + 16,y + 16, 0x00000000, color);
-        }
-        else {
-            GuiUtils.drawGradientRect(matrix, -1, x, y + 15,x + 16,y + 16, color, color);
-        }
+        GuiUtils.drawGradientRect(matrix, -1, x,y + 4,x + 16,y + 16, 0x00000000, color);
 
         bufferSource.endBatch();
         poseStack.popPose();

@@ -32,7 +32,7 @@ public class MixinDiscoveredModelSelectorModel {
             List<DiscoveredModelSelectElement.TransmogModelEntry> entries = new ArrayList<>(cir.getReturnValue());
             cir.setReturnValue(entries);
             entries.removeIf(entry -> {
-                DynamicModel model = ((AccessorTransmogModelEntry) entry).getModel();
+                DynamicModel<?> model = ((AccessorTransmogModelEntry) entry).getModel();
                 ItemStack itemStack = entry.getDisplayStack();
                 VaultGearRarity rarity = ModConfigs.GEAR_MODEL_ROLL_RARITIES.getRarityOf(itemStack, model.getId());
                 for (String filter : filters) {

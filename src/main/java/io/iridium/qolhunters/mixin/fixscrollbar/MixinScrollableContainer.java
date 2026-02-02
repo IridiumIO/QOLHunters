@@ -13,7 +13,7 @@ public abstract class MixinScrollableContainer {
 
     // vh was scaling the arg twice
     @ModifyArg(method = "mouseMoved", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(III)I", remap = true), index = 0)
-    private int fixScrollDelta(int pValue, @Local(ordinal = 3) double deltaOffset) {
+    private int fixScrollDelta(int pValue, @Local(name = "deltaOffset") double deltaOffset) {
         return this.scrollingOffsetY + (int) (deltaOffset);
     }
 }

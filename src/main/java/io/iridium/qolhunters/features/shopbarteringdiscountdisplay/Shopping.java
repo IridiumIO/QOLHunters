@@ -49,7 +49,7 @@ public class Shopping {
         if (player == null || !player.level.dimension().location().toString().startsWith("the_vault:vault")) return;
 
         BlockHitResult hitResult = event.getTarget();
-        Block block = Minecraft.getInstance().level.getBlockState(hitResult.getBlockPos()).getBlock();
+        Block block = player.level.getBlockState(hitResult.getBlockPos()).getBlock();
 
         if(!(block instanceof ShopPedestalBlock)) {
             if(isLookingAtShopPedestal) isLookingAtShopPedestal = false;
@@ -60,7 +60,7 @@ public class Shopping {
         // shopping pedestal logic is different from stations - it also considers gold in backpacks and other inventories
         // so we can't use CoinPouchItem#getGoldAmount to get the amount of gold available
         var currency = ModBlocks.VAULT_GOLD.asItem();
-        CoinDefinition.getCoinDefinition(currency).map(priceCoinDefinition -> {
+        CoinDefinition.getCoinDefinition(currency).ifPresent(priceCoinDefinition -> {
             int availableCount = 0;
 
             for(InventoryUtil.ItemAccess itemAccess : InventoryUtil.findAllItems(player)) {
@@ -75,7 +75,6 @@ public class Shopping {
             }
 
             invGoldCount = availableCount;
-            return availableCount;
         });
     }
 

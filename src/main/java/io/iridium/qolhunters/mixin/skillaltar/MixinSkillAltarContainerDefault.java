@@ -2,6 +2,7 @@ package io.iridium.qolhunters.mixin.skillaltar;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import iskallia.vault.container.SkillAltarContainer;
 import iskallia.vault.init.ModKeybinds;
@@ -30,12 +31,13 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
 
     @Inject(method="saveTemplate", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER), remap = false)
     private void saveTemplate(CallbackInfo ci) {
+        if (!QOLHuntersClientConfigs.SAVE_KEYBINDS_WITH_SKILL_ALTAR.get()) return;
 
         Map<String, Integer> keyBindsBackup = new HashMap<>();
         KeyMapping[] keyBindings = Minecraft.getInstance().options.keyMappings;
 
         for (KeyMapping keyBinding : keyBindings) {
-            if (!keyBinding.getCategory().equals(ModKeybinds.KEY_CATEGORY)) continue;
+            if (!keyBinding.getCategory().equals(ModKeybinds.QUICKFIRE_CATEGORY)) continue;
 
             int keyVal = keyBinding.getKey().getValue();
             if(keyBinding.getKey().getType() == InputConstants.Type.MOUSE) {
@@ -46,11 +48,11 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
         }
 
 
-        String saveName = "";
+        String saveName;
 
         if(Minecraft.getInstance().hasSingleplayerServer()){
             saveName = Objects.requireNonNull(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).getWorldData().getLevelName());
-        }else {
+        } else {
             saveName = Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).name + "_" + Minecraft.getInstance().getCurrentServer().ip;
         }
 
@@ -68,13 +70,14 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
 
     @Inject(method="setPlayerAbilitiesAndTalentsFromTemplate()V", at= @At(value = "INVOKE", target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V", shift = At.Shift.AFTER), remap = false)
     private void loadTemplate(CallbackInfo ci) {
+        if (!QOLHuntersClientConfigs.SAVE_KEYBINDS_WITH_SKILL_ALTAR.get()) return;
         QOLHunters.SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
 
-        String saveName = "";
+        String saveName;
 
         if(Minecraft.getInstance().hasSingleplayerServer()){
             saveName = Objects.requireNonNull(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).getWorldData().getLevelName());
-        }else {
+        } else {
             saveName = Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).name + "_" + Minecraft.getInstance().getCurrentServer().ip;
         }
 
@@ -89,7 +92,7 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
         KeyMapping[] keyBindings = Minecraft.getInstance().options.keyMappings;
 
         for (KeyMapping keyBinding : keyBindings) {
-            if (!keyBinding.getCategory().equals(ModKeybinds.KEY_CATEGORY)) continue;
+            if (!keyBinding.getCategory().equals(ModKeybinds.QUICKFIRE_CATEGORY)) continue;
             Integer key = keyBindsBackup.get(keyBinding.getName());
             if (key == null) continue;
             if (key < -9) {

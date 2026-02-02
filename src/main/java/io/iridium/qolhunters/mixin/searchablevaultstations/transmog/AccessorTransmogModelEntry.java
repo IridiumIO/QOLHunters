@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(value = DiscoveredModelSelectElement.TransmogModelEntry.class, remap = false)
 public interface AccessorTransmogModelEntry {
-    @Accessor DynamicModel getModel();
+    @Accessor DynamicModel<?> getModel();
 }

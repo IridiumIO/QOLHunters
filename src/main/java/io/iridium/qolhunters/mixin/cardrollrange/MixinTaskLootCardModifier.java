@@ -33,7 +33,7 @@ public abstract class MixinTaskLootCardModifier extends CardModifier<TaskLootCar
     }
 
     @Inject(method = "addText", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-    private void addRollRange(List<Component> tooltip, int minIndex, TooltipFlag flag, float time, int tier, CallbackInfo ci, @Local Component[] text) {
+    private void addRollRange(List<Component> tooltip, int minIndex, TooltipFlag flag, float time, int tier, CallbackInfo ci, @Local(name = "text") Component[] text) {
         if (!QOLHuntersClientConfigs.RESOURCE_CARD_ROLL_RANGE.get()) {
             return;
         }

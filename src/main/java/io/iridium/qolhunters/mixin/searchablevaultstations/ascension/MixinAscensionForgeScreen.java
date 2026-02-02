@@ -74,7 +74,7 @@ public class MixinAscensionForgeScreen extends AbstractElementContainerScreen<As
         }
     }
 
-    @Override public QOLSearchElement getSearchBox() {
+    @Override public QOLSearchElement qolhunters$getSearchBox() {
         return qolhunters$searchBox;
     }
 }

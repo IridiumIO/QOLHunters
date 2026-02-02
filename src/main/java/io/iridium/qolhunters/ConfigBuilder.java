@@ -36,7 +36,7 @@ public class ConfigBuilder {
 
     public static boolean isWoldsVaultModInstalled() {
         boolean isWoldsVaultModInstalled = ModList.get().isLoaded("woldsvaults");
-        LOGGER.info("QOLHunters: WoldsVaults mod is installed: " + isWoldsVaultModInstalled);
+        LOGGER.info("QOLHunters: WoldsVaults mod is installed: {}", isWoldsVaultModInstalled);
         return isWoldsVaultModInstalled;
     }
 

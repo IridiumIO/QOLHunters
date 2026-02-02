@@ -1,5 +1,7 @@
 package io.iridium.qolhunters.mixin.greenresearched;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.client.gui.screen.player.legacy.widget.ResearchWidget;
@@ -13,7 +15,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -24,10 +25,10 @@ import java.util.function.Consumer;
 public class MixinResearchWidget {
     @Shadow @Final private ResearchTree researchTree;
 
-    @Redirect(method = "renderHover", at = @At(value = "INVOKE", target = "Ljava/util/List;forEach(Ljava/util/function/Consumer;)V", ordinal = 0))
-    private void hideResearched(List<Research> instance, Consumer<Research> consumer) {
+    @WrapOperation(method = "renderHover", at = @At(value = "INVOKE", target = "Ljava/util/List;forEach(Ljava/util/function/Consumer;)V", ordinal = 0))
+    private void hideResearched(List<Research> instance, Consumer<Research> consumer, Operation<Void> original) {
         if (!QOLHuntersClientConfigs.GREEN_RESEARCHED.get()){
-            instance.forEach(consumer);
+            original.call(instance, consumer);
             return;
         }
         instance.stream().filter(research -> !researchTree.isResearched(research)).forEach(consumer);

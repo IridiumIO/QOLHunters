@@ -3,12 +3,10 @@ package io.iridium.qolhunters.mixin.jewelselection;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
-import iskallia.vault.client.gui.screen.JewelPouchSelectionScreen;
+import io.iridium.qolhunters.features.jewelselection.AutoChosenTextWidget;
 import iskallia.vault.client.gui.screen.block.UnboxingStationScreen;
 import iskallia.vault.gear.GearScoreHelper;
-import iskallia.vault.item.JewelPouchItem;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
+import iskallia.vault.init.ModItems;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -38,19 +36,8 @@ public abstract class MixinUnboxingStationScreen extends Screen {
         if (!QOLHuntersClientConfigs.AUTOCHOSEN_JEWEL.get()) return;
         var max = currentPack.stream().max(Comparator.comparingInt(GearScoreHelper::getWeight)).orElse(null);
         if (max == null) return;
-        if (max == outcome) {
-            this.addRenderableOnly((poseStack, mouseX, mouseY, partialTick) -> {
-                int scale = 4;
-                int texSize = 16;
-                int offset = texSize / 2 * scale + 2 * scale;
-                String symbol = "AUTO";
-                float symbolWidth = Minecraft.getInstance().font.width(symbol) * 0.5f;
-                poseStack.pushPose();
-                poseStack.translate(x + 28 - symbolWidth / 2, (double) height / 2 - offset, 0);
-                poseStack.scale(0.5f, 0.5f, 0.5f);
-                Minecraft.getInstance().font.draw(poseStack, symbol, 0, 0, ChatFormatting.GRAY.getColor());
-                poseStack.popPose();
-            });
+        if (max == outcome && max.getItem() == ModItems.JEWEL) {
+            this.addRenderableOnly(new AutoChosenTextWidget(x, height));
         }
     }
 }

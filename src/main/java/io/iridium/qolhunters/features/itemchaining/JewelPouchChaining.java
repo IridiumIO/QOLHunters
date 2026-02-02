@@ -1,4 +1,4 @@
-package io.iridium.qolhunters.features.absolutelycursedjewelpouchopener;
+package io.iridium.qolhunters.features.itemchaining;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 import static io.iridium.qolhunters.util.SharedFunctions.DataSlotToNetworkSlot;
 
 @Mod.EventBusSubscriber(modid = QOLHunters.MOD_ID, value = Dist.CLIENT)
-public class AbsolutelyCursedJewelPouchOpener {
+public class JewelPouchChaining {
 
 
     private static boolean wasJewelPouchOpened = false;

@@ -1,5 +1,7 @@
 package io.iridium.qolhunters.mixin.voidcrucible;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -59,8 +61,8 @@ public abstract class MixinVoidCrucibleScreen extends AbstractElementContainerSc
     }
 
 
-    @Redirect(method = "initializeViewTheme", at = @At(value = "INVOKE", target = "Liskallia/vault/container/VoidCrucibleContainer$ThemeSelect;getBlocksInTheme(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;"))
-    private List<ResourceLocation> addAllThemes(VoidCrucibleContainer.ThemeSelect instance, ResourceLocation selectedTheme) {
+    @WrapOperation(method = "initializeViewTheme", at = @At(value = "INVOKE", target = "Liskallia/vault/container/VoidCrucibleContainer$ThemeSelect;getBlocksInTheme(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;"))
+    private List<ResourceLocation> addAllThemes(VoidCrucibleContainer.ThemeSelect instance, ResourceLocation selectedTheme, Operation<List<ResourceLocation>> original) {
         if (selectedTheme.equals(VaultMod.id("all_themes"))) {
             var roomConfig = ModConfigs.VOID_CRUCIBLE_CUSTOM_ROOMS.getAllItems();
             Set<ResourceLocation> themeBlocks = new HashSet<>();
@@ -70,7 +72,7 @@ public abstract class MixinVoidCrucibleScreen extends AbstractElementContainerSc
             blockList.sort(ResourceLocation::compareNamespaced);
             return blockList;
         }
-        return instance.getBlocksInTheme(selectedTheme);
+        return original.call(instance, selectedTheme);
     }
 
     @Redirect(method = "initializeViewTheme", at = @At(value = "NEW", target = "()Ljava/util/HashMap;"))
@@ -147,7 +149,7 @@ public abstract class MixinVoidCrucibleScreen extends AbstractElementContainerSc
         }
     }
 
-    @Override public QOLSearchElement getSearchBox() {
+    @Override public QOLSearchElement qolhunters$getSearchBox() {
         return qolhunters$searchBox;
     }
 }

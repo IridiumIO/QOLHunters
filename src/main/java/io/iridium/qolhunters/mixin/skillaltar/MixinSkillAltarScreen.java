@@ -28,9 +28,7 @@ public abstract class MixinSkillAltarScreen extends SkillAltarScreen<SkillAltarC
 
     @Inject(method="<init>", at=@At("RETURN"))
     public void init(SkillAltarContainer.Default container, Inventory inventory, Component title, CallbackInfo ci) {
-        this.saveButton.setDisabled(() -> {
-            return this.playerHasNoAbilitiesAndTalents() || !((SkillAltarContainer.Default)this.getMenu()).isEmptyTemplate() && this.isSaveLocked || ((SkillAltarContainer.Default)this.getMenu()).isOpenedByNonOwner();
-        });
+        this.saveButton.setDisabled(() -> this.playerHasNoAbilitiesAndTalents() || !this.getMenu().isEmptyTemplate() && this.isSaveLocked || this.getMenu().isOpenedByNonOwner());
 
     }
 

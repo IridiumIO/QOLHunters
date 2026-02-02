@@ -34,7 +34,7 @@ public class MixinAbilitiesOverlay {
 
     // 0 is full cooldown, 16 is no cooldown
     @WrapOperation(method = "renderAbilitiesOnCooldown", at = @At(value = "INVOKE", target = "Liskallia/vault/client/gui/overlay/AbilitiesOverlay;getCooldownHeight(FI)I"))
-    private static int removeCdHeightOverlayIfUsing(float cooldownRemaining, int cooldownMax, Operation<Integer> original, @Local Cooldown cooldown){
+    private static int removeCdHeightOverlayIfUsing(float cooldownRemaining, int cooldownMax, Operation<Integer> original, @Local(name = "cooldown") Cooldown cooldown){
         int delayTicks = cooldown.getRemainingDelayTicks();
         if (delayTicks > 0 && QOLHuntersClientConfigs.ABILITY_DURATION_OVERLAY.get()){
             return 16;
