@@ -2,6 +2,7 @@ package io.iridium.qolhunters.features.itemchaining;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.antique.Antique;
 import iskallia.vault.config.AntiquesConfig;
 import iskallia.vault.init.ModItems;
@@ -35,6 +36,10 @@ public class AntiqueChaining {
 
     @SubscribeEvent
     public static void onItemUse(PlayerInteractEvent.RightClickItem event) {
+        if(!QOLHuntersClientConfigs.CHAIN_ANTIQUES.get()) {
+            return;
+        }
+
         if (event.getSide().isServer()) {
             // handling server events in singleplayer would open pouch in your inventory even if machine opened another pouch
             return;

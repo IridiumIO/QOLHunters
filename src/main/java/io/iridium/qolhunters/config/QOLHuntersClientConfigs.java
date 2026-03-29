@@ -39,6 +39,9 @@ public class QOLHuntersClientConfigs {
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> ABILITY_MULTICAST;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_BOOSTER_PACKS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_JEWEL_POUCHES;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> IMPROVED_STACKED_JEWEL_POUCHES_CHAINING;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> CHAIN_ANTIQUES;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> SHOW_CONFIG_BUTTON;
 
@@ -190,6 +193,9 @@ public class QOLHuntersClientConfigs {
         public static final String ENABLE_TREASURE_PED_THROW_ITEMS = "Treasure Pedestal Throws Items";
         public static final String ABILITY_MULTICAST = "Ability Multicast";
         public static final String CHAIN_BOOSTER_PACKS = "Chain Booster Packs";
+        public static final String CHAIN_JEWEL_POUCHES = "Chain Jewel Pouches";
+        public static final String IMPROVED_STACKED_JEWEL_POUCHES_CHAINING = "Improved Stacked Jewel Pouch Chaining";
+        public static final String CHAIN_ANTIQUES = "Chain Antiques";
         public static final String SHOW_CONFIG_BUTTON = "Show Config Button";
         public static final String RARITY_HIGHLIGHTER = "Enable Rarity Highlighter in AE and RS";
         public static final String ENABLE_VIRTUAL_DEHAMMERIZER = "Enable Virtual Dehammerizer";
@@ -254,6 +260,7 @@ public class QOLHuntersClientConfigs {
             public static final String ELIXIR_GROUP = "Elixir Vaults";
             public static final String SHOPPING_GROUP = "Shopping Pedestals";
             public static final String BETTER_SOUL_DESCRIPTIONS_GROUP = "Better Soul Value Tooltips";
+            public static final String ITEM_CHAINING = "Item Chaining";
 
             public static final String RARITY_HIGHLIGHTER_GROUP = "Rarity Highlighter";
 
@@ -282,13 +289,8 @@ public class QOLHuntersClientConfigs {
 
         CLIENT_BUILDER.comment("QOLHunters Configuration\nSOME CHANGES REQUIRE A CLIENT RESTART");
 
-        CLIENT_BUILDER.push(ConfigPaths.Group.GENERAL_GROUP);
-            SHOW_CONFIG_BUTTON = CLIENT_BUILDER.comment("Show the Config Button in the Statistics Menu (H)").define(ConfigPaths.SHOW_CONFIG_BUTTON, true);
-
-        CLIENT_BUILDER.pop();
-
         CLIENT_BUILDER.push(ConfigPaths.Group.CLIENT_GROUP);
-
+            SHOW_CONFIG_BUTTON = CLIENT_BUILDER.comment("Show the Config Button in the Statistics Menu (H)").define(ConfigPaths.SHOW_CONFIG_BUTTON, true);
             VAULT_MODIFIER_TEXT_OVERLAYS = CLIENT_BUILDER.comment("Adds text overlays to the Vault modifiers, e.g. '+10% Damage' or 'Speed +1'").define(ConfigPaths.VAULT_MODIFIER_TEXT_OVERLAYS, true);
             VAULT_INTERFACE_KEYBINDS = CLIENT_BUILDER.comment("Adds keybinds to craft/forge/reroll in the Bounty Table, Enchanter, Vault Forge, etc").define(ConfigPaths.VAULT_INTERFACE_KEYBINDS, true);
             BETTER_ABILITIES_TAB = CLIENT_BUILDER.comment("Improves the Abilities Tab including levelling specializations directly and showing all possible levels/overlevels").define(ConfigPaths.BETTER_ABILITIES_TAB, true);
@@ -296,7 +298,6 @@ public class QOLHuntersClientConfigs {
             SAVE_KEYBINDS_WITH_SKILL_ALTAR = CLIENT_BUILDER.comment("Saves and loads current keybinds when you save/load skills in the Skill Altar").define(ConfigPaths.SAVE_KEYBINDS_WITH_SKILL_ALTAR, true);
             SHOW_GEAR_COOLDOWN_TIME = CLIENT_BUILDER.comment("Render a timer over Vault Gear items that are on cooldown").define(ConfigPaths.SHOW_GEAR_COOLDOWN_TIME, true);
             ABILITY_MULTICAST = CLIENT_BUILDER.comment("Allows you to cast multiple abilities with a single keybind").define(ConfigPaths.ABILITY_MULTICAST, true);
-            CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
             TREASURE_KEY_SWAPPER = CLIENT_BUILDER.comment("Autoswap to the correct treasure key when you right-click a treasure door with another key as long as the correct key is in your main inventory").define(ConfigPaths.TREASURE_KEY_SWAPPER, true);
             SEARCHABLE_VAULT_STATIONS = CLIENT_BUILDER.comment("Add search box to vault stations").define(ConfigPaths.SEARCHABLE_VAULT_STATIONS, true);
             ZERO_USES_ALERT = CLIENT_BUILDER.comment("Show alert when equipped vault curio has zero uses").define(ConfigPaths.ZERO_USES_ALERT, true);
@@ -308,6 +309,13 @@ public class QOLHuntersClientConfigs {
             ZOOM_OUT_FURTHER = CLIENT_BUILDER.comment("Zoom out further in zoomable vault screens (abilities, talents, researches, vault map).").define(ConfigPaths.ZOOM_OUT_FURTHER, true);
             AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show ⌄ above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, true);
             AUTOCHOSEN_WEIGHT = CLIENT_BUILDER.comment("Show jewel weights that determine which jewel gets chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_WEIGHT, false);
+
+            CLIENT_BUILDER.push(ConfigPaths.Group.ITEM_CHAINING);
+                CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
+                CHAIN_JEWEL_POUCHES = CLIENT_BUILDER.comment("Automatically open the next jewel pouch in your inventory after you select a jewel").define(ConfigPaths.CHAIN_JEWEL_POUCHES, true);
+                IMPROVED_STACKED_JEWEL_POUCHES_CHAINING = CLIENT_BUILDER.comment("Drops identified jewels from overstacked pouches instead of weirdly shuffling them in your inv \nDebug option - should stay enabled normally.").define(ConfigPaths.IMPROVED_STACKED_JEWEL_POUCHES_CHAINING, true);
+                CHAIN_ANTIQUES = CLIENT_BUILDER.comment("Automatically select the next antique in your inventory after you open one").define(ConfigPaths.CHAIN_ANTIQUES, true);
+            CLIENT_BUILDER.pop();
 
             CLIENT_BUILDER.push(ConfigPaths.Group.BETTER_SOUL_DESCRIPTIONS_GROUP);
                 BETTER_SOUL_VALUE = CLIENT_BUILDER.comment("Improves the descriptions of soul values in tooltips when holding SHIFT").define(ConfigPaths.BETTER_SOUL_VALUE, true);

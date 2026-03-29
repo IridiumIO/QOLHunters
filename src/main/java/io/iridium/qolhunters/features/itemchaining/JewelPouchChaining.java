@@ -2,6 +2,7 @@ package io.iridium.qolhunters.features.itemchaining;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import iskallia.vault.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -33,6 +34,9 @@ public class JewelPouchChaining {
 
     @SubscribeEvent
     public static void onItemUse(PlayerInteractEvent.RightClickItem event) {
+        if(!QOLHuntersClientConfigs.CHAIN_JEWEL_POUCHES.get()) {
+            return;
+        }
         if (event.getSide().isServer()) {
             // handling server events in singleplayer would open pouch in your inventory even if machine opened another pouch
             return;
@@ -63,6 +67,7 @@ public class JewelPouchChaining {
                     for (ItemStack stack: player.getInventory().items){
                         if (stack.getItem() == ModItems.JEWEL_POUCH){
 
+                            boolean stackedJewelPouch = stack.getCount() > 1 && QOLHuntersClientConfigs.IMPROVED_STACKED_JEWEL_POUCHES_CHAINING.get();
                             int currentBoosterSlot = DataSlotToNetworkSlot(player.getInventory().selected);
                             int nextBoosterSlot = DataSlotToNetworkSlot(player.getInventory().findSlotMatchingItem(stack));
                             if (currentBoosterSlot == nextBoosterSlot || nextBoosterSlot == -1 || currentBoosterSlot == -1) continue;
@@ -70,6 +75,13 @@ public class JewelPouchChaining {
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 0, ClickType.PICKUP, player);
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
+
+                            if (stackedJewelPouch) { // FIXME
+                                Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.THROW, player);
+                                Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 0, ClickType.PICKUP, player);
+                                Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 1, ClickType.PICKUP, player);
+                                Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
+                            }
 
                             Minecraft.getInstance().gameMode.useItem(player, player.level, InteractionHand.MAIN_HAND);
 
