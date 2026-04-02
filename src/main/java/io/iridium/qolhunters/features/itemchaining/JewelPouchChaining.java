@@ -72,14 +72,21 @@ public class JewelPouchChaining {
                             int nextBoosterSlot = DataSlotToNetworkSlot(player.getInventory().findSlotMatchingItem(stack));
                             if (currentBoosterSlot == nextBoosterSlot || nextBoosterSlot == -1 || currentBoosterSlot == -1) continue;
 
+                            // pickup jewel pouch from next slot
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
+                            // replace jewel with jewel pouch in the current slot
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 0, ClickType.PICKUP, player);
+                            // put down jewel to the next slot
                             Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
 
-                            if (stackedJewelPouch) { // FIXME
+                            if (stackedJewelPouch) { // jewel pouch stack with n jewel pouches in the hand
+                                // throw jewel from next slot
                                 Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.THROW, player);
+                                // pickup jewel pouch stack to hand
                                 Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 0, ClickType.PICKUP, player);
+                                // place down one jewel pouch to the current slot (right click)
                                 Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, currentBoosterSlot, 1, ClickType.PICKUP, player);
+                                // place down pouch stack with n-1 jewel pouches to the next slot
                                 Minecraft.getInstance().gameMode.handleInventoryMouseClick(player.containerMenu.containerId, nextBoosterSlot, 0, ClickType.PICKUP, player);
                             }
 
