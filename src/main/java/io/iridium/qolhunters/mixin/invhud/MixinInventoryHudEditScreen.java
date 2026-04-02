@@ -35,7 +35,7 @@ public abstract class MixinInventoryHudEditScreen extends AbstractElementScreen 
     private void rightClickToEdit(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir){
             if (button == InputConstants.MOUSE_BUTTON_RIGHT) {
                 for (InventoryHudModule mod : InventoryHudRenderer.getModules()) {
-                    IModuleRenderContext context = mod.createRenderContext(mod.getScale(), this.getScreenSize().width(), this.getScreenSize().height(), mouseX, mouseY, true, this.selected == mod, null);
+                    IModuleRenderContext context = mod.createRenderContext(mod.getScale(), this.getScreenSize().width(), this.getScreenSize().height(), mouseX, mouseY, true, this.selected == mod, null, 0);
 
                     if (qolhunters$isHoveringOverModule(mod, context, mouseX, mouseY)) {
                         if (mod.hasSettings()) {
