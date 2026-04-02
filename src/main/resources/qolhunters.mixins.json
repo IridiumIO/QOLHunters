@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "qolhunters.refmap.json",
   "mixins": [
+    "artisanstation.MixinModificationButtonElement"
   ],
   "client": [
     "abilities.AccessorTieredSkill",
@@ -50,10 +51,10 @@
     "keybinds.MixinModifierWorkbenchScreen",
     "keybinds.MixinVaultEnchanterScreen",
     "magnetstate.MixinItemRenderer",
-    "nextproficiencyscrap.ProficiencySegmentAccessor",
-    "nextproficiencyscrap.VaultForgeScreenAccessor",
     "nextproficiencyscrap.ForgeRecipeContainerScreenAccessor",
     "nextproficiencyscrap.MixinVerticalSegmentedBarElement",
+    "nextproficiencyscrap.ProficiencySegmentAccessor",
+    "nextproficiencyscrap.VaultForgeScreenAccessor",
     "prestigetoggles.MixinPrestigePowerWidget",
     "qolhuntersconfig.MixinStatisticsElementContainerScreen",
     "rarityhighlighter.MixinAEStackRendering",
