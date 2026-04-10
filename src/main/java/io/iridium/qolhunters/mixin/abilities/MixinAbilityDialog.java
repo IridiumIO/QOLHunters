@@ -111,6 +111,8 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isTargetSpecialized = target.getIndex() != 0;
 
 
+        boolean showRemoveInVaultTooltip = false;
+
         // Determine the button text and action based on whether the target is a specialization
         if (isTargetSpecialized) {
 
@@ -150,7 +152,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
                     pressAction = button -> this.removeSpecialization();
                     boolean inVault = ClientVaults.getActive().isPresent();
                     activeState = !inVault;
-                    this.showRemoveInVaultTooltip = inVault;
+                    showRemoveInVaultTooltip = inVault;
                 }
                 buttonText = qOLHunters$determineButtonText(parentAbility, target, activelySelectedAbility, current);
             }
@@ -160,6 +162,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         qOLHunters$buildRegretButton(parentAbility, regretCost);
         qOLHunters$buildDescriptionComponent(current, target);
         qOLHunters$buildLearnButton(buttonText, pressAction, activeState);
+        this.showRemoveInVaultTooltip = showRemoveInVaultTooltip;
 
     }
 
