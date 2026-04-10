@@ -43,11 +43,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.Objects;
 
-@Mixin(AbilityDialog.class)
+@Mixin(value = AbilityDialog.class, remap = false)
 public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElementContainerScreen> {
 
 
-    @Inject(method = "update", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "update", at = @At("HEAD"), cancellable = true)
     public void update(CallbackInfo ci) {
         if(QOLHuntersClientConfigs.BETTER_ABILITIES_TAB.get()){
             qOLHunters$update();
@@ -80,14 +80,18 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isParentAbilitySpecialized = parentAbility.getIndex() != 0;
 
         // Create a new AbilityWidget for the activelySelectedAbility
-        this.selectedAbilityWidget = qOLHunters$createAbilityWidget(isParentAbilitySpecialized);
-
+        this.selectedAbilityWidget = new AbilityWidget(
+            this.selectedAbility,
+            this.abilityTree,
+            0,
+            0,
+            isParentAbilitySpecialized ? AbilityNodeTextures.SECONDARY_NODE : AbilityNodeTextures.PRIMARY_NODE,
+            TextureAtlasRegion.of(ModTextureAtlases.ABILITIES, ModConfigs.ABILITIES_GUI.getIcon(this.selectedAbility))
+        );
 
         // Get the current and target specialization skills (I think this refers to the skill levels?)
         SpecializedSkill current = this.selectedAbilityWidget.getAbilityGroup();
         SpecializedSkill target = this.selectedAbilityWidget.makeAbilityNode();
-
-        boolean isTargetSpecialized = target.getIndex() != 0;
 
 
         Button.OnPress pressAction;
@@ -103,20 +107,23 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isParentTierBelowMaxLearnable = ((TieredSkill) parentAbility.getSpecialization()).getUnmodifiedTier() < ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isTargetTierBelowMaxLearnable = ((TieredSkill) target.getSpecialization()).getUnmodifiedTier() <= ((TieredSkill) target.getSpecialization()).getMaxLearnableTier();
         boolean isVaultLevelSufficient = VaultBarOverlay.vaultLevel >= current.getUnlockLevel();
-        boolean isInRoyaleVault = ClientVaults.getActive().map(VaultUtils::isRoyaleVault).orElse(false);
+        boolean isInRoyaleVault = ClientVaults.getActive().map(VaultUtils::isAnyRoyale).orElse(false);
+        boolean isTargetSpecialized = target.getIndex() != 0;
 
 
         // Determine the button text and action based on whether the target is a specialization
         if (isTargetSpecialized) {
 
-            if (!isParentAbilitySpecialized) {
+            if (!isParentAbilitySpecialized) { // THIS MIGHT BE DIFFERENT
                 pressAction = button -> this.selectSpecialization();
                 buttonText = "Select Specialization";
-                activeState = parentAbility.getIndex() == 0
+                boolean inVault = ClientVaults.getActive().isPresent();
+                activeState = !inVault && parentAbility.getIndex() == 0
                         && (parentAbility.isUnlocked() || target.isUnlocked())
                         && VaultBarOverlay.vaultLevel >= target.getUnlockLevel();
 
             } else {
+                // upgrade I think? so not in any vanilla branch
                 pressAction = button -> this.upgradeAbility();
                 buttonText = qOLHunters$determineButtonText(parentAbility, target, activelySelectedAbility, current);
                 activeState = hasEnoughSkillPoints
@@ -138,9 +145,14 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
                         && isVaultLevelSufficient
                         && !isInRoyaleVault;
 
-            if (target.isUnlocked())  {
+            if (target.isUnlocked())  { // remove spec
+                if (parentAbility.getSpecialization() != activelySelectedAbility) {
+                    pressAction = button -> this.removeSpecialization();
+                    boolean inVault = ClientVaults.getActive().isPresent();
+                    activeState = !inVault;
+                    this.showRemoveInVaultTooltip = inVault;
+                }
                 buttonText = qOLHunters$determineButtonText(parentAbility, target, activelySelectedAbility, current);
-                activeState = activeState && !isParentAbilitySpecialized;
             }
         }
 
@@ -298,7 +310,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
 
 
         if (parentAbility.getSpecialization() != ability) {
-            buttonText = "Already using " + parentAbility.getSpecialization().getName();
+            buttonText = "Remove specialization";
         } else if (isMaxLevel){
             buttonText = "Fully Learned";
         } else {
@@ -308,42 +320,27 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
     }
 
 
-    /**
-     * Creates a new AbilityWidget for the selected ability.
-     *
-     * @param isParentAbilitySpecialized Whether the parent ability is specialized.
-     * @return The created AbilityWidget.
-     */
-    @Unique
-    private AbilityWidget qOLHunters$createAbilityWidget(boolean isParentAbilitySpecialized) {
-        return new AbilityWidget(
-                this.selectedAbility,
-                this.abilityTree,
-                0,
-                0,
-                isParentAbilitySpecialized ? AbilityNodeTextures.SECONDARY_NODE : AbilityNodeTextures.PRIMARY_NODE,
-                TextureAtlasRegion.of(ModTextureAtlases.ABILITIES, ModConfigs.ABILITIES_GUI.getIcon(this.selectedAbility))
-        );
-    }
-
-
 
     //===========================================================================================================
     // Shadowed Methods
     //===========================================================================================================
 
-    @Shadow(remap = false) @Final private AbilityTree abilityTree;
-    @Shadow(remap = false) private MutableComponent descriptionContentComponent;
-    @Shadow(remap = false) private String selectedAbility;
-    @Shadow(remap = false) private String prevSelectedAbility = null;
-    @Shadow(remap = false) private int prevAbilityLevel = -1;
-    @Shadow(remap = false) private AbilityWidget selectedAbilityWidget;
+    @Shadow @Final private AbilityTree abilityTree;
+    @Shadow private MutableComponent descriptionContentComponent;
+    @Shadow private String selectedAbility;
+    @Shadow private String prevSelectedAbility = null;
+    @Shadow private int prevAbilityLevel = -1;
+    @Shadow private AbilityWidget selectedAbilityWidget;
 
-    @Shadow(remap = false) protected abstract void selectSpecialization();
-    @Shadow(remap = false) protected abstract void upgradeAbility();
-    @Shadow(remap = false) protected abstract void downgradeAbility();
-    @Shadow(remap = false) protected abstract void renderDescriptions(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks);
+    @Shadow protected abstract void selectSpecialization();
+    @Shadow protected abstract void upgradeAbility();
+    @Shadow protected abstract void downgradeAbility();
+    @Shadow protected abstract void renderDescriptions(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks);
 
+
+    @Shadow protected abstract void removeSpecialization();
+
+    @Shadow private boolean showRemoveInVaultTooltip;
 
     protected MixinAbilityDialog(AbilitiesElementContainerScreen skillTreeScreen) {super(skillTreeScreen);}
 

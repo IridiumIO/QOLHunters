@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = ModificationButtonElement.class, remap = false)
 public class MixinModificationButtonElement {
-    @WrapOperation(method = "lambda$new$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/Screen;hasShiftDown()Z"))
+    @WrapOperation(method = "lambda$new$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/Screen;hasShiftDown()Z", remap = true))
     private boolean configurableShiftDown(Operation<Boolean> original){
         return original.call() || !QOLHuntersClientConfigs.ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT.get();
     }

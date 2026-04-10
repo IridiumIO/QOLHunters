@@ -4,7 +4,6 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "qolhunters.refmap.json",
   "mixins": [
-    "artisanstation.MixinModificationButtonElement"
   ],
   "client": [
     "abilities.AccessorTieredSkill",
@@ -13,6 +12,7 @@
     "abilities.MixinAbilityWidgetSelectable",
     "abilities.MixinInputEvents",
     "abilities.MixinVaultAbilityKeybinding",
+    "artisanstation.MixinModificationButtonElement",
     "ascension.MixinAscensionCrystalObjective",
     "ascension.MixinSoulFlameItem",
     "betterlootstats.MixinLootStatsContainerElement",

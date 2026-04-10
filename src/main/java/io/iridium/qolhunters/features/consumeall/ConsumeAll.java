@@ -5,8 +5,10 @@ import iskallia.vault.item.GatedLootableItem;
 import iskallia.vault.item.ItemKnowledgeStar;
 import iskallia.vault.item.LootableItem;
 import iskallia.vault.item.RegretOrbItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -26,6 +28,10 @@ public class ConsumeAll {
         ItemStack stack = event.getItemStack();
 
         if(stack.getItem() instanceof ItemKnowledgeStar || stack.getItem() instanceof RegretOrbItem || stack.getItem() instanceof LootableItem || stack.getItem() instanceof GatedLootableItem){
+            if (event.getPlayer().getAbilities().instabuild) {
+                event.getPlayer().displayClientMessage(new TextComponent("Cannot consume all while in creative mode!").withStyle(ChatFormatting.RED), true);
+                return;
+            }
             int count = stack.getCount();
             isConsuming = true;
             for(int i = 0; i < count; i++){
