@@ -34,6 +34,7 @@
     "fixscrollbar.MixinSplitTabContent",
     "gear.MixinVaultGearHelper",
     "godaltars.MixinGodAltarOverlay",
+    "greedtrader.MixinGreedTraderScreen",
     "greenresearched.MixinResearchWidget",
     "hunterparticles.MixinClientboundHunterPositionsMessage",
     "hunterparticles.MixinHunterOutlineRenderer",
