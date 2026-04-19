@@ -111,18 +111,22 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         boolean isTargetSpecialized = target.getIndex() != 0;
 
 
+        // default to false to not accidentally retain the state
         boolean showRemoveInVaultTooltip = false;
+        boolean isSpecializeAction = false;
 
         // Determine the button text and action based on whether the target is a specialization
         if (isTargetSpecialized) {
 
-            if (!isParentAbilitySpecialized) { // THIS MIGHT BE DIFFERENT
+            if (!isParentAbilitySpecialized) {
                 pressAction = button -> this.selectSpecialization();
                 buttonText = "Select Specialization";
                 boolean inVault = ClientVaults.getActive().isPresent();
                 activeState = !inVault && parentAbility.getIndex() == 0
                         && (parentAbility.isUnlocked() || target.isUnlocked())
                         && VaultBarOverlay.vaultLevel >= target.getUnlockLevel();
+                isSpecializeAction = true;
+                showRemoveInVaultTooltip = inVault; // select spec
 
             } else {
                 // upgrade I think? so not in any vanilla branch
@@ -163,6 +167,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
         qOLHunters$buildDescriptionComponent(current, target);
         qOLHunters$buildLearnButton(buttonText, pressAction, activeState);
         this.showRemoveInVaultTooltip = showRemoveInVaultTooltip;
+        this.isSpecializeAction = isSpecializeAction;
 
     }
 
@@ -344,6 +349,8 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
     @Shadow protected abstract void removeSpecialization();
 
     @Shadow private boolean showRemoveInVaultTooltip;
+
+    @Shadow private boolean isSpecializeAction;
 
     protected MixinAbilityDialog(AbilitiesElementContainerScreen skillTreeScreen) {super(skillTreeScreen);}
 
