@@ -252,7 +252,7 @@ public class QOLHuntersClientConfigs {
         public static final String ZOOM_OUT_FURTHER = "Zoom Out Further";
         public static final String AUTOCHOSEN_JEWEL = "Autochosen Jewel";
         public static final String AUTOCHOSEN_WEIGHT = "Autochosen Weight";
-        public static final String ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = "Artisan Gear Tooltip Requires Shift";
+        public static final String ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = "Artisan Gear Tooltip requires Shift";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -311,7 +311,7 @@ public class QOLHuntersClientConfigs {
             ZOOM_OUT_FURTHER = CLIENT_BUILDER.comment("Zoom out further in zoomable vault screens (abilities, talents, researches, vault map).").define(ConfigPaths.ZOOM_OUT_FURTHER, true);
             AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show ⌄ above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, true);
             AUTOCHOSEN_WEIGHT = CLIENT_BUILDER.comment("Show jewel weights that determine which jewel gets chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_WEIGHT, false);
-            ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = CLIENT_BUILDER.comment("Require shift to view currently modified gear in artisan station in button tooltips.").define(ConfigPaths.ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT, true);
+            ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = CLIENT_BUILDER.comment("Require shift to view currently modified gear in artisan station in button tooltips.").define(ConfigPaths.ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT, false);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.ITEM_CHAINING);
                 CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
