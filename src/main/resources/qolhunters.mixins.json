@@ -35,6 +35,7 @@
     "gear.MixinVaultGearHelper",
     "godaltars.MixinGodAltarOverlay",
     "greedtrader.MixinGreedTraderScreen",
+    "greedtrader.MixinGreedTraderShopScreen",
     "greenresearched.MixinResearchWidget",
     "hunterparticles.MixinClientboundHunterPositionsMessage",
     "hunterparticles.MixinHunterOutlineRenderer",

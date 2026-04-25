@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 
 public class GreedTraderScreenTweaks {
@@ -36,7 +37,14 @@ public class GreedTraderScreenTweaks {
         minecraft.getItemRenderer().renderAndDecorateItem(new ItemStack(ModItems.GREED_COIN), 0, 0);
         renderStack.popPose();
         RenderSystem.applyModelViewMatrix();
+    }
 
 
+    public static int getShopOfferHeight(int offerCount, int scrollListHeight) {
+        int offersInCol =offerCount / 2 + offerCount % 2;
+        int offerHeight =  scrollListHeight / offersInCol ;
+        offerHeight -= offerHeight % 2;
+        offerHeight = Mth.clamp(offerHeight, 18, 38);
+        return offerHeight;
     }
 }

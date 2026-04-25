@@ -92,14 +92,15 @@ public class QOLHuntersClientConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> GEAR_ROLL_COLOR_OMEGA;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TEMPORAL_MODIFIER_TIMER_ENABLE;
-    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_SCALE;
-    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_X_OFFSET;
-    public static final ForgeConfigSpec.ConfigValue<Float> TEMPORAL_MODIFIER_TIMER_Y_OFFSET;
+    public static final ForgeConfigSpec.DoubleValue TEMPORAL_MODIFIER_TIMER_SCALE;
+    public static final ForgeConfigSpec.DoubleValue TEMPORAL_MODIFIER_TIMER_X_OFFSET;
+    public static final ForgeConfigSpec.DoubleValue TEMPORAL_MODIFIER_TIMER_Y_OFFSET;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> BETTER_LOOT_STATS;
     public static final ForgeConfigSpec.ConfigValue<Boolean> MAGNET_STATE_OVERLAY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ZOOM_OUT_FURTHER;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> RESPONSIVE_GREED_TRADER_OFFERS;
 
     public enum BrazierHologramLineMode {
         ALWAYS,
@@ -253,6 +254,7 @@ public class QOLHuntersClientConfigs {
         public static final String AUTOCHOSEN_JEWEL = "Autochosen Jewel";
         public static final String AUTOCHOSEN_WEIGHT = "Autochosen Weight";
         public static final String ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = "Artisan Gear Tooltip requires Shift";
+        public static final String RESPONSIVE_GREED_TRADER_OFFERS = "Responsive Greed Trader Offers";
 
         public record Group() {
             public static final String BRAZIER_GROUP = "Brazier Vaults";
@@ -312,6 +314,7 @@ public class QOLHuntersClientConfigs {
             AUTOCHOSEN_JEWEL = CLIENT_BUILDER.comment("Show ⌄ above jewel that would be chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_JEWEL, true);
             AUTOCHOSEN_WEIGHT = CLIENT_BUILDER.comment("Show jewel weights that determine which jewel gets chosen by identification stand.").define(ConfigPaths.AUTOCHOSEN_WEIGHT, false);
             ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT = CLIENT_BUILDER.comment("Require shift to view currently modified gear in artisan station in button tooltips.").define(ConfigPaths.ARTISAN_GEAR_TOOLTIP_REQUIRES_SHIFT, false);
+            RESPONSIVE_GREED_TRADER_OFFERS = CLIENT_BUILDER.comment("Automatically adjust greed trader offer size based on offer count and available space.").define(ConfigPaths.RESPONSIVE_GREED_TRADER_OFFERS, true);
 
             CLIENT_BUILDER.push(ConfigPaths.Group.ITEM_CHAINING);
                 CHAIN_BOOSTER_PACKS = CLIENT_BUILDER.comment("Automatically open the next booster pack in your inventory after you select a card").define(ConfigPaths.CHAIN_BOOSTER_PACKS, true);
@@ -418,9 +421,9 @@ public class QOLHuntersClientConfigs {
 
             CLIENT_BUILDER.push(ConfigPaths.Group.TEMPORAL_MODIFIER_TIMER_GROUP);
                 TEMPORAL_MODIFIER_TIMER_ENABLE = CLIENT_BUILDER.comment("Enable temporal modifier timer overlay").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_ENABLE, true);
-                TEMPORAL_MODIFIER_TIMER_SCALE = CLIENT_BUILDER.comment("Scale of the text").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_SCALE, 0.5f);
-                TEMPORAL_MODIFIER_TIMER_X_OFFSET = CLIENT_BUILDER.comment("Horizontal offset").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_X_OFFSET, 0f);
-                TEMPORAL_MODIFIER_TIMER_Y_OFFSET= CLIENT_BUILDER.comment("Vertical offset").define(ConfigPaths.TEMPORAL_MODIFIER_TIMER_Y_OFFSET, 6f);
+                TEMPORAL_MODIFIER_TIMER_SCALE = CLIENT_BUILDER.comment("Scale of the text").defineInRange(ConfigPaths.TEMPORAL_MODIFIER_TIMER_SCALE, 0.5, 0, 5);
+                TEMPORAL_MODIFIER_TIMER_X_OFFSET = CLIENT_BUILDER.comment("Horizontal offset").defineInRange(ConfigPaths.TEMPORAL_MODIFIER_TIMER_X_OFFSET, 0.0, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+                TEMPORAL_MODIFIER_TIMER_Y_OFFSET= CLIENT_BUILDER.comment("Vertical offset").defineInRange(ConfigPaths.TEMPORAL_MODIFIER_TIMER_Y_OFFSET, 6.0, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
             CLIENT_BUILDER.pop();
 
 

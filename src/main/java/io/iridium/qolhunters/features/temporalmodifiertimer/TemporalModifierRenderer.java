@@ -25,7 +25,8 @@ public class TemporalModifierRenderer {
         MultiBufferSource.BufferSource textBuffer
     ) {
         if (QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_ENABLE.get() && modifier instanceof VaultModifierWithTime modWithCtx) {
-            scale = scale * QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_SCALE.get();
+            float configScale = QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_SCALE.get().floatValue();
+            scale = scale * configScale;
             var time = modWithCtx.qOLHunters$getTime();
             if (time == null) {
                 return;
@@ -41,8 +42,10 @@ public class TemporalModifierRenderer {
             shadowMatrix.translate(new Vector3f(0.0F, 0.0F, 1.0F));
             Font var47 = minecraft.font;
             // iconLeft + ((iconWidth - textWidth) / 2)
-            float x = (scale + iconX +((size - textWidth)/2) + QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_X_OFFSET.get()) / scale;
-            float y = ((scale + iconY + size) - 9.0F * scale + textOffsetY + QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_Y_OFFSET.get() * scale) / scale;
+            float configOffsetX = QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_X_OFFSET.get().floatValue();
+            float configOffsetY = QOLHuntersClientConfigs.TEMPORAL_MODIFIER_TIMER_Y_OFFSET.get().floatValue();
+            float x = (scale + iconX +((size - textWidth)/2) + configOffsetX) / scale;
+            float y = ((scale + iconY + size) - 9.0F * scale + textOffsetY + configOffsetY * scale) / scale;
             Objects.requireNonNull(minecraft.font);
             var47.drawInBatch(textString, x, y , Color.PINK.getRGB(), true, shadowMatrix, textBuffer, false, 0, 15728880);
         }
