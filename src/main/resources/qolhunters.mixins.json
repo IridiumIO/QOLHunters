@@ -32,6 +32,7 @@
     "fixscrollbar.MixinAbstractDialog",
     "fixscrollbar.MixinScrollableContainer",
     "fixscrollbar.MixinSplitTabContent",
+    "fixuniquecodex.MixinUniqueCodexScreen",
     "gear.MixinVaultGearHelper",
     "godaltars.MixinGodAltarOverlay",
     "greedtrader.MixinGreedTraderScreen",
