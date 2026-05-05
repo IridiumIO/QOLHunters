@@ -198,6 +198,7 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:unobtanium-vault-hunters-fixes-1162330:7389063")
     // Load times in runtime debug
     runtimeOnly fg.deobf("maven.modrinth:ksyxis:QFfBwOwT")
+    runtimeOnly fg.deobf("curse.maven:modernfix-790626:5399365")
     runtimeOnly fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings

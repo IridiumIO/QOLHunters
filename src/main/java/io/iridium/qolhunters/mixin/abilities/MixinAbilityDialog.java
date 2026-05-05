@@ -193,6 +193,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             TieredSkill tieredSkill = (TieredSkill) target.getSpecialization();
             List<LearnableSkill> childTiers = ((AccessorTieredSkill)tieredSkill).getTiers();
 
+            int cappedDescTier = Math.min(childTiers.size(), descriptionMaxTier);
             int containerWidth =  this.getDescriptionsBounds().width;
             int charWidth = Minecraft.getInstance().font.width("⋮");
             int headerWidth = Minecraft.getInstance().font.width(" All Levels ");
@@ -204,7 +205,7 @@ public abstract class MixinAbilityDialog extends AbstractDialog<AbilitiesElement
             this.descriptionContentComponent.append(new TextComponent(" All Levels ").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.BOLD));
             this.descriptionContentComponent.append(new TextComponent( separator).withStyle(ChatFormatting.DARK_GRAY));
 
-            for (int i = 1; i <= descriptionMaxTier; i++) {
+            for (int i = 1; i <= cappedDescTier; i++) {
                 List<String> keys = ModConfigs.ABILITIES_DESCRIPTIONS.getCurrent(tieredSkill.getId());
                 TextComponent header = (TextComponent) new TextComponent("\n\nLevel " + i).withStyle(ChatFormatting.BOLD);
                 qOLHunters$appendLabels(descriptionContentComponent, keys, header, new AbilityLabelContext<>(tieredSkill.getChild(i), VaultBarOverlay.vaultLevel));
