@@ -2,6 +2,7 @@ package io.iridium.qolhunters.mixin.skillaltar;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import io.iridium.qolhunters.QOLHunters;
+import io.iridium.qolhunters.config.DehammerizerConfig;
 import io.iridium.qolhunters.config.QOLHuntersClientConfigs;
 import io.iridium.qolhunters.config.SkillAltarConfig;
 import iskallia.vault.container.SkillAltarContainer;
@@ -48,12 +49,9 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
         }
 
 
-        String saveName;
-
-        if(Minecraft.getInstance().hasSingleplayerServer()){
-            saveName = Objects.requireNonNull(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).getWorldData().getLevelName());
-        } else {
-            saveName = Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).name + "_" + Minecraft.getInstance().getCurrentServer().ip;
+        String saveName = DehammerizerConfig.getSaveName();
+        if (saveName == null) {
+            return;
         }
 
         if (QOLHunters.SKILL_ALTAR_CONFIG.KEYBINDINGS.containsKey(saveName)) {
@@ -73,12 +71,9 @@ public abstract class MixinSkillAltarContainerDefault  extends SkillAltarContain
         if (!QOLHuntersClientConfigs.SAVE_KEYBINDS_WITH_SKILL_ALTAR.get()) return;
         QOLHunters.SKILL_ALTAR_CONFIG = SkillAltarConfig.load();
 
-        String saveName;
-
-        if(Minecraft.getInstance().hasSingleplayerServer()){
-            saveName = Objects.requireNonNull(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).getWorldData().getLevelName());
-        } else {
-            saveName = Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).name + "_" + Minecraft.getInstance().getCurrentServer().ip;
+        String saveName = DehammerizerConfig.getSaveName();
+        if (saveName == null) {
+            return;
         }
 
         Map<Integer, Map<String, Integer>> keyBindsBackupIndexed = QOLHunters.SKILL_ALTAR_CONFIG.KEYBINDINGS

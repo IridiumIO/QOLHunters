@@ -68,6 +68,7 @@ public class VirtualDehammerizer {
 
         if (event.getKey() == GLFW.GLFW_KEY_DELETE && event.getAction() == GLFW.GLFW_PRESS && event.getModifiers() == GLFW.GLFW_MOD_CONTROL) {
             String saveName = DehammerizerConfig.getSaveName();
+            if (saveName == null) return;
             if(QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.containsKey(saveName)){
                 QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.get(saveName).remove(currentDehammerizerIndex);
                 QOLHunters.DEHAMMERIZER_CONFIG.save();
@@ -173,7 +174,7 @@ public class VirtualDehammerizer {
     private static synchronized void saveDehammerizer(int currentDehammerizerIndex, DehammerizerConfig.Coordinates coordinates){
 
         String saveName = DehammerizerConfig.getSaveName();
-
+        if (saveName == null) return;
         if (QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.containsKey(saveName)) {
             QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.get(saveName).put(currentDehammerizerIndex, coordinates);
         } else {
@@ -189,6 +190,7 @@ public class VirtualDehammerizer {
 
     private static synchronized DehammerizerConfig.Coordinates getDehammerizer(int currentDehammerizerIndex){
         String saveName = DehammerizerConfig.getSaveName();
+        if (saveName == null) return null;
         if(QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.containsKey(saveName)){
             if(QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.get(saveName).containsKey(currentDehammerizerIndex)){
                 return QOLHunters.DEHAMMERIZER_CONFIG.COORDINATES.get(saveName).get(currentDehammerizerIndex);

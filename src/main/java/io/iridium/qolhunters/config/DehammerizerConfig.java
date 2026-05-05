@@ -56,11 +56,20 @@ public class DehammerizerConfig {
 
     public static String getSaveName(){
 
+        String saveName = null;
         if(Minecraft.getInstance().hasSingleplayerServer()){
-            return Objects.requireNonNull(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).getWorldData().getLevelName());
-        }else {
-            return Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).name + "_" + Minecraft.getInstance().getCurrentServer().ip;
+            var spServer = Minecraft.getInstance().getSingleplayerServer();
+            if (spServer != null) {
+                var worldData = spServer.getWorldData();
+                saveName = worldData.getLevelName();
+            }
+        } else {
+            var mpServer = Minecraft.getInstance().getCurrentServer();
+            if (mpServer != null) {
+                saveName = mpServer.name + "_" + mpServer.ip;
+            }
         }
+        return saveName;
     }
 
 
